@@ -1,5 +1,5 @@
 {
-  "courseCode": "CS101",
+  "courseCode": "cs101",
   "papers": [
     {
       "title": "Midterm Past Papers (Moaaz)",
@@ -10,4 +10,5 @@
       "url": "https://mega.nz/file/example2"
     }
   ]
+
 }
