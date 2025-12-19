@@ -2,16 +2,43 @@
   "course": "CS101",
   "reviews": [
     {
-      "date": "2025-12-14",
+      "date": "2025-12-10",
       "difficulty": "Easy",
-      "topics": ["MCQs", "Short Questions", "Basics"],
-      "review": "Paper mostly handouts se tha, MCQs easy thay."
+      "topics": [
+        "Abbreviations",
+        "URL",
+        "Radix point addition",
+        "Binary patterns",
+        "Boolean operators",
+        "Memory storage",
+        "Blurays",
+        "Binary to decimal",
+        "Networking",
+        "Floating point notation",
+        "Logic operators",
+        "PAN/WAN",
+        "IMAP",
+        "Data transfer",
+        "MPEG",
+        "Binary system representation",
+        "Mega bit",
+        "CPU architecture"
+      ],
+      "review": "Questions were mostly from handouts; abbreviations and basic networking topics were important."
     },
     {
-      "date": "2025-12-15",
-      "difficulty": "Medium",
-      "topics": ["OOP", "Flowcharts"],
-      "review": "Short questions thore tricky thay."
+      "date": "2025-12-09",
+      "difficulty": "Easy",
+      "topics": [
+        "Bits and bytes",
+        "Access notation",
+        "OSI model",
+        "GUI",
+        "Gateway/layers",
+        "Google tools",
+        "URL segments"
+      ],
+      "review": "Paper mostly from handouts; handouts should be studied carefully for all basic topics."
     }
   ]
 }
