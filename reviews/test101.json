@@ -1,0 +1,51 @@
+{
+  "course": "CS101",
+  "reviews": [
+    {
+      "examType": "Midterm",
+      "difficulty": "Easy",
+
+      "reviewHeading": "Review",
+      "reviewText": "Paper zyada tar handouts se tha. Abbreviations, binary system aur basic networking se conceptual questions aaye. Overall paper easy tha aur handouts parhne walon ke liye simple tha.",
+
+      "topicsHeading": "Topics",
+      "topicsSummary": "Abbreviations, Binary System, Networking, Boolean Logic",
+
+      "topicsList": [
+        "Abbreviations",
+        "URL",
+        "Binary to Decimal",
+        "Radix Point Addition",
+        "Binary Patterns",
+        "Boolean & Logic Operators",
+        "Memory Storage",
+        "CPU Architecture",
+        "PAN / WAN",
+        "IMAP",
+        "Data Transfer",
+        "Floating Point Notation",
+        "MPEG"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+
+      "reviewHeading": "Review",
+      "reviewText": "Final term paper mostly handouts se aaya. Bits and bytes, OSI model aur GUI se short conceptual questions thay. Definitions aur basics strong hon to paper easy lagta hai.",
+
+      "topicsHeading": "Topics",
+      "topicsSummary": "Bits & Bytes, OSI Model, GUI, URL",
+
+      "topicsList": [
+        "Bits and Bytes",
+        "Access Notation",
+        "OSI Model",
+        "GUI",
+        "Gateway & Layers",
+        "Google Tools",
+        "URL Segments"
+      ]
+    }
+  ]
+}
