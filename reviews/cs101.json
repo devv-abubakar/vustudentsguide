@@ -2,20 +2,50 @@
   "course": "CS101",
   "reviews": [
     {
-      "date": "2025-12-10",
+      "examType": "Midterm",
       "difficulty": "Easy",
-      "topics": [
-        "Abbreviations, URL, Binary system (binary to decimal, radix point, patterns), Boolean & logic operators, Memory storage, CPU architecture, Networking (PAN, WAN, IMAP), Data transfer, MPEG, Floating point notation"
-      ],
-      "review": "Paper zyada tar handouts se tha. Abbreviations, binary system, Boolean/logic operators, memory storage aur basic networking se questions aaye. Overall paper easy tha aur jo students ne handouts ache se parhe thay un ke liye simple tha. Questions were mostly theoretical and concept-based from handouts."
+
+      "reviewHeading": "Review",
+      "reviewText": "Paper zyada tar handouts se tha. Abbreviations, binary system aur basic networking se conceptual questions aaye. Overall paper easy tha aur handouts parhne walon ke liye simple tha.",
+
+      "topicsHeading": "Topics",
+      "topicsSummary": "Abbreviations, Binary System, Networking, Boolean Logic",
+
+      "topicsList": [
+        "Abbreviations",
+        "URL",
+        "Binary to Decimal",
+        "Radix Point Addition",
+        "Binary Patterns",
+        "Boolean & Logic Operators",
+        "Memory Storage",
+        "CPU Architecture",
+        "PAN / WAN",
+        "IMAP",
+        "Data Transfer",
+        "Floating Point Notation",
+        "MPEG"
+      ]
     },
     {
-      "date": "2025-12-09",
+      "examType": "Final Term",
       "difficulty": "Easy",
-      "topics": [
-        "Bits & bytes, Access notation, OSI model, GUI, Gateway & layers, Google tools, URL segments"
-      ],
-      "review": "Paper mostly handouts se aaya hua tha. Bits and bytes, OSI model, GUI aur URL related basic questions thay. Jo concepts handouts se clear thay un ke liye paper easy tha. Students should focus on basic definitions and short conceptual questions."
+
+      "reviewHeading": "Review",
+      "reviewText": "Final term paper mostly handouts se aaya. Bits and bytes, OSI model aur GUI se short conceptual questions thay. Definitions aur basics strong hon to paper easy lagta hai.",
+
+      "topicsHeading": "Topics",
+      "topicsSummary": "Bits & Bytes, OSI Model, GUI, URL",
+
+      "topicsList": [
+        "Bits and Bytes",
+        "Access Notation",
+        "OSI Model",
+        "GUI",
+        "Gateway & Layers",
+        "Google Tools",
+        "URL Segments"
+      ]
     }
   ]
 }
