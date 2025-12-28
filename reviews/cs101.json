@@ -5,40 +5,17 @@
       "date": "2025-12-10",
       "difficulty": "Easy",
       "topics": [
-        "Abbreviations",
-        "URL",
-        "Radix point addition",
-        "Binary patterns",
-        "Boolean operators",
-        "Memory storage",
-        "Blurays",
-        "Binary to decimal",
-        "Networking",
-        "Floating point notation",
-        "Logic operators",
-        "PAN/WAN",
-        "IMAP",
-        "Data transfer",
-        "MPEG",
-        "Binary system representation",
-        "Mega bit",
-        "CPU architecture"
+        "Abbreviations, URL, Binary system (binary to decimal, radix point, patterns), Boolean & logic operators, Memory storage, CPU architecture, Networking (PAN, WAN, IMAP), Data transfer, MPEG, Floating point notation"
       ],
-      "review": "Questions were mostly from handouts; abbreviations and basic networking topics were important."
+      "review": "Paper zyada tar handouts se tha. Abbreviations, binary system, Boolean/logic operators, memory storage aur basic networking se questions aaye. Overall paper easy tha aur jo students ne handouts ache se parhe thay un ke liye simple tha. Questions were mostly theoretical and concept-based from handouts."
     },
     {
       "date": "2025-12-09",
       "difficulty": "Easy",
       "topics": [
-        "Bits and bytes",
-        "Access notation",
-        "OSI model",
-        "GUI",
-        "Gateway/layers",
-        "Google tools",
-        "URL segments"
+        "Bits & bytes, Access notation, OSI model, GUI, Gateway & layers, Google tools, URL segments"
       ],
-      "review": "Paper mostly from handouts; handouts should be studied carefully for all basic topics."
+      "review": "Paper mostly handouts se aaya hua tha. Bits and bytes, OSI model, GUI aur URL related basic questions thay. Jo concepts handouts se clear thay un ke liye paper easy tha. Students should focus on basic definitions and short conceptual questions."
     }
   ]
 }
