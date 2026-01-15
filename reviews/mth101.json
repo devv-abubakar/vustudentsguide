@@ -1,0 +1,60 @@
+{
+  "course": "MTH101",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+
+      "reviewHeading": "Review",
+      "reviewText": "MTH101 ka paper zyada tar files aur handouts se tha. MCQs chote chote thay jin mein derivatives, integration aur limits se related questions aaye. Integrate kar ke limits lagani thi, kuch questions substitution se thay. Convergence aur divergence se related short aur long questions bhi shamil thay. Overall paper easy aur conceptual tha.",
+
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "Derivatives",
+        "Integration",
+        "Limits Application",
+        "Ratio Test",
+        "Taylor Series (2 terms)",
+        "Substitution Method",
+        "Convergence & Divergence",
+        "Variable Limits Integration"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+
+      "reviewHeading": "Review",
+      "reviewText": "Paper easy tha. Sigma series, convergent aur divergent tests bohat important thay. Increasing decreasing tests aur integration ke tamam formulas yaad hona zaroori thay, khas tor par volume wale formulas. Last 10 lectures sab se zyada important thay aur MCQs ka bara hissa wahin se aaya.",
+
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "Sigma Series",
+        "Convergent Tests",
+        "Divergent Tests",
+        "Increasing Decreasing Tests",
+        "Integration Formulas",
+        "Volume Formulas",
+        "Last 10 Lectures Concepts",
+        "MCQs from Handouts"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Medium",
+
+      "reviewHeading": "Preparation Tips",
+      "reviewText": "Lectures 30-45 sab se zyada important hain. MCQs zyada tar lectures 19-30 se aate hain jab ke short aur long questions 30-45 se aate hain. Handouts ko achi tarah revise karein, Kinza Bilal ke lectures helpful hain aur zyada se zyada practice karein.",
+
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "Lectures 30-45 Important",
+        "MCQs from 19-30",
+        "Handouts Revision",
+        "Practice Questions",
+        "Kinza Bilal Lectures",
+        "Concept Building"
+      ]
+    }
+  ]
+}
