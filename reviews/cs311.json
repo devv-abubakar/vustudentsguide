@@ -1,0 +1,21 @@
+{
+    "course": "CS311",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Important Topics",
+            "reviewText": "Extensive coverage of XML processing and Java Servlets.",
+            "topicsHeading": "Topics List",
+            "topicsList": [
+                "XML Fundamentals (DTD, XSLT, DOM vs SAX)",
+                "JAXP (Java API for XML Processing)",
+                "Servlet Lifecycle Methods (init, service, destroy)",
+                "Session Tracking (Cookies, URL rewriting)",
+                "JDBC Basics (5 steps)",
+                "Web Service Types (XML-RPC, SOAP, REST)",
+                "Parsing APIs (SAX, DOM, JDOM)"
+            ]
+        }
+    ]
+}
