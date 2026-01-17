@@ -1,0 +1,21 @@
+{
+    "course": "PSY407",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Review",
+            "reviewText": "Short questions on self strategizing and team cohesiveness.",
+            "topicsHeading": "Questions Asked",
+            "topicsList": [
+                "Self Strategizing Techniques",
+                "Team Cohesiveness (Indirect measurement)",
+                "Neo Dissociation Assumptions",
+                "Albert Bandura Social Learning Theory",
+                "Exercise and Stress",
+                "Apters Reversal Theory (Telic vs Paratelic)",
+                "Symbolic Learning Theory"
+            ]
+        }
+    ]
+}
