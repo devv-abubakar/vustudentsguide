@@ -1,0 +1,21 @@
+{
+    "course": "EDU201",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Easy",
+            "reviewHeading": "Review",
+            "reviewText": "Mcqs 1-10 covering Bloom's taxonomy and learning theories.",
+            "topicsHeading": "Questions Asked",
+            "topicsList": [
+                "Bloom Taxonomy (Revised by Anderson)",
+                "Motor Skills Techniques",
+                "PBL (Problem Engagement)",
+                "Constructivism",
+                "Gagne Taxonomy",
+                "Authentic Learning Characteristics",
+                "Multiple Intelligences (Naturalist, Kinesthetic)"
+            ]
+        }
+    ]
+}
