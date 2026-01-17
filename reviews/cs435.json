@@ -1,0 +1,20 @@
+{
+  "course": "CS435",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Review",
+      "reviewText": "MCQs from PPT slides. Short: IPv4, SAN storage access network, trust issues of cloud hosting. Long: Advantages of SAN, IPv4 classes name, Security threats of cloud hosting.",
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "IPv4",
+        "SAN Storage Access Network",
+        "Cloud Hosting Trust Issues",
+        "Advantages of SAN",
+        "IPv4 Classes",
+        "Security Threats of Cloud Hosting"
+      ]
+    }
+  ]
+}
