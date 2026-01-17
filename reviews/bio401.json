@@ -1,0 +1,19 @@
+{
+    "course": "BIO401",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Review",
+            "reviewText": "Biostatistics paper. Conceptual MCQs.",
+            "topicsHeading": "Topics Covered",
+            "topicsList": [
+                "Mean, Mode, Median, Standard Deviation",
+                "Skewness",
+                "Probability & Sampling",
+                "Regression",
+                "Pie Chart & Bar Graph Drawing"
+            ]
+        }
+    ]
+}
