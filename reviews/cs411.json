@@ -4,13 +4,12 @@
         {
             "examType": "Final Term",
             "difficulty": "Easy",
-            "reviewHeading": "Review",
-            "reviewText": "MCQs are from past papers. Subjective was easy: 2 programming questions and remaining were theoretical.",
-            "topicsHeading": "Topics Covered",
+            "reviewHeading": "Paper Review (8:00am)",
+            "reviewText": "MCQs are from past papers \nSubjective was easy 2 programming questions \nAnd remaining questions are theoretical",
+            "topicsHeading": "Exam Questions",
             "topicsList": [
-                "Programming Questions",
-                "Theoretical Concepts",
-                "MCQs from Past Papers"
+                "Programming Questions (2)",
+                "Theoretical Questions"
             ]
         }
     ]
