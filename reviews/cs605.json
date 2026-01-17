@@ -1,0 +1,21 @@
+{
+    "course": "CS605",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Important Topics",
+            "reviewText": "Topics covered Process Models, Metrics, and Risk Management.",
+            "topicsHeading": "Topics List",
+            "topicsList": [
+                "Software Process Models (Waterfall, Agile, Spiral)",
+                "Requirements Engineering (SRS)",
+                "Project Metrics (COCOMO, Function Points)",
+                "Risk Analysis & Management",
+                "Project Scheduling (Gantt, PERT/CPM)",
+                "Software Quality Assurance (SQA)",
+                "Software Re-engineering & Maintenance"
+            ]
+        }
+    ]
+}
