@@ -1,0 +1,21 @@
+{
+  "course": "MTH601",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Review",
+      "reviewText": "Objective MCQs zyada tar Skill for Study ki video se aaye. Subjective tamam practice questions se tha. Minimization, maximization, graphical method aur simplex method se questions thay. Total cost, average cost aur capital cost find karni thi. Table se next iteration find karni thi. Overall sara paper practice questions se aaya.",
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "Graphical Method",
+        "Simplex Method",
+        "Minimization",
+        "Maximization",
+        "Total Cost & Average Cost",
+        "Capital Cost",
+        "Iteration Table"
+      ]
+    }
+  ]
+}
