@@ -4,16 +4,28 @@
         {
             "examType": "Final Term",
             "difficulty": "Moderate",
-            "reviewHeading": "Review",
-            "reviewText": "Even odd function find krny thy. Laplace wala objective k leehaz sy imp ha.",
-            "topicsHeading": "Topics Covered",
+            "reviewHeading": "Paper Review (8:00 am)",
+            "reviewText": "1. even off function find krny thy  Objective me bi thy 3 Question , Shirt Q me  bi eik tha even odd k related , long me bi tha even odd check kro phir Fourier series nikalo . \n2. Laplace wala Objective k leehaz sy imp ha l.\n3. surface velocity waly formulas\n4. Simple Integration bhot km thi just Objective me 2 mcqs thy.\n5. limits change krny wala question S/Q + Obj Donu me tha.\n6. baki Curl k related long question tha\n7. aur eik ye tha k function Conservative hal k nhi lm\n Alhumdulillah acha ho gya ha . itna koi zaida perha nhi tha , \nKinza Baji ki video daikh lena Objective ka idea ho haye ga mostly wohi hu gy just Points different hu gy . concept same ho ga.\neik Subjective file ha usko  diakh lena Long /Short prepare ho jaye gy",
+            "topicsHeading": "Exam Questions",
             "topicsList": [
-                "Even/Odd Functions & Fourier Series",
+                "Even/Odd Functions",
+                "Fourier Series",
                 "Laplace Transforms",
                 "Surface Velocity Formulas",
-                "Limits change questions",
-                "Curl related Long Question",
-                "Conservative Function check"
+                "Limits Change",
+                "Curl",
+                "Conservative Function"
+            ]
+        },
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Paper Review (mth301/201)",
+            "reviewText": "sab files ma sy Aya thy\nKinza Bilal ki preparation videos dekh Len mcqs ho jayen gy \nSubjective ka nahi pta Kahan sy Aya tha ma just aik do preparation video Dekhi Orr mcqs Orr S.Q kr Aya hon",
+            "topicsHeading": "Preparation Sources",
+            "topicsList": [
+                "Kinza Bilal Videos",
+                "Past Files"
             ]
         }
     ]
