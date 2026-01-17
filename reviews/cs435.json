@@ -1,0 +1,18 @@
+{
+  "course": "CS435",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Medium",
+      "reviewHeading": "Review",
+      "reviewText": "MCQs PPT slides se thay. Short aur long questions IPv4, SAN, cloud hosting aur security threats se aaye.",
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "IPv4",
+        "SAN",
+        "Cloud Security Issues",
+        "Security Threats"
+      ]
+    }
+  ]
+}
