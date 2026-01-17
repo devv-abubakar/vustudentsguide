@@ -1,0 +1,20 @@
+{
+    "course": "CHE201",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Review",
+            "reviewText": "All subjective part from Suliman file.",
+            "topicsHeading": "Questions Asked",
+            "topicsList": [
+                "Factors affecting Reaction Rate (Solvents, Phase, Surface Area)",
+                "Maxwell Distribution",
+                "Properties of Colloids",
+                "Limitations in Thermodynamics",
+                "Fractional Distillation",
+                "Arrhenius Equation"
+            ]
+        }
+    ]
+}
