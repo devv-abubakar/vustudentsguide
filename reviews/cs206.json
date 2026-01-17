@@ -1,0 +1,20 @@
+{
+  "course": "CS206",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Review",
+      "reviewText": "Paper 22/7/2024. Paper bohat acha hua. AAA question, Color question table me color write karna, Wireshark chapter questions, Protocols, IO graphs step, quizzes files + handouts.",
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "AAA Question",
+        "Color Table Question",
+        "Wireshark Chapter",
+        "Protocol Questions",
+        "IO Graphs",
+        "Quizzes"
+      ]
+    }
+  ]
+}
