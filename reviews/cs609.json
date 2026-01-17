@@ -1,0 +1,17 @@
+{
+  "course": "CS609",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Review",
+      "reviewText": "MCQs mostly from Junaid file. Subjective questions from Junaid file including explanations. Overall paper preparation based on Junaid file recommended.",
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "MCQs from Junaid File",
+        "Subjective Questions from Junaid File",
+        "Explanations"
+      ]
+    }
+  ]
+}
