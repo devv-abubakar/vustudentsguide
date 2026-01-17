@@ -1,0 +1,17 @@
+{
+    "course": "MGT211",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Review",
+            "reviewText": "Paper average tha. Conceptual tha. Handouts se line by line MCQs nahi thy.",
+            "topicsHeading": "Topics Covered",
+            "topicsList": [
+                "Lectures 19-33 (Major portion)",
+                "Business Communication (Letters)",
+                "ISO Standards"
+            ]
+        }
+    ]
+}
