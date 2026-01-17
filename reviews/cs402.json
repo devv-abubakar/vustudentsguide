@@ -1,0 +1,20 @@
+{
+    "course": "CS402",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Review",
+            "reviewText": "Mostly MCQs from Junaid file. CFG se MCQs bht zyada thy.",
+            "topicsHeading": "Topics Covered",
+            "topicsList": [
+                "Finite Automata (DFA & NFA)",
+                "Regular Expressions & Pumping Lemma",
+                "Context-Free Grammars (CFG)",
+                "Pushdown Automata (PDA)",
+                "Turing Machines Basics",
+                "Conversion Techniques (CFG to PDA)"
+            ]
+        }
+    ]
+}
