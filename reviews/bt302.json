@@ -4,11 +4,11 @@
         {
             "examType": "Final Term",
             "difficulty": "Moderate",
-            "reviewHeading": "Review",
-            "reviewText": "Definitions and adverse effects.",
-            "topicsHeading": "Questions Asked",
+            "reviewHeading": "Paper Review",
+            "reviewText": "Bt302\n\n\nDefine antigen, hapten , immunogen? \nDefine lymphocyte recirculation? \nDefine cytokines? \nWhat are the adverse effects of vaccines ?",
+            "topicsHeading": "Exam Questions",
             "topicsList": [
-                "Define Antigen, Hapten, Immunogen",
+                "Antigen, Hapten, Immunogen",
                 "Lymphocyte Recirculation",
                 "Cytokines",
                 "Adverse Effects of Vaccines"
