@@ -4,13 +4,14 @@
         {
             "examType": "Final Term",
             "difficulty": "Moderate",
-            "reviewHeading": "Review",
-            "reviewText": "MCQs mostly from files (Vu topper). Subjective: Probability cards, Graph to Matrix.",
-            "topicsHeading": "Questions Asked",
+            "reviewHeading": "Paper Review (8:00am)",
+            "reviewText": "MCqs mostly files me se the 15 to 20 Vu topper ki past papers wali files me se the and 40 to 44 lectures me se ziada the mcqs wo ache se prepared kr k jaiye ga\n\n Subjective me 2 questions cards wale the jinki probability nikalni thi aur aik graph ko matrix me convert krna tha aur aik algorithm Wala the pre and post conditions wala...\nBaaki paper itna mushkil ni tha..bs mam kinza Bilal k jisne lectures Liye hein aur final term preparation wali videos deikhi Hein unke liye ye kaafi easy tha..",
+            "topicsHeading": "Exam Questions",
             "topicsList": [
                 "Probability (Cards)",
-                "Convert Graph to Matrix",
-                "Algorithm (Pre and Post conditions)"
+                "Graph to Matrix Conversion",
+                "Algorithm (Pre/Post conditions)",
+                "Lectures 40-44"
             ]
         }
     ]
