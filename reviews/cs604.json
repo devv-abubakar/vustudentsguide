@@ -1,0 +1,19 @@
+{
+  "course": "CS604",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Review",
+      "reviewText": "Paper 11:30 timing. MCQs mostly conceptual aur kuch files se. Subjective: FIFO define & scenario, P & V in Semaphore, Directory operation in UNIX, Rewind & Close commands, Deadlock issues, long questions.",
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "FIFO Definition & Scenario",
+        "Semaphore P & V",
+        "UNIX Directory Operations",
+        "Rewind & Close Commands",
+        "Deadlock Issues"
+      ]
+    }
+  ]
+}
