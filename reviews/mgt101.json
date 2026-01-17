@@ -1,0 +1,18 @@
+{
+    "course": "MGT101",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Easy",
+            "reviewHeading": "Review",
+            "reviewText": "Paper kafi easy tha conceptual tha. Accruals se ziada tha ledger accounts bnany thy.",
+            "topicsHeading": "Topics Covered",
+            "topicsList": [
+                "Accruals & Ledger Accounts",
+                "Current Asset Value Calculation",
+                "Inventory (IAS 2)",
+                "Journal Entries (Closing Rental Income)"
+            ]
+        }
+    ]
+}
