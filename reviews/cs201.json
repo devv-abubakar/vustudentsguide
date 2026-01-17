@@ -1,0 +1,35 @@
+{
+  "course": "CS201",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Review",
+      "reviewText": "Paper Alhamdulillah bohat acha aur easy tha. Ziada tar MCQs World of Education ki final term preparation videos aur current quizzes se repeat hue. Short questions mein 2 errors find kar ke correct likhna tha, aik question tha ke agar free operator deallocate karte waqt fail ho jaye to kis situation mein hoga. Long mein matrix wala question tha jisme user se values le kar matrix print karni thi jo Khaliq Mirza ki videos 42 aur 43 mein sikhaya gaya hai. Ek aur long question tellg(), tellp(), seekg(), seekp() ke kaam se related tha aur modulus operator ki output bhi poochi gai. Overall paper bohat easy tha.",
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "MCQs from World of Education",
+        "Current Quizzes",
+        "Error Finding",
+        "Free Operator",
+        "Matrix Program",
+        "tellg tellp seekg seekp",
+        "Modulus Operator"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Review",
+      "reviewText": "MCQs zyada tar World of Education ki final term videos se repeat hue aur handouts se bhi aaye. Subjective part mein program write karna tha, aik given program ko if else structure mein change karna tha aur classes wale program mein se errors find karni thi.",
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "Handouts MCQs",
+        "World of Education MCQs",
+        "Program Writing",
+        "If Else Conversion",
+        "Classes Error Finding"
+      ]
+    }
+  ]
+}
