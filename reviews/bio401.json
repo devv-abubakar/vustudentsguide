@@ -4,15 +4,18 @@
         {
             "examType": "Final Term",
             "difficulty": "Moderate",
-            "reviewHeading": "Review",
-            "reviewText": "Biostatistics paper. Conceptual MCQs.",
+            "reviewHeading": "Biostatistics Paper Review",
+            "reviewText": "Mcqs conceptual mostly from mean, skewness ,mode,median standard derivation, probability, sampling.\nQuestions: conceptual find mean,mode,median,standard derivation\nDraw pie chart following data,regression\nBar graph",
             "topicsHeading": "Topics Covered",
             "topicsList": [
-                "Mean, Mode, Median, Standard Deviation",
+                "Mean, Mode, Median",
+                "Standard Deviation",
                 "Skewness",
-                "Probability & Sampling",
+                "Probability",
+                "Sampling",
+                "Pie Chart",
                 "Regression",
-                "Pie Chart & Bar Graph Drawing"
+                "Bar Graph"
             ]
         }
     ]
