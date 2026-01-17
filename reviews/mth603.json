@@ -1,0 +1,18 @@
+{
+    "course": "MTH603",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Easy",
+            "reviewHeading": "Review",
+            "reviewText": "MCQs 100% from files. Formulas yaad karo paper 100% ho gaya ga.",
+            "topicsHeading": "Questions Asked",
+            "topicsList": [
+                "Trapezoidal Rule",
+                "Simpson 3/8 Rule",
+                "R-K Method (Runge-Kutta)",
+                "Richard Extrapolation"
+            ]
+        }
+    ]
+}
