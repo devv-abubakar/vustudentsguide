@@ -1,0 +1,20 @@
+{
+  "course": "MGT510",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Review",
+      "reviewText": "Paper 27 Jan 2025, 7:45 AM. MCQs handouts se. Short: Small company benefits of ISO, MIT 5 steps explain (2), Middle manager responsibilities, Petro Chart. Long: Register process of ISO900, Responsibility of Senior Management. Paper easy but lengthy.",
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "ISO Benefits",
+        "MIT 5 Steps",
+        "Middle Manager Responsibilities",
+        "Petro Chart",
+        "ISO900 Registration Process",
+        "Senior Management Responsibility"
+      ]
+    }
+  ]
+}
