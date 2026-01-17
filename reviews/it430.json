@@ -4,15 +4,20 @@
         {
             "examType": "Final Term",
             "difficulty": "Moderate",
-            "reviewHeading": "Review",
-            "reviewText": "Objective me abbreviations thin (ANSI, PIPEDA). Scenarios diye hoye thy btana tha k Kon sa revenue model hai.",
-            "topicsHeading": "Topics Covered",
+            "reviewHeading": "Paper Review (8:00 am)",
+            "reviewText": "Objective me abbreviations thin ANSI, PIPEDA wagera ki or Kuch encryption algorithms waly portion sy thy or data mining ki types me sy bhi thy..\n\n> Subjective:\n     Short >> \nGlobal issues of e commerce\n Scenarios diye hoye thy btana tha k Kon sa revenues model hai\nScenarios waly questions long or short dono me thy.. \nAutomated clearing house ki definition thi..\nWhat is meant by Non-Repudiation? \nVirtual Pin ka concept b...\n\n\n> Long Questions:\n1) EDI k benefits\n2) Scenario given tha btana tha k Kon sa tax income tax hai or Kon sa transaction.. Reasons b poochi thin.\n3) Centralized payment system ki examples with details.. \n4) Scenario given tha btana tha k Konsa appropriate step ly g company.. Attacks waly portion me sy tha.. Proxy \u2026",
+            "topicsHeading": "Exam Questions",
             "topicsList": [
-                "Global issues of E-commerce",
+                "Abbreviations (ANSI, PIPEDA)",
+                "Encryption Algorithms",
+                "Data Mining Types",
+                "E-commerce Global Issues",
                 "Revenue Models (Scenarios)",
                 "Automated Clearing House",
                 "Non-Repudiation",
+                "Virtual Pin",
                 "EDI Benefits",
+                "Tax Types (Income vs Transaction)",
                 "Centralized Payment System",
                 "Security Attacks (Proxy)"
             ]
