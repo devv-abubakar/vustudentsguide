@@ -1,0 +1,21 @@
+{
+    "course": "CS621",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Review",
+            "reviewText": "Objective Almost 80% from the masters file.",
+            "topicsHeading": "Questions Asked",
+            "topicsList": [
+                "Data Centric Models",
+                "Types of Switching",
+                "Baily Dall Aspects",
+                "Datanode vs Namenode",
+                "Message Passing Concept",
+                "Five Interconnection Properties",
+                "Critical Path Calculation"
+            ]
+        }
+    ]
+}
