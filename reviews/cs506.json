@@ -1,0 +1,21 @@
+{
+    "course": "CS506",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Easy",
+            "reviewHeading": "Review",
+            "reviewText": "Bohat easy paper tah. Tables aaya tah long main related to JSP and Cookies. Thread types wala table tha.",
+            "topicsHeading": "Topics Covered",
+            "topicsList": [
+                "Servlet Lifecycle (Create, Service, Destroy)",
+                "MVC Architecture vs JSP",
+                "Thread States & Starvation",
+                "Page-centric Approach Limitations",
+                "HTTP Response Codes",
+                "Cookies & Session Handling",
+                "Layers Diagram"
+            ]
+        }
+    ]
+}
