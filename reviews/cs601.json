@@ -1,0 +1,21 @@
+{
+    "course": "CS601",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Review",
+            "reviewText": "Mcqs focused on Data Communication and Digital Transmission.",
+            "topicsHeading": "Topics Covered",
+            "topicsList": [
+                "Data Communication & Protocols",
+                "Digital Transmission (ASK)",
+                "Multiplexing (FDM, TDM)",
+                "Nyquist & Shannon Theory",
+                "Protocol Layers Table",
+                "Numerical: Throughput",
+                "Numerical: FDM"
+            ]
+        }
+    ]
+}
