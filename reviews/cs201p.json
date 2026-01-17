@@ -1,0 +1,18 @@
+{
+    "course": "CS201P",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Easy",
+            "reviewHeading": "Paper Review (8:00 AM, 31 July)",
+            "reviewText": "MCQS easy thaa mostly,some are conceptual..\n Long Question \n4 programs kii output write karnii thee \n1, salary related thaa total salary 55000, grocery 4500 , travel 5000, medical 2750, utility 5000\nTax =salary x 0.02\nTo find \nTotal salary \nSavings \nTax paid \n2, difference thaa count endl ma or int& maybe exect nhi yadd",
+            "topicsHeading": "Exam Questions",
+            "topicsList": [
+                "Program Output Questions",
+                "Salary/Tax Calculation",
+                "cout/endl difference",
+                "Reference variables (int&)"
+            ]
+        }
+    ]
+}
