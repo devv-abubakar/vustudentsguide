@@ -1,0 +1,21 @@
+{
+    "course": "MB501T",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Review",
+            "reviewText": "Cell Biology paper.",
+            "topicsHeading": "Questions Asked",
+            "topicsList": [
+                "Effector & Helper Cytotoxic T Cells",
+                "Transducer Proteins",
+                "Inclusion Cell Disease",
+                "Autosomal Genetic Disorder",
+                "Paracrine Signaling",
+                "Laminar Air Flow Cabinet Principle",
+                "PCR Technique Applications"
+            ]
+        }
+    ]
+}
