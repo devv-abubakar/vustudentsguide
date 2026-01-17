@@ -1,0 +1,21 @@
+{
+    "course": "ENG502",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Easy",
+            "reviewHeading": "Paper Review (7:45am)",
+            "reviewText": "Sare mcqs handout se thy. bahot easy mcqs thy. \nShort questions:\n1) Collocative meaning\n2) tokenization\n3)  time deixis\n\nLong questions:\n1) dialectology\n2) types of meanings\n3) Discourse analysis\n4) trends in Japan",
+            "topicsHeading": "Exam Questions",
+            "topicsList": [
+                "Collocative Meaning",
+                "Tokenization",
+                "Time Deixis",
+                "Dialectology",
+                "Types of Meanings",
+                "Discourse Analysis",
+                "Trends in Japan"
+            ]
+        }
+    ]
+}
