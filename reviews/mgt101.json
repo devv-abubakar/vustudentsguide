@@ -4,11 +4,12 @@
         {
             "examType": "Final Term",
             "difficulty": "Easy",
-            "reviewHeading": "Review",
-            "reviewText": "Paper kafi easy tha conceptual tha. Accruals se ziada tha ledger accounts bnany thy.",
+            "reviewHeading": "Paper Review (31st July, 8 am)",
+            "reviewText": "Paper kafi easy tha conceptual tha , accruals se ziada tha ledger accounts bnany thy, current asset ki value calculate krni thi, ak inventory k question tha ias 2 k according solve krna ha, \nMcqs m ziada tr journal entry thi k rental income ha tw usko close krna k lia kis account ko debit kraingy",
             "topicsHeading": "Topics Covered",
             "topicsList": [
-                "Accruals & Ledger Accounts",
+                "Accruals",
+                "Ledger Accounts",
                 "Current Asset Value Calculation",
                 "Inventory (IAS 2)",
                 "Journal Entries (Closing Rental Income)"
