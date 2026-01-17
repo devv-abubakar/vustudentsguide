@@ -1,0 +1,18 @@
+{
+    "course": "BT302",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Review",
+            "reviewText": "Definitions and adverse effects.",
+            "topicsHeading": "Questions Asked",
+            "topicsList": [
+                "Define Antigen, Hapten, Immunogen",
+                "Lymphocyte Recirculation",
+                "Cytokines",
+                "Adverse Effects of Vaccines"
+            ]
+        }
+    ]
+}
