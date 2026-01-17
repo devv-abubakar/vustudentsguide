@@ -1,0 +1,19 @@
+{
+    "course": "CS302",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Paper Review (11:30, 27/1/25)",
+            "reviewText": "Equation definition of 3 bit up down counter in Abel\nDown counter 1111 to four time iski output likhni thi\nGoto statements of a b c to up count\n1 circuit aya tha skip ker diya\nShort may\n Function of register\n How many flip flop is used for 32 bit divider circuit",
+            "topicsHeading": "Exam Questions",
+            "topicsList": [
+                "3-bit Up/Down Counter (Abel)",
+                "Down Counter Output",
+                "Goto Statements",
+                "Register Function",
+                "Flip Flop for 32-bit Divider"
+            ]
+        }
+    ]
+}
