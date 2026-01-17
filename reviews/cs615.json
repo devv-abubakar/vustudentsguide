@@ -1,0 +1,19 @@
+{
+    "course": "CS615",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Review",
+            "reviewText": "MCQs zyada tr handouts me se thy.",
+            "topicsHeading": "Topics Covered",
+            "topicsList": [
+                "Maintenance Activities",
+                "SQA Activities",
+                "Project Initial Activity",
+                "Risk Projection Activity",
+                "WBS Category"
+            ]
+        }
+    ]
+}
