@@ -1,0 +1,20 @@
+{
+    "course": "BT406",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Review",
+            "reviewText": "20 MCQs from Arham file. Subjective from Alif and Marshmello file.",
+            "topicsHeading": "Questions Asked",
+            "topicsList": [
+                "Scale and Index",
+                "Qualitative Research Types (John Crisswell)",
+                "Content Validity",
+                "Semi-structured vs Non-structured",
+                "Challenges in Grounded Study",
+                "Grounded Theory Types"
+            ]
+        }
+    ]
+}
