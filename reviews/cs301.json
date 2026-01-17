@@ -13,6 +13,21 @@
         "Union Diagram",
         "Huffman Coding"
       ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Review",
+      "reviewText": "7:45 timing. Sorting algorithms se 3 questions, Heap (Min/Max), Parent-Child relationship, Union diagram, (2*(4(4+3))) type question, MCQs from Mouz file, Huffman coding (introduced 1952).",
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "Sorting Algorithms",
+        "Heap: Min & Max",
+        "Parent-Child Relationships",
+        "Union Diagrams",
+        "Huffman Coding",
+        "MCQs Practice Files"
+      ]
     }
   ]
 }
