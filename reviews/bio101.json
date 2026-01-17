@@ -1,0 +1,17 @@
+{
+  "course": "BIO101",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Review",
+      "reviewText": "Paper easy tha. Mid se kam aur final lessons se zyada questions aaye. 2-3 MCQs insight quiz videos se thay, baqi zyada tar handouts se aaye.",
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "Handouts Based MCQs",
+        "Insight Quiz Videos",
+        "Final Lessons Concepts"
+      ]
+    }
+  ]
+}
