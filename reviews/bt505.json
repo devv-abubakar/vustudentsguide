@@ -4,15 +4,15 @@
         {
             "examType": "Final Term",
             "difficulty": "Moderate",
-            "reviewHeading": "Review",
-            "reviewText": "MCQS handouts sa tha. Short/Long from Biosensors.",
-            "topicsHeading": "Questions Asked",
+            "reviewHeading": "Paper Review",
+            "reviewText": "MCQS handouts sa tha file sa koi 4 ya 5 ho ga \nShort\nbiorecognition bionsensor tha I think  define karna tha \u06d4\nDefine enzyme printed electrode\u06d4 \nlong\nName batana tha plateform ka jo biosensor ma use hota ha \nlateral flow immunoassay explain\u06d4\nprinciple microcantiliver array",
+            "topicsHeading": "Exam Questions",
             "topicsList": [
                 "Biorecognition Biosensor",
                 "Enzyme Printed Electrode",
-                "Platform in Biosensor",
+                "Biosensor Platforms",
                 "Lateral Flow Immunoassay",
-                "Principle of Microcantilever Array"
+                "Microcantilever Array Principle"
             ]
         }
     ]
