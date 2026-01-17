@@ -1,0 +1,22 @@
+{
+  "course": "MCM304",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Review",
+      "reviewText": "Final term current paper #1. Questions: Reason for publishing Hamood Ur Rahman commission report after 34 years, Tape recorder uses, Trade policy Pakistan-India film industry, Computer role in mass communication, Difference between Mass & Public, Development in Television post-1960, Evolution of films in Subcontinent, Chip & computer functions.",
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "Hamood Ur Rahman Commission Report",
+        "Tape Recorder Uses",
+        "Pakistan-India Film Trade Policy",
+        "Computer in Mass Communication",
+        "Mass vs Public",
+        "Television Development",
+        "Evolution of Films in Subcontinent",
+        "Chip Functions in Computer"
+      ]
+    }
+  ]
+}
