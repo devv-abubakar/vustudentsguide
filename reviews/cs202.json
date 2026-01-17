@@ -1,0 +1,23 @@
+{
+    "course": "CS202",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Easy",
+            "reviewHeading": "Review",
+            "reviewText": "8 am paper. All mcqs from webdev passion short lectures and highlighted handouts. Short/Long mei jQuery ka syntax likhna tha.",
+            "topicsHeading": "Topics Covered",
+            "topicsList": [
+                "HTML Basics (Tags, Lists, Tables)",
+                "CSS Essentials (Box model, Floats)",
+                "Responsive Design (Media queries, Flexbox)",
+                "JavaScript Fundamentals & DOM",
+                "jQuery Methods (Selectors, animate, fadeIn)",
+                "AJAX & XML/JSON",
+                "HTML5 APIs (Canvas, Local Storage)",
+                "Code: Sum Function",
+                "CSS Border Radius & Padding"
+            ]
+        }
+    ]
+}
