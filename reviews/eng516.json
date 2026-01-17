@@ -1,0 +1,21 @@
+{
+    "course": "ENG516",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Paper Review (31 July 2025)",
+            "reviewText": "Mcqs some from files\ud83e\udee0\ud83d\ude36other from handouts \nShort/long questions\nMemo criteria\nTest of writing skills\nComponent of letter\nComponent of analyze report\nSummative /formative assessment \nGlobalization change \nCultural biases, humor,animlas  how we deal this?.\n Essential component of writing  letter",
+            "topicsHeading": "Exam Questions",
+            "topicsList": [
+                "Memo Criteria",
+                "Test of Writing Skills",
+                "Components of Letter",
+                "Analyze Report Components",
+                "Summative/Formative Assessment",
+                "Globalization Change",
+                "Cultural Biases & Humor"
+            ]
+        }
+    ]
+}
