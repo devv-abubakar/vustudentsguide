@@ -1,0 +1,17 @@
+{
+    "course": "ISL202",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Easy",
+            "reviewHeading": "Review",
+            "reviewText": "Bohot easy paper aya hai 70% Files May say Aya hai. Dates and Muslim scientists books lazmi dekh k jayen.",
+            "topicsHeading": "Important Topics",
+            "topicsList": [
+                "Muslim Scientists & their Books",
+                "Important Dates",
+                "70% from Past Files"
+            ]
+        }
+    ]
+}
