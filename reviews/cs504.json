@@ -1,0 +1,24 @@
+{
+    "course": "CS504",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Important Topics",
+            "reviewText": "* Software Development Life Cycle (SDLC) & Models (Waterfall, Agile, Spiral)\n* Requirements Engineering (Elicitation, Validation, Use Cases)\n* System Modeling Techniques (UML, DFDs)\n* Architectural Design (Kruchten\u2019s 4+1 view model)\n* Design Patterns (Singleton, Factory, Observer, MVC)\n* Coupling & Cohesion, Module Metrics\n* Software Quality Assurance: Testing types (Unit, Integration, System), metrics\n* Software Testing Techniques: Black-box vs White-box, Test plan creation\n* Software Maintenance & Configuration Management\n* Software Verification & Validation (reviews, walkthroughs, inspections)\n* Coding Practices: Style guides, exception handling, portability\n\nSUBJECTIVE SAMPLE\n* Requirements vs Specifications\u2026",
+            "topicsHeading": "Topics Covered",
+            "topicsList": [
+                "SDLC & Models",
+                "Requirements Engineering",
+                "System Modeling Techniques (UML, DFD)",
+                "Architectural Design",
+                "Design Patterns",
+                "Coupling & Cohesion",
+                "Software Quality Assurance",
+                "Software Testing Techniques",
+                "Software Maintenance",
+                "Verification & Validation"
+            ]
+        }
+    ]
+}
