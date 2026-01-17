@@ -1,0 +1,23 @@
+{
+    "course": "CS607",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Easy",
+            "reviewHeading": "Review & Topics",
+            "reviewText": "Paper bhut easy tha. MCQs sary files ma sy thy. Subjective defrule wala practical tha 5 marks ka.",
+            "topicsHeading": "Important Topics",
+            "topicsList": [
+                "Fuzzy Logic & Membership functions",
+                "Soft Computing Techniques",
+                "Candidate Elimination Algorithm",
+                "Expert Systems & CLIPS commands",
+                "Knowledge Acquisition",
+                "Decision Tree Algorithms (ID3)",
+                "Defrule practical (CLIPS)",
+                "Unsupervised learning",
+                "Real world examples of Fuzzy logic"
+            ]
+        }
+    ]
+}
