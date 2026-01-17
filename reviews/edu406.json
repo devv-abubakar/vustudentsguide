@@ -1,0 +1,20 @@
+{
+    "course": "EDU406",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Paper Review (27th Jan)",
+            "reviewText": "Paper Type: Concept-based, focused largely on handouts.\nMcqs: Easy to moderate, mostly conceptual.\n\nKey Questions:\n1. Dewey's Reflection of Practice: Names of the six phases.\n2. High-order learning: Explanation.\n3. Community of Practice in Schools: Reasons for establishing it.\n4. Dialogic Diary: Three stages.\n5. Reflective Practitioner: Necessary qualities for becoming a good teacher.\n6. Benefits of Community of Practice in Classrooms: Key advantages.\n7. Academic Portfolios: Four processes involved.\n8. Core Components of Community of Practice: Key elements.",
+            "topicsHeading": "Exam Questions",
+            "topicsList": [
+                "Dewey's Reflection (6 Phases)",
+                "High-order Learning",
+                "Community of Practice",
+                "Dialogic Diary Stages",
+                "Reflective Practitioner",
+                "Academic Portfolios"
+            ]
+        }
+    ]
+}
