@@ -4,17 +4,19 @@
         {
             "examType": "Final Term",
             "difficulty": "Moderate",
-            "reviewHeading": "Review",
-            "reviewText": "Mcqs focused on Data Communication and Digital Transmission.",
-            "topicsHeading": "Topics Covered",
+            "reviewHeading": "Paper Review (8:00 am)",
+            "reviewText": "MCQs : \n -Data Communication \n -Digital Transmission \n -Amplitude Shift Keying \n -Frequency Division Multiplexing \n -TCP/IP_ \n -Bandwidt \n- Nyquist Theory \n -Shannon Theory \n -TDM \n -Multiplexing \n -Protocol Layers \n_ \n Short Ques : \n _1. 3 types of DT with respect to series \n    2 . Typical name of narrow band pf FDM \n 3. In a company , the sender and receiver transmit data in both direction but one has to send first and other has to receive and vice versa.. Which mode of transmission is being used?_ \n\n Long Ques : \n   1. Numerical from topic Throughoutput \n 2. Numerical from topic FDM \n 3. Arrange the Protocol Layering Table, which function is performed by which protocol.( Is question mey table tha aik side per layers ka naam tha jokka arrang\u2026",
+            "topicsHeading": "Exam Questions",
             "topicsList": [
-                "Data Communication & Protocols",
-                "Digital Transmission (ASK)",
+                "Data Communication",
+                "Digital Transmission",
                 "Multiplexing (FDM, TDM)",
+                "TCP/IP",
                 "Nyquist & Shannon Theory",
-                "Protocol Layers Table",
-                "Numerical: Throughput",
-                "Numerical: FDM"
+                "Transmission Modes",
+                "Throughput Numerical",
+                "FDM Numerical",
+                "Protocol Layering Table"
             ]
         }
     ]
