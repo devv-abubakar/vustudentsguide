@@ -4,14 +4,13 @@
         {
             "examType": "Final Term",
             "difficulty": "Easy",
-            "reviewHeading": "Review",
-            "reviewText": "Practical paper focused on Saponification and Proteins.",
-            "topicsHeading": "Questions Asked",
+            "reviewHeading": "Paper Review (Practical)",
+            "reviewText": "Today paper: practical \nDefine saponification \nDefine concentration and also give details about its four units \nWhat is proteins and it's types \nMcq \nThree saponification Walay topic say tha \nOr ak protein Walay topic say baqi yad nahi h",
+            "topicsHeading": "Exam Questions",
             "topicsList": [
-                "Define Saponification",
-                "Define Concentration & its units",
-                "Proteins and its Types",
-                "MCQs from Saponification"
+                "Saponification",
+                "Concentration & Units",
+                "Proteins & Types"
             ]
         }
     ]
