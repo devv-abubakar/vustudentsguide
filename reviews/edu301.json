@@ -1,0 +1,21 @@
+{
+    "course": "EDU301",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Review",
+            "reviewText": "Objective mostly from files. Subjective conceptual.",
+            "topicsHeading": "Questions Asked",
+            "topicsList": [
+                "Advantages of Group Discussion",
+                "Effective Integration Curriculum",
+                "Cooperative Learning (3 things)",
+                "Audio and Video importance",
+                "Seating Arrangements",
+                "Mental Planning",
+                "Role of Teacher in Inquiry/Class Management"
+            ]
+        }
+    ]
+}
