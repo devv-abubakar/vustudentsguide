@@ -1,0 +1,17 @@
+{
+    "course": "MGT502",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Review",
+            "reviewText": "Conceptual based paper. Organization k hawale se reason likhny thy.",
+            "topicsHeading": "Topics Covered",
+            "topicsList": [
+                "Organization related reasoning",
+                "Handing based MCQs",
+                "Conceptual scenarios"
+            ]
+        }
+    ]
+}
