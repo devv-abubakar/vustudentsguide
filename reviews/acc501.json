@@ -1,0 +1,16 @@
+{
+    "course": "ACC501",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Hard",
+            "reviewHeading": "Paper Review",
+            "reviewText": "Mcqs totally conceptual nddd difficult \nShort and long from the practice question file",
+            "topicsHeading": "Preparation Source",
+            "topicsList": [
+                "Conceptual MCQs",
+                "Practice Question File"
+            ]
+        }
+    ]
+}
