@@ -1,0 +1,21 @@
+{
+    "course": "MCM431",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Easy",
+            "reviewHeading": "Review",
+            "reviewText": "MCQs past papers sy thy 90%. Subjective focused on media advocacy and communication.",
+            "topicsHeading": "Questions Asked",
+            "topicsList": [
+                "Entertainment Education Strategy",
+                "Paradigm of Media Advocacy",
+                "Public Service Broadcasting",
+                "Citizen and State Communication",
+                "Social Mobilization & Media Advocacy",
+                "Visioning Session",
+                "Information Flow (Media to Leaders vs Leaders to Masses)"
+            ]
+        }
+    ]
+}
