@@ -4,12 +4,12 @@
         {
             "examType": "Final Term",
             "difficulty": "Easy",
-            "reviewHeading": "Review",
-            "reviewText": "MCQs from Zaman file.",
-            "topicsHeading": "Questions Asked",
+            "reviewHeading": "Paper Review",
+            "reviewText": "Mcq from zaman file\nQ1.purpose of phase separation in protein extraction.\nLong question \nMaterial names used in gel electrophoresis.",
+            "topicsHeading": "Exam Questions",
             "topicsList": [
-                "Purpose of Phase Separation in Protein Extraction",
-                "Materials used in Gel Electrophoresis"
+                "Phase Separation in Protein Extraction",
+                "Gel Electrophoresis Materials"
             ]
         }
     ]
