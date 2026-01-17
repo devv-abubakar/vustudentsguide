@@ -1,0 +1,21 @@
+{
+    "course": "GSC101",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Paper Review (27th Jan 2025)",
+            "reviewText": "Long 3 Chemistry about Reactions Relevant to GDB\n 1 Long from Bio\nShort from Brain Topic \nMCQ from Bio, DNA, Differentiate Mitosis Phases & Meiosis Phases\n80% Paper Bio se tha\n\nShort Questions: \n1. What is Photochemical? \u2600\ufe0f \n2. Prokaryotic vs Eukaryotic Cells \ud83d\udd2c \n3. Asexual vs Sexual Reproduction \ud83d\udc91\n\nLong Questions: \n1. Respiratory System \ud83e\udec1 \n2. Ecosystem of Pakistan \ud83c\udf0d \n3. Prevention of Corrosion \u2699\ufe0f",
+            "topicsHeading": "Exam Questions",
+            "topicsList": [
+                "Chemistry Reactions",
+                "DNA, Mitosis vs Meiosis",
+                "Photochemical",
+                "Prokaryotic vs Eukaryotic",
+                "Respiratory System",
+                "Ecosystem of Pakistan",
+                "Prevention of Corrosion"
+            ]
+        }
+    ]
+}
