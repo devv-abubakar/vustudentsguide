@@ -1,24 +1,30 @@
 {
-  "course": "ENG101",
-  "reviews": [
-    {
-      "examType": "Final Term",
-      "difficulty": "Easy",
-      "reviewHeading": "Review",
-      "reviewText": "Paper easy tha, 7:45 AM. MCQs aur Short/Long questions basics of sentence structure, tenses aur writing skills par focused. Topics: Causes & Effects, Clauses, Fragments, Sentence Types (Simple, Complex, Compound, Complex-Compound), Tenses (Future, Past, Present), Essay & Paragraph Writing, Orders, Prepositions, Synonyms & Antonyms, Spelling Correction.",
-      "topicsHeading": "Topics",
-      "topicsList": [
-        "Causes & Effects",
-        "Clauses",
-        "Fragments",
-        "Sentence Types",
-        "Tenses",
-        "Essay & Paragraph Writing",
-        "Orders",
-        "Prepositions",
-        "Synonyms & Antonyms",
-        "Spelling Correction"
-      ]
-    }
-  ]
+    "course": "ENG101",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Easy",
+            "reviewHeading": "Paper Review (8:00 AM)",
+            "reviewText": "paper bht asan tha agr apko grammer atti ha to apka paper easily ho jye ga almost sara paper he grammer sy aya  khuch mcqs ma defination thi handouts wali or sath option thy baqi direct in direct be thy synonyms be thy and tenses verb basic he tha sb",
+            "topicsHeading": "Topics Covered",
+            "topicsList": [
+                "Grammar (Basic Tenses, Verbs)",
+                "Definitions from Handouts",
+                "Direct/Indirect Speech",
+                "Synonyms"
+            ]
+        },
+        {
+            "examType": "Final Term",
+            "difficulty": "Easy",
+            "reviewHeading": "Paper Review",
+            "reviewText": "Ppr bht ezy tha 70% grammar sy tha bki ka 30% slides mai jo writing passage etc us sy related tha but tha ezy \nCompound, complex sentence etc ya chezyn achy sy kryn sb",
+            "topicsHeading": "Topics Covered",
+            "topicsList": [
+                "Grammar",
+                "Writing Passage",
+                "Compound & Complex Sentences"
+            ]
+        }
+    ]
 }
