@@ -4,15 +4,15 @@
         {
             "examType": "Final Term",
             "difficulty": "Easy",
-            "reviewHeading": "Review",
-            "reviewText": "MCQs easy and from highlighted handouts. Short questions on Uniprot and Chimera.",
-            "topicsHeading": "Questions Asked",
+            "reviewHeading": "Paper Review (8:00am)",
+            "reviewText": "Mcqs: \nEasy and from handouts..\n* 1:Bootstrap value for generating a phylogenetic tree recommended by the literature is= 1000 \n* When comparing two sequences we need alignment.. (yeh thora confusing tha pair wise alignment aur multiple sequence alignment). But mny multiple sequence mark kia hai.\n* What is the point called where a phylogenetic tree begins or originates from= Root node. \n* Which database stores DNA and RNA sequences?= GenBank\n\nBaki yaad nai easy thy and from highlighted handouts.\n\n SHORT QUESTION \n* Define uniprot. And its function.\n* What is chimera tool? And which type of visual representation can we get through chimera.. \n\nLONG QUESTION \n* Note on UNIPROT AND its Types.",
+            "topicsHeading": "Exam Questions",
             "topicsList": [
                 "Bootstrap Value (1000)",
                 "Sequence Alignment (Multiple vs Pairwise)",
                 "Root Node",
                 "GenBank",
-                "Uniprot & its Function",
+                "Uniprot (Definition, Function, Types)",
                 "Chimera Tool & Visual Representation"
             ]
         }
