@@ -1,0 +1,20 @@
+{
+    "course": "CS304P",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Important Topics",
+            "reviewText": "Focus on UML diagrams and Object-Oriented concepts.",
+            "topicsHeading": "Topics List",
+            "topicsList": [
+                "UML Class Diagram Drawing",
+                "Inheritance, Aggregation, Composition",
+                "Constructor Overloading & Deep Copy Constructor",
+                "Destructor Implementation",
+                "Static & Const Data Members",
+                "Operator Overloading (Arithmetic, Stream, Unary)"
+            ]
+        }
+    ]
+}
