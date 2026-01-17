@@ -1,0 +1,18 @@
+{
+    "course": "BIO504P",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Easy",
+            "reviewHeading": "Review",
+            "reviewText": "Practical paper focused on Saponification and Proteins.",
+            "topicsHeading": "Questions Asked",
+            "topicsList": [
+                "Define Saponification",
+                "Define Concentration & its units",
+                "Proteins and its Types",
+                "MCQs from Saponification"
+            ]
+        }
+    ]
+}
