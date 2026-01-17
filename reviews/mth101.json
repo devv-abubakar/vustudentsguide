@@ -22,6 +22,21 @@
     },
     {
       "examType": "Final Term",
+      "difficulty": "Medium",
+      "reviewHeading": "Review",
+      "reviewText": "MCQs files se thay. Integration, Taylor series, ratio test, substitution aur convergence divergence se questions aaye. Cylindrical shell method aur geometric series bhi important thay.",
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "Integration",
+        "Taylor Series",
+        "Ratio Test",
+        "Substitution Method",
+        "Convergence & Divergence",
+        "Cylindrical Shell"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Easy",
 
       "reviewHeading": "Review",
