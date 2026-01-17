@@ -13,6 +13,20 @@
         "True False",
         "Handouts MCQs"
       ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Review",
+      "reviewText": "Paper 27 Jan 2025, 7:45 AM. Short & long questions, fill in the blanks, True/False, Types of Persuasive, Choppy sentence definition & example. MCQs easy from handouts.",
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "Fill in the Blanks",
+        "True/False",
+        "Types of Persuasive Writing",
+        "Choppy Sentence Definition & Example",
+        "MCQs from Handouts"
+      ]
     }
   ]
 }
