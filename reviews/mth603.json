@@ -4,13 +4,13 @@
         {
             "examType": "Final Term",
             "difficulty": "Easy",
-            "reviewHeading": "Review",
-            "reviewText": "MCQs 100% from files. Formulas yaad karo paper 100% ho gaya ga.",
-            "topicsHeading": "Questions Asked",
+            "reviewHeading": "Paper Review",
+            "reviewText": "Math 603 paper done \nMcqs 100% form files \nQuestion trapezoidal rule Simpson 3/8 ya dono short or long ma tha\nAk long R-k method find karna tha a\nAk short Richard extrapolation ka tha \nMeans formula yaad karo paper 100% ho gaya ga",
+            "topicsHeading": "Exam Questions",
             "topicsList": [
                 "Trapezoidal Rule",
                 "Simpson 3/8 Rule",
-                "R-K Method (Runge-Kutta)",
+                "R-K Method",
                 "Richard Extrapolation"
             ]
         }
