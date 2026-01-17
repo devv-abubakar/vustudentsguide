@@ -1,0 +1,16 @@
+{
+    "course": "BIO505P",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Easy",
+            "reviewHeading": "Review",
+            "reviewText": "MCQs from Zaman file.",
+            "topicsHeading": "Questions Asked",
+            "topicsList": [
+                "Purpose of Phase Separation in Protein Extraction",
+                "Materials used in Gel Electrophoresis"
+            ]
+        }
+    ]
+}
