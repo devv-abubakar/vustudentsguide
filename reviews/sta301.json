@@ -1,0 +1,20 @@
+{
+    "course": "STA301",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Easy",
+            "reviewHeading": "Review",
+            "reviewText": "All MCQs were from files. Easy and less formula-based.",
+            "topicsHeading": "Questions Asked",
+            "topicsList": [
+                "Define Null and Alternative Hypothesis",
+                "Compute Sampling Distribution",
+                "Find Confidence Interval",
+                "Calculate Point Estimator",
+                "Properties of Density Function",
+                "Expected Value E(X+4)"
+            ]
+        }
+    ]
+}
