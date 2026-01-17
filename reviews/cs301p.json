@@ -1,0 +1,17 @@
+{
+    "course": "CS301P",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Easy",
+            "reviewHeading": "Review",
+            "reviewText": "Paper bht easy tha. Binary tree, AVL tree, min heap, max heap sy bhara hua tha.",
+            "topicsHeading": "Topics Covered",
+            "topicsList": [
+                "Binary Tree",
+                "AVL Tree",
+                "Min Heap & Max Heap"
+            ]
+        }
+    ]
+}
