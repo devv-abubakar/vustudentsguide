@@ -4,17 +4,20 @@
         {
             "examType": "Final Term",
             "difficulty": "Moderate",
-            "reviewHeading": "Important Topics",
-            "reviewText": "Topics covered Process Models, Metrics, and Risk Management.",
-            "topicsHeading": "Topics List",
+            "reviewHeading": "Most Important Final Term Topics",
+            "reviewText": "* Software Process Models (Waterfall, Agile, Spiral, Iterative)\n* Requirements Engineering (elicitation techniques, SRS templates)\n* Software Project Metrics & Estimation Techniques (COCOMO, LOC, Function Points)\n* Risk Analysis & Risk Management (identification methods, mitigation strategies)\n* Project Scheduling & Tracking (Gantt, PERT/CPM, earned value)\n* Software Quality Assurance (reviews, testing levels, QA standards like ISO)\n* Software Re-engineering (reverse-engineering, refactoring, legacy systems)\n* Change Control & Configuration Management (version control tools, baseline concepts)\n* Maintenance Types & Models (corrective, adaptive, preventive, perfective)\n* Software Design Documentation & Process Quality Audits",
+            "topicsHeading": "Topics Covered",
             "topicsList": [
-                "Software Process Models (Waterfall, Agile, Spiral)",
-                "Requirements Engineering (SRS)",
-                "Project Metrics (COCOMO, Function Points)",
+                "Software Process Models",
+                "Requirements Engineering",
+                "Project Metrics & Estimation",
                 "Risk Analysis & Management",
-                "Project Scheduling (Gantt, PERT/CPM)",
-                "Software Quality Assurance (SQA)",
-                "Software Re-engineering & Maintenance"
+                "Project Scheduling & Tracking",
+                "Software Quality Assurance",
+                "Software Re-engineering",
+                "Configuration Management",
+                "Maintenance Types & Models",
+                "Design Documentation"
             ]
         }
     ]
