@@ -1,0 +1,18 @@
+{
+  "course": "ENG201",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Review",
+      "reviewText": "Paper bohat easy tha. Fill in the blanks, true false, persuasive types, choppy sentences aur MCQs handouts se aaye.",
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "Persuasive Writing",
+        "Choppy Sentences",
+        "True False",
+        "Handouts MCQs"
+      ]
+    }
+  ]
+}
