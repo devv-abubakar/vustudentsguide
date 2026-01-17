@@ -4,15 +4,15 @@
         {
             "examType": "Final Term",
             "difficulty": "Moderate",
-            "reviewHeading": "Review",
-            "reviewText": "Long questions from SQL and Normalization.",
-            "topicsHeading": "Questions Asked",
+            "reviewHeading": "Paper Review (8:00 AM)",
+            "reviewText": "3  long questions from SQL\n1long was to convert 1NF to 2NF\n2 shorts from SQL\n1 short was to convert 2 NF table to 1 NF table.\nCharacteristics of physical storage model.\nName of the problems arrive while concurrent transaction\nMcqs were from handouts.",
+            "topicsHeading": "Exam Questions",
             "topicsList": [
-                "Convert 1NF to 2NF",
-                "Convert 2NF to 1NF",
-                "Characteristics of Physical Storage Model",
-                "Concurrent Transaction Problems",
-                "SQL Queries"
+                "SQL Queries (Long & Short)",
+                "Normalization (1NF to 2NF)",
+                "Normalization (2NF to 1NF)",
+                "Physical Storage Model Characteristics",
+                "Concurrent Transaction Problems"
             ]
         }
     ]
