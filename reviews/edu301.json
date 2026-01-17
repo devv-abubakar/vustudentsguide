@@ -4,17 +4,31 @@
         {
             "examType": "Final Term",
             "difficulty": "Moderate",
-            "reviewHeading": "Review",
-            "reviewText": "Objective mostly from files. Subjective conceptual.",
-            "topicsHeading": "Questions Asked",
+            "reviewHeading": "Paper Review",
+            "reviewText": "Objective mostly from file or some frome handout\nSubjective frome file or conceptual\nCollisian2006 components long\nStudent project based learning\nRole of teaches in inquiry\nNested integration short\nDifferent b|w coach and checker\nWhat is role of teacher in class management",
+            "topicsHeading": "Topics Covered",
             "topicsList": [
-                "Advantages of Group Discussion",
+                "Collision 2006 Components",
+                "Project Based Learning",
+                "Role of Teacher in Inquiry",
+                "Nested Integration",
+                "Coach vs Checker",
+                "Class Management"
+            ]
+        },
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Current Paper Review",
+            "reviewText": "1_What are the advantages of group discussion?\n2_What makes an effective integration curriculum?\n3_Why is group learning essential in development?\n4_What are the three things of cooperative learning?\n5_How important are audio and video in the classroom?\n6_Seating arrangements in the classroom by teacher?\n7_what is mental planning \n8_How we increase social 6_7 Years age of child through social",
+            "topicsHeading": "Exam Questions",
+            "topicsList": [
+                "Group Discussion Advantages",
                 "Effective Integration Curriculum",
-                "Cooperative Learning (3 things)",
-                "Audio and Video importance",
+                "Cooperative Learning",
+                "Audio/Video in Classroom",
                 "Seating Arrangements",
-                "Mental Planning",
-                "Role of Teacher in Inquiry/Class Management"
+                "Mental Planning"
             ]
         }
     ]
