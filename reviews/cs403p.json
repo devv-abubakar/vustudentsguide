@@ -1,0 +1,20 @@
+{
+    "course": "CS403P",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Paper Review (27 January)",
+            "reviewText": "Mcqs buhat easy thy files mein sy thy Kuch files sy mcqs ka ratta na lagaye ga concept clear kijiye ga\nLong questions \n1.Content level diagram banani thi online clothing store ki\n2.attributes bantany thy 2 entities KY given scenario sy\n3.sql queries likhni the\n4.ERD ko Relational database model mein convert krna tha\n5.programID ki definition bhi the or view ko create krna tha \nSQL queries buhat important hen \nLast wali 3 sy 4 labs long point of view sy important hen",
+            "topicsHeading": "Exam Questions",
+            "topicsList": [
+                "Context Level Diagram",
+                "Entity Attributes",
+                "SQL Queries (Views)",
+                "ERD to Relational Model Conversion",
+                "ProgramID Definition",
+                "Last 3-4 Labs (Practical)"
+            ]
+        }
+    ]
+}
