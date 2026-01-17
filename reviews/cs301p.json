@@ -4,13 +4,14 @@
         {
             "examType": "Final Term",
             "difficulty": "Easy",
-            "reviewHeading": "Review",
-            "reviewText": "Paper bht easy tha. Binary tree, AVL tree, min heap, max heap sy bhara hua tha.",
-            "topicsHeading": "Topics Covered",
+            "reviewHeading": "Paper Review (31 July, 8 am)",
+            "reviewText": "Papr bht easy tha binary tree AVL tree min heap max heap sy bhafa hua tha sbb",
+            "topicsHeading": "Exam Questions",
             "topicsList": [
                 "Binary Tree",
                 "AVL Tree",
-                "Min Heap & Max Heap"
+                "Min Heap",
+                "Max Heap"
             ]
         }
     ]
