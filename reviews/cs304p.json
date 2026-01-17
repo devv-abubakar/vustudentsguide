@@ -1,25 +1,25 @@
 {
-  "course": "CS304P",
-  "reviews": [
-    {
-      "examType": "Final Term",
-      "difficulty": "Moderate",
-      "reviewHeading": "Important Topics",
-      "reviewText": "UML Class Diagram Drawing Using:\n- Inheritance: Creating a new class based on an existing class.\n- Aggregation: A class contains a reference to another class.\n- Composition: A class contains an object of another class.\n- Constructor Overloading: Multiple constructors with different parameters.\n- Deep Copy Constructor: Creates a deep copy of an object.\n- Destructor Implementation: Releases resources when an object is destroyed.\n- Static Data Members: Shared by all objects of a class.\n- Const Data Members: Constant values that cannot be changed.\n- Const Member Functions: Functions that do not modify the object's state.\n\nOperator Overloading:\n- Arithmetic Operators: +, -, *, /, +=, -=, *=, /=\n- Stream Operators: <<, >>\n- Unary Operators:…",
-      "topicsHeading": "Topics Covered",
-      "topicsList": [
-        "UML Class Diagram Drawing",
-        "Inheritance",
-        "Aggregation",
-        "Composition",
-        "Constructor Overloading",
-        "Deep Copy Constructor",
-        "Destructor Implementation",
-        "Static Data Members",
-        "Const Data Members",
-        "Const Member Functions",
-        "Operator Overloading (Arithmetic, Stream, Unary)"
-      ]
-    }
-  ]
+    "course": "CS304P",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Important Topics",
+            "reviewText": "UML Class Diagram Drawing Using:\n- Inheritance: Creating a new class based on an existing class.\n- Aggregation: A class contains a reference to another class.\n- Composition: A class contains an object of another class.\n- Constructor Overloading: Multiple constructors with different parameters.\n- Deep Copy Constructor: Creates a deep copy of an object.\n- Destructor Implementation: Releases resources when an object is destroyed.\n- Static Data Members: Shared by all objects of a class.\n- Const Data Members: Constant values that cannot be changed.\n- Const Member Functions: Functions that do not modify the object's state.\n\nOperator Overloading:\n- Arithmetic Operators: +, -, *, /, +=, -=, *=, /=\n- Stream Operators: <<, >>\n- Unary Operators:\u2026",
+            "topicsHeading": "Topics Covered",
+            "topicsList": [
+                "UML Class Diagram Drawing",
+                "Inheritance",
+                "Aggregation",
+                "Composition",
+                "Constructor Overloading",
+                "Deep Copy Constructor",
+                "Destructor Implementation",
+                "Static Data Members",
+                "Const Data Members",
+                "Const Member Functions",
+                "Operator Overloading (Arithmetic, Stream, Unary)"
+            ]
+        }
+    ]
 }
