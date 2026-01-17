@@ -4,12 +4,25 @@
         {
             "examType": "Final Term",
             "difficulty": "Moderate",
-            "reviewHeading": "Review",
-            "reviewText": "Paper average tha. Conceptual tha. Handouts se line by line MCQs nahi thy.",
+            "reviewHeading": "Paper Review (8:00 am)",
+            "reviewText": "Aj Mera Mgt211 ka paper tha subah 8 baje.... Paper bs average hi tha na zyada asan tha na zyada tough.... Thora bht to mujhe idea tha hi k final hai tou tough tou Hoga lkn bhttt zyada conceptual thaa Meri advice hai k srf handouts ko prhna kaafi nhin Hoga haalim study insights k lectures zaroor sunen sunne se bhttt farak prta hai qk handouts se line by line mcqs nhin theyy unhon ne bhtttt ghumaya hua tha options bhi same same hi lgrhe the confuse krne k Liye....\nIsliye bhtttt ache se concepts clear kren or ek bhi line na miss kren handouts ki warna pareshan hojayenge (Allah na kare) baqi best of luck Allah sabke Liye asani kren.",
+            "topicsHeading": "Preparation Advice",
+            "topicsList": [
+                "Conceptual MCQs",
+                "Halim Study Insight Lectures",
+                "Handouts Deep Reading"
+            ]
+        },
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Paper Review (4:30 PM)",
+            "reviewText": "Personally agr mein apna btaon to mein ne last py verbal or non verbal Waly  chapter ko dekha tha \nOr lec 19_33 tk lectures Liye thy or mostly paper yhi se Aya \nKuch 1 yaa 2 mcqs letter k thy \nOr Kuch 1OS MAI SE  but zyada paper 19_33 Mai se Aya tha\nConceptual b tha or line by line b\nBaki easy tha ...",
             "topicsHeading": "Topics Covered",
             "topicsList": [
-                "Lectures 19-33 (Major portion)",
-                "Business Communication (Letters)",
+                "Lectures 19-33",
+                "Verbal/Non-verbal Communication",
+                "Letters",
                 "ISO Standards"
             ]
         }
