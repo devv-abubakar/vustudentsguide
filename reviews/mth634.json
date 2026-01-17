@@ -4,14 +4,14 @@
         {
             "examType": "Final Term",
             "difficulty": "Moderate",
-            "reviewHeading": "Review",
-            "reviewText": "Subjective from Mam Tayba Ahmad (Math Sphere Academy) videos.",
-            "topicsHeading": "Topics Covered",
+            "reviewHeading": "Topology Paper Review",
+            "reviewText": "Objective conceptual tha mcqs 20% file say thy \nSubjective mam tayba ahmad math sphere academy wali unky important Topics wali vedio may say thy sary \nSpace ka btana tha normal space ha k ni. \nDisconnected spase ki definition thi \nAik example thi first and 2nd countable say related wali \nBqi mjhy yad ni \nBs examples thi unki spaces ka btana tha \nMam tayba ki video dakhy ap ka paper easily ho jye ga bht acha explain krti han wo",
+            "topicsHeading": "Exam Questions",
             "topicsList": [
                 "Normal Space",
                 "Disconnected Space Definition",
-                "First & Second Countable Examples",
-                "Topology Spaces Examples"
+                "First & Second Countable",
+                "Space Identification Examples"
             ]
         }
     ]
