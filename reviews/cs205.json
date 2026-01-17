@@ -1,0 +1,21 @@
+{
+    "course": "CS205",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Easy",
+            "reviewHeading": "Review",
+            "reviewText": "MCQs quite easy. Short questions focused on Qualys scanners and security layers.",
+            "topicsHeading": "Topics Covered",
+            "topicsList": [
+                "Qualys Scanners (Free tools)",
+                "Vulnerability Identification",
+                "SDLC Development approach",
+                "CSMM Layers and Services",
+                "Risk Management & Security Policies",
+                "Encryption & Cryptography",
+                "Access Control Methods (RBAC, MAC, DAC)"
+            ]
+        }
+    ]
+}
