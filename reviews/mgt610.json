@@ -1,0 +1,17 @@
+{
+    "course": "MGT610",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Paper Review",
+            "reviewText": "Short Q:\n1_solution to avoid air pollution?\n2_Benefit of free market?\n3_Explain Do nothing view?",
+            "topicsHeading": "Exam Questions",
+            "topicsList": [
+                "Air Pollution Solutions",
+                "Free Market Benefits",
+                "Do Nothing View"
+            ]
+        }
+    ]
+}
