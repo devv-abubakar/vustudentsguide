@@ -1,0 +1,17 @@
+{
+    "course": "MTH202",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Review",
+            "reviewText": "MCQs mostly from files (Vu topper). Subjective: Probability cards, Graph to Matrix.",
+            "topicsHeading": "Questions Asked",
+            "topicsList": [
+                "Probability (Cards)",
+                "Convert Graph to Matrix",
+                "Algorithm (Pre and Post conditions)"
+            ]
+        }
+    ]
+}
