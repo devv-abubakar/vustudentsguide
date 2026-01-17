@@ -1,0 +1,19 @@
+{
+    "course": "BT505",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Review",
+            "reviewText": "MCQS handouts sa tha. Short/Long from Biosensors.",
+            "topicsHeading": "Questions Asked",
+            "topicsList": [
+                "Biorecognition Biosensor",
+                "Enzyme Printed Electrode",
+                "Platform in Biosensor",
+                "Lateral Flow Immunoassay",
+                "Principle of Microcantilever Array"
+            ]
+        }
+    ]
+}
