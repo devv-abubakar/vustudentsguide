@@ -1,0 +1,21 @@
+{
+    "course": "MTH641",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Review",
+            "reviewText": "Paper from Skill for study / Virtualian mathematician videos. 27 pages wali file helped.",
+            "topicsHeading": "Questions Asked",
+            "topicsList": [
+                "Prove (S+T)* = S* + T*",
+                "Prove (ST)-\u00b9 = T-\u00b9 S-\u00b9",
+                "Prove L\u00b2 is a linear functional",
+                "Inner Product Space Definition",
+                "Prove <x,T*y> = <Tx,y>",
+                "Unitary Matrix Proof",
+                "Dual Sum & Scaler Multiplication"
+            ]
+        }
+    ]
+}
