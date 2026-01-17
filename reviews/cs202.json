@@ -3,20 +3,39 @@
     "reviews": [
         {
             "examType": "Final Term",
-            "difficulty": "Easy",
-            "reviewHeading": "Review",
-            "reviewText": "8 am paper. All mcqs from webdev passion short lectures and highlighted handouts. Short/Long mei jQuery ka syntax likhna tha.",
+            "difficulty": "Moderate",
+            "reviewHeading": "Important Topics",
+            "reviewText": "These topics repeat frequently in recent CS202 Final Term exams (based on student-shared resources): \n\n* HTML Basics: tags, lists, tables, forms, audio/video, iframe\n* CSS Essentials: selectors, box model, floats, positioning, colors\n* Responsive Design: media queries, grid layouts, flexbox\n* JavaScript Fundamentals: variables, events, functions, loops, arrays\n* DOM Manipulation & Events in JS & jQuery\n* jQuery Methods: selectors, chaining, traversing, animate(), fadeIn(), HTML/CSS methods\n* AJAX & XML/JSON: Introduction, syntax, sending/receiving requests\n* HTML5 APIs: Canvas, local storage, audio/video, drag\u2011drop\n* JSON vs XML & Namespaces\n* RWD & media query usage\n* CSS transitions, animations, shadows\n* Gradient types, selectors\u2026",
             "topicsHeading": "Topics Covered",
             "topicsList": [
-                "HTML Basics (Tags, Lists, Tables)",
-                "CSS Essentials (Box model, Floats)",
-                "Responsive Design (Media queries, Flexbox)",
-                "JavaScript Fundamentals & DOM",
-                "jQuery Methods (Selectors, animate, fadeIn)",
+                "HTML Basics",
+                "CSS Essentials",
+                "Responsive Design",
+                "JavaScript Fundamentals",
+                "DOM Manipulation",
+                "jQuery Methods",
                 "AJAX & XML/JSON",
-                "HTML5 APIs (Canvas, Local Storage)",
-                "Code: Sum Function",
-                "CSS Border Radius & Padding"
+                "HTML5 APIs",
+                "JSON vs XML & Namespaces",
+                "RWD & Media Queries",
+                "CSS Transitions/Animations"
+            ]
+        },
+        {
+            "examType": "Final Term",
+            "difficulty": "Easy",
+            "reviewHeading": "Paper Review",
+            "reviewText": "8 am paper. All mcqs from webdev passion short lectures and their highlighted handout v easy paper thanku sir and short or long lecture mei jQuery ka syntax likhna thy\nTable bna huwa tha uska btana tha k nav ka tag kis liye use hota footer ka highlight ka tags kese use hota etc\nOr aik table givern tha us mei array k method btane thy instructions given thi element ko add krna tha remove ka method push pop etc\nAik box tha bna huwa uska csss code likh k css border radius property btani thi padding btana \nOr multiple css image kese lgatw wo tha question or local storage ka btana tha\njQuery ka aik or action perform krna tha likh tha code\nOr aik line thi given function bnana tha sum ka usko output b likhni thi\nJson ki entity btani thi\nJ query ki dimensions b\u2026",
+            "topicsHeading": "Exam Questions",
+            "topicsList": [
+                "jQuery Syntax",
+                "HTML Tags (Nav, Footer)",
+                "Array Methods (Push, Pop)",
+                "CSS Properties (Border Radius, Padding)",
+                "Multiple CSS Images",
+                "Local Storage",
+                "Function for Sum",
+                "JSON Entity"
             ]
         }
     ]
