@@ -1,0 +1,21 @@
+{
+    "course": "IT430",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Review",
+            "reviewText": "Objective me abbreviations thin (ANSI, PIPEDA). Scenarios diye hoye thy btana tha k Kon sa revenue model hai.",
+            "topicsHeading": "Topics Covered",
+            "topicsList": [
+                "Global issues of E-commerce",
+                "Revenue Models (Scenarios)",
+                "Automated Clearing House",
+                "Non-Repudiation",
+                "EDI Benefits",
+                "Centralized Payment System",
+                "Security Attacks (Proxy)"
+            ]
+        }
+    ]
+}
