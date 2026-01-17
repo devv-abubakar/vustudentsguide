@@ -1,0 +1,19 @@
+{
+    "course": "CS403",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Review",
+            "reviewText": "Long questions from SQL and Normalization.",
+            "topicsHeading": "Questions Asked",
+            "topicsList": [
+                "Convert 1NF to 2NF",
+                "Convert 2NF to 1NF",
+                "Characteristics of Physical Storage Model",
+                "Concurrent Transaction Problems",
+                "SQL Queries"
+            ]
+        }
+    ]
+}
