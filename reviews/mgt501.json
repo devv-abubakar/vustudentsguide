@@ -1,0 +1,15 @@
+{
+    "course": "MGT501",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Easy",
+            "reviewHeading": "Paper Review",
+            "reviewText": "Timing 9;45\nMcqs handouts say hi thy \nShort question and long bhi \nPaper achaa ho jay gaaa saraaa",
+            "topicsHeading": "Preparation Source",
+            "topicsList": [
+                "Handouts"
+            ]
+        }
+    ]
+}
