@@ -3,18 +3,34 @@
     "reviews": [
         {
             "examType": "Final Term",
-            "difficulty": "Easy",
-            "reviewHeading": "Review",
-            "reviewText": "Bohat easy paper tah. Tables aaya tah long main related to JSP and Cookies. Thread types wala table tha.",
+            "difficulty": "Moderate",
+            "reviewHeading": "Important Topics",
+            "reviewText": "* Servlet Lifecycle & doGet/doPost Methods\n* MVC Architecture: Servlets as Controllers, JSP/HTML as Views\n* Thread States & Starvation in web apps (e.g. thread priority issues)\n* Page-centric Approach Limitations (mixing presentation and logic leads to poor maintainability)\n* JSP Configuration & Web.xml Basics\n* HTTP Response Codes & Protocol Behavior\n* JSP Tags & Scriptlets\n* Java File I/O & Exception-handling in servlets/jsp contexts\n* WAR File Structure & J2EE Deployment Descriptors\n\n\ud83d\udccc CS506 Final Term \u2013 Web Design & Development\n* Solved MCQs by Junaid covering servlets, JSP, threads, HTTP codes \n* Subjective Q&A files by Junaid on MVC design, page-centric drawbacks \n* Fall 2022 sample paper for practicing MVC, threa\u2026",
             "topicsHeading": "Topics Covered",
             "topicsList": [
-                "Servlet Lifecycle (Create, Service, Destroy)",
-                "MVC Architecture vs JSP",
+                "Servlet Lifecycle",
+                "MVC Architecture",
                 "Thread States & Starvation",
                 "Page-centric Approach Limitations",
+                "JSP Configuration",
                 "HTTP Response Codes",
-                "Cookies & Session Handling",
-                "Layers Diagram"
+                "JSP Tags & Scriptlets",
+                "WAR File Structure"
+            ]
+        },
+        {
+            "examType": "Final Term",
+            "difficulty": "Easy",
+            "reviewHeading": "Paper Review",
+            "reviewText": "Bohat easy paper tah \nTables aaya tah long main \nJsp \nCookies \nSa related or 1 tables tah thread types 1 2 3 4 sa\nRelated  ik diagram thi layers ka Batana tah \nBaki short \nCreate \nService \nDestroy \nOr msqs type tah ik short JSP vs MVC \nTah Baki sab past papers sa e tah mcqs",
+            "topicsHeading": "Exam Questions",
+            "topicsList": [
+                "JSP",
+                "Cookies",
+                "Thread Types Table",
+                "Layers Diagram",
+                "Servlet Lifecycle (Create, Service, Destroy)",
+                "JSP vs MVC"
             ]
         }
     ]
