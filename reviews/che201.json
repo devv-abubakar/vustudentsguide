@@ -4,16 +4,19 @@
         {
             "examType": "Final Term",
             "difficulty": "Moderate",
-            "reviewHeading": "Review",
-            "reviewText": "All subjective part from Suliman file.",
-            "topicsHeading": "Questions Asked",
+            "reviewHeading": "Paper Review",
+            "reviewText": "Che201\nFinal term \nAll subjective part and some mcqs  from suliman file\nShort question \n1) solvents , phase and srface area effect on reaction rate\n2) maxwell distribution \n3) properties of colloids\n4) characteristic which we monitored on reaction rate \n5)carbon dioxide polar or non polar\n\nLong question \n1) limitations in thermodynamics \n2) fractional distillation \n3) mechanical, thermal and material equilibrium \n4) stopped flow down\n5) Arrhenius phenomenon and equation and temperature affect on reaction rate.",
+            "topicsHeading": "Exam Questions",
             "topicsList": [
-                "Factors affecting Reaction Rate (Solvents, Phase, Surface Area)",
+                "Reaction Rate Factors (Solvents, Phase, Surface Area)",
                 "Maxwell Distribution",
                 "Properties of Colloids",
-                "Limitations in Thermodynamics",
+                "CO2 Polarity",
+                "Thermodynamics Limitations",
                 "Fractional Distillation",
-                "Arrhenius Equation"
+                "Equilibrium (Mechanical, Thermal, Material)",
+                "Stopped Flow Down",
+                "Arrhenius Equation & Temperature Effect"
             ]
         }
     ]
