@@ -4,16 +4,15 @@
         {
             "examType": "Final Term",
             "difficulty": "Easy",
-            "reviewHeading": "Review",
-            "reviewText": "Paper easy aya tha. Probability ka mostly questions aya tha. Calculation wala question bhot kam tha.",
+            "reviewHeading": "Paper Review",
+            "reviewText": "Paper easy aya tha \nProbability ka mostly questions aya tha , median , quartiles , harmonic mean , covariance \nmcqs easy tha calculation Wala question bhot Kam tha .",
             "topicsHeading": "Topics Covered",
             "topicsList": [
-                "Standard Deviation & Variance",
-                "Regression Slope",
-                "Percentage Markup on Cost",
-                "Mean, Median, Mode (Grouped Data)",
-                "Poisson Distribution Syntax",
-                "Seasonal Variation"
+                "Probability",
+                "Median",
+                "Quartiles",
+                "Harmonic Mean",
+                "Covariance"
             ]
         }
     ]
