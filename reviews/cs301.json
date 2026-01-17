@@ -1,0 +1,18 @@
+{
+  "course": "CS301",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Medium",
+      "reviewHeading": "Review",
+      "reviewText": "Sorting algorithms, heap (min/max), parent child relations aur union diagram se questions aaye. MCQs Moaz file se thay aur Huffman coding ka bhi question tha.",
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "Sorting Algorithms",
+        "Min Heap & Max Heap",
+        "Union Diagram",
+        "Huffman Coding"
+      ]
+    }
+  ]
+}
