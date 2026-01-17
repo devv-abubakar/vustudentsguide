@@ -4,13 +4,12 @@
         {
             "examType": "Final Term",
             "difficulty": "Easy",
-            "reviewHeading": "Review",
-            "reviewText": "Bohot easy paper aya hai 70% Files May say Aya hai. Dates and Muslim scientists books lazmi dekh k jayen.",
-            "topicsHeading": "Important Topics",
+            "reviewHeading": "Paper Review",
+            "reviewText": "Bohot easy paper aya hai 70% Files May say Aya hai or dates and Muslim scientists nay Kitni books Likhi Wo Lazmi Dekh k Jayen Baki Bohot easy tha 30 mins May Hogya paper, Alhamdulillah \u2764\ufe0f",
+            "topicsHeading": "Exam Questions",
             "topicsList": [
-                "Muslim Scientists & their Books",
-                "Important Dates",
-                "70% from Past Files"
+                "Muslim Scientists & Books",
+                "Important Dates"
             ]
         }
     ]
