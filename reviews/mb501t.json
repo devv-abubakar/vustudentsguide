@@ -4,16 +4,18 @@
         {
             "examType": "Final Term",
             "difficulty": "Moderate",
-            "reviewHeading": "Review",
-            "reviewText": "Cell Biology paper.",
-            "topicsHeading": "Questions Asked",
+            "reviewHeading": "Paper Review (8:00A.M.)",
+            "reviewText": "MB501T Cell biology Time 8:00A.M.\nShort questions\nEffector cytotoxic T cells and helper cytotoxic T cells \nTransducer proteins \nInclusion cell disease \nAutosomal genetic disorder \nPKB cell promoter\nTwo signaling function of N terminal of ER.\nLong questions \nParacrine signaling \nPrincipal of air flow of laminar air flow cabinet \nApplications of PCR technique.",
+            "topicsHeading": "Exam Questions",
             "topicsList": [
-                "Effector & Helper Cytotoxic T Cells",
+                "Cytotoxic T Cells (Effector vs Helper)",
                 "Transducer Proteins",
                 "Inclusion Cell Disease",
                 "Autosomal Genetic Disorder",
+                "PKB Cell Promoter",
+                "Signaling Function (N Terminal ER)",
                 "Paracrine Signaling",
-                "Laminar Air Flow Cabinet Principle",
+                "Laminar Air Flow Cabinet",
                 "PCR Technique Applications"
             ]
         }
