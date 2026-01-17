@@ -1,0 +1,18 @@
+{
+  "course": "MCM301",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Medium",
+      "reviewHeading": "Review",
+      "reviewText": "MCQs Waqar file aur handouts se thay. Resume writing, letter of congratulations, direct method aur effective writing se questions aaye.",
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "Functional Resume",
+        "Direct Method",
+        "Letter Writing",
+        "Effective Writing"
+      ]
+    }
+  ]
+}
