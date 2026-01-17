@@ -4,17 +4,25 @@
         {
             "examType": "Final Term",
             "difficulty": "Moderate",
-            "reviewHeading": "Review",
-            "reviewText": "Paper from Skill for study / Virtualian mathematician videos. 27 pages wali file helped.",
-            "topicsHeading": "Questions Asked",
+            "reviewHeading": "Paper Review (8:am)",
+            "reviewText": "Mega file pulse 27 file se\n tha...but paper thrio confused karn waly tha...as laya concept clear karn handouts",
+            "topicsHeading": "Preparation Sources",
             "topicsList": [
-                "Prove (S+T)* = S* + T*",
-                "Prove (ST)-\u00b9 = T-\u00b9 S-\u00b9",
-                "Prove L\u00b2 is a linear functional",
-                "Inner Product Space Definition",
-                "Prove <x,T*y> = <Tx,y>",
-                "Unitary Matrix Proof",
-                "Dual Sum & Scaler Multiplication"
+                "Mega file pulse 27",
+                "Handouts (Conceptual)"
+            ]
+        },
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Paper Review (Subjective)",
+            "reviewText": "1. Prove (S+T)* =S* + T*\n2. Prove (ST)-\u00b9 =T-\u00b9 S-1\n3. Prove L\u00b2 is a linear functional \n4. Define inner product space\n5. prove <x,T*y>=<Tx,y>\n6. Prove unitary is  Matrix was given [1+i and 1-i] wala\n7. Show that T is uniquely determined for y=Te for n basis vectors e\u00b9,e\u00b2,...en are prescribed \n8. Define Sum & scaler multiplication of dual\n9. prove <x,ay>=a'<x,y>",
+            "topicsHeading": "Exam Questions",
+            "topicsList": [
+                "Linear Functional Proofs",
+                "Inner Product Space",
+                "Unitary Matrix",
+                "Dual Sum & Scalar Multiplication"
             ]
         }
     ]
