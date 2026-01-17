@@ -1,0 +1,24 @@
+{
+  "course": "EDU101",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Review",
+      "reviewText": "MCQs tamam handouts se aaye aur overall paper easy tha. Short questions mein Egyptians ka influence, Sufis ka role, school as agent of change, environmental issues, educational change planning, 1947 conference objectives, University Grants Commission duties, 1978 aur 1998 policy targets aur human rights education plan se questions aaye.",
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "Influence of Egyptians",
+        "Role of Sufis",
+        "School as Agent of Change",
+        "Environmental Issues",
+        "Planning for Educational Change",
+        "1947 Educational Conference",
+        "University Grants Commission",
+        "1978 Education Policy",
+        "1998 Education Policy",
+        "Human Rights Education"
+      ]
+    }
+  ]
+}
