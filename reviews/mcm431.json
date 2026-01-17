@@ -3,18 +3,20 @@
     "reviews": [
         {
             "examType": "Final Term",
-            "difficulty": "Easy",
-            "reviewHeading": "Review",
-            "reviewText": "MCQs past papers sy thy 90%. Subjective focused on media advocacy and communication.",
-            "topicsHeading": "Questions Asked",
+            "difficulty": "Moderate",
+            "reviewHeading": "Paper Review",
+            "reviewText": "Short Questions \n1 Define entertainment education strategy?\n2 Any two factor of paradigm of media advocacy?\n3 Define public service broadcasting?\n4 Communication is the key point in the citizen and state discuss?\n5 social mobilization closely with media advocacy discuss?\n6 Define visioning session?\n\nLong Questions \n1  Difference between Public service broadcasting and development journalism?\n2     give a 2 examples of social mobilization \n3 why it is nesserery to develop a media with a reference of participating development communication Thora Thora Bhool gye yah Wala question \ud83e\udd27\ud83d\ude02\n4  Discuss two information flow one is a from media to leaders and 2nd is a leaders to masses discuss?\n\nMcqs past Sy thy 90% \nOverall ppr ezy tha\ud83e\udd72",
+            "topicsHeading": "Exam Questions",
             "topicsList": [
                 "Entertainment Education Strategy",
-                "Paradigm of Media Advocacy",
+                "Media Advocacy Paradigm",
                 "Public Service Broadcasting",
                 "Citizen and State Communication",
-                "Social Mobilization & Media Advocacy",
+                "Social Mobilization",
                 "Visioning Session",
-                "Information Flow (Media to Leaders vs Leaders to Masses)"
+                "Development Journalism",
+                "Participatory Development Communication",
+                "Information Flow (Media to Leaders/Masses)"
             ]
         }
     ]
