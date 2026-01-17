@@ -1,0 +1,20 @@
+{
+  "course": "CS403P",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Review",
+      "reviewText": "Paper 27 Jan 2025, 7:45. MCQs easy from files. Long questions: Content level diagram for online clothing store, Attributes from 2 entities, SQL queries, ERD to Relational model, programID definition & view creation. Last 3-4 labs important for long answers.",
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "Content Level Diagram",
+        "Entity Attributes",
+        "SQL Queries",
+        "ERD to Relational Model",
+        "ProgramID & View Creation",
+        "Lab Exercises Importance"
+      ]
+    }
+  ]
+}
