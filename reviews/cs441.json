@@ -1,0 +1,21 @@
+{
+    "course": "CS441",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Important Topics",
+            "reviewText": "Focused on Big Data technologies, Hadoop, and HiveQL.",
+            "topicsHeading": "Topics List",
+            "topicsList": [
+                "Big Data Definitions & Hadoop Ecosystem",
+                "Hive & HiveQL Basics (CRUD, Joins)",
+                "HiveQL Functions (Group By, Window functions)",
+                "Hadoop Components (HDFS, NameNode)",
+                "MapReduce Processing Steps",
+                "Hive vs Traditional SQL",
+                "Hive Internal vs External Tables"
+            ]
+        }
+    ]
+}
