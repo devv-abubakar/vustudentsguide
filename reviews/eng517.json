@@ -1,0 +1,19 @@
+{
+    "course": "ENG517",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Review",
+            "reviewText": "80% MCQs files sy thy.",
+            "topicsHeading": "Questions Asked",
+            "topicsList": [
+                "E-Teaching",
+                "Collaboration between CALL and SLA",
+                "Reading Skill",
+                "Multimedia Benefits (3 points)",
+                "Teacher Student Create Own Book"
+            ]
+        }
+    ]
+}
