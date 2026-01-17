@@ -1,0 +1,23 @@
+{
+    "course": "MTH100",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Moderate",
+            "reviewHeading": "Paper Review",
+            "reviewText": "Mcqs\nTo find the sum of the first n terms on arithmetic sequence\nAn Arithmetic Sequence vs Series\nGraph of a quadratic function (parabola)\nOne-One Relations \nFunctions and Inverse\nCardinality of set\nArithmetic series 52nd term\nCofactor formula\nPermutation of a word\nnCr formula\nMidpoint\nMinor of matrix element a11\nSet builder to roster form\nSubjective :\nB matrix and Identity matrix given thi, or B^2-3I find krna tha.",
+            "topicsHeading": "Exam Questions",
+            "topicsList": [
+                "Arithmetic Sequence & Series",
+                "Quadratic Function (Parabola)",
+                "One-One Relations & Inverse",
+                "Matrices (Addition, Minor, Cofactor)",
+                "Cardinality of Set",
+                "Permutations & Combinations (nCr)",
+                "Midpoint Formula",
+                "Set Builder vs Roster Form",
+                "Matrix Operation (B^2-3I)"
+            ]
+        }
+    ]
+}
