@@ -4,17 +4,17 @@
         {
             "examType": "Final Term",
             "difficulty": "Moderate",
-            "reviewHeading": "Important Topics",
-            "reviewText": "Focused on Big Data technologies, Hadoop, and HiveQL.",
-            "topicsHeading": "Topics List",
+            "reviewHeading": "Most Important Topics",
+            "reviewText": "* Big Data Definitions & Technologies\nFoundational understanding of Big Data, Hadoop ecosystem, HDFS, MapReduce workflow.\n\n* Hive & HiveQL Basics\nCRUD operations, table creation & loading, executing queries, basic joins.\n\n* HIVEQL Functions & Concepts\nFiltering, GROUP BY, window functions; join & aggregate syntax in Hive.\n\n* Hadoop Components\nHDFS structure (NameNode, DataNodes), fault tolerance, block replication.\n\n* MapReduce Processing Steps\nMapper, Combiner, Reducer roles; input/output format and examples.\n\n* Hive vs Traditional SQL\nStandard SQL vs HiveQL, use cases and limitations in dataset handling.\n\n* Hive Tables Internal vs External\nDifferences and implications for data storage & deletion behavior.",
+            "topicsHeading": "Topics Covered",
             "topicsList": [
-                "Big Data Definitions & Hadoop Ecosystem",
-                "Hive & HiveQL Basics (CRUD, Joins)",
-                "HiveQL Functions (Group By, Window functions)",
-                "Hadoop Components (HDFS, NameNode)",
+                "Big Data Definitions & Technologies",
+                "Hive & HiveQL Basics",
+                "HIVEQL Functions",
+                "Hadoop Components",
                 "MapReduce Processing Steps",
                 "Hive vs Traditional SQL",
-                "Hive Internal vs External Tables"
+                "Hive Tables (Internal vs External)"
             ]
         }
     ]
