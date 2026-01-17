@@ -1,0 +1,20 @@
+{
+    "course": "MTH302",
+    "reviews": [
+        {
+            "examType": "Final Term",
+            "difficulty": "Easy",
+            "reviewHeading": "Review",
+            "reviewText": "Paper easy aya tha. Probability ka mostly questions aya tha. Calculation wala question bhot kam tha.",
+            "topicsHeading": "Topics Covered",
+            "topicsList": [
+                "Standard Deviation & Variance",
+                "Regression Slope",
+                "Percentage Markup on Cost",
+                "Mean, Median, Mode (Grouped Data)",
+                "Poisson Distribution Syntax",
+                "Seasonal Variation"
+            ]
+        }
+    ]
+}
