@@ -13,6 +13,22 @@
         "Letter Writing",
         "Effective Writing"
       ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Review",
+      "reviewText": "27 Jan 2025, 9:45 AM. MCQs mostly from Expect Wala topics, handouts. Short: Presentation preparation, Grammar & Punctuation importance, Memo, Group formation 4 steps, Good newsletter types. Long: Presentation preparation, Fallacies of Resume, Ending letter.",
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "Presentation Preparation",
+        "Grammar & Punctuation",
+        "Memo Writing",
+        "Group Formation Steps",
+        "Newsletter Types",
+        "Fallacies of Resume",
+        "Ending Letter"
+      ]
     }
   ]
 }
