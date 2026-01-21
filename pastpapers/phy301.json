@@ -1,8 +1,17 @@
 {
-  "courseCode": "phy301",
+  "courseCode": "PHY301",
   "papers": [
-    { "title": "Handouts", "url": "https://mega.nz/folder/v5ZmyAqT#Xrp-UJzbbOIqK4kkauEJdw" },
-    { "title": "Midterm Past Papers", "url": "https://mega.nz/folder/2kglxTyI#MmUrfcuXgBGcbZGsYBqnkg" },
-    { "title": "Final Term Past Papers", "url": "https://mega.nz/folder/PtgACLxB#m5CsfWHo1gVm9xyq-Pc9vQ" }
+    {
+      "title": "Handouts",
+      "url": "https://drive.google.com/drive/folders/1RBHRfpub3DM-jUX1fuGvjbIS_zRMcKWi"
+    },
+    {
+      "title": "Midterm Past Papers",
+      "url": "https://drive.google.com/drive/folders/1dLMnRPhj3eKnjhYYADpqldVQtMa7maw0"
+    },
+    {
+      "title": "Final Term Past Papers",
+      "url": "https://drive.google.com/drive/folders/1tcu0o1IYmaVMJS8Bgkq9rdKdq4L0doC9"
+    }
   ]
 }
