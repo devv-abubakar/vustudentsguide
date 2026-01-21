@@ -1,8 +1,17 @@
 {
-  "courseCode": "mth104",
+  "courseCode": "MTH104",
   "papers": [
-    { "title": "Handouts", "url": "https://mega.nz/folder/etAGlI7C#Vq4q5omYIr-yDs2Hoqkruw" },
-    { "title": "Midterm Past Papers", "url": "https://mega.nz/folder/m0wnjQaK#dUvX-mt5cZUfR5QiUvg5tg" },
-    { "title": "Final Term Past Papers", "url": "https://mega.nz/folder/LpQmEJxS#KSXZkY_eWaaPbVBxRvZ_iw" }
+    {
+      "title": "Handouts",
+      "url": "https://drive.google.com/drive/folders/14W7KXPU-9hnNn2km2XTTV-nce8kXUxz6"
+    },
+    {
+      "title": "Midterm Past Papers",
+      "url": "https://drive.google.com/drive/folders/1h7WSomcmgq-VNNRUfeb9mDxicF58fsC3"
+    },
+    {
+      "title": "Final Term Past Papers",
+      "url": "https://drive.google.com/drive/folders/1XxI4eiWUifemv8mKNHTdJMbwHWmcoPLN"
+    }
   ]
 }
