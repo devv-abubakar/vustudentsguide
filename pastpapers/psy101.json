@@ -1,8 +1,17 @@
 {
-  "courseCode": "psy101",
+  "courseCode": "PSY101",
   "papers": [
-    { "title": "Handouts", "url": "https://mega.nz/folder/nlIiGDxR#2pPIQXDOcx4V0ZecCcqQuA" },
-    { "title": "Midterm Past Papers", "url": "https://mega.nz/folder/iowDWBAQ#zMv4tiinlhuOc7yHbp6NGA" },
-    { "title": "Final Term Past Papers", "url": "https://mega.nz/folder/KsQU2KiL#_jsj83bgHRSz8Zhk8KU0xw" }
+    {
+      "title": "Handouts",
+      "url": "https://drive.google.com/drive/folders/1Gv9C5SIxuW2s9cJXJ2DzYucP-E4ULRce"
+    },
+    {
+      "title": "Midterm Past Papers",
+      "url": "https://drive.google.com/drive/folders/1zHkuf9TeZOdpl2qE5Klk2cfhqd52UShx"
+    },
+    {
+      "title": "Final Term Past Papers",
+      "url": "https://drive.google.com/drive/folders/16dFZ4o8_XWVhl0p5nUIRyuo0KDPP83jZ"
+    }
   ]
 }
