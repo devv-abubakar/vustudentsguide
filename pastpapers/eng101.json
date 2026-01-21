@@ -1,8 +1,17 @@
 {
-  "courseCode": "eng101",
+  "courseCode": "ENG101",
   "papers": [
-    { "title": "Handouts", "url": "https://mega.nz/folder/ntYTCKpB#UrFo1aK3X6I8ZXU8n6W-Yg" },
-    { "title": "Midterm Past Papers", "url": "https://mega.nz/folder/7pw3AbCJ#ylEFgj39eRSM64UA-TWr8Q" },
-    { "title": "Final Term Past Papers", "url": "https://mega.nz/folder/f1Jm0KZC#ivWnIsNbdWj6svDx8kmU8Q" }
+    {
+      "title": "Handouts",
+      "url": "https://drive.google.com/drive/folders/1F3wcMdv42FGPcSmdW1sexkiRFaYJ1MeT"
+    },
+    {
+      "title": "Midterm Past Papers",
+      "url": "https://drive.google.com/drive/folders/1Q2NsH4gLR4HsEYSmsHi4aDG6VcXtG0EI"
+    },
+    {
+      "title": "Final Term Past Papers",
+      "url": "https://drive.google.com/drive/folders/1KKvurW_BHXXNRHwpQOXWG2awBAp8eT3x"
+    }
   ]
 }
