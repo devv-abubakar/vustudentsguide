@@ -1,8 +1,17 @@
 {
-  "courseCode": "mth5101",
+  "courseCode": "MTH5101",
   "papers": [
-    { "title": "Handouts", "url": "https://mega.nz/folder/O9wgSBpL#Fdf3n18PxFZsLFmntndL5A" },
-    { "title": "Midterm Past Papers", "url": "https://mega.nz/folder/qpBxTD4L#vQiBL4HLd-PPx4STNKYziQ" },
-    { "title": "Final Term Past Papers", "url": "https://mega.nz/folder/e9oVAJxC#Zeh2luwgGVtugzQmC_xGkw" }
+    {
+      "title": "Handouts",
+      "url": "https://drive.google.com/drive/folders/1yNQN8S46xd1eTCf3OcDUrZIcocbRDuMO"
+    },
+    {
+      "title": "Midterm Past Papers",
+      "url": "https://drive.google.com/drive/folders/13lerT3viEjbM-7T0PoQyvemrIcjw_FWC"
+    },
+    {
+      "title": "Final Term Past Papers",
+      "url": "https://drive.google.com/drive/folders/10Z484SnuFVWN4K8X0vAWedzsPh0O_YpA"
+    }
   ]
 }
