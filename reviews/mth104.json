@@ -1,0 +1,16 @@
+{
+  "course": "MTH104",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (31/07/25)",
+      "reviewText": "Mth104 ka paper easy hi tha lakin wsa acha to ni hua lakin zada paper m true false thy proposition Waly topic Sy long b Aya tha short b tha or mcq b thy is lyia wo achy Sy krna or cardinality Waly topic Sy b mcq or subjective Aya hua tha or mujy yad ni",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Propositions (True/False, Long, Short)",
+        "Cardinality (MCQ, Subjective)"
+      ]
+    }
+  ]
+}
