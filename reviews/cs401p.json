@@ -1,0 +1,21 @@
+{
+  "course": "CS401P",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Hard",
+      "reviewHeading": "Paper Review (2:30 PM)",
+      "reviewText": "MCQs related to NASM, LODS, Video Color, Font, and mostly INT 10. Subjective: Int input declared in C Program. Difference between Near Jump and Far Jump. Classification of registers (AX, BX, CX, DX, CS, SI, DI, SS, ES). INT 10 Cursor Position values for AH, BH, DH, DL.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "NASM",
+        "LODS",
+        "INT 10 (Video/Cursor)",
+        "C Program Declaration",
+        "Near Jump vs Far Jump",
+        "Register Classification",
+        "Cursor Position Values"
+      ]
+    }
+  ]
+}
