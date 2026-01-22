@@ -1,0 +1,21 @@
+{
+  "course": "ENG503",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review",
+      "reviewText": "Paper was very easy, mostly MCQs were covered from files. Subjective questions included:\n- Define Linguistic Imperialism\n- Define Controlled Practice\n- Teacher as an Organizer\n- Question related to ESL and EFL\n- Define Endophoric Reference\n- Benefits of using novels in language teaching\n- 8 stages of creative writing and define the first stage",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Linguistic Imperialism",
+        "Controlled Practice",
+        "Teacher as Organizer",
+        "ESL vs EFL",
+        "Endophoric Reference",
+        "Novels in Language Teaching",
+        "Creative Writing Stages"
+      ]
+    }
+  ]
+}
