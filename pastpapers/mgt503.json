@@ -1,8 +1,17 @@
 {
-  "courseCode": "mgt503",
+  "courseCode": "MGT503",
   "papers": [
-    { "title": "Handouts", "url": "https://mega.nz/folder/Klox2KSJ#l1FR8cEeTB8ySEvLq1sxTw" },
-    { "title": "Midterm Past Papers", "url": "https://mega.nz/folder/z85hRaib#9sfiicOQtfrSMFW4pnxYQQ" },
-    { "title": "Final Term Past Papers", "url": "https://mega.nz/folder/b9IjQRja#Y22_37pUZ5bfwRXQoYZdWA" }
+    {
+      "title": "Handouts",
+      "url": "https://drive.google.com/drive/folders/1O88DyX5xOneTXlpLeTHnpVOytnN6BmGL"
+    },
+    {
+      "title": "Midterm Past Papers",
+      "url": "https://drive.google.com/drive/folders/1aJlpgsrsktX9OLDONqZ4rI9ZyqVkXPD5"
+    },
+    {
+      "title": "Final Term Past Papers",
+      "url": "https://drive.google.com/drive/folders/1NOBgyjkF8X1u73lXPo9vtOMNgCQA1M_T"
+    }
   ]
 }
