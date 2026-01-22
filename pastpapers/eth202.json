@@ -1,8 +1,17 @@
 {
-  "courseCode": "eth202",
+  "courseCode": "ETH202",
   "papers": [
-    { "title": "Handouts", "url": "https://mega.nz/folder/284AWDaB#F5ySBXEJ4ucXr1g1ObVjsg" },
-    { "title": "Midterm Past Papers", "url": "https://mega.nz/folder/X8ZiXQpA#OKRyXmNPTwlDhzohb9MisA" },
-    { "title": "Final Term Past Papers", "url": "https://mega.nz/folder/PoJiQaZZ#yrhsWmRU0wPNu7N8-LGy9w" }
+    {
+      "title": "Handouts",
+      "url": "https://drive.google.com/drive/folders/1Vs0smdVP9hPROtPUjFL-d8-oCc_mPV3u"
+    },
+    {
+      "title": "Midterm Past Papers",
+      "url": "https://drive.google.com/drive/folders/1nwM6wBy0Dp6ZmPRVqKrQI0dHwlByqaQ0"
+    },
+    {
+      "title": "Final Term Past Papers",
+      "url": "https://drive.google.com/drive/folders/1X-GkMET4jduVAnEw40462B7fIgI479aq"
+    }
   ]
 }
