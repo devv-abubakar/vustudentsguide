@@ -1,0 +1,20 @@
+{
+  "course": "ENG507",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review",
+      "reviewText": "Kuch mcqs mam  maha Malik  ki files Sy ty Baki mcqs ka batati ho \n\nShort\n1. vot ki types\n2.feature hierarchy k four features ty\n3.IPA k 5 symbols \n\nAb aty ha long py or Kuch mcsq py \nV imp \n IPA \nSpectrogram \nPraat\nPerturbation theory\n\nIn 4 topics ki mny sirf  def ki ti Lekin in 4 topics ma Sy fill in the blanks ay ti",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "VOT Types",
+        "Feature Hierarchy",
+        "IPA Symbols",
+        "Spectrogram",
+        "Praat",
+        "Perturbation Theory"
+      ]
+    }
+  ]
+}
