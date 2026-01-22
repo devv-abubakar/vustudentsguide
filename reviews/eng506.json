@@ -1,0 +1,16 @@
+{
+  "course": "ENG506",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (9 Aug 2025)",
+      "reviewText": "MCQs 70% from files. Subjective 60% from files, rest conceptual. Overall paper was normal.",
+      "topicsHeading": "Preparation Source",
+      "topicsList": [
+        "Past Files",
+        "Conceptual Understanding"
+      ]
+    }
+  ]
+}
