@@ -1,0 +1,20 @@
+{
+  "course": "ECO403",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (31.7.2025)",
+      "reviewText": "Sari equations i hain mcqs main.\n3 no k farmoula explain krny thay.\nAssets include wala question the money symbol btany thay,\nCurve bnany thay demand aggregate ka and mundell feleming model\nLife cycle consumption function sa aik aya\nMarginal Propensity ka graph tha explain krna tha\nPhilips curve ki equation Di hwi thi. \nOkuns law ki equation thi",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Equations (Philips Curve, Okun's Law)",
+        "Money Symbols & Assets",
+        "Aggregate Demand Curve",
+        "Mundell-Fleming Model",
+        "Life Cycle Consumption Function",
+        "Marginal Propensity Graph"
+      ]
+    }
+  ]
+}
