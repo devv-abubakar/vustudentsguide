@@ -1,0 +1,18 @@
+{
+  "course": "CS304",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (8am)",
+      "reviewText": "Mcqs overall easy thy theory base thy. Short: 2 questions ki output 1 ka program or 1 tha k container die hoe thy iterator type batani thi. Long: 2 program or 1 ki output batani. Or last waly ki iterator type batani thi. Long k program 1 Template me sy tha or 1 pre-increment or post-increment me sy.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Iterator Types",
+        "Templates",
+        "Pre-increment vs Post-increment",
+        "Program Outputs"
+      ]
+    }
+  ]
+}
