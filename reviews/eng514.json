@@ -1,0 +1,18 @@
+{
+  "course": "ENG514",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review",
+      "reviewText": "Mcqs mostly from recently quiz files all are very easy. Questions: Discourse analysis, Three differences stress timed and syllable timed languages, Dialogic, TBLT note.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Discourse Analysis",
+        "Stress Timed vs Syllable Timed Languages",
+        "Dialogic",
+        "TBLT (Task-Based Language Teaching)"
+      ]
+    }
+  ]
+}
