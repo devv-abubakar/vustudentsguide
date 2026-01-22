@@ -1,0 +1,33 @@
+{
+  "course": "MGT201",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review 1 (Financial Management)",
+      "reviewText": "Mcqs easy tha \nLong \nQ1 correct incorrect from approaches conservative hedging and aggressive\nQ2 Examples DFL AND DOL\nQ3  example- cost of return \n\nShort questions\n1. Example calculate cost of common shareholder\n2. Correct incorrect from approaches conservative hedging and aggressive\n3. DOL\n4. ENLIST the cost ignores by M&M",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Conservative & Aggressive Hedging",
+        "DFL and DOL",
+        "Cost of Return",
+        "Cost of Common Shareholder",
+        "M&M Ignored Costs"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review 2",
+      "reviewText": "Mcqs very very easy 2 problem statement \nShort question \nChose project on basis of profitability index \nHedging approach \nConservative approach \nAggressive approach \nIgnored costs \nAnswer \nTransitional cost \nBankruptcy cost \nAgency cost \nFind dividend payout \nLong \nAgain profitability index and NPV \nAssumption of arbitrage pricing theory\nFind dividend yield",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Profitability Index & NPV",
+        "Hedging, Conservative, Aggressive Approaches",
+        "Ignored Costs (Transitional, Bankruptcy, Agency)",
+        "Dividend Payout & Yield",
+        "Arbitrage Pricing Theory"
+      ]
+    }
+  ]
+}
