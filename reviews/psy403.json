@@ -1,0 +1,20 @@
+{
+  "course": "PSY403",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review",
+      "reviewText": "Objective question from handout and concept base...\nShort question... personal identity...\nWrite a note Affiliations own perception.\nAnd other 4 question scenario base.\nLong question...(1)operant conditioning and classical conditioning...\n(2) Write a note on obedience and crimes obedience.\n(3) Threatening situation al question concept base...",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Personal Identity",
+        "Affiliations Own Perception",
+        "Operant vs Classical Conditioning",
+        "Obedience & Crimes of Obedience",
+        "Threatening Situations",
+        "Scenario Based Questions"
+      ]
+    }
+  ]
+}
