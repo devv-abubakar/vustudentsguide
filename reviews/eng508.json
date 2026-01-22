@@ -1,0 +1,19 @@
+{
+  "course": "ENG508",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (4:30)",
+      "reviewText": "Deixis\nClerk theory \nHow computer help in linguistics \nMetaphor irony and hyperbole \nOne pragraph and ask which lexical properties use",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Deixis",
+        "Clark Theory",
+        "Computers in Linguistics",
+        "Metaphor, Irony, Hyperbole",
+        "Lexical Properties Analysis"
+      ]
+    }
+  ]
+}
