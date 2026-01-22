@@ -1,0 +1,118 @@
+{
+  "course": "ENG301",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (10:00am)",
+      "reviewText": "Thesis unit question (3 marks). Letter blanks (3 marks) - identifying reader/customer/writer roles. Negotiation blanks (3 marks). Application letter 3 guidelines (3 marks). Persuasive request 3 appeals names (3 marks). Define 'agreement' in context of Indirect organizational plan (5 marks). Minutes of meetings True/False (5 marks). MCQs: Committee definition, Agenda definition, Negotiation strategies (Win-lose, Lose-win, Win-win).",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Thesis Writing",
+        "Letter Writing Roles",
+        "Negotiation Strategies",
+        "Application Letter Guidelines",
+        "Persuasive Request Appeals",
+        "Indirect Organizational Plan",
+        "Minutes of Meetings",
+        "Committee & Agenda Definitions"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "General Review",
+      "reviewText": "Topics covered: Negotiations, Persuasive writing, Resume, Collection letter. All questions were true/false, long, and short. Mostly quiz 3 or 4 MCQs. Files were helpful.",
+      "topicsHeading": "Topics Covered",
+      "topicsList": [
+        "Negotiations",
+        "Persuasive Writing",
+        "Resume",
+        "Collection Letter"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review",
+      "reviewText": "MCQs mostly easy. Short questions: 2 True/False, Resume topic, Sales letter. Long questions: 5 uses of memo report, Blanks, True/False, Presentation topic.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Resume",
+        "Sales Letter",
+        "Memo Report Uses",
+        "Presentation Skills"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (2025)",
+      "reviewText": "MCQs from handouts and files. Questions: Define medical reports, 2 biological types of formal report, Steps to impress customer. True/False questions were present.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Medical Reports",
+        "Formal Report Types",
+        "Customer Impression Steps"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review",
+      "reviewText": "MCQs easy from handouts. Short & Long questions had True/False. Definitions: AGENDA, Advisory, Ad Hoc. 5 psychological barriers for negotiation. Good news Plan.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Agenda",
+        "Advisory",
+        "Ad Hoc",
+        "Psychological Barriers in Negotiation",
+        "Good News Plan"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (29/01/2k25)",
+      "reviewText": "MCQs all from handouts. Short: Blanks from Business report, Good news plan meaning, Body language of presenter, True/false from collection letter & thesis writing. Long: True/false from collection letter, Blanks from Resume, 5 types of buffer, True/false from negotiation strategy. Focus on handouts and ignore excessive examples.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Business Report",
+        "Good News Plan",
+        "Body Language",
+        "Collection Letter",
+        "Thesis Writing",
+        "Resume",
+        "Buffer Types",
+        "Negotiation Strategy"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (5:40pm)",
+      "reviewText": "MCQs from handouts and conceptual. Short: Chronological resume's format, Tone of request letters, Three C's for expanding credit privileges. Long: True/False questions, Five psychological barriers in negotiating.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Chronological Resume",
+        "Request Letter Tone",
+        "Credit Privileges (3 Cs)",
+        "Psychological Barriers"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (11:30)",
+      "reviewText": "MCQs from handouts. Short: Difference between cover letter and traditional letters, Parts of memorandum, 3Cs of thesis. Long: Abstract in thesis, Three stages of interview, Selection stages, Buffer avoidance.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Cover Letter vs Traditional Letter",
+        "Memorandum Parts",
+        "Thesis (3Cs, Abstract)",
+        "Interview Stages",
+        "Buffer Writing"
+      ]
+    }
+  ]
+}
