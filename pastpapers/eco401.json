@@ -1,8 +1,17 @@
 {
-  "courseCode": "eco401",
+  "courseCode": "ECO401",
   "papers": [
-    { "title": "Handouts", "url": "https://mega.nz/folder/aghwxZqY#NUmmIe80s6_htKxK5lddLw" },
-    { "title": "Midterm Past Papers", "url": "https://mega.nz/folder/S5pi0ZrR#wAV7AUG9BFwxlNMoFB0-DA" },
-    { "title": "Final Term Past Papers", "url": "https://mega.nz/folder/GsJSgapJ#kwvyq_AxSMNTO0hDi84-tg" }
+    {
+      "title": "Handouts",
+      "url": "https://drive.google.com/drive/folders/1Q7FWwh-EssR5KN90CLDctGM8bX5upyGb"
+    },
+    {
+      "title": "Midterm Past Papers",
+      "url": "https://drive.google.com/drive/folders/1MjQM7C_WzaQE20tQZ-eJ6RiqB0E7Pg1V"
+    },
+    {
+      "title": "Final Term Past Papers",
+      "url": "https://drive.google.com/drive/folders/1UYqg4AohsKyQXpETFhQTq_61IgletSoc"
+    }
   ]
 }
