@@ -1,0 +1,21 @@
+{
+  "course": "EDU403",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review",
+      "reviewText": "Mcqs mostly highlighted handout files recent quizzes say thy over all objective bht easy tha\nSubjective\nShort questions ma why colours are used in impressions, phases of cubism, three attributes  of Egyptian art, long question 1 describe scale in art,\n2  name material used in drawing,\n 3 describe idealogy of post modernism, \n4 write a note on architecture.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Colors in Impressions",
+        "Phases of Cubism",
+        "Egyptian Art Attributes",
+        "Scale in Art",
+        "Drawing Materials",
+        "Post-Modernism Ideology",
+        "Architecture"
+      ]
+    }
+  ]
+}
