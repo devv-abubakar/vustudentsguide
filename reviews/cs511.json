@@ -1,0 +1,21 @@
+{
+  "course": "CS511",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (10AM)",
+      "reviewText": "Objective Part: Full Forms Of HTTP, npm, HTTPS, PDO. Mcqs were mostly from php, Laravel and jQuery. About 85% paper was from php. Subjective Part: 1. Concatenate Two Strings in PHP. 2. Static Variable in a Class (Create class, assign value, get function). 3. HTTP Methods (List four). 4. Backend Languages in Node.js. 5. Change Paragraph Value using jQuery. 6. Redirect to About Page script.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "HTTP, npm, HTTPS, PDO Full Forms",
+        "PHP Variables & Concatenation",
+        "Static Variables (OOP)",
+        "HTTP Methods",
+        "Node.js Backend Languages",
+        "jQuery (DOM Manipulation)",
+        "PHP Redirection Script"
+      ]
+    }
+  ]
+}
