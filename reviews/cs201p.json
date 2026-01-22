@@ -1,18 +1,79 @@
 {
-    "course": "CS201P",
-    "reviews": [
-        {
-            "examType": "Final Term",
-            "difficulty": "Easy",
-            "reviewHeading": "Paper Review (8:00 AM, 31 July)",
-            "reviewText": "MCQS easy thaa mostly,some are conceptual..\n Long Question \n4 programs kii output write karnii thee \n1, salary related thaa total salary 55000, grocery 4500 , travel 5000, medical 2750, utility 5000\nTax =salary x 0.02\nTo find \nTotal salary \nSavings \nTax paid \n2, difference thaa count endl ma or int& maybe exect nhi yadd",
-            "topicsHeading": "Exam Questions",
-            "topicsList": [
-                "Program Output Questions",
-                "Salary/Tax Calculation",
-                "cout/endl difference",
-                "Reference variables (int&)"
-            ]
-        }
-    ]
+  "course": "CS201P",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Review",
+      "reviewText": "Paper 8 Aug 12 PM ko tha. MCQs zyada tar handouts se aaye, files se sirf 5 ya 6 percent thay. Output operator overloading aur logical operations se related questions thay. For loop ka output poocha gaya, public aur private class ka question tha. setfill aur setw se related output bhi aayi jaisa ke cout<<setfill(\"*\")<<setw(10)<<750;.",
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "Handouts MCQs",
+        "Operator Overloading",
+        "Logical Operations",
+        "For Loop Output",
+        "Public Private Class",
+        "setfill setw",
+        "Output Prediction"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Review",
+      "reviewText": "Multiple Choice Questions easy thay aur kuch programs ki output ya errors identify karne se related thay. Short questions mein array ki output, pi aur circle ke circumstances poochay gaye. Long questions mein matrices ka program aur WS Manipulator aur input handling ka scenario explain karna tha.",
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "Arrays Output",
+        "Circle Program",
+        "Matrices Program",
+        "WS Manipulator",
+        "Input Handling",
+        "Error Identification"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Review",
+      "reviewText": "MCQs 25 thay jo classes, structure, pointer, array aur pointer relation par based thay. Subjective mein circle ka area aur circumference calculate karna tha. Volume class bana kar getter setter likhna tha. For loop program mein errors find karni thin. Oldcar aur newcar classes se related question tha aur aik question structures par based tha.",
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "Classes",
+        "Structures",
+        "Pointers",
+        "Array Pointer Relation",
+        "Circle Calculation",
+        "Getter Setter",
+        "For Loop Errors"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Review",
+      "reviewText": "MCQs mostly easy aur kuch conceptual thay. Long mein 4 programs ki output likhni thi jisme salary, grocery, travel, medical, utility aur tax calculation thi. Count, endl aur int ka difference bhi poocha gaya.",
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "Salary Calculation",
+        "Program Output",
+        "endl vs int",
+        "Conceptual MCQs",
+        "Tax Formula"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Review",
+      "reviewText": "Subjective part mein errors of resolution, 4 by 4 matrix ka code, 2 by 2 matrix nested loop ke through aur objects se related questions aaye.",
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "Error Resolution",
+        "4x4 Matrix Code",
+        "2x2 Nested Loop",
+        "Objects Concept"
+      ]
+    }
+  ]
 }
