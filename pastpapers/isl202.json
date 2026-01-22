@@ -1,8 +1,17 @@
 {
-  "courseCode": "isl202",
+  "courseCode": "ISL202",
   "papers": [
-    { "title": "Handouts", "url": "https://mega.nz/folder/u8g0wIyQ#lfxkiwujgBMHnU3zsbV_8w" },
-    { "title": "Midterm Past Papers", "url": "https://mega.nz/folder/blIBhYKa#tbdT9Lkh5fX9Z6K9vRRnGg" },
-    { "title": "Final Term Past Papers", "url": "https://mega.nz/folder/O95gzLDL#U3OZFLHFSuGdwaGEy27Dxg" }
+    {
+      "title": "Handouts",
+      "url": "https://drive.google.com/drive/folders/1MwSBTkd0AeJ8DhyZb_zg3HfDr9J6B90M"
+    },
+    {
+      "title": "Midterm Past Papers",
+      "url": "https://drive.google.com/drive/folders/1Wqq9C3XJj_dnsqoYG57TUybH5a2MFi8i"
+    },
+    {
+      "title": "Final Term Past Papers",
+      "url": "https://drive.google.com/drive/folders/1XCAVpoKkSKDc65zJeDOHwfp0qOp8aP7p"
+    }
   ]
 }
