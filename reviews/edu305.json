@@ -1,0 +1,22 @@
+{
+  "course": "EDU305",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (8:00am)",
+      "reviewText": "20 quiz from files and 20 from handouts. Short question: How disciplined problem arise? What goes in portfolio? Differ in intrinsic and extrinsic motivation? Social deficit in aggressive students? Reality theory? Long question: Source of frustration, Strategy of classroom discipline, Self perception wala tha, Caution when dealing disciplining students.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Discipline Problems",
+        "Portfolio Content",
+        "Intrinsic vs Extrinsic Motivation",
+        "Aggressive Students (Social Deficit)",
+        "Reality Theory",
+        "Sources of Frustration",
+        "Classroom Discipline Strategies",
+        "Self Perception"
+      ]
+    }
+  ]
+}
