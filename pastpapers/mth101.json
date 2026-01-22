@@ -1,8 +1,17 @@
 {
-  "courseCode": "mth101",
+  "courseCode": "MTH101",
   "papers": [
-    { "title": "Handouts", "url": "https://drive.google.com/drive/folders/1vTB6dkPDjXhxU5Hzbez8zbaoMmfuoXdt?usp=sharing" },
-    { "title": "Midterm Past Papers", "url": "https://drive.google.com/drive/folders/1ySSd-0ssArFNcjvq_-QX1vReowuZrBoP?usp=sharing" },
-    { "title": "Final Term Past Papers", "url": "https://drive.google.com/drive/folders/1Pno9ZkJkunsgIK0kt0ZrHkgN3b0CQHKJ?usp=sharing" }
+    {
+      "title": "Handouts",
+      "url": "https://drive.google.com/drive/folders/1vTB6dkPDjXhxU5Hzbez8zbaoMmfuoXdt"
+    },
+    {
+      "title": "Midterm Past Papers",
+      "url": "https://drive.google.com/drive/folders/1ySSd-0ssArFNcjvq_-QX1vReowuZrBoP"
+    },
+    {
+      "title": "Final Term Past Papers",
+      "url": "https://drive.google.com/drive/folders/1Pno9ZkJkunsgIK0kt0ZrHkgN3b0CQHKJ"
+    }
   ]
 }
