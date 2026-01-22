@@ -1,0 +1,23 @@
+{
+  "course": "CS610",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (31/07/25)",
+      "reviewText": "Different protocols \nTCP/ IP layers\nCBR, VBR, ABR \nInformational and error messages \nSuffix prefix\nThree way handshaking \nClasses of IP\nIPv6\nIpv4\nWaqar sindhu wali file se aye they Kuch mcqs\nOr Jo Baki long or short they wo thorey conceptual type they\nOr mcqs me bhi protocols waley Kafi mcqs aye they\nMTU se they 1-2 mcqs\nNAT , variations of NAT\nForms of internet routing\nClasses of IP address ye Jo topic he isme se aye they mcqs\nTypes of delay\nDotted decimal notation",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "TCP/IP Layers",
+        "CBR, VBR, ABR",
+        "Three-way Handshaking",
+        "IPv4 & IPv6",
+        "Classes of IP",
+        "MTU",
+        "NAT & Variations",
+        "Internet Routing Forms",
+        "Types of Delay"
+      ]
+    }
+  ]
+}
