@@ -1,8 +1,17 @@
 {
-  "courseCode": "mgt211",
+  "courseCode": "MGT211",
   "papers": [
-    { "title": "Handouts", "url": "https://mega.nz/folder/P4xghD5K#_6YpsepLWO3bRnIQQnwtGg" },
-    { "title": "Midterm Past Papers", "url": "https://mega.nz/folder/fk43mZRL#vJQ1BQxniefMMwyRxQJtfg" },
-    { "title": "Final Term Past Papers", "url": "https://mega.nz/folder/j4xADJLS#k4n0tro82DSszs_t0NkHNg" }
+    {
+      "title": "Handouts",
+      "url": "https://drive.google.com/drive/folders/1ejbDYLRhoo4oIP8drRDoyncKlnEdTObm"
+    },
+    {
+      "title": "Midterm Past Papers",
+      "url": "https://drive.google.com/drive/folders/1uwuZgwJYlM6W_ehBgMaO9CgdS8HAshFq"
+    },
+    {
+      "title": "Final Term Past Papers",
+      "url": "https://drive.google.com/drive/folders/1E1iRvcsp06aIsN5i6i3I5Z73ObmEOkjR"
+    }
   ]
 }
