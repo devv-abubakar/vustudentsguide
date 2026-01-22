@@ -1,0 +1,20 @@
+{
+  "course": "EDU410",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review",
+      "reviewText": "Short questions \n1. Three characteristics of teacher centered learning method\n2. Define diphthongs\n3. Write briefly about uppercase importance \nLong questions \n1. Five characteristics of student centered learning method\n2. Describe the importance of phonics \n3. Describe approaches of consonant sounds",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Teacher-Centered Learning",
+        "Student-Centered Learning",
+        "Diphthongs",
+        "Uppercase Importance",
+        "Phonics",
+        "Consonant Sound Approaches"
+      ]
+    }
+  ]
+}
