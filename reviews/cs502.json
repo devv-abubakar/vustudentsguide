@@ -1,0 +1,19 @@
+{
+  "course": "CS502",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review",
+      "reviewText": "Kuch mcqs files sy thy almost half or baki kuch handouts or kuch conceptual.  thy\nShort mn BFS ki definition and  working \nCommunication network mn kya problem hoti ya kis wja sy hoti hy (ye file m ay hi tha)\nChain matrix sy tha ik\nActivity selection algorithm mn sylong or short dono thy\nLong m ik chain multiplication matrix m sy tha \nIk scenario tha railway track wla btana tha kon sa algorithm vest rhay ga",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "BFS Definition & Working",
+        "Communication Network Problems",
+        "Matrix Chain Multiplication",
+        "Activity Selection Algorithm",
+        "Railway Track Scenario"
+      ]
+    }
+  ]
+}
