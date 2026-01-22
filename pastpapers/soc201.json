@@ -1,8 +1,17 @@
 {
-  "courseCode": "soc201",
+  "courseCode": "SOC201",
   "papers": [
-    { "title": "Handouts", "url": "https://mega.nz/folder/WtxWBbxL#wYYxoRx3S1AANaqXKuaXJQ" },
-    { "title": "Midterm Past Papers", "url": "https://mega.nz/folder/u5RnWagC#SVUvmc7Y9_bHCnAmTZH_qQ" },
-    { "title": "Final Term Past Papers", "url": "https://mega.nz/folder/24IjRS7T#o-PUjbzrgVHEh-1hKi_f2A" }
+    {
+      "title": "Handouts",
+      "url": "https://drive.google.com/drive/folders/1sSq_YoeZ3ghrZTD7V0ibp7Gk9LCFKwC1"
+    },
+    {
+      "title": "Midterm Past Papers",
+      "url": "https://drive.google.com/drive/folders/1IzB5UO60bLk2sFxEUEa00x8MPWDjIiS5"
+    },
+    {
+      "title": "Final Term Past Papers",
+      "url": "https://drive.google.com/drive/folders/1PxdIo1FlDxCeToxRaWk5-E1eH_ICSnvl"
+    }
   ]
 }
