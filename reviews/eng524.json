@@ -1,0 +1,21 @@
+{
+  "course": "ENG524",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (Fill in the Blanks)",
+      "reviewText": "Blanks covered: Racialization (Ideological construction), Genuine vs Non-genuine victims, Fiends vs Non-fiends, Clark's observations on responsibility transfer and patriarchal viewpoint. Language survival requiring government help. Minority rights and language. War on Terror (Bush administration). Iraq war build-up. Justifying faulty war (Democracy). Transforming terrorism into totalitarian empire.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Racialization",
+        "Victim Types (Genuine/Non-genuine)",
+        "Fiends vs Non-fiends",
+        "Patriarchal Viewpoint",
+        "Language Rights & Government Help",
+        "War on Terror",
+        "Iraq War Discourses"
+      ]
+    }
+  ]
+}
