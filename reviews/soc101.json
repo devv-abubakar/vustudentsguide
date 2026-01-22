@@ -1,0 +1,24 @@
+{
+  "course": "SOC101",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Hard",
+      "reviewHeading": "Paper Review (Conceptual)",
+      "reviewText": "The paper was 80% conceptual and slightly tough. Past files were not helpful; preparation should rely on short lectures and handouts. MCQs were mostly scenario-based (e.g., medical choices based on culture vs religion). Important topics included Deviance, Primary and Secondary groups, Social change, Social conflict, and Social groups. There was a specific question about how Eid-ul-Fitr and Eid-ul-Adha shape Pakistani society. Questions also covered Traditional and Pre-modern societies, the Pakistan court system, and the 4 types of religion. Theories and Perspectives are very important.",
+      "topicsHeading": "Topics Covered",
+      "topicsList": [
+        "Deviance",
+        "Primary & Secondary Groups",
+        "Social Change & Social Conflict",
+        "Social Groups",
+        "Role of Eid-ul-Fitr & Eid-ul-Adha",
+        "Sociological Theories & Perspectives",
+        "Traditional & Pre-modern Societies",
+        "Pakistan Court System",
+        "Types of Religion",
+        "Scenario-based Questions (Culture/Religion)"
+      ]
+    }
+  ]
+}
