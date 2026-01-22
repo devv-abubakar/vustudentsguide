@@ -1,8 +1,17 @@
 {
-  "courseCode": "eco302",
+  "courseCode": "ECO302",
   "papers": [
-    { "title": "Handouts", "url": "https://mega.nz/folder/7gY1gSzK#jmWo5mX-6KmLi4yngG0U2Q" },
-    { "title": "Midterm Past Papers", "url": "https://mega.nz/folder/yxZmWTAK#_wTCs0xxZiy2lLfaoj_Jzw" },
-    { "title": "Final Term Past Papers", "url": "https://mega.nz/folder/25pjGCrT#w2hoCvG5q2xOzydmHlSzAw" }
+    {
+      "title": "Handouts",
+      "url": "https://drive.google.com/drive/folders/1NgRhlQVDP5m2AScqnxAlsG7Rzy_r5ZNF"
+    },
+    {
+      "title": "Midterm Past Papers",
+      "url": "https://drive.google.com/drive/folders/1ijAtYzIuFI7F8mz2ShWAtYI3AuwnwIvv"
+    },
+    {
+      "title": "Final Term Past Papers",
+      "url": "https://drive.google.com/drive/folders/1Uxalcv48DxzQp_LhIylAQ0Cw3eMOfGpC"
+    }
   ]
 }
