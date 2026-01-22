@@ -1,0 +1,18 @@
+{
+  "course": "PSY401",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (8:00 31 July)",
+      "reviewText": "Mcqs almost paper me sy thy. Short questions me projects ki techniques thien. Hum Pakistan me psychology me patients ko kesy dekhty hain. Social services sy hum log Kya Kuch kr skty hain. Communication with patient tha.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Project Techniques",
+        "Psychology Patients in Pakistan",
+        "Social Services",
+        "Communication with Patients"
+      ]
+    }
+  ]
+}
