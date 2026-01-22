@@ -1,0 +1,17 @@
+{
+  "course": "PHY101",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review",
+      "reviewText": "Paper Overall na asan tha na mushkil jiske concept clear ha uska paper easy hoje ga aur formulas ko yaad rakhe \nFiles se thore boht aye the question bkya conceptual the",
+      "topicsHeading": "Preparation Tips",
+      "topicsList": [
+        "Formulas",
+        "Conceptual Understanding",
+        "Files (Partial)"
+      ]
+    }
+  ]
+}
