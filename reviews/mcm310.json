@@ -1,0 +1,19 @@
+{
+  "course": "MCM310",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review",
+      "reviewText": "Mostly MCQs handouts say thy kuch files say thy\nShort question \nWhat is topic sentence \nTypes of good reading style \nBaki yaad nahi \nLong question \nUses of comma\nSequence signal words or \nIs ki example \nEditorial writing explain karna tha",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Topic Sentence",
+        "Reading Styles",
+        "Uses of Comma",
+        "Sequence Signal Words",
+        "Editorial Writing"
+      ]
+    }
+  ]
+}
