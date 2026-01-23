@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Abu Bakar",
+    "role": "App Developer",
+    "points": 1500
+  },
+  {
+    "name": "Ali Raza",
+    "role": "Content Creator",
+    "points": 1200
+  },
+  {
+    "name": "Sara Khan",
+    "role": "CS101 Helper",
+    "points": 950
+  },
+  {
+    "name": "Usman Ahmed",
+    "role": "Reviewer",
+    "points": 800
+  },
+  {
+    "name": "Zainab Bibi",
+    "role": "Student",
+    "points": 500
+  }
+]
