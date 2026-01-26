@@ -1,0 +1,20 @@
+{
+  "course": "ENG523",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "MCQs from Maha Malik files.\nShort Questions:\n1. Discursive psychology\n2. Substitution and ellipsis\n3. Define phonemes. How words are constructed through it.\n4. Contrived data\n\nLong Questions:\n1. What is discourse analysis?\n2. What are the implications of discourse analysis?\n3. Relationship between beats and rhythm.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Discursive Psychology",
+        "Substitution & Ellipsis",
+        "Phonemes & Word Construction",
+        "Contrived Data",
+        "Discourse Analysis (Definition & Implications)",
+        "Beats & Rhythm Relationship"
+      ]
+    }
+  ]
+}
