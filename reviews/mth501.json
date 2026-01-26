@@ -1,0 +1,21 @@
+{
+  "course": "MTH501",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "MCQs mostly from files.\nSubjective:\n1. Change of coordinates matrix (B to C).\n2. IVP problem: Given values, solve x(t) = Ax.\n3. Basis problem: Given x values, find v values.\n4. Check if set is orthogonal.\n5. Find P matrix for A = PDP⁻¹.\n6. Casorati matrix (Check independence).\n7. Separate u, v, w vectors from equations.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Change of Coordinates Matrix",
+        "Initial Value Problem (IVP)",
+        "Basis Calculation",
+        "Orthogonal Sets",
+        "Diagonalization (A = PDP⁻¹)",
+        "Casorati Matrix",
+        "Vector Separation"
+      ]
+    }
+  ]
+}
