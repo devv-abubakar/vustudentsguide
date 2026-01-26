@@ -3,6 +3,20 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "MCQs mostly from files and handouts.\nShort Questions:\n1. Three types of SAGs.\n2. Which analysis is authentic: Auditory or Acoustic?\n3. Fill in the blanks.\nLong Questions:\n1. Difference between Positive VOT and Negative VOT.\n2. Fill in the blanks (Research topics).\n3. Intonation.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "SAGs Types",
+        "Auditory vs Acoustic Analysis",
+        "VOT (Voice Onset Time)",
+        "Intonation",
+        "Research Topics"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Paper Review",
       "reviewText": "Kuch mcqs mam  maha Malik  ki files Sy ty Baki mcqs ka batati ho \n\nShort\n1. vot ki types\n2.feature hierarchy k four features ty\n3.IPA k 5 symbols \n\nAb aty ha long py or Kuch mcsq py \nV imp \n IPA \nSpectrogram \nPraat\nPerturbation theory\n\nIn 4 topics ki mny sirf  def ki ti Lekin in 4 topics ma Sy fill in the blanks ay ti",
