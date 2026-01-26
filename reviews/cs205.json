@@ -4,6 +4,18 @@
         {
       "examType": "Final Term",
       "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 11:40 AM)",
+      "reviewText": "MCQs ISO 27001:2013 clauses aur CIS controls mein se thay.\nSubjective ke liye Qasim ki file kar lein, us mein se tables diye huay thay aur correct option match karna tha.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "ISO 27001:2013 Clauses",
+        "CIS Controls",
+        "Table Matching Questions"
+      ]
+    },
+        {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
       "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
       "reviewText": "Long Questions:\n- Patch management statements (True/False).\n- Table given (Fundamentals, Foundation, Hardened, Protected, Monitored) - identify layers.\n- Web browser and email clients selection (Fully supported, Latest version, Microsoft browser, Open source).\n- Capability Maturity Model (CMM) for enhancing software development.\nShort Questions:\n- IT assets scan tools (select from list).\n- Security testing types names.\nMCQs: Conceptual. CIS control 9 se 2-3 MCQs, ISO 27001:2013 Clause 5 and 7.",
       "topicsHeading": "Exam Questions",
