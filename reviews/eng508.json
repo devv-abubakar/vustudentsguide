@@ -4,8 +4,23 @@
     {
       "examType": "Final Term",
       "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "MCQs half from files, half from handouts.\nShort Questions:\n- Define Tautology.\n- Conventional implicature.\n- Correct presupposition (Fill in blanks).\nLong Questions:\n- Conversational implicature properties.\n- Long distance variables names.\n- 'Dos' and 'Don't' keys for collecting data.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Tautology",
+        "Conventional Implicature",
+        "Presupposition",
+        "Conversational Implicature Properties",
+        "Long Distance Variables",
+        "Data Collection Guidelines"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
       "reviewHeading": "Paper Review (4:30)",
-      "reviewText": "Deixis\nClerk theory \nHow computer help in linguistics \nMetaphor irony and hyperbole \nOne pragraph and ask which lexical properties use",
+      "reviewText": "Deixis\nClerk theory \nHow computers help in linguistics \nMetaphor, irony and hyperbole \nOne paragraph and ask which lexical properties use",
       "topicsHeading": "Exam Questions",
       "topicsList": [
         "Deixis",
