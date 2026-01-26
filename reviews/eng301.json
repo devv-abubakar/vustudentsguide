@@ -4,6 +4,20 @@
     {
       "examType": "Final Term",
       "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "Short Questions:\n- True/False (Letters).\n- Memo types (Informational, Analyst).\n- Short definition.\nLong Questions:\n- How to write an abstract of thesis.\n- Five points of Application letter.\n- True/False.\n- How to impress your reader (Resume).",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Memo Types",
+        "Thesis Abstract",
+        "Application Letter",
+        "Resume Writing",
+        "True/False Concepts"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
       "reviewHeading": "Paper Review (10:00am)",
       "reviewText": "Thesis unit question (3 marks). Letter blanks (3 marks) - identifying reader/customer/writer roles. Negotiation blanks (3 marks). Application letter 3 guidelines (3 marks). Persuasive request 3 appeals names (3 marks). Define 'agreement' in context of Indirect organizational plan (5 marks). Minutes of meetings True/False (5 marks). MCQs: Committee definition, Agenda definition, Negotiation strategies (Win-lose, Lose-win, Win-win).",
       "topicsHeading": "Exam Questions",
