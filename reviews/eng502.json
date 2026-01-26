@@ -2,6 +2,21 @@
     "course": "ENG502",
     "reviews": [
         {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "Long Questions:\n1. 'An old man bought a shotgun to the wedding' - convert into word level.\n2. Assumption of acquisition.\n3. Explain critical period.\nShort Questions:\n1. Particle movement.\n2. Age of child in babbling, one word stage, two words stage.\n3. The origin of Discourse analysis by Harris.\nMCQs: From handouts, not past files.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Word Level Conversion",
+        "Acquisition Assumption",
+        "Critical Period",
+        "Particle Movement",
+        "Child Language Stages (Babbling, One/Two word)",
+        "Discourse Analysis Origin (Harris)"
+      ]
+    },
+        {
             "examType": "Final Term",
             "difficulty": "Easy",
             "reviewHeading": "Paper Review (7:45am)",
