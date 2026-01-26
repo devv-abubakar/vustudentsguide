@@ -3,6 +3,18 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Hard",
+      "reviewHeading": "Paper Review (26 January 2026)",
+      "reviewText": "Paper was very logical and conceptual. It felt like a PhD level economics paper. Examples were confusing.",
+      "topicsHeading": "Preparation Tips",
+      "topicsList": [
+        "Logical Concepts",
+        "Conceptual Understanding",
+        "Deep Study Required"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Review",
       "reviewText": "Paper 31 July 10:00 AM ko tha. MCQs zyada tar Eco401 final term past paper solved video (Title: 'Eco401 final term past paper solved mcqs 2023 to 2025||eco 401 most important mcqs for spring 2025 final term exams', Channel: 'Educational Tips') se aaye (2023–2025) aur kuch formulas aur conceptually muskil MCQs bhi poochay gaye. Price discrimination se 4 MCQs aaye.",
