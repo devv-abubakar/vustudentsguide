@@ -2,6 +2,21 @@
     "course": "CS504",
     "reviews": [
         {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 11:40 AM)",
+      "reviewText": "MCQs were mostly from handouts and a few from files.\nShort Questions:\n1. Alternatives of 'is' prefix (any three).\n2. Users of Process (Concurrency) View of Krutchen's architectural model.\n3. Rewrite `int factorial;` according to ANSI C standard.\n4. Identify correct/incorrect statement: 'In telecommunications industry, loss of service is known as a lack of service'.\nLong Questions:\n1. Four client-server model architectural configurations.\n2. Find infeasible path and draw flow graph from given code (Handouts Page 206).\n3. Portable code standards/guidelines (ANSI/ISO C++, STL etc).",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Prefix Alternatives",
+        "Krutchen's Architectural Model",
+        "ANSI C Standard",
+        "Client-Server Configurations",
+        "Flow Graph & Infeasible Path",
+        "Portable Code Standards"
+      ]
+    },
+        {
             "examType": "Final Term",
             "difficulty": "Moderate",
             "reviewHeading": "Important Topics",
