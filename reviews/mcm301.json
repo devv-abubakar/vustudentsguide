@@ -3,6 +3,20 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "Question/Answer: Guideline of verbal communication, Elements And guideline of writing effective business letter, Direct communication, Logical appeal and emotional appeal difference, Types of seating arrangement.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Verbal Communication Guidelines",
+        "Business Letter Elements",
+        "Direct Communication",
+        "Logical vs Emotional Appeal",
+        "Seating Arrangement Types"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Medium",
       "reviewHeading": "Review",
       "reviewText": "MCQs Waqar file aur handouts se thay. Resume writing, letter of congratulations, direct method aur effective writing se questions aaye.",
