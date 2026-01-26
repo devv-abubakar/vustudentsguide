@@ -2,6 +2,21 @@
     "course": "CS202",
     "reviews": [
         {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "MCQs: Handouts + preparation videos. XML and CSS3 topics included.\nShort Questions:\n1. Syntax of do-while loop.\n2. Syntax of JQuery.\n3. Traversing DOM in JQuery (Traversing Up - Short).\n4. Transparency at 50% code.\nLong Questions:\n1. Canvas properties and methods (Scenario based).\n2. Traversing sideways (<li> scenario, JQuery code).\n3. JQuery traversing topics (Up, Down, Sideways) are very important.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Do-While Loop Syntax",
+        "JQuery Syntax",
+        "DOM Traversing (Up, Down, Sideways)",
+        "Transparency Code (CSS)",
+        "Canvas Properties & Methods",
+        "XML & CSS3 Topics"
+      ]
+    },
+        {
             "examType": "Final Term",
             "difficulty": "Moderate",
             "reviewHeading": "Important Topics",
