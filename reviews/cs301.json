@@ -3,6 +3,40 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "MCQs zyada tar theorems, AVL trees, stack, queue aur levels wale thay.\nShort Questions:\n1. AVL tree hai ya nahi (3 scenarios).\n2. Output finding function (parameter 19 pass kiya hua tha).\n3. Array sort karna tha Bubble Sort se.\n4. Min Heap banana tha (array pehle se sorted thi).\n\nLong Questions:\n1. AVL tree banana tha (double right shift se balance ho gaya tha, -1 property fulfill ho rahi thi).\n2. Stack given tha, values sort kar ke heap banana tha aur indexing karni thi.\n3. Values given thin, unhein conditions ke hisab se complete binary tree mein change karna tha, phir expression tree create karna tha.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "AVL Tree (Identification & Construction)",
+        "Stack & Queue",
+        "Bubble Sort",
+        "Min Heap & Max Heap",
+        "Output Finding (Function)",
+        "Complete Binary Tree",
+        "Expression Tree",
+        "Theorems",
+        "Hash Table & Function",
+        "Huffman Coding"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review 2 (26 January 2026, 8:00 AM)",
+      "reviewText": "Min Heap, Max Heap, AVL Tree, Hash Table, Hash Function, Huffman Coding (characters given in tree, find bits). World of education ki final prep video se kafi cheezain ayi thin.",
+      "topicsHeading": "Topics Covered",
+      "topicsList": [
+        "Min Heap",
+        "Max Heap",
+        "AVL Tree",
+        "Hash Table",
+        "Hash Function",
+        "Huffman Coding"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Medium",
       "reviewHeading": "Review",
       "reviewText": "Sorting algorithms, heap (min/max), parent child relations aur union diagram se questions aaye. MCQs Moaz file se thay aur Huffman coding ka bhi question tha.",
