@@ -2,6 +2,21 @@
     "course": "CS615",
     "reviews": [
         {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "Short Questions:\n1. Software review technique practiced across software organization.\n2. Processing line.\n3. Three possibilities of risk mitigation.\nLong Questions:\n1. Tools and techniques used for team development.\n2. Tasks of moderator and recorder.\n3. Risk components.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Software Review Techniques",
+        "Processing Line",
+        "Risk Mitigation",
+        "Team Development Tools",
+        "Moderator & Recorder Tasks",
+        "Risk Components"
+      ]
+    },
+        {
             "examType": "Final Term",
             "difficulty": "Moderate",
             "reviewHeading": "Paper Review",
