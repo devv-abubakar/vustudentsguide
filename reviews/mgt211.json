@@ -2,6 +2,17 @@
     "course": "MGT211",
     "reviews": [
         {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "MCQs mostly from Theme 7, 8, 10, 11, 12. Some from Theme 9 and 13.",
+      "topicsHeading": "Topics Covered",
+      "topicsList": [
+        "Themes 7, 8, 10, 11, 12 (Major)",
+        "Themes 9, 13 (Minor)"
+      ]
+    },
+        {
             "examType": "Final Term",
             "difficulty": "Moderate",
             "reviewHeading": "Paper Review (8:00 am)",
