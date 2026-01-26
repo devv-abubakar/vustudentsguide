@@ -1,0 +1,17 @@
+{
+  "course": "MGT613",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "All MCQs were from handouts and VU Nexus videos.\nTopics:\n- Team hiring (Top management approach).\n- Ethics in Quality.\n- Annual ordering cost derivation.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Top Management Approach (Hiring)",
+        "Quality Ethics",
+        "Annual Ordering Cost Derivation"
+      ]
+    }
+  ]
+}
