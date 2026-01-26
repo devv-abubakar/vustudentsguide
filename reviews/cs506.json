@@ -2,6 +2,20 @@
     "course": "CS506",
     "reviews": [
         {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "Short Questions:\n1. Servlet lifecycle 3 points.\n2. Simple tag, tag with attributes, tag with body.\n3. Core building blocks of web service architecture.\n4. Program.\nLong Questions:\n1. Two programming questions.\n2. Layer by layer view (Table form).",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Servlet Lifecycle",
+        "JSP Tags",
+        "Web Service Architecture",
+        "Layered Architecture",
+        "Programming Questions"
+      ]
+    },
+        {
             "examType": "Final Term",
             "difficulty": "Moderate",
             "reviewHeading": "Important Topics",
