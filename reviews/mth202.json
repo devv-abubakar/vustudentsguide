@@ -2,6 +2,18 @@
     "course": "MTH202",
     "reviews": [
         {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "Mostly MCQs Kinza Bilal ke past papers se aye thay. Subject thora conceptual tha. Ek question graph mein se aya, ek question recurring mein se, aur MCQs bhi zyada tar graph waly chapter (last walay chapters) se thay.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Graphs (MCQs & Subjective)",
+        "Recurring Relations",
+        "Kinza Bilal Past Papers"
+      ]
+    },
+        {
             "examType": "Final Term",
             "difficulty": "Moderate",
             "reviewHeading": "Paper Review (8:00am)",
