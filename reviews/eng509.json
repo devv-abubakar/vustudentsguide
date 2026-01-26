@@ -1,0 +1,18 @@
+{
+  "course": "ENG509",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "95% from files. Subjective mostly from Sir Zahid's file.\nQuestions:\n1. Identify passive voice and active voice.\n2. Write two questions of WH and Yes/No.\n3. Function words.\n4. Role of X in X-bar theory.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Active vs Passive Voice",
+        "WH and Yes/No Questions",
+        "Function Words",
+        "X-bar Theory"
+      ]
+    }
+  ]
+}
