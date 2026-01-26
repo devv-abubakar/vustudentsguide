@@ -1,0 +1,22 @@
+{
+  "course": "PSY101",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "Paper contained 80 MCQs. Topics included:\n- Classical and Operant Conditioning (Many MCQs).\n- Memory Disorders.\n- Theories of Emotions (Identify psychologist).\n- Psychodynamic Approach (5-6 MCQs).\n- Psychological Tests (7-8 MCQs).\n- Identify IQ from statement.\n- Psychotherapy (2-4 MCQs).\n- Branches of Psychology (Last chapters).",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Classical & Operant Conditioning",
+        "Memory Disorders",
+        "Theories of Emotions",
+        "Psychodynamic Approach",
+        "Psychological Tests",
+        "IQ Identification",
+        "Psychotherapy",
+        "Branches of Psychology"
+      ]
+    }
+  ]
+}
