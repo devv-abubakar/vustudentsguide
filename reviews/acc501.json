@@ -2,6 +2,21 @@
     "course": "ACC501",
     "reviews": [
         {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "MCQs were from YouTube videos (VU Nexus, Key to Success). Accounting return ke questions thay, ABC company batani thi. MCQs were easy, basic formulas aur increase decrease waly fill in the blanks thay.\nSubjective: PI aur WACC type questions (assets, liabilities, inventory cost). Scenarios thay, PI value nikalni thi aur solutions with formulas aur working mangay huay thay.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Accounting Return",
+        "ABC Company Scenarios",
+        "PI (Profitability Index) Calculation",
+        "WACC (Weighted Average Cost of Capital)",
+        "Assets, Liabilities, Inventory Cost",
+        "Increase/Decrease Concepts"
+      ]
+    },
+        {
             "examType": "Final Term",
             "difficulty": "Hard",
             "reviewHeading": "Paper Review",
