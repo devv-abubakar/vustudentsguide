@@ -2,6 +2,19 @@
     "course": "ENG201",
     "reviews": [
         {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "Paper was very easy, mostly from Handouts.\nShort Questions:\n- Fill in the blanks.\n- True/False.\n- Visual Aid question.\n- Wordy vs Concise words identification.\nLong Questions:\n- Fill in the blanks.\n- True/False.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Visual Aids",
+        "Conciseness (Wordy vs Concise)",
+        "True/False Concepts",
+        "Fill in the Blanks"
+      ]
+    },
+        {
             "examType": "Final Term",
             "difficulty": "Easy",
             "reviewHeading": "Paper Review (MCQs & Subjective)",
