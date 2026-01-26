@@ -4,12 +4,26 @@
         {
       "examType": "Final Term",
       "difficulty": "Easy",
+      "reviewHeading": "Paper Review (26 January 2026, 11:40 AM)",
+      "reviewText": "Paper was very easy, mostly from the last chapters 35 to 42.\nShort Questions:\n- Fill in the blanks (2 questions).\n- Very easy questions.\nLong Questions:\n- Mostly True/False.\n- How to make your question-answer session effective in a presentation? (5 marks).",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Chapters 35-42",
+        "Effective Question-Answer Session",
+        "Presentation Skills",
+        "True/False Concepts",
+        "Fill in the Blanks"
+      ]
+    },
+        {
+      "examType": "Final Term",
+      "difficulty": "Easy",
       "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
       "reviewText": "Paper was very easy, mostly from Handouts.\nShort Questions:\n- Fill in the blanks.\n- True/False.\n- Visual Aid question.\n- Wordy vs Concise words identification.\nLong Questions:\n- Fill in the blanks.\n- True/False.",
       "topicsHeading": "Exam Questions",
       "topicsList": [
         "Visual Aids",
-        "Conciseness (Wordy vs Concise)",
+        "Concise (Wordy vs Concise)",
         "True/False Concepts",
         "Fill in the Blanks"
       ]
