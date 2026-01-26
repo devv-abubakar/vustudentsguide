@@ -3,6 +3,23 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "Paper was 50/50 Handouts and Concepts.\nTopics:\n- Mitosis & Meiosis (5-6 MCQs).\n- Scenarios ('What if', 'Cause and effect').\n- PCR (2-3 MCQs).\n- Ecosystem (Carnivore, Omnivore, Producer, Desert habitat).\n- Phylum types.\n- Anatomy: Heart, Colon, Lungs placement, Nephron, Cytoplasm.\n- Microscope oil usage.\n- Immunity (Innate & Adaptive).\n- Bacteriophages.\n- Blotting.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Mitosis & Meiosis",
+        "PCR & Blotting",
+        "Ecosystem & Habitat",
+        "Human Anatomy (Heart, Lungs, Colon, Nephron)",
+        "Immunity Types",
+        "Microscopy",
+        "Bacteriophages",
+        "Phylum Types"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Easy",
       "reviewHeading": "Review",
       "reviewText": "Paper easy tha. Mid se kam aur final lessons se zyada questions aaye. 2-3 MCQs insight quiz videos se thay, baqi zyada tar handouts se aaye.",
