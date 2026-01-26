@@ -1,0 +1,20 @@
+{
+  "course": "CS505",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 2:00 PM)",
+      "reviewText": "MCQs mostly from YouTube video (check answers). \nShort Questions:\n1. Name 3 aspects of network architecture.\n2. What is vMotion in Hyper-V?\n3. How containers are faster to boot than VM? Give reasons.\nLong Questions:\n1. Enlist 5 uses of virtual machine.\n2. Table given: Differentiate Containerization and Virtualization.\n3. How ESXi is different from VMware Workstation.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Network Architecture Aspects",
+        "vMotion in Hyper-V",
+        "Containers vs VM Boot Speed",
+        "Uses of Virtual Machine",
+        "Containerization vs Virtualization",
+        "ESXi vs VMware Workstation"
+      ]
+    }
+  ]
+}
