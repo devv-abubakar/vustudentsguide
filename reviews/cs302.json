@@ -2,6 +2,21 @@
     "course": "CS302",
     "reviews": [
         {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "MCQs: Asynchronous/Synchronous counters, Flip flops.\nShort Questions:\n1. Draw 4 bit base address decoder.\n2. Difference between GAL fixed OR array and programmed AND gate array.\nLong Questions:\n1. Draw D latch circuit diagram.\n2. Draw Bi-directional 4 bit diagram from serial in/ right shift register.\n3. True/False statements.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Asynchronous/Synchronous Counters",
+        "Flip Flops",
+        "Address Decoder",
+        "GAL Arrays",
+        "D Latch Circuit",
+        "Shift Registers (Bi-directional)"
+      ]
+    },
+        {
             "examType": "Final Term",
             "difficulty": "Moderate",
             "reviewHeading": "Paper Review (11:30, 27/1/25)",
