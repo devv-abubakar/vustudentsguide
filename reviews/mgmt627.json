@@ -1,0 +1,23 @@
+{
+  "course": "MGMT627",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "Quality Management portion asaan tha, Data Analysis se bhi kafi paper tha.\nLong Questions:\n1. Work Breakdown Structure (WBS).\n2. Cause & Effect.\n3. Difference between Corporate Project and another project.\nShort Questions:\n1. PERT.\n2. Crash time.\n3. Software packages.\n4. How good communication skills help a manager.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Work Breakdown Structure (WBS)",
+        "Cause & Effect",
+        "Project Types Comparison",
+        "PERT",
+        "Crash Time",
+        "Software Packages",
+        "Communication Skills",
+        "Quality Management",
+        "Data Analysis"
+      ]
+    }
+  ]
+}
