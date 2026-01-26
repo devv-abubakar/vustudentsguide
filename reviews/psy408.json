@@ -1,0 +1,24 @@
+{
+  "course": "PSY408",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "MCQs from handouts.\nShort Questions:\n- Psychosocial aspect of Stroke.\n- Dealing with stroke patients.\n- Types of lipoprotein.\n- Why do kids copy bad behaviour compared to good?\n- Reinforcement help in inducing health related behaviour.\n- Cognitive methods for treating pain.\n- Symptoms of heart disease.\n- Obesity risk factors.\n- Role of stress on psychophysiology.\n\nLong Questions:\n- How families and patients cope with terminal illness.\n- Coping strategies.\n- Chronic disease types.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Stroke (Psychosocial Aspects & Patient Care)",
+        "Lipoproteins",
+        "Behavioral Modeling (Kids)",
+        "Reinforcement in Health",
+        "Pain Treatment (Cognitive Methods)",
+        "Heart Disease Symptoms",
+        "Obesity Risk Factors",
+        "Stress & Psychophysiology",
+        "Terminal Illness Coping",
+        "Chronic Disease Types"
+      ]
+    }
+  ]
+}
