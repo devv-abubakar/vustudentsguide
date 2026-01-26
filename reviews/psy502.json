@@ -1,0 +1,22 @@
+{
+  "course": "PSY502",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "Short/Long Questions:\n- Enlist three factors described by Wertheimer in perception of patterns.\n- What is consumer psychology?\n- What is biological approach? Enlist two methods.\n- Contributions of Philippe Pinel towards mental illness.\n- Ten neurotic needs and three neurotic trends (Who gave this concept?).\n- What is Anima? Who gave this concept?\n- What is positive and negative reinforcement?\nMCQs: Psychologists' contributions, Books authors, Meanings of prominent words. Handouts reading is key.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Wertheimer Factors (Perception)",
+        "Consumer Psychology",
+        "Biological Approach Methods",
+        "Philippe Pinel Contributions",
+        "Neurotic Needs & Trends",
+        "Anima Concept",
+        "Positive & Negative Reinforcement",
+        "Psychologists Contributions"
+      ]
+    }
+  ]
+}
