@@ -2,6 +2,21 @@
     "course": "EDU406",
     "reviews": [
         {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "MCQs: Handouts and files both.\nShort Questions:\n- Teacher as a life long learner.\n- Grounded theory stages.\n- Self regulation.\nLong Questions:\n- Inter professional learning.\n- Benefits of higher order thinking.\n- Technology use in reflective practice.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Lifelong Learning",
+        "Grounded Theory",
+        "Self Regulation",
+        "Inter-professional Learning",
+        "Higher Order Thinking",
+        "Reflective Practice Technology"
+      ]
+    },
+        {
             "examType": "Final Term",
             "difficulty": "Moderate",
             "reviewHeading": "Paper Review (27th Jan)",
