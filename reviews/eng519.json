@@ -1,0 +1,28 @@
+{
+  "course": "ENG519",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 11:40 AM)",
+      "reviewText": "MCQs: 22 from Maha Malik files + others from Handouts.\nShort Questions:\n1. Kerr's model objectives groups.\n2. Requirements of Negotiated syllabus.\n3. Three strategies of interactive language teaching through internet.\n4. 'Accountability' conducted language program.\n5. When a hidden curriculum developed?\n6. Two dimensions of evaluation.\n7. Real content in content material (5 points).\n8. Name change dimensions.\n9. Label question from content material topic.\n10. Learning outcomes questions.\nLong Questions:\n1. Brown (1995) five parts of performance objective.\n2. Six scales for describing change in course design (Stoller) - write five.\n3. Breen and Little John (2000) major factor effect feedback of assignment.\n4. Subject-centered design statement.\n5. Program evaluation statement.\n6. Enlist 5 components of inner circle.\n7. Mastery testing help for teacher.\n8. Linguists rejecting opportunistic approach.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Kerr's Model",
+        "Negotiated Syllabus",
+        "Interactive Language Teaching",
+        "Accountability",
+        "Hidden Curriculum",
+        "Evaluation Dimensions",
+        "Content Material",
+        "Performance Objectives (Brown)",
+        "Course Design Scales (Stoller)",
+        "Feedback Factors (Breen & Little John)",
+        "Subject-centered Design",
+        "Inner Circle Components",
+        "Mastery Testing",
+        "Opportunistic Approach"
+      ]
+    }
+  ]
+}
