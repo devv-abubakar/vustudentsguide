@@ -4,6 +4,17 @@
     {
       "examType": "Final Term",
       "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "MCQs mostly from files (VU topper, Junaid, Moaz). Practical MCQs from YouTube channel 'Study Track'. Subjective portion was not good/relevant.",
+      "topicsHeading": "Preparation Source",
+      "topicsList": [
+        "Past Files",
+        "YouTube (Study Track)"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
       "reviewHeading": "Review",
       "reviewText": "MCQs all files or handouts se aaye. Subjective: Assembly language ke programs aur keyboard ESC clear screen print all zero on DOS. Preparation videos suggested coding part nahi aata lekin paper fully coding based tha.",
       "topicsHeading": "Topics",
