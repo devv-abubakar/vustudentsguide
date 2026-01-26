@@ -4,6 +4,19 @@
     {
       "examType": "Final Term",
       "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "Overloading ke related 4 se 6 MCQs thay. Ek question switch statement se tha (salary lo user se, deduction batao aur total). Do questions ke output batane thay aur ek mein error find karna tha.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Overloading",
+        "Switch Statement (Salary Calculation)",
+        "Output Finding",
+        "Error Finding"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
       "reviewHeading": "Review",
       "reviewText": "Paper 8 Aug 12 PM ko tha. MCQs zyada tar handouts se aaye, files se sirf 5 ya 6 percent thay. Output operator overloading aur logical operations se related questions thay. For loop ka output poocha gaya, public aur private class ka question tha. setfill aur setw se related output bhi aayi jaisa ke cout<<setfill(\"*\")<<setw(10)<<750;.",
       "topicsHeading": "Topics",
