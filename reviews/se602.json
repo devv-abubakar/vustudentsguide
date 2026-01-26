@@ -1,1 +1,22 @@
-
+{
+  "course": "SE602",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "Paper was damn easy. All MCQs from slides.\nSubjective Questions:\n1. Three strategies specifying basic steps of re-engineering.\n2. Two key objectives of reverse engineering.\n3. What is 'Technical debt'?\n4. Two problems with refactoring.\n5. Primary objectives of breaking down application into modules/services.\n6. Five basic approaches to re-engineering software systems.\n7. Benefits of Enterprise Architecture (at least four).\n8. Two hats of Kent.\n9. Define software re-architecting with example.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Re-engineering Strategies & Approaches",
+        "Reverse Engineering Objectives",
+        "Technical Debt",
+        "Refactoring Problems",
+        "Application Breakdown Objectives",
+        "Enterprise Architecture Benefits",
+        "Two Hats of Kent",
+        "Software Re-architecting"
+      ]
+    }
+  ]
+}
