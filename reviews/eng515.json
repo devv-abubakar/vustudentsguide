@@ -2,6 +2,22 @@
     "course": "ENG515",
     "reviews": [
         {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "Paper overall easy tha. MCQs files aur handouts dono se aye thay.\nShort Questions:\n1. Write 4 ways to measure Cloze Test.\n2. Correct 3 given sentences.\n3. Importance of praise for improvement of students.\n4. Write 3 sentences using the word 'however'.\nLong Questions:\n1. 5 points to enhance argumentation skills of students.\n2. What is peer feedback?\n3. 'All writings are ideology' - Elaborate this statement.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Cloze Test Measurement",
+        "Sentence Correction",
+        "Importance of Praise",
+        "Usage of 'However'",
+        "Argumentation Skills",
+        "Peer Feedback",
+        "Writing Ideology"
+      ]
+    },
+        {
             "examType": "Final Term",
             "difficulty": "Moderate",
             "reviewHeading": "Paper Review (8:00 AM, 31/07/2025)",
