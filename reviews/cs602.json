@@ -1,0 +1,17 @@
+{
+  "course": "CS602",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Hard",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "Paper was very difficult and conceptual. Past files were not helpful. Questions were tricky and required deep understanding of handouts and lectures. Topics covered went beyond basic lecture content.",
+      "topicsHeading": "Preparation Tips",
+      "topicsList": [
+        "Deep Conceptual Understanding",
+        "Handouts & Lectures",
+        "Avoid Past Files"
+      ]
+    }
+  ]
+}
