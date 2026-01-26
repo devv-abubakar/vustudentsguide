@@ -3,6 +3,18 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Hard",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "MCQs all from preparation videos and 147 page wali file. Subjective ajeeb tha, all from last 5 lectures. Subjective tab tak clear nahi hoga jab tak proper lecture na liye hon.",
+      "topicsHeading": "Preparation Source",
+      "topicsList": [
+        "Preparation Videos",
+        "147 Page File",
+        "Last 5 Lectures (Subjective)"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Easy",
       "reviewHeading": "Review",
       "reviewText": "Objective MCQs zyada tar Skill for Study ki video se aaye. Subjective tamam practice questions se tha. Minimization, maximization, graphical method aur simplex method se questions thay. Total cost, average cost aur capital cost find karni thi. Table se next iteration find karni thi. Overall sara paper practice questions se aaya.",
