@@ -1,0 +1,21 @@
+{
+  "course": "CS625",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "MCQs from handouts.\nShort Questions:\n1. List types of password attacks.\n2. Name 3 rights given by copyright laws.\n3. Write 3 main components of risk management.\n4. Scenario: Name types of unauthorized activities.\nLong Questions:\n1. Consequence of ambiguous contract with example.\n2. List five common social networking sites.\n3. Scenario: Name types of fraud.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Password Attacks",
+        "Copyright Laws Rights",
+        "Risk Management Components",
+        "Unauthorized Activities",
+        "Ambiguous Contracts",
+        "Social Networking Sites",
+        "Fraud Types"
+      ]
+    }
+  ]
+}
