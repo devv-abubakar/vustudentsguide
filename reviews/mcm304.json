@@ -4,6 +4,21 @@
     {
       "examType": "Final Term",
       "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "MCQs from handouts, mostly dates.\nQuestions:\n- Define development communication.\n- Era of Radio Pakistan.\n- 5 PEMRA license features.\n- Two definitions of culture.\n- Role of news on radio after partition.\n- Define couch potato syndrome.\n- Contribution of Michael Dertouzos' book 'What will be' in IT.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Development Communication",
+        "Radio Pakistan History",
+        "PEMRA License Features",
+        "Culture Definitions",
+        "Couch Potato Syndrome",
+        "Michael Dertouzos Contribution"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
       "reviewHeading": "Review",
       "reviewText": "Final term current paper #1. Questions: Reason for publishing Hamood Ur Rahman commission report after 34 years, Tape recorder uses, Trade policy Pakistan-India film industry, Computer role in mass communication, Difference between Mass & Public, Development in Television post-1960, Evolution of films in Subcontinent, Chip & computer functions.",
       "topicsHeading": "Topics",
