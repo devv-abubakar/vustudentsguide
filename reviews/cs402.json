@@ -2,6 +2,19 @@
     "course": "CS402",
     "reviews": [
         {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "MCQs mostly from Smart Workzone YT channel. TG, FA Graphs, and transition table ready karein. Most important: CFG.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "TG (Transition Graphs)",
+        "FA (Finite Automata) Graphs",
+        "Transition Table",
+        "CFG (Context Free Grammar)"
+      ]
+    },
+        {
             "examType": "Final Term",
             "difficulty": "Moderate",
             "reviewHeading": "Most Important Topics",
