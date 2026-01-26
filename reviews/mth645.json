@@ -1,0 +1,20 @@
+{
+  "course": "MTH645",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026)",
+      "reviewText": "MCQs were conceptual but easy, mixed from files and handouts.\nShort Questions:\n1. Find A Union B in PFSs.\n2. Define strict t-norm with example.\n3. Find value of 1 implies 1 according to R implication.\n4. Normalized Euclidean distance.\nLong Questions:\n1. Find distance through max-min operation.\n2. PFSs: A subset B, A Union B, A Intersection B.\n3. If Δ is strictly monotone then it has only trivial idempotent element.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "PFSs (Union, Intersection, Subset)",
+        "Strict t-norm",
+        "R Implication",
+        "Normalized Euclidean Distance",
+        "Max-Min Operation",
+        "Monotone & Idempotent Element"
+      ]
+    }
+  ]
+}
