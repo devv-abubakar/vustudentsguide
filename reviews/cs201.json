@@ -3,6 +3,17 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "Sare lectures mein se jitne bhi programs hain sare parh kar jana. Sare programs ke output find karne thay long mein bhi aur short mein bhi. Ek bhi program ka output na chorna.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Program Outputs (All Lectures)",
+        "Coding Questions"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Easy",
       "reviewHeading": "Review",
       "reviewText": "Paper Alhamdulillah bohat acha aur easy tha. Ziada tar MCQs World of Education ki final term preparation videos aur current quizzes se repeat hue. Short questions mein 2 errors find kar ke correct likhna tha, aik question tha ke agar free operator deallocate karte waqt fail ho jaye to kis situation mein hoga. Long mein matrix wala question tha jisme user se values le kar matrix print karni thi jo Khaliq Mirza ki videos 42 aur 43 mein sikhaya gaya hai. Ek aur long question tellg(), tellp(), seekg(), seekp() ke kaam se related tha aur modulus operator ki output bhi poochi gai. Overall paper bohat easy tha.",
