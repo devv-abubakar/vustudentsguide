@@ -1,0 +1,21 @@
+{
+  "course": "PSY404",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "MCQs mostly from Haalim Study Insight quiz videos.\nShort Questions:\n1. Difference between REM and NREM sleep.\n2. Difference between Sexual Sadism and Sexual Masochism.\n3. Define Adjustment Disorder.\n4. Cannabis related disorder.\nLong Questions:\n1. Diagnostic criteria for Delirium.\n2. Unspecified Obsessive Compulsive Disorder (OCD).\n3. Two causes for Oppositional Defiant Disorder.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "REM vs NREM Sleep",
+        "Sexual Sadism vs Masochism",
+        "Adjustment Disorder",
+        "Cannabis Related Disorder",
+        "Delirium Diagnostic Criteria",
+        "Unspecified OCD",
+        "Oppositional Defiant Disorder"
+      ]
+    }
+  ]
+}
