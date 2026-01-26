@@ -1,0 +1,18 @@
+{
+  "course": "MGT301",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "Paper confusing aur conceptual tha, majority scenario-based tha. Kuch students ke liye easy bhi tha jo VU Topper files aur handouts parh kar gaye thay.\nAdvice: System issues ki wajah se time management zaroori hai.",
+      "topicsHeading": "Preparation Tips",
+      "topicsList": [
+        "Scenario-based Questions",
+        "Conceptual Understanding",
+        "VU Topper Files",
+        "Handouts"
+      ]
+    }
+  ]
+}
