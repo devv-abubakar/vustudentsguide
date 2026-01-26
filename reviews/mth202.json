@@ -5,6 +5,21 @@
       "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "MCQs mostly from handouts (examples, remarks, graphs). Some from files.\nQuestions:\n- Find sum of series -9,-6,3,0,...\n- Matrix multiplication AB.\n- K-combination question.\n- Mathematical induction: 1+2+3...n = n(n+1)/2.\n- Graph questions (Isomorphism, Pre/Post condition of algorithm).",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Arithmetic Series Sum",
+        "Matrix Multiplication",
+        "K-Combinations",
+        "Mathematical Induction",
+        "Graphs (Isomorphism)",
+        "Algorithm Pre/Post Conditions"
+      ]
+    },
+        {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
       "reviewText": "Mostly MCQs Kinza Bilal ke past papers se aye thay. Subject thora conceptual tha. Ek question graph mein se aya, ek question recurring mein se, aur MCQs bhi zyada tar graph waly chapter (last walay chapters) se thay.",
       "topicsHeading": "Exam Questions",
       "topicsList": [
