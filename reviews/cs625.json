@@ -5,6 +5,22 @@
       "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "MCQs mostly from handouts.\nShort Questions:\n1. CIA information security principles.\n2. Types of software contract.\n3. Scenario based: Regulatory process.\n4. Information not to share on social media.\nLong Questions:\n1. Factors affecting system security.\n2. Categories of computer fraud.\n3. Five common social network sites.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "CIA Principles",
+        "Software Contracts",
+        "Regulatory Process",
+        "Social Media Security",
+        "System Security Factors",
+        "Computer Fraud Categories",
+        "Social Network Sites"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
       "reviewText": "MCQs from handouts.\nShort Questions:\n1. List types of password attacks.\n2. Name 3 rights given by copyright laws.\n3. Write 3 main components of risk management.\n4. Scenario: Name types of unauthorized activities.\nLong Questions:\n1. Consequence of ambiguous contract with example.\n2. List five common social networking sites.\n3. Scenario: Name types of fraud.",
       "topicsHeading": "Exam Questions",
       "topicsList": [
