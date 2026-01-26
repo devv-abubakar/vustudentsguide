@@ -3,6 +3,22 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (26 January 2026, 2:00 PM)",
+      "reviewText": "MCQs mostly from files, some from handouts.\nQuestions:\n- Strategies for teaching spellings.\n- Principles teaching speaking skills.\n- Clauses and phrases.\n- What makes a word difficult.\n- Types of speaking.\n- What do good writers do.\n- Importance of spellings in writing.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Spelling Teaching Strategies",
+        "Speaking Skills Principles",
+        "Clauses & Phrases",
+        "Word Difficulty",
+        "Types of Speaking",
+        "Good Writers Habits",
+        "Importance of Spellings"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Paper Review",
       "reviewText": "Short questions \n1. Three characteristics of teacher centered learning method\n2. Define diphthongs\n3. Write briefly about uppercase importance \nLong questions \n1. Five characteristics of student centered learning method\n2. Describe the importance of phonics \n3. Describe approaches of consonant sounds",
