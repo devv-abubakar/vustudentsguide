@@ -1,0 +1,25 @@
+{
+  "course": "ENG512",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 11:40 AM)",
+      "reviewText": "MCQs: 15 from Maha API file, rest conceptual but easy.\nSubjective:\n1. Flexible multicity.\n2. Importance of creating Code switching awareness in teacher programs.\n3. Define term Semilingualism.\n4. Language and sociopolitical in imposing a language by state.\n5. 2 forms of instructions in communicative approach.\n6. Name of 5 Models of Bilingualism.\n7. How does translanguaging help in bilingual acquisition?\n8. What is recursive bilingualism?\n9. Difference between learning and acquisitions.\n10. Pedagogy related question.\n11. Social injustice related question.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Flexible Multicity",
+        "Code Switching Awareness",
+        "Semilingualism",
+        "Language & Politics",
+        "Communicative Approach Instructions",
+        "Bilingualism Models",
+        "Translanguaging",
+        "Recursive Bilingualism",
+        "Learning vs Acquisition",
+        "Pedagogy",
+        "Social Injustice"
+      ]
+    }
+  ]
+}
