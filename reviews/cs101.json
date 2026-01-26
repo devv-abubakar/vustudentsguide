@@ -5,6 +5,18 @@
       "examType": "Final Term",
       "difficulty": "Easy",
       "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "Paper easy tha. Majority handouts mein se aya hua tha, aur MS Office mein se ziada portion tha. Minority mein conceptual questions bhi thay but overall paper easy tha.",
+      "topicsHeading": "Topics Covered",
+      "topicsList": [
+        "MS Office (Major Portion)",
+        "Handouts",
+        "Conceptual Questions"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
       "reviewText": "Paper was mostly from Handouts.\nMCQs Topics:\n- MS Word (Tabs, Tools, Shortcuts, Inserting Images, Illustration group) - 13-14 MCQs.\n- MS Excel (Countif, Formulas) - 4-5 MCQs.\n- MS Access - 6 MCQs.\n- MS PowerPoint - 2 MCQs.\n- Abbreviations (NLP, CSS).\n- Coding: Condition finding, C++ Math (7/5, 10%4), While loop.\n- Hash function, HTML attributes role.\n- Semantic meaning in programming.\n- Malware definition.\n- Formal definition of algorithm.",
       "topicsHeading": "Exam Questions",
       "topicsList": [
@@ -63,4 +75,5 @@
     }
   ]
 }
+
 
