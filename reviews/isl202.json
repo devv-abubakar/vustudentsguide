@@ -2,6 +2,23 @@
     "course": "ISL202",
     "reviews": [
         {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "Paper was from handouts but tricky. Important to read dates.\nQuestions:\n1. Representative of Quraish at Hudabiya treaty.\n2. Social boycott against whom?\n3. Authentic source of knowledge.\n4. Names of two daughters of Prophet married to Hazrat Usman R.A.\n5. Total numbers of fort of Khyber.\n6. Name of the chief of Yamama.\n7. Age of Hazrat Muhammad at reconstruction of Kaaba.\n8. Place where Ihram was assumed at treaty Hudabiya.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Hudabiya Treaty",
+        "Social Boycott",
+        "Sources of Knowledge",
+        "Hazrat Usman R.A Marriages",
+        "Battle of Khyber (Forts)",
+        "Chief of Yamama",
+        "Reconstruction of Kaaba",
+        "Ihram Location"
+      ]
+    },
+        {
             "examType": "Final Term",
             "difficulty": "Easy",
             "reviewHeading": "Paper Review",
