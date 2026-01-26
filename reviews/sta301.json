@@ -2,6 +2,17 @@
     "course": "STA301",
     "reviews": [
         {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (26-01-2026, 8:00 AM)",
+      "reviewText": "Paper easy aya tha. Handouts ko acha sa read karain or final term ki video dakh lain YouTube sa.",
+      "topicsHeading": "Preparation Source",
+      "topicsList": [
+        "Handouts",
+        "YouTube Videos"
+      ]
+    },
+        {
             "examType": "Final Term",
             "difficulty": "Easy",
             "reviewHeading": "Final Term Summary",
