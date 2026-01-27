@@ -1,0 +1,19 @@
+{
+  "course": "ACC311",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "Long and Short Questions covered:\n- Test of control.\n- Inventory.\n- Substantive testing.\n- External vs Internal audit.\n- Engagement letter.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Test of Control",
+        "Inventory",
+        "Substantive Testing",
+        "External & Internal Audit",
+        "Engagement Letter"
+      ]
+    }
+  ]
+}
