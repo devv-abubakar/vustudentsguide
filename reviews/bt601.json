@@ -1,0 +1,21 @@
+{
+  "course": "BT601",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 Jan 2026, 11:40 AM)",
+      "reviewText": "MCQs: From PPTs and video lectures. Conceptual MCQs at the end.\nShort Questions (3 marks):\n1. What is neutralization test?\n2. What are the mechanisms of toxoid vaccines?\n3. Name any three sources of monochromatic light.\n4. How viroids are transmitted?\nLong Questions (5 marks):\n1. Importance of Phage therapy over other bacteriocidal therapies.\n2. Role of proteins and glycoproteins in orthomyxovirus' genome life cycle.\n3. Write any 5 components of light microscope.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Neutralization Test",
+        "Toxoid Vaccines Mechanisms",
+        "Monochromatic Light Sources",
+        "Viroids Transmission",
+        "Phage Therapy Importance",
+        "Orthomyxovirus Genome Life Cycle",
+        "Light Microscope Components"
+      ]
+    }
+  ]
+}
