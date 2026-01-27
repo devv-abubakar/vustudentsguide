@@ -2,6 +2,20 @@
     "course": "CS304P",
     "reviews": [
         {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (27 January 2026, 9:50 AM)",
+      "reviewText": "Paper overall easy tha but MCQs tricky thay.\nSubjective Questions:\n1. Draw UML Class Diagram (Ternary association between Course, Student, and Teacher).\n2. C++ Code: Create class Shape, derive class Circle from it, and implement draw() function.\n3. C++ Code: Class derivation based on Association (Book and Chapter).\n4. Column Matching: Match functions/keywords like throw, try, catch, return code with error, and exit with their descriptions.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "UML Class Diagram (Ternary Association)",
+        "Inheritance & Polymorphism (Shape/Circle)",
+        "Association (Book/Chapter)",
+        "Exception Handling (Try, Catch, Throw, Exit)",
+        "C++ Coding"
+      ]
+    },
+        {
             "examType": "Final Term",
             "difficulty": "Moderate",
             "reviewHeading": "Important Topics",
