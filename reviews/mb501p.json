@@ -1,0 +1,21 @@
+{
+  "course": "MB501P",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 Jan 2026)",
+      "reviewText": "MCQs:\n- Unit of microbes in electron microscope.\n- Purpose of fixation in light microscopy.\n- Primary objective of staining.\n- Eukaryotic vs Prokaryotic distinction.\n- Powerhouse of cell.\n- Golgi apparatus function.\n- Cytokinesis result in meiosis.\n- Nuclear membrane reforms stage.\nShort Questions:\n1. Distinct features of animal cells.\n2. Primary objective of meiosis vs mitosis.\nLong Question:\n1. Overview of meiosis II.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Electron Microscope Units",
+        "Fixation & Staining",
+        "Eukaryotic vs Prokaryotic",
+        "Cell Organelles (Mitochondria, Golgi)",
+        "Meiosis vs Mitosis",
+        "Animal Cell Features",
+        "Meiosis II Overview"
+      ]
+    }
+  ]
+}
