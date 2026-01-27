@@ -3,7 +3,22 @@
   "reviews": [
     {
       "examType": "Final Term",
-      "difficulty": "Moderate",
+      "difficulty": "Medium",
+      "reviewHeading": "Paper Review (27 January 2026)",
+      "reviewText": "Most questions were from MS Word and Excel. 4-5 questions required to find code outputs. There were also questions about Networking and Security. The paper was conceptual and mostly from handouts. Concepts need to be clear.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "MS Word",
+        "MS Excel",
+        "Code Outputs (4-5 questions)",
+        "Software Engineering",
+        "Networking",
+        "Security"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Medium",
       "reviewHeading": "Paper Review (27 January 2026, 3:00 PM)",
       "reviewText": "Overall paper bohat conceptual tha aur mostly MCQs depth mein se thay. MS Word mein se zyada MCQs thay (Home ribbon ke baray mein). XML abbreviation thi. Overall abbreviations bohat kam thin. COBOL ka 1 MCQ tha. C language mein '11 % 3' ka output poocha tha. Sirf highlighted points ya files karne se paper acha nahi hoga, handouts ko achy se prepare karain.",
       "topicsHeading": "Exam Questions",
@@ -92,6 +107,7 @@
     }
   ]
 }
+
 
 
 
