@@ -2,6 +2,20 @@
     "course": "BT302",
     "reviews": [
         {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 Jan 2026)",
+      "reviewText": "MCQs mostly conceptual from handouts/PPTs.\nShort Questions:\n1. Endogenous.\n2. Antibodies form.\n3. Complement activation.\nLong Questions:\n1. CD3 complex components.\n2. Cytokines connection with lymphocyte, phagocytes and other immune system.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Endogenous",
+        "Antibodies Formation",
+        "Complement Activation",
+        "CD3 Complex Components",
+        "Cytokines Connection"
+      ]
+    },
+        {
             "examType": "Final Term",
             "difficulty": "Moderate",
             "reviewHeading": "Paper Review",
