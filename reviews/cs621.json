@@ -1,6 +1,21 @@
 {
     "course": "CS621",
     "reviews": [
+{
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 January 2026)",
+      "reviewText": "McQs thorugh master file almost 20 25\nDegree of Switch \nOwners compute rule parallel algorithm \nState two hdfs thats sets a large data sets \nTask dependency ka graph ka tha\nJisme critical path or length find krnhi thi\nMapReduce 5 logical stages \nVM machine",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Degree of Switch",
+        "Owners Compute Rule",
+        "HDFS (Large Data Sets)",
+        "Task Dependency Graph (Critical Path)",
+        "MapReduce Stages",
+        "VM Machine"
+      ]
+    },
         {
             "examType": "Final Term",
             "difficulty": "Moderate",
