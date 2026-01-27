@@ -1,0 +1,20 @@
+{
+  "course": "CS432",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 Jan 2026, 2:00 PM)",
+      "reviewText": "MCQs mostly from 63 pages file.\nShort Questions:\n1. Congestion names.\n2. Bulk transfer usage diagram.\n3. Coaxial cable usage (Table question).\n4. Numerical: Find Buffer size.\n5. Difference between strict priority queue and rate controlled priority queue.\n6. TCP lifecycle to establish TCP connection.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Congestion",
+        "Bulk Transfer Diagram",
+        "Coaxial Cable Usage",
+        "Buffer Size Numerical",
+        "Priority Queues (Strict vs Rate Controlled)",
+        "TCP Lifecycle"
+      ]
+    }
+  ]
+}
