@@ -1,0 +1,21 @@
+{
+  "course": "BIO504T",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Hard",
+      "reviewHeading": "Paper Review (27 January 2026, 8:00 AM)",
+      "reviewText": "Paper ajeeb tha, zyada MCQs Mid-term syllabus se conceptual aye thay.\nQuestions:\n- Hydrogenation.\n- Source of fatty acids in food.\n- Nucleotides as energy currency.\n- Svedberg (Sandburg) units.\n- Buffers.\n- Non-coding RNA.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Hydrogenation",
+        "Fatty Acids Sources",
+        "Nucleotides",
+        "Svedberg Units",
+        "Buffers",
+        "Non-coding RNA",
+        "Mid-term Conceptual Topics"
+      ]
+    }
+  ]
+}
