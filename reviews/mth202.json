@@ -3,6 +3,17 @@
     "reviews": [
         {
       "examType": "Final Term",
+      "difficulty": "Hard",
+      "reviewHeading": "Paper Review (27 January 2026)",
+      "reviewText": "Paper mein MCQs har topic se thay. Har topic ko conceptually karna bohot important hai kyunke paper fully conceptual tha. 'Phi Mathematics' ki preparation video kafi helpful hai.",
+      "topicsHeading": "Preparation Advice",
+      "topicsList": [
+        "All Topics (Conceptual)",
+        "Phi Mathematics Video"
+      ]
+    },
+        {
+      "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
       "reviewText": "MCQs mostly from handouts (examples, remarks, graphs). Some from files.\nQuestions:\n- Find sum of series -9,-6,3,0,...\n- Matrix multiplication AB.\n- K-combination question.\n- Mathematical induction: 1+2+3...n = n(n+1)/2.\n- Graph questions (Isomorphism, Pre/Post condition of algorithm).",
