@@ -1,0 +1,18 @@
+{
+  "course": "EDU302",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 Jan 2026, 8:00 AM)",
+      "reviewText": "Theory Questions:\n1. Cooperative learning: Enlist 5 methods, explain one.\n2. Mental retardation: What is it? Explain in detail.\n3. Multiple mental retardation.\n4. Learning style involving hands-on, physical, and mental practice.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Cooperative Learning Methods",
+        "Mental Retardation (Definition & Types)",
+        "Multiple Mental Retardation",
+        "Learning Styles (Hands-on)"
+      ]
+    }
+  ]
+}
