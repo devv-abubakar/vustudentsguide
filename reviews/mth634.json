@@ -2,6 +2,23 @@
     "course": "MTH634",
     "reviews": [
         {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 Jan 2026)",
+      "reviewText": "MCQs from handouts and YouTube videos (mostly True/False).\nQuestions:\n1. Show that F is open (Function and topology given).\n2. Homomorphism under closed and open end of interval (R with usual topology).\n3. Show function is open map if image of Bx and Tx is subset of open interval.\n4. Two examples of Lindelöf space.\n5. Show indiscrete topology with >1 points is not metrizable.\n6. Find regular space (Function and topology given).\n7. Find normal space and show (X,t) is not T4 space.\n8. Show every second countable space is first countable space.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Open Functions",
+        "Homomorphism",
+        "Open Maps",
+        "Lindelöf Space Examples",
+        "Metrizable Topology",
+        "Regular Space",
+        "Normal Space & T4 Space",
+        "Second Countable vs First Countable"
+      ]
+    },
+        {
             "examType": "Final Term",
             "difficulty": "Moderate",
             "reviewHeading": "Topology Paper Review",
