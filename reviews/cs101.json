@@ -3,6 +3,23 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 January 2026, 3:00 PM)",
+      "reviewText": "Overall paper bohat conceptual tha aur mostly MCQs depth mein se thay. MS Word mein se zyada MCQs thay (Home ribbon ke baray mein). XML abbreviation thi. Overall abbreviations bohat kam thin. COBOL ka 1 MCQ tha. C language mein '11 % 3' ka output poocha tha. Sirf highlighted points ya files karne se paper acha nahi hoga, handouts ko achy se prepare karain.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "MS Word (Home Ribbon)",
+        "MS Access",
+        "Algorithms",
+        "Information Privacy",
+        "XML Abbreviation",
+        "COBOL",
+        "C Language (Modulus Operator 11 % 3)",
+        "Conceptual MCQs"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Easy",
       "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
       "reviewText": "Paper easy tha. Majority handouts mein se aya hua tha, aur MS Office mein se ziada portion tha. Minority mein conceptual questions bhi thay but overall paper easy tha.",
@@ -75,5 +92,6 @@
     }
   ]
 }
+
 
 
