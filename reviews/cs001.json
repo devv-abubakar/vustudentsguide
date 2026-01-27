@@ -1,0 +1,17 @@
+{
+  "course": "CS001",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (26 Jan 2026, 2:00 PM)",
+      "reviewText": "Paper bht easy tha. MCQs handouts se aye thay.\nSubjective:\n- Shortcut keys likhni thi (2 columns).\n- VU Expert Solution App ki files se paper aya tha.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Shortcut Keys",
+        "Handouts",
+        "VU Expert Solution Files"
+      ]
+    }
+  ]
+}
