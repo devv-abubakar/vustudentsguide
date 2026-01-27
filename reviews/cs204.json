@@ -1,0 +1,19 @@
+{
+  "course": "CS204",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (27 January 2026, 8:00 AM)",
+      "reviewText": "MCQs were very easy.\nShort Questions:\n1. Mention components to secure IT infrastructure.\n2. Define License.\n3. Name of a specific tool.\n4. Mention four names of Cyber offenses.\nLong Questions:\n1. Virtual property scenarios (Identify type).\n2. Mention 3 names and purpose of gTLD.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "IT Infrastructure Security",
+        "License Definition",
+        "Cyber Offenses",
+        "Virtual Property",
+        "gTLD (Generic Top-Level Domain)"
+      ]
+    }
+  ]
+}
