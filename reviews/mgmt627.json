@@ -4,6 +4,19 @@
     {
       "examType": "Final Term",
       "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 January 2026, 9:30 AM)",
+      "reviewText": "Short Questions:\n1. Feasibility study help in decision-making.\n2. List the financial tool that use in project evaluation.\nLong Questions:\n1. Difference between policy, procedure, and standard.\n2. Difference between project champion and project champion (Likely meant Project Champion vs Project Manager/Sponsor).",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Feasibility Study",
+        "Financial Tools (Project Evaluation)",
+        "Policy vs Procedure vs Standard",
+        "Project Champion"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
       "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
       "reviewText": "Quality Management portion asaan tha, Data Analysis se bhi kafi paper tha.\nLong Questions:\n1. Work Breakdown Structure (WBS).\n2. Cause & Effect.\n3. Difference between Corporate Project and another project.\nShort Questions:\n1. PERT.\n2. Crash time.\n3. Software packages.\n4. How good communication skills help a manager.",
       "topicsHeading": "Exam Questions",
