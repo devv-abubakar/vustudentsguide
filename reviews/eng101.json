@@ -3,6 +3,18 @@
     "reviews": [
         {
       "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (28 January 2026, 6:46 PM)",
+      "reviewText": "Paper sara Grammar based aur conceptual tha. Majority part grammar ka tha aur sara handouts mein se tha. Files karne ki koi zarorat nahi hai. Handouts ko achy se read karein paper hojaye ga.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Grammar (Majority)",
+        "Conceptual Questions",
+        "Handouts"
+      ]
+    },
+        {
+      "examType": "Final Term",
       "difficulty": "Medium",
       "reviewHeading": "Paper Review (27 January 2026, 1:16 PM)",
       "reviewText": "Topics covered: Preposition, Composition, Interjection, Fill in the blanks, Correct spelling, Tenses (Past, Present, Future), Synonyms, Antonyms.\nSpecial Note: Essay writing topic is very important (How to structure an essay?). There were many questions regarding this, so memorize the important points of essay writing.",
