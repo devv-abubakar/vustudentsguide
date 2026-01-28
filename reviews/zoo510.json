@@ -1,0 +1,18 @@
+{
+  "course": "ZOO510",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 January 2026)",
+      "reviewText": "Questions:\n1. Difference between 2nd and 3rd generation pesticides.\n2. How weeds can be controlled.\n3. Steps of IPM (Integrated Pest Management).\n4. Intrinsic and extrinsic factors.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Pesticides Generations",
+        "Weed Control",
+        "IPM (Integrated Pest Management)",
+        "Intrinsic & Extrinsic Factors"
+      ]
+    }
+  ]
+}
