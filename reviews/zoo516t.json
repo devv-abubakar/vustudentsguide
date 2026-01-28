@@ -1,0 +1,23 @@
+{
+  "course": "ZOO516T",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 January 2026, 3:40 PM)",
+      "reviewText": "MCQs mostly from handouts but easy.\nShort Questions:\n1. What is plasma?\n2. What are neuropeptides?\n3. Role of thyroxin and triiodothyronine in amphibians metamorphosis.\n4. Nature of hormones.\n5. Ventilation.\n6. Role of lymphocytes.\n7. Exocrine and endocrine glands.\nLong Questions:\n1. Fixed receptor mechanism of membrane.\n2. How respiratory organs function in human body?\n3. Renal portal system.\n4. Mechanism of inhalation.\n5. Chromaffin tissues.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Plasma",
+        "Neuropeptides",
+        "Hormones (Thyroxin, Triiodothyronine)",
+        "Amphibian Metamorphosis",
+        "Respiratory System",
+        "Receptor Mechanisms",
+        "Exocrine/Endocrine Glands",
+        "Renal Portal System",
+        "Chromaffin Tissues"
+      ]
+    }
+  ]
+}
