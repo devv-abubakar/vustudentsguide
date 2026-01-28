@@ -1,0 +1,22 @@
+{
+  "course": "SOC404",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (28 January 2026, 11:40 AM)",
+      "reviewText": "Paper had a mix of easy and difficult questions. MCQs covered every chapter (Cuisine, Dresses pattern, Opioid example, Migration).\nShort Questions:\n1. Define population.\n2. 3 characteristics of social institution.\n3. Industrial sector role in Pakistan economy and its effect on social economy.\nLong Questions:\n1. Name 5 Punjabi sweets and desserts.\n2. 5 importance of education.\n3. Causes of poverty.\nNote: Avoid highlighted handouts and past files; read full handouts.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Population Definition",
+        "Social Institutions",
+        "Industrial Sector (Pakistan Economy)",
+        "Punjabi Cuisine (Sweets/Desserts)",
+        "Importance of Education",
+        "Causes of Poverty",
+        "Migration",
+        "Culture (Dresses, Cuisine)"
+      ]
+    }
+  ]
+}
