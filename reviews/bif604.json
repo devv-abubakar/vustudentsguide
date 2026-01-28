@@ -1,0 +1,21 @@
+{
+  "course": "BIF604",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 January 2026)",
+      "reviewText": "MCQs:\n1. Polony technology (Polymerase colony).\n2. Galaxy tool features.\n3. BAM files preferred SRA format.\n4. Progressive approach multiple alignment.\n5. Network Analyzer (Sub-networks).\n6. No difference between modules and read packages.\n7. Python concatenates lines, \\n for line break.\n8. Gene Association files for Gene Ontology.\n9. Z test (n>30).\n10. Gene ontology categories (Biological processes etc).\n11. Microarray grid (Gene/Sample).\n12. Microarray Image processing.\n13. Microarray Normalization.\n14. Gene Expression analysis.\n15. Cytoscape software type.\n16. Python escape sequences (Backslash \\).\n17. Affymetrix nucleotides (25).\n18. List comprehension.\n19. Tuple (Parenthesis).\n20. RE backslash special meanings.\n21. Gene Ontology term enrichment.\nShort Questions:\n1. Why we create lists in Python?\n2. Cytoscape interface and feature.\n3. Filtered List Comprehensions.\n4. Microarray normalization.\nLong Questions:\n1. Types of lines in network.\n2. Operations for list in Python.\n3. Application of array.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Bioinformatics Tools (Galaxy, Cytoscape, Affymetrix)",
+        "Python Programming (Lists, Tuples, RE)",
+        "Gene Ontology",
+        "Microarray Analysis",
+        "Polony Technology",
+        "BAM Files",
+        "Network Analyzer"
+      ]
+    }
+  ]
+}
