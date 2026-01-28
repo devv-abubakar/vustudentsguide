@@ -1,0 +1,21 @@
+{
+  "course": "PSY505",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (27 January 2026, 2:00 PM)",
+      "reviewText": "MCQs from files, super easy.\nShort Questions:\n1. Adult maturity definition.\n2. 3 adjustments of widow (Lopat).\n3. Suicide scenario (Causes & Prevention).\n4. 3 values of adolescence.\nLong Questions:\n1. 5 stages of occupation.\n2. Death Positivity.\n3. Old age and why people fear it.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Adult Maturity",
+        "Widowhood Adjustments",
+        "Suicide Prevention",
+        "Adolescence Values",
+        "Occupation Stages",
+        "Death Positivity",
+        "Old Age Fear"
+      ]
+    }
+  ]
+}
