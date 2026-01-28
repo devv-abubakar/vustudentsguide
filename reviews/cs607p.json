@@ -1,0 +1,20 @@
+{
+  "course": "CS607P",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 January 2026)",
+      "reviewText": "Mostly questions from CLIPS.\nPrograms:\n1. Convert Celsius to Fahrenheit using CLIPS.\n2. Convert Kilometer to Meter using CLIPS.\n3. DFS Tree: Order, nodes etc.\nOther Topics:\n- BFS, Mod description (Lab 9).\n- Fuzzy related.\n- Deftemplate, assert, printouts.\n- MATLAB if-then.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "CLIPS Programming",
+        "Celsius/Fahrenheit Conversion",
+        "KM/Meter Conversion",
+        "DFS & BFS",
+        "Fuzzy Logic",
+        "MATLAB"
+      ]
+    }
+  ]
+}
