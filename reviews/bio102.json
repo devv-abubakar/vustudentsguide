@@ -1,0 +1,18 @@
+{
+  "course": "BIO102",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 January 2026)",
+      "reviewText": "Questions:\n1. Noble gases (5 marks).\n2. Basic types of Reactions (3 marks).\n3. How to separate H2 from CO (3 marks).\n4. On which principle polarimeter works.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Noble Gases",
+        "Reaction Types",
+        "Separation Techniques",
+        "Polarimeter Principle"
+      ]
+    }
+  ]
+}
