@@ -1,0 +1,21 @@
+{
+  "course": "BT514T",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Hard",
+      "reviewHeading": "Paper Review (27 January 2026)",
+      "reviewText": "MCQs were confusing and conceptual. Only 2 MCQs from Midterm. Mostly Final Term syllabus.\nQuestions:\n- ICP-OES (Inductively Coupled Plasma Optical Emission Spectroscopy).\n- Solid phase extraction.\n- IR spectra of aldehydes and ketones (bands & intensities).\n- UV spectroscopy.\n- Hollow cathode lamp.\n- Complementary colors.\n- Solvent recovery and recovery of acids/bases from salts.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "ICP-OES",
+        "Solid Phase Extraction",
+        "IR Spectra (Aldehydes/Ketones)",
+        "UV Spectroscopy",
+        "Hollow Cathode Lamp",
+        "Solvent Recovery",
+        "Complementary Colors"
+      ]
+    }
+  ]
+}
