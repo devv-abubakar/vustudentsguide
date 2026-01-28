@@ -1,0 +1,18 @@
+{
+  "course": "BIO510",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 January 2026, 8:00 AM)",
+      "reviewText": "20% paper was from mids (options). Subjective was totally from files 91 to 150.\nLong Questions:\n1. PCR effects on medical, agriculture, and forensic.\n2. Insulin.\n3. What does Agrobacterium produce and its advantages?\nShort questions were also from lectures 91 to 150.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "PCR Applications (Medical, Agriculture, Forensic)",
+        "Insulin",
+        "Agrobacterium",
+        "Lectures 91-150"
+      ]
+    }
+  ]
+}
