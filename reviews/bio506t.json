@@ -1,0 +1,18 @@
+{
+  "course": "BIO506T",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 January 2026)",
+      "reviewText": "MCQs are conceptual.\nQuestions:\n1. Difference between competitive inhibition and noncompetitive inhibitions.\n2. PFK-1 role in glycolysis.\n3. What are the role of active site in catalyst and substrate recognition.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Competitive vs Noncompetitive Inhibition",
+        "PFK-1 Role (Glycolysis)",
+        "Active Site Role",
+        "Catalyst & Substrate Recognition"
+      ]
+    }
+  ]
+}
