@@ -1,0 +1,19 @@
+{
+  "course": "CS409",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 January 2026)",
+      "reviewText": "MCQs mostly about Cluster/Clustering and PL/SQL commands.\nShort Question:\n- Three reasons to drop indexing.\nLong Questions:\n1. Identify privilege types from table.\n2. Identify schema name (schema object) from table.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Cluster/Clustering",
+        "PL/SQL Commands",
+        "Indexing (Dropping Reasons)",
+        "Privilege Types",
+        "Schema Objects"
+      ]
+    }
+  ]
+}
