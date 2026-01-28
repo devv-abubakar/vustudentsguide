@@ -1,0 +1,20 @@
+{
+  "course": "PSY504",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 January 2026)",
+      "reviewText": "MCQs from handouts and Haalim quiz videos.\nLong Questions:\n1. Piaget's cognitive development.\n2. Experiment: Role of interference in sport vs political news.\n3. Anderson 1976 experiment (Speed retrieval).\n4. Hot and cold imagery experiment.\nShort Questions:\n1. Long term memory (Semantic type).\n2. Category definition + example.\n3. Sentence recognition through context.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Piaget Cognitive Development",
+        "Long Term Memory (Semantic)",
+        "Interference Experiment",
+        "Anderson (1976) Experiment",
+        "Hot & Cold Imagery",
+        "Sentence Recognition"
+      ]
+    }
+  ]
+}
