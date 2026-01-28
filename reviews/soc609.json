@@ -1,0 +1,17 @@
+{
+  "course": "SOC609",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Hard",
+      "reviewHeading": "Paper Review (27 January 2026)",
+      "reviewText": "Paper tough tha, sara conceptual tha. MCQs handouts se thay. Files se kuch nahi aya. Handouts read karna zaroori hai.",
+      "topicsHeading": "Preparation Tips",
+      "topicsList": [
+        "Conceptual Understanding",
+        "Handouts Reading",
+        "Avoid Files"
+      ]
+    }
+  ]
+}
