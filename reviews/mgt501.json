@@ -2,6 +2,20 @@
     "course": "MGT501",
     "reviews": [
         {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 January 2026, 2:00 PM)",
+      "reviewText": "MCQs conceptual + Moaz/Waqar Sidhu files (60%).\nShort Questions:\n1. How appraisal problems are helpful for training and development.\n2. How Employee Vacation is helpful for an organization.\nLong Questions:\n1. Unstructured interview.\n2. Scenario: CEO decision on lay off vs other options.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Performance Appraisal",
+        "Training & Development",
+        "Employee Vacation",
+        "Unstructured Interview",
+        "Layoff Decisions (Scenario)"
+      ]
+    },
+        {
             "examType": "Final Term",
             "difficulty": "Easy",
             "reviewHeading": "Paper Review",
