@@ -1,0 +1,19 @@
+{
+  "course": "PSY405",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (27 January 2026)",
+      "reviewText": "MCQs preparation videos se thay, bohat easy thay.\nLong Questions:\n1. Abraham Maslow biographical sketch.\n2. Overt aur Covert needs.\n3. Radical behavior.\nShort Questions:\n1. Neurosis according to Karen Horney.\n2. Neurosis according to Carl Rogers.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Abraham Maslow (Biographical Sketch)",
+        "Overt & Covert Needs",
+        "Radical Behavior",
+        "Neurosis (Karen Horney)",
+        "Neurosis (Carl Rogers)"
+      ]
+    }
+  ]
+}
