@@ -1,0 +1,17 @@
+{
+  "course": "CS310",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 January 2026, 3:50 PM)",
+      "reviewText": "All MCQs from PPT slides. 60% paper from Session variables and File functions (fclose, fgets).",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Session Variables",
+        "File Functions (fclose, fgets)",
+        "PPT Slides"
+      ]
+    }
+  ]
+}
