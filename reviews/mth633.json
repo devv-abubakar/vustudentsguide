@@ -1,0 +1,19 @@
+{
+  "course": "MTH633",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 January 2026)",
+      "reviewText": "MCQs and Questions from handouts and videos. Some questions were difficult.\nQuestions:\n1. Difference between isomorphism and homomorphism.\n2. Define action of group set G of X.\n3. Theorem prove: Sylow subgroup P1 and P2 conjugate.\n4. Give an example of |G|=2|N|.\n5. Homomorphism theorem proof.\n6. Question related to Order of G is p^n, (m,n)=1.\n7. If G is abelian then homomorphism of H is also abelian on G (Prove).",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Isomorphism vs Homomorphism",
+        "Group Action",
+        "Sylow Subgroups",
+        "Group Order Theorems",
+        "Abelian Groups"
+      ]
+    }
+  ]
+}
