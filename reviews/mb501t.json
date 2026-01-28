@@ -2,6 +2,21 @@
     "course": "MB501T",
     "reviews": [
         {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 January 2026)",
+      "reviewText": "MCQs mostly from Zaman file.\nSubjective from Mughal and Zaman file.\nQuestions:\n1. DNA packing inside the cell?\n2. Clonal selection?\n3. MHC and its types?\n4. Sheep clonal through nuclear transfer?\n5. Organelles included in protein synthesis?\n6. Functions of incubator?",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "DNA Packing",
+        "Clonal Selection",
+        "MHC Types",
+        "Cloning (Sheep/Nuclear Transfer)",
+        "Protein Synthesis Organelles",
+        "Incubator Functions"
+      ]
+    },
+        {
             "examType": "Final Term",
             "difficulty": "Moderate",
             "reviewHeading": "Paper Review (8:00A.M.)",
