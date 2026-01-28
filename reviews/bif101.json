@@ -1,0 +1,22 @@
+{
+  "course": "BIF101",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 January 2026, 8:00 AM)",
+      "reviewText": "MCQs PPT me se thay.\nShort Questions:\n1. Interaction present in proteins.\n2. Features of CLUSTALW.\n3. Applications of protective (Unclear text).\n4. Principle of homology modelling.\n5. Twilight zone in structure prediction.\n6. File types made for NGS data.\nLong Questions:\n1. Role of rRNA during the translation of protein.\n2. Explain in detail Entrez.\n3. Work flow of structure modelling.\n4. Nanopore DNA: (A) Who designed, (B) Commercially available, (C) Average read length, (D) Base pair in one mole.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Protein Interaction",
+        "CLUSTALW",
+        "Homology Modelling",
+        "Structure Prediction",
+        "NGS Data Files",
+        "rRNA & Translation",
+        "Entrez",
+        "Nanopore DNA"
+      ]
+    }
+  ]
+}
