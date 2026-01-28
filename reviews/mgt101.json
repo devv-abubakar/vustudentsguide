@@ -2,6 +2,22 @@
     "course": "MGT101",
     "reviews": [
         {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 9:40 AM)",
+      "reviewText": "Overall exam was quite on the numerical side rather than theory.\nMCQs:\n- Mostly from inventory topic (Debit/Credit).\n- FIFO, LIFO, Weighted Average Method.\n- Depreciation under Straight Line Method.\n- Formula for closing stock.\nShort Questions:\n- Fill in Ledger account and Debtors account.\n- Trade Debtors account.\n- Cashflow statement (Identifying Cash In and Cash Out).\nLong Questions:\n- Partnership: Finding profit sharings (Net profit, partners ratio, salaries given).\n- Make Fixed Asset Account with given data.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Inventory Valuation (FIFO, LIFO, Weighted Avg)",
+        "Depreciation (Straight Line)",
+        "Closing Stock Formula",
+        "Ledger & Debtors Account",
+        "Cashflow Statement (In/Out)",
+        "Partnership Profit Sharing",
+        "Fixed Asset Account"
+      ]
+    },
+        {
             "examType": "Final Term",
             "difficulty": "Easy",
             "reviewHeading": "Paper Review (31st July, 8 am)",
