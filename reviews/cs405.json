@@ -1,0 +1,20 @@
+{
+  "course": "CS405",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (27 January 2026, 9:50 AM)",
+      "reviewText": "MCQs mostly from Cursor, Exception, Loops, and Triggers.\nShort Questions:\n1. What is user defined exception? Is it available by default?\n2. Syntax of searched case statement.\n3. Syntax of trigger enable and disable.\n4. Mandatory steps to process a cursor (4 steps).\nLong Questions:\n1. Create Procedure and insert data into table (e.g., orders table) using cursors.\n2. Searched case statement program (Display messages based on grades).",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "User Defined Exception",
+        "Searched Case Statement",
+        "Triggers (Enable/Disable)",
+        "Cursor Processing Steps",
+        "PL/SQL Procedures",
+        "Data Insertion"
+      ]
+    }
+  ]
+}
