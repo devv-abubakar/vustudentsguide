@@ -3,6 +3,19 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 January 2026, 2:00 PM)",
+      "reviewText": "MCQs from handouts and conceptual.\nShort Questions:\n1. Integration by substitution.\n2. Find Absolute Maximum or Absolute Minimum.\n3. Mean root topic question.\n4. Find Area of Cylinder.\nAll questions were conceptual.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Integration by Substitution",
+        "Absolute Maximum/Minimum",
+        "Mean Root",
+        "Area of Cylinder"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Easy",
 
       "reviewHeading": "Review",
