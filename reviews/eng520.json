@@ -1,0 +1,19 @@
+{
+  "course": "ENG520",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 January 2026)",
+      "reviewText": "All questions from Mam Maha files.\nShort Questions:\n1. Two Types of Guessing.\n2. What is Short Answer Questions?\n3. Advantages of Analytical rubric.\n4. Limitations of short answer questions.\nLong Questions:\n1. Suggestions for Construction of Response statement.\n2. Learning outcomes from essay questions (Give Five).\n3. Structure of Short Answer Questions.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Guessing Types",
+        "Short Answer Questions (Structure & Limitations)",
+        "Analytical Rubric",
+        "Response Statement Construction",
+        "Essay Question Outcomes"
+      ]
+    }
+  ]
+}
