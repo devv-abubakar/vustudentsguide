@@ -1,0 +1,18 @@
+{
+  "course": "MGT602",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (28 January 2026)",
+      "reviewText": "Paper was mostly conceptual and scenario-based. Handouts and concept clarity are key.\nMCQs: Mostly conceptual, definitions, short scenarios.\nShort Questions:\n- Definitions and examples from handouts.\n- Scenario-based questions applying concepts.\nLong Questions:\n- Analyze management situations.\n- Discuss processes, advantages, or steps in management frameworks.\n- Real-life application examples.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Management Tools",
+        "Conceptual Definitions",
+        "Management Frameworks",
+        "Scenario Analysis"
+      ]
+    }
+  ]
+}
