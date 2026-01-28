@@ -2,6 +2,21 @@
     "course": "CS601",
     "reviews": [
         {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (27 January 2026, 9:50 AM)",
+      "reviewText": "Overall easy paper. Subjective mostly from Lecture 20-32.\nQuestions:\n1. Hamming distance of 5 pairs of words.\n2. Numerical: Propagation delay formula (Time, speed, length given).\n3. Mac IEEE 802.17 - 2 types.\n4. Datalink control 2 subtypes.\n5. Switching types.\n6. Identify switching type from example.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Hamming Distance",
+        "Propagation Delay Calculation",
+        "IEEE 802.17",
+        "Datalink Control",
+        "Switching Types",
+        "Lectures 20-32"
+      ]
+    },
+        {
             "examType": "Final Term",
             "difficulty": "Moderate",
             "reviewHeading": "Paper Review (8:00 am)",
