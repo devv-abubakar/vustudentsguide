@@ -1,0 +1,18 @@
+{
+  "course": "ENG518",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 January 2026)",
+      "reviewText": "MCQs all from files.\nQuestions:\n1. Risk hypothesis example.\n2. Formulations of action research.\n3. Direct quote and paraphrase definition.\n4. Enlist the use of writer source of research.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Risk Hypothesis",
+        "Action Research",
+        "Direct Quote vs Paraphrase",
+        "Research Sources"
+      ]
+    }
+  ]
+}
