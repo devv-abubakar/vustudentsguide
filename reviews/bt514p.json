@@ -1,0 +1,18 @@
+{
+  "course": "BT514P",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (27 January 2026, 9:50 AM)",
+      "reviewText": "MCQs: Handouts se thay, bohat simple aur easy.\nShort Questions:\n1. Relative motive or Rf value define or importance.\n2. Advantages and Disadvantages of conning and quarantining.\nLong Questions:\n1. Explain Electro magnetic spectrum process, steps and calculations.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Relative Motive/Rf Value",
+        "Conning & Quarantining",
+        "Electro Magnetic Spectrum",
+        "MCQs Handouts"
+      ]
+    }
+  ]
+}
