@@ -1,0 +1,21 @@
+{
+  "course": "ZOO501",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 January 2026)",
+      "reviewText": "MCQs from handouts.\nLong Questions:\n1. Fraternal and Identical twins difference.\n2. Function of osteoclasts.\n3. Process of cleavage in mammalian.\nShort Questions:\n1. Define cyptomatic dysplasia.\n2. Types of egg do birds lay.\n3. Formation of umbilical cord in mammals.\n4. Yolk syncytial in fish.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Twins (Fraternal vs Identical)",
+        "Osteoclasts",
+        "Mammalian Cleavage",
+        "Cyptomatic Dysplasia",
+        "Bird Egg Types",
+        "Umbilical Cord",
+        "Yolk Syncytial"
+      ]
+    }
+  ]
+}
