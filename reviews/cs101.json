@@ -3,6 +3,22 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (28 January 2026, 10:59 PM)",
+      "reviewText": "Zyada MCQs MS Word ke baare main thay (Tabs, Tools). MS Excel ke 4-5 MCQs thay. MS Access bhi tha.\nSpecific Questions:\n- Condition output finding.\n- Hash function.\n- C++ Modulus (7%3 result).\n- MS Word main image kahan se add karte hain.\n- Illustration group main kya hota hai.\n- Home page par konsi cheezain hoti hain.\n- Zyada paper last walay topics mein se aya tha.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "MS Word (Tabs, Tools, Image, Illustration)",
+        "MS Excel",
+        "MS Access",
+        "C++ (Modulus Operator)",
+        "Hash Function",
+        "Code Output Finding",
+        "Last Topics (Software Cycle, DB)"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Medium",
       "reviewHeading": "Paper Review (27 January 2026)",
       "reviewText": "Most questions were from MS Word and Excel. 4-5 questions required to find code outputs. There were also questions about Networking and Security. The paper was conceptual and mostly from handouts. Concepts need to be clear.",
@@ -107,6 +123,7 @@
     }
   ]
 }
+
 
 
 
