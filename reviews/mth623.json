@@ -1,0 +1,21 @@
+{
+  "course": "MTH623",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 January 2026)",
+      "reviewText": "MCQs some conceptual, some easy.\nQuestions:\n1. Riemann tensor Christoffel non zero.\n2. Write two components of electromagnetic four potential.\n3. Christoffel related question.\n4. Norm of Uj.\n5. Constraint stress (tensile and compressive).\n6. Co-Potential time like question.\n7. Prove G alpha beta gamma = 0.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Riemann Tensor",
+        "Christoffel Symbols",
+        "Electromagnetic Four Potential",
+        "Norm of Uj",
+        "Constraint Stress (Tensile/Compressive)",
+        "Co-Potential",
+        "Tensor Proofs"
+      ]
+    }
+  ]
+}
