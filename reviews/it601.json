@@ -1,0 +1,21 @@
+{
+  "course": "IT601",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (29 January 2026, 11:26 AM)",
+      "reviewText": "Questions:\n1. Types of service in computing environment in context file system.\n2. Differentiate between Inodes and Vnodes.\n3. Type of web server (CMS) for new website and server type (Reason).\n4. Three types of tables in relational database with examples.\n5. Phase and steps to fulfill support request.\n6. Steps involved setting NFS server on Linux system including /etc/export file configuration.\n7. Static IP address to a client using DHCP (Server file reason).",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Computing Services",
+        "Inodes vs Vnodes",
+        "Web Server (CMS)",
+        "Relational Database Tables",
+        "Support Request Phases",
+        "NFS Server (Linux)",
+        "DHCP Static IP"
+      ]
+    }
+  ]
+}
