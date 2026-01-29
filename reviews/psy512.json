@@ -1,0 +1,22 @@
+{
+  "course": "PSY512",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026)",
+      "reviewText": "MCQs:\n- Primary & Secondary dysmenorrhoea.\n- Empty nest syndrome.\n- Feminist theory: Power and gender.\n- Domestic violence definition.\n- Glass ceiling effect definition.\n- Atherosclerosis.\nQuestions:\n1. Impact of education on women.\n2. Bulimia nervosa.\n3. Classic study observing health related behaviour.\n4. Gender differences in self esteem.\n5. Empty nest syndrome.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Dysmenorrhoea",
+        "Empty Nest Syndrome",
+        "Feminist Theory",
+        "Domestic Violence",
+        "Glass Ceiling Effect",
+        "Women's Education",
+        "Bulimia Nervosa",
+        "Self Esteem (Gender Differences)"
+      ]
+    }
+  ]
+}
