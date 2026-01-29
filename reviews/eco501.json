@@ -1,0 +1,21 @@
+{
+  "course": "ECO501",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (28 January 2026, 6:00 PM)",
+      "reviewText": "Objective from handouts.\nSubjective questions mostly differentiate type:\n1. Differentiate between Outward development policies and Inward development policies.\n2. Capital account and Current account.\n3. Landlord and Share cropper.\n4. Production of economic growth.\n5. Define Cobb Douglas in production of growth.\n6. Policies implemented to rural to urban migration.\n7. Discuss the argument of foreign policies.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Development Policies (Outward/Inward)",
+        "Capital vs Current Account",
+        "Landlord vs Share Cropper",
+        "Economic Growth Production",
+        "Cobb Douglas Function",
+        "Migration Policies",
+        "Foreign Policies"
+      ]
+    }
+  ]
+}
