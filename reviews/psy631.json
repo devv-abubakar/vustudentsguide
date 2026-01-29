@@ -1,0 +1,20 @@
+{
+  "course": "PSY631",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (29 January 2026, 8:00 AM)",
+      "reviewText": "MCQs easy.\nQuestions:\n1. Drawing related tests (2 tests).\n2. Difficulty Index difference with Facility Index.\n3. Draw a person test vs House Tree Person (Diff).\n4. Similarities between interview and test.\n5. SAT I vs SAT II (Any three subject differences).\n6. Criterion effect on test validity.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Projective Tests (Drawing)",
+        "Item Analysis (Difficulty/Facility Index)",
+        "Draw A Person vs HTP",
+        "Interview vs Test",
+        "SAT I vs SAT II",
+        "Test Validity"
+      ]
+    }
+  ]
+}
