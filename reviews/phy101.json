@@ -3,6 +3,21 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Hard",
+      "reviewHeading": "Paper Review (29 January 2026, 7:11 PM)",
+      "reviewText": "The paper was too much difficult. All MCQs were fully conceptual based. Topics covered included Wave, Light, Sun, and Dual nature of light. There were detailed numericals. Overall, the paper was very hard.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Wave",
+        "Light",
+        "Sun",
+        "Dual Nature of Light",
+        "Numericals (Detailed)",
+        "Conceptual MCQs"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Paper Review",
       "reviewText": "Paper Overall na asan tha na mushkil jiske concept clear ha uska paper easy hoje ga aur formulas ko yaad rakhe \nFiles se thore boht aye the question bkya conceptual the",
