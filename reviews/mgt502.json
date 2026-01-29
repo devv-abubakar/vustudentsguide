@@ -2,6 +2,18 @@
     "course": "MGT502",
     "reviews": [
         {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (29 January 2026)",
+      "reviewText": "MCQs were easy, common sense based.\nQuestions:\n1. Negative and positive effects of stress for employees?\n2. If agent left what is the effect of that?\n3. Difference between formal and informal communication?",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Stress Effects",
+        "Agent Departure Effects",
+        "Formal vs Informal Communication"
+      ]
+    },
+        {
             "examType": "Final Term",
             "difficulty": "Moderate",
             "reviewHeading": "Paper Review (31-Jul-25, 8:00am)",
