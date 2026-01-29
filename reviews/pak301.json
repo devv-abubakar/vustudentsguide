@@ -2,6 +2,25 @@
     "course": "PAK301",
     "reviews": [
         {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (29 January 2026, 11:26 AM)",
+      "reviewText": "MCQs mostly from Constitutions (1956, 1962, 1973), Dates, Marshall Laws, and Unit 16-29.\nQuestions:\n1. Industries of India at partition.\n2. Foundation of Constitution 1973.\n3. IDBP set up date.\n4. First BPC report.\n5. Female illiteracy.\n6. Ghost schools.\n7. Online learning institute (Virtual University).\n8. Soviet Union invaded Afghanistan.\n9. Separation of Bangladesh.\n10. NA seats (Total strength).\n11. Provinces in Federal system.\n12. Basic Democracies date.\n13. BPC final report date.\n14. Shahabuddin commission date.\n15. First President of Pakistan.\n16. Objective Resolution date.\n17. Sialkot famous for.\n18. Percentage of young in Pakistan.\n19. Sugarcane/Wheat crops type.\n20. Upper/Lower house seats distribution.\n21. Chromite location in Pakistan.\n22. Highest peak.\n23. RCD members.\n24. Relation with Russia, America, Afghanistan.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Constitutions (1956, 1962, 1973)",
+        "Industrial Partition",
+        "Basic Democracies",
+        "BPC Reports",
+        "Separation of East Pakistan",
+        "National Assembly Seats",
+        "Objective Resolution",
+        "Geography (Crops, Peaks, Minerals)",
+        "Foreign Relations",
+        "Education (Ghost Schools, VU)"
+      ]
+    },
+        {
             "examType": "Final Term",
             "difficulty": "Hard",
             "reviewHeading": "Paper Review",
