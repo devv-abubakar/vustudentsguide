@@ -1,0 +1,21 @@
+{
+  "course": "ECO404",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 08:00 AM)",
+      "reviewText": "Lectures unavailable, had to search topic-wise on YouTube.\nMCQs:\n- Market structures: Oligopoly, Monopoly, Perfect Competition, Monopolistic Competition.\n- Formulas and Theories.\nShort Questions:\n1. Linear equations suggestions (Chp 22).\n2. Difference between Cartel and Collusion (Chp 27).\n3. Diagram interpretation: Profit and Revenue maximization (Chp 20).\nLong Questions:\n1. Behaviorist approach 3 assumptions (Chp 39).\n2. Capital Budgeting (Chp 43).\n3. Unknown calculation question.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Market Structures (Oligopoly, Monopoly)",
+        "Perfect Competition",
+        "Linear Equations",
+        "Cartel vs Collusion",
+        "Profit & Revenue Maximization",
+        "Behaviorist Approach",
+        "Capital Budgeting"
+      ]
+    }
+  ]
+}
