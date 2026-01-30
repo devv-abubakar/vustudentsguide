@@ -1,16 +1,16 @@
 {
-    "course": "BIO505P",
-    "reviews": [
-        {
-            "examType": "Final Term",
-            "difficulty": "Easy",
-            "reviewHeading": "Paper Review",
-            "reviewText": "Mcq from zaman file\nQ1.purpose of phase separation in protein extraction.\nLong question \nMaterial names used in gel electrophoresis.",
-            "topicsHeading": "Exam Questions",
-            "topicsList": [
-                "Phase Separation in Protein Extraction",
-                "Gel Electrophoresis Materials"
-            ]
-        }
-    ]
+  "course": "BIO505P",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (30 January 2026)",
+      "reviewText": "Mcq from zaman file\nQ1.purpose of phase separation in protein extraction.\nLong question \nMaterial names used in gel electrophoresis.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Phase Separation in Protein Extraction",
+        "Gel Electrophoresis Materials"
+      ]
+    }
+  ]
 }
