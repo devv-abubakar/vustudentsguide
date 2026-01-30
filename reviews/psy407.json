@@ -1,22 +1,22 @@
 {
-    "course": "PSY407",
-    "reviews": [
-        {
-            "examType": "Final Term",
-            "difficulty": "Moderate",
-            "reviewHeading": "Paper Review (8:00am)",
-            "reviewText": "Short questions\n1. 3 self strategizing techniques? 2.  Indirect measurement of team cohesiveness?\n3.  Neo dissociation 2 assumptions?\n4.  Albert bandura social learning theory of aggression?\n5.  3 names btany thy yad nhi kis k \n6.  Fitness or exercise sy stress km hota h? \n\nLong questions:\n1.  Apters reversal theory telic or paratelic?\n2.  2 hypothesis physiological explanations of exercise on mental health is trhan Tha ku6\n3.  Symbolic learning theory?\n4.  Y bhi yad nhi aik long.... \ud83d\ude41",
-            "topicsHeading": "Exam Questions",
-            "topicsList": [
-                "Self Strategizing Techniques",
-                "Team Cohesiveness",
-                "Neo Dissociation Assumptions",
-                "Albert Bandura (Aggression Theory)",
-                "Exercise and Stress",
-                "Apters Reversal Theory (Telic vs Paratelic)",
-                "Symbolic Learning Theory",
-                "Exercise and Mental Health Hypothesis"
-            ]
-        }
-    ]
+  "course": "PSY407",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (8:00am) (30 January 2026)",
+      "reviewText": "Short questions\n1. 3 self strategizing techniques? 2.  Indirect measurement of team cohesiveness?\n3.  Neo dissociation 2 assumptions?\n4.  Albert bandura social learning theory of aggression?\n5.  3 names btany thy yad nhi kis k \n6.  Fitness or exercise sy stress km hota h? \n\nLong questions:\n1.  Apters reversal theory telic or paratelic?\n2.  2 hypothesis physiological explanations of exercise on mental health is trhan Tha ku6\n3.  Symbolic learning theory?\n4.  Y bhi yad nhi aik long.... \ud83d\ude41",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Self Strategizing Techniques",
+        "Team Cohesiveness",
+        "Neo Dissociation Assumptions",
+        "Albert Bandura (Aggression Theory)",
+        "Exercise and Stress",
+        "Apters Reversal Theory (Telic vs Paratelic)",
+        "Symbolic Learning Theory",
+        "Exercise and Mental Health Hypothesis"
+      ]
+    }
+  ]
 }
