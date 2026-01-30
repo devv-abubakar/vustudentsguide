@@ -1,0 +1,21 @@
+{
+  "course": "MGMT628",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Medium",
+      "reviewHeading": "Paper Review (29 January 2026, 08:00 AM)",
+      "reviewText": "MCQs were from handouts.\n\nShort Questions:\nSQ-1: Key dimensions of jobs.\nSQ-2: Microcosm.\nSQ-3: Learning organization.\nSQ-4: OD intervention.\n\nLong Questions:\nLQ-1: Life cycle of resistance.\nLQ-2: Johari window.\nLQ-3: Review and Recycle of MBO process.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Key Dimensions of Jobs",
+        "Microcosm",
+        "Learning Organization",
+        "OD Intervention",
+        "Life Cycle of Resistance",
+        "Johari Window",
+        "MBO Process (Review & Recycle)"
+      ]
+    }
+  ]
+}
