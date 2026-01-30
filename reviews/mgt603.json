@@ -1,18 +1,18 @@
 {
-    "course": "MGT603",
-    "reviews": [
-        {
-            "examType": "Final Term",
-            "difficulty": "Moderate",
-            "reviewHeading": "Paper Review",
-            "reviewText": "Assign a 1 to 4 rating to each factor. Major weakness (rating = 1), a minor weakness (rating = 2), a minor strength (rating = 3), or a major strength (rating = 4).\n global competition\nSWOT Analysis\n customer analysis\nan external audit",
-            "topicsHeading": "Exam Questions",
-            "topicsList": [
-                "SWOT Analysis Ratings",
-                "Global Competition",
-                "Customer Analysis",
-                "External Audit"
-            ]
-        }
-    ]
+  "course": "MGT603",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (30 January 2026)",
+      "reviewText": "Assign a 1 to 4 rating to each factor. Major weakness (rating = 1), a minor weakness (rating = 2), a minor strength (rating = 3), or a major strength (rating = 4).\n global competition\nSWOT Analysis\n customer analysis\nan external audit",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "SWOT Analysis Ratings",
+        "Global Competition",
+        "Customer Analysis",
+        "External Audit"
+      ]
+    }
+  ]
 }
