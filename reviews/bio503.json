@@ -1,0 +1,21 @@
+{
+  "course": "BIO503",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Hard",
+      "reviewHeading": "Paper Review (30 January 2026, 11:40 AM)",
+      "reviewText": "Exam was totally from mids portion. Only 3 MCQs and one short question were from final term syllabus. Rest of exam was TOTALLY from midterm portion.\n\nShort Questions (3 marks):\n1. Write 2 states of self assembly?\n2. How would you justify that friction plays role in daily life?\n3. What is catalytic pathway?\n4. How alpha helices are formed in proteins?\n\nLong Questions (5 marks):\n1. What is intramolecular hydrogen bonding?\n2. Write about 3 laws of thermodynamics?\n3. What is sliding friction? Give example.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Self Assembly States",
+        "Friction in Daily Life",
+        "Catalytic Pathway",
+        "Alpha Helices (Protein Formation)",
+        "Intramolecular Hydrogen Bonding",
+        "Laws of Thermodynamics",
+        "Sliding Friction"
+      ]
+    }
+  ]
+}
