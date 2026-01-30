@@ -1,19 +1,19 @@
 {
-    "course": "MGT111",
-    "reviews": [
-        {
-            "examType": "Final Term",
-            "difficulty": "Moderate",
-            "reviewHeading": "Paper Review (11am)",
-            "reviewText": "Mcqs easy thy\n1 traditional authority or charishma authority ko example k sth define krna tha\n2 two core of senate?\n3 concept of procedure example k sth define \n4 importanance of freedom of speech k 4points Batana tha\n5 additional points of modern government as aapart of traditional government explain",
-            "topicsHeading": "Exam Questions",
-            "topicsList": [
-                "Traditional vs Charismatic Authority",
-                "Core of Senate",
-                "Concept of Procedure",
-                "Freedom of Speech Importance",
-                "Modern vs Traditional Government"
-            ]
-        }
-    ]
+  "course": "MGT111",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (11am) (30 January 2026)",
+      "reviewText": "Mcqs easy thy\n1 traditional authority or charishma authority ko example k sth define krna tha\n2 two core of senate?\n3 concept of procedure example k sth define \n4 importanance of freedom of speech k 4points Batana tha\n5 additional points of modern government as aapart of traditional government explain",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Traditional vs Charismatic Authority",
+        "Core of Senate",
+        "Concept of Procedure",
+        "Freedom of Speech Importance",
+        "Modern vs Traditional Government"
+      ]
+    }
+  ]
 }
