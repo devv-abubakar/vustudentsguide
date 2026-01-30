@@ -1,0 +1,20 @@
+{
+  "course": "MTH401",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Medium",
+      "reviewHeading": "Paper Review (28 January 2026, 6:00 PM)",
+      "reviewText": "Short and Long Questions:\n1. Wronskian (Chapter 41 Example 1 & Q7 - same values).\n2. Variation of Parameters (Lecture 44).\n3. Cauchy Euler (Lecture 27).\n4. Power Series representation (3 ways - Lecture 28).\n5. Rodrigues Formula for Legendre\u2019s Polynomials P_3(x) (Lecture 34).\n6. Ordinary Differential Equation.\nMCQs mostly from past papers.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Wronskian",
+        "Variation of Parameters",
+        "Cauchy Euler Equation",
+        "Power Series",
+        "Rodrigues Formula (Legendre Polynomials)",
+        "Ordinary Differential Equations"
+      ]
+    }
+  ]
+}
