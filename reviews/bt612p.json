@@ -1,0 +1,18 @@
+{
+  "course": "BT612P",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Medium",
+      "reviewHeading": "Paper Review (30 January 2026, 2:00 PM)",
+      "reviewText": "1. How the culture media is sterilized Before starting the shake flask Fermentation?\n2. What is Generation Time and how it is calculated?\n3. Procedure of preparing potato Dextrose Agar.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Culture Media Sterilization",
+        "Shake Flask Fermentation",
+        "Generation Time Calculation",
+        "Potato Dextrose Agar Procedure"
+      ]
+    }
+  ]
+}
