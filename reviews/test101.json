@@ -4,10 +4,8 @@
     {
       "examType": "Midterm",
       "difficulty": "Easy",
-
-      "reviewHeading": "Review",
+      "reviewHeading": "Review (30 January 2026)",
       "reviewText": "Paper zyada tar handouts se tha. Abbreviations, binary system aur basic networking se conceptual questions aaye. Overall paper easy tha aur handouts parhne walon ke liye simple tha.",
-
       "topicsHeading": "Topics",
       "topicsList": [
         "Abbreviations",
@@ -28,10 +26,8 @@
     {
       "examType": "Final Term",
       "difficulty": "Easy",
-
       "reviewHeading": "Review",
       "reviewText": "Final term paper mostly handouts se aaya. Bits and bytes, OSI model aur GUI se short conceptual questions thay. Definitions aur basics strong hon to paper easy lagta hai.",
-
       "topicsHeading": "Topics",
       "topicsList": [
         "Bits and Bytes",
