@@ -1,0 +1,35 @@
+{
+  "course": "BT611T_BT404T",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Medium",
+      "reviewHeading": "Paper Review (29 January 2026)",
+      "reviewText": "MCQs: Monosaccharides, Reduced moisture food, Anemia (IQ), DDT, GHP, FDCA, LTS, Chemical Preservation (0.1%), Staphylococcus aureus, Allergens (Peanuts), Vacuum Oven, Acidulant, Emulsifying properties, Back Slopping (Yoghurt), Probiotics.\nShort Questions:\n1. Components of food matrix.\n2. Why synthetic flavour are better than natural?\n3. Application of edible vaccine (3).\n4. Examples of microorganism.\n5. Obstacles in functional foods production (Probiotic).\n6. Risk due to Poor hygienic design.\nLong Questions:\n1. Physical spoilage.\n2. Origin of hazard.\n3. Note on flavoring and flavor enhancement.\n4. Measurable attributes of food quality.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Food Preservation & Safety",
+        "Probiotics",
+        "Food Spoilage",
+        "Flavoring",
+        "Edible Vaccines",
+        "Food Matrix",
+        "Hazards & Hygiene"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Medium",
+      "reviewHeading": "Paper Review (29 January 2026)",
+      "reviewText": "MCQs: Vitamin K, Titration, Body minerals (3%), Specific gravity of oils (0.9), Emulsification, Pectinase, Rancidity, CSR, Paraffin (Cheese), LAB, Preservative (0.1%), Calories in oil (9), Secondary structure (Protein), Amylase activity, DMSO, HACCP, Corn syrup (19% dextrose), Maize (Amylose free), Transgenic banana.\nShort: Yeast alcohols, LAB role, Honey/Butter flavor, Conveyors/Elevators, Risk analysis, Spoilage bacteria classification.\nLong: Type cultures (Frozen vs Dried), Probiotics, HACCP 7 principles, Purpose of food additives.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Food Chemistry (Fats, Proteins, Vitamins)",
+        "HACCP",
+        "Probiotics & LAB",
+        "Food Processing Enzymes",
+        "Food Additives"
+      ]
+    }
+  ]
+}
