@@ -5,7 +5,7 @@
       "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Review",
-      "reviewText": "Paper 2025, 7:45 AM. Objective MCQs mostly Sir Mudasar Swan ki YouTube video se 80% cover huye, Waqar aur Moaz ki 2 files se bhi kuch. Subjective: Analytic point of power series, C0!=0 for binious series, 2 matrix ke Wronskian, Linear independent differential equation ka general solution, Chauchy Euler equation, 4x² d²x/dy² + ... y=0 ka general solution, matrix ka eigenvalues find karna.",
+      "reviewText": "Paper 2025, 7:45 AM. Objective MCQs mostly Sir Mudasar Swan ki YouTube video se 80% cover huye, Waqar aur Moaz ki 2 files se bhi kuch. Subjective: Analytic point of power series, C0!=0 for binious series, 2 matrix ke Wronskian, Linear independent differential equation ka general solution, Chauchy Euler equation, 4x\u00b2 d\u00b2x/dy\u00b2 + ... y=0 ka general solution, matrix ka eigenvalues find karna.",
       "topicsHeading": "Topics",
       "topicsList": [
         "Power Series",
@@ -13,6 +13,21 @@
         "Linear Independent Differential Equations",
         "Cauchy-Euler Equations",
         "Eigenvalues of Matrices"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Medium",
+      "reviewHeading": "Paper Review (28 January 2026, 6:00 PM)",
+      "reviewText": "Short and Long Questions:\n1. Wronskian (Chapter 41 Example 1 & Q7 - same values).\n2. Variation of Parameters (Lecture 44).\n3. Cauchy Euler (Lecture 27).\n4. Power Series representation (3 ways - Lecture 28).\n5. Rodrigues Formula for Legendre\u2019s Polynomials P_3(x) (Lecture 34).\n6. Ordinary Differential Equation.\nMCQs mostly from past papers.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Wronskian",
+        "Variation of Parameters",
+        "Cauchy Euler Equation",
+        "Power Series",
+        "Rodrigues Formula (Legendre Polynomials)",
+        "Ordinary Differential Equations"
       ]
     }
   ]
