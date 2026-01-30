@@ -1,0 +1,22 @@
+{
+  "course": "ECO610",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Medium",
+      "reviewHeading": "Paper Review (29 January 2026, 5:40 PM)",
+      "reviewText": "MCQs:\n- Carbon emission annually per person.\n- Rural sector ko sb se bara khatra.\n- Oil price kab increase howi the 1970s mai credit lene ki wja se.\n\nQuestions:\n- Financial sector reforms since 1992.\n- Junejo program.\n- Islamic banking tools.\n- Structural adjustment program.\n- Western commercial banks ki conditions loan dene k liye.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Carbon Emission",
+        "Rural Sector Threats",
+        "Oil Prices (1970s)",
+        "Financial Sector Reforms (1992)",
+        "Junejo Program",
+        "Islamic Banking Tools",
+        "Structural Adjustment Program",
+        "Western Commercial Banks Conditions"
+      ]
+    }
+  ]
+}
