@@ -1,16 +1,16 @@
 {
-    "course": "CS604P",
-    "reviews": [
-        {
-            "examType": "Final Term",
-            "difficulty": "Moderate",
-            "reviewHeading": "Operating Systems Practical",
-            "reviewText": "1. Fork() System Call \u2013 Output-based MCQs (parent/child PID\u2026",
-            "topicsHeading": "Topics Covered",
-            "topicsList": [
-                "Fork() System Call",
-                "Output-based MCQs"
-            ]
-        }
-    ]
+  "course": "CS604P",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Operating Systems Practical (30 January 2026)",
+      "reviewText": "1. Fork() System Call \u2013 Output-based MCQs (parent/child PID\u2026",
+      "topicsHeading": "Topics Covered",
+      "topicsList": [
+        "Fork() System Call",
+        "Output-based MCQs"
+      ]
+    }
+  ]
 }
