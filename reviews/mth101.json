@@ -3,6 +3,19 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Medium",
+      "reviewHeading": "Paper Review (30 January 2026, 5:00 PM)",
+      "reviewText": "Paper mostly handouts mainse tha. Files karne ki koi zarorat nahi agar handouts achy se read kiye hue hain to easily solve hojana hai paper. Topics covered: Integral, Series/Sequence, and Area/Volume.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Handouts (Primary Source)",
+        "Integrals",
+        "Series & Sequence",
+        "Area & Volume"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Paper Review (27 January 2026, 2:00 PM)",
       "reviewText": "MCQs from handouts and conceptual.\nShort Questions:\n1. Integration by substitution.\n2. Find Absolute Maximum or Absolute Minimum.\n3. Mean root topic question.\n4. Find Area of Cylinder.\nAll questions were conceptual.",
