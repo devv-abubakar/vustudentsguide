@@ -1,0 +1,22 @@
+{
+  "course": "BT613P",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Medium",
+      "reviewHeading": "Paper Review (30 January 2026, 3:50 PM)",
+      "reviewText": "MCQs:\n- Most common buffer used in DNA extraction.\n- Agrobacterium take what as food from host during infectivity (flavenoids).\n- PGR example (kinetin).\n- Polymerase polymerizes how many bases per minute at its optimum temperature (a thousand).\n- Light dark time for seed growth (16/8).\n\nS.Q:\n1. Callus according to plant tissue culture.\n2. Genetically transformed plants are called transformants? How these transformants can be verified?\n\nL.Q:\n1. PCR Steps In Detail?",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "DNA Extraction Buffer",
+        "Agrobacterium Infectivity (Flavenoids)",
+        "PGR Example (Kinetin)",
+        "Polymerase Base Polymerization",
+        "Seed Growth (Light/Dark Time)",
+        "Callus (Plant Tissue Culture)",
+        "Transformants Verification",
+        "PCR Steps"
+      ]
+    }
+  ]
+}
