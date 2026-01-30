@@ -1,19 +1,19 @@
 {
-    "course": "BT505",
-    "reviews": [
-        {
-            "examType": "Final Term",
-            "difficulty": "Moderate",
-            "reviewHeading": "Paper Review",
-            "reviewText": "MCQS handouts sa tha file sa koi 4 ya 5 ho ga \nShort\nbiorecognition bionsensor tha I think  define karna tha \u06d4\nDefine enzyme printed electrode\u06d4 \nlong\nName batana tha plateform ka jo biosensor ma use hota ha \nlateral flow immunoassay explain\u06d4\nprinciple microcantiliver array",
-            "topicsHeading": "Exam Questions",
-            "topicsList": [
-                "Biorecognition Biosensor",
-                "Enzyme Printed Electrode",
-                "Biosensor Platforms",
-                "Lateral Flow Immunoassay",
-                "Microcantilever Array Principle"
-            ]
-        }
-    ]
+  "course": "BT505",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (30 January 2026)",
+      "reviewText": "MCQS handouts sa tha file sa koi 4 ya 5 ho ga \nShort\nbiorecognition bionsensor tha I think  define karna tha \u06d4\nDefine enzyme printed electrode\u06d4 \nlong\nName batana tha plateform ka jo biosensor ma use hota ha \nlateral flow immunoassay explain\u06d4\nprinciple microcantiliver array",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Biorecognition Biosensor",
+        "Enzyme Printed Electrode",
+        "Biosensor Platforms",
+        "Lateral Flow Immunoassay",
+        "Microcantilever Array Principle"
+      ]
+    }
+  ]
 }
