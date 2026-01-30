@@ -13,6 +13,19 @@
         "Intersection",
         "Create Table (SQL)"
       ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (28 January 2026)",
+      "reviewText": "MCQs easy mostly from handouts.\nQuestions:\n1. Entity Relationship Diagram (ERD).\n2. Create View.\n3. Intersection (Find intersection from two tables).\n4. SQL command to create tables.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "ERD",
+        "Create View",
+        "Intersection",
+        "Create Table (SQL)"
+      ]
     }
   ]
 }
