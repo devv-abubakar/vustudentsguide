@@ -1,0 +1,21 @@
+{
+  "course": "MIC501T",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Medium",
+      "reviewHeading": "Paper Review (30 January 2026, 11:40 AM)",
+      "reviewText": "Mcqs from arham file and some from handouts. Subjective from kainat alvi file and repeated current paper mostly.\n\nShort questions:\n- Define vaccine.\n- Define algae and its structure.\n- Characteristics of antigen.\n- Define morbidity, mortality and pathogenic.\n\nLong questions:\n- Disk diffusion method.\n- Western blotting.\n- Bacteria defense against host defense of body.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Vaccine Definition",
+        "Algae Structure",
+        "Antigen Characteristics",
+        "Morbidity, Mortality, Pathogenic",
+        "Disk Diffusion Method",
+        "Western Blotting",
+        "Bacterial Defense Mechanisms"
+      ]
+    }
+  ]
+}
