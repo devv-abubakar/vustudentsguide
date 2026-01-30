@@ -1,0 +1,20 @@
+{
+  "course": "CS306",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (29 January 2026, 9:50 AM)",
+      "reviewText": "All MCQs were easy basics. Zyada paper List, Function mein se tha.\nLong: Union, Intersection, Disjoint, Difference (Set theory/SQL).\nShort: Outputs and Error finding.\nTopics covered: List, Tuples, Sets, Dictionaries, Nested dictionary, Generator, Lambda.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Lists & Tuples",
+        "Sets (Union, Intersection, etc.)",
+        "Dictionaries",
+        "Generators",
+        "Lambda Functions",
+        "Code Output & Error Finding"
+      ]
+    }
+  ]
+}
