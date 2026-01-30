@@ -1,22 +1,22 @@
 {
-    "course": "PSY610",
-    "reviews": [
-        {
-            "examType": "Final Term",
-            "difficulty": "Easy",
-            "reviewHeading": "Paper Review",
-            "reviewText": "About Brian layer brain size and new cell production, short\nAbout 3 types of neurotransmitters short\nAbout 5HT how it involves in temperature regulation \nAbout ACH how it works in punishment behavior \nNote on sleep disorder \nHow we intake food and how it works in body\nNote on hypothalamus \nCell membrane details \nHypothesis about cells , wo blueprint hypothesis wala ink name btany thy or 1 ki detail, in long\nAbout cell migration se related tha 1",
-            "topicsHeading": "Exam Questions",
-            "topicsList": [
-                "Brain Layers & Cell Production",
-                "Neurotransmitters (5HT, ACH)",
-                "Sleep Disorders",
-                "Food Intake Mechanism",
-                "Hypothalamus",
-                "Cell Membrane",
-                "Blueprint Hypothesis",
-                "Cell Migration"
-            ]
-        }
-    ]
+  "course": "PSY610",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (30 January 2026)",
+      "reviewText": "About Brian layer brain size and new cell production, short\nAbout 3 types of neurotransmitters short\nAbout 5HT how it involves in temperature regulation \nAbout ACH how it works in punishment behavior \nNote on sleep disorder \nHow we intake food and how it works in body\nNote on hypothalamus \nCell membrane details \nHypothesis about cells , wo blueprint hypothesis wala ink name btany thy or 1 ki detail, in long\nAbout cell migration se related tha 1",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Brain Layers & Cell Production",
+        "Neurotransmitters (5HT, ACH)",
+        "Sleep Disorders",
+        "Food Intake Mechanism",
+        "Hypothalamus",
+        "Cell Membrane",
+        "Blueprint Hypothesis",
+        "Cell Migration"
+      ]
+    }
+  ]
 }
