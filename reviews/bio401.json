@@ -1,22 +1,22 @@
 {
-    "course": "BIO401",
-    "reviews": [
-        {
-            "examType": "Final Term",
-            "difficulty": "Moderate",
-            "reviewHeading": "Biostatistics Paper Review",
-            "reviewText": "Mcqs conceptual mostly from mean, skewness ,mode,median standard derivation, probability, sampling.\nQuestions: conceptual find mean,mode,median,standard derivation\nDraw pie chart following data,regression\nBar graph",
-            "topicsHeading": "Topics Covered",
-            "topicsList": [
-                "Mean, Mode, Median",
-                "Standard Deviation",
-                "Skewness",
-                "Probability",
-                "Sampling",
-                "Pie Chart",
-                "Regression",
-                "Bar Graph"
-            ]
-        }
-    ]
+  "course": "BIO401",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Biostatistics Paper Review (30 January 2026)",
+      "reviewText": "Mcqs conceptual mostly from mean, skewness ,mode,median standard derivation, probability, sampling.\nQuestions: conceptual find mean,mode,median,standard derivation\nDraw pie chart following data,regression\nBar graph",
+      "topicsHeading": "Topics Covered",
+      "topicsList": [
+        "Mean, Mode, Median",
+        "Standard Deviation",
+        "Skewness",
+        "Probability",
+        "Sampling",
+        "Pie Chart",
+        "Regression",
+        "Bar Graph"
+      ]
+    }
+  ]
 }
