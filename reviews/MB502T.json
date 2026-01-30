@@ -17,6 +17,23 @@
         "Plasmids",
         "Phage"
       ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Medium",
+      "reviewHeading": "Paper Review (29 January 2026, 4:30 PM)",
+      "reviewText": "MCQs from Suleiman file. Subjective from Kainat Alvi file.\nShort Questions:\n1. What is torpedo?\n2. Two enzymes for lactose metabolism.\n3. Role of RHO protein in termination of transcription.\n4. Bond angle C carbon peptide bond.\n5. Plasmids location.\n6. Two 3' to 5' RNA mechanisms.\nLong Questions:\n1. Importance of alpha phage.\n2. Function of A site, P site, and E site.\n3. Watson and Crick model of DNA.\n4. Steps of attaching amino acid to tRNA.\n5. SR Protein Work In Splicing.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Transcription Termination (Rho, Torpedo)",
+        "Lactose Metabolism",
+        "Translation (A, P, E sites)",
+        "tRNA & Amino Acids",
+        "DNA Model (Watson & Crick)",
+        "Splicing (SR Protein)",
+        "Plasmids",
+        "Phage"
+      ]
     }
   ]
 }
