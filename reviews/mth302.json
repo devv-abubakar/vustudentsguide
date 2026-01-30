@@ -1,19 +1,19 @@
 {
-    "course": "MTH302",
-    "reviews": [
-        {
-            "examType": "Final Term",
-            "difficulty": "Easy",
-            "reviewHeading": "Paper Review",
-            "reviewText": "Paper easy aya tha \nProbability ka mostly questions aya tha , median , quartiles , harmonic mean , covariance \nmcqs easy tha calculation Wala question bhot Kam tha .",
-            "topicsHeading": "Topics Covered",
-            "topicsList": [
-                "Probability",
-                "Median",
-                "Quartiles",
-                "Harmonic Mean",
-                "Covariance"
-            ]
-        }
-    ]
+  "course": "MTH302",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (30 January 2026)",
+      "reviewText": "Paper easy aya tha \nProbability ka mostly questions aya tha , median , quartiles , harmonic mean , covariance \nmcqs easy tha calculation Wala question bhot Kam tha .",
+      "topicsHeading": "Topics Covered",
+      "topicsList": [
+        "Probability",
+        "Median",
+        "Quartiles",
+        "Harmonic Mean",
+        "Covariance"
+      ]
+    }
+  ]
 }
