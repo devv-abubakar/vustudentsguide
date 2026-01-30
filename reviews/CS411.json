@@ -16,6 +16,22 @@
         "NSMutableArray (Alloc)",
         "Code Writing"
       ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Medium",
+      "reviewHeading": "Paper Review (29 January 2026, 2:00 PM)",
+      "reviewText": "Questions:\n1. Name and explain two categories of application binary resources.\n2. C# code: Declare grid length in auto sizing mode.\n3. CALL code: Ensure size of all columns in grid are same.\n4. Objective-C code: Interface of a car (Name, model, Id, setters).\n5. C# code: Async lambda expression to divide two numbers.\n6. C# code: Create and start a new thread.\n7. Objective-C code: Create instance of NSMutableArray using alloc method.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Application Binary Resources",
+        "C# Grid Sizing",
+        "Objective-C Interface",
+        "C# Async Lambda",
+        "C# Threading",
+        "NSMutableArray (Alloc)",
+        "Code Writing"
+      ]
     }
   ]
 }
