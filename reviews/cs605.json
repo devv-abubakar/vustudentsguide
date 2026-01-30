@@ -1,24 +1,24 @@
 {
-    "course": "CS605",
-    "reviews": [
-        {
-            "examType": "Final Term",
-            "difficulty": "Moderate",
-            "reviewHeading": "Most Important Final Term Topics",
-            "reviewText": "* Software Process Models (Waterfall, Agile, Spiral, Iterative)\n* Requirements Engineering (elicitation techniques, SRS templates)\n* Software Project Metrics & Estimation Techniques (COCOMO, LOC, Function Points)\n* Risk Analysis & Risk Management (identification methods, mitigation strategies)\n* Project Scheduling & Tracking (Gantt, PERT/CPM, earned value)\n* Software Quality Assurance (reviews, testing levels, QA standards like ISO)\n* Software Re-engineering (reverse-engineering, refactoring, legacy systems)\n* Change Control & Configuration Management (version control tools, baseline concepts)\n* Maintenance Types & Models (corrective, adaptive, preventive, perfective)\n* Software Design Documentation & Process Quality Audits",
-            "topicsHeading": "Topics Covered",
-            "topicsList": [
-                "Software Process Models",
-                "Requirements Engineering",
-                "Project Metrics & Estimation",
-                "Risk Analysis & Management",
-                "Project Scheduling & Tracking",
-                "Software Quality Assurance",
-                "Software Re-engineering",
-                "Configuration Management",
-                "Maintenance Types & Models",
-                "Design Documentation"
-            ]
-        }
-    ]
+  "course": "CS605",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Most Important Final Term Topics (30 January 2026)",
+      "reviewText": "* Software Process Models (Waterfall, Agile, Spiral, Iterative)\n* Requirements Engineering (elicitation techniques, SRS templates)\n* Software Project Metrics & Estimation Techniques (COCOMO, LOC, Function Points)\n* Risk Analysis & Risk Management (identification methods, mitigation strategies)\n* Project Scheduling & Tracking (Gantt, PERT/CPM, earned value)\n* Software Quality Assurance (reviews, testing levels, QA standards like ISO)\n* Software Re-engineering (reverse-engineering, refactoring, legacy systems)\n* Change Control & Configuration Management (version control tools, baseline concepts)\n* Maintenance Types & Models (corrective, adaptive, preventive, perfective)\n* Software Design Documentation & Process Quality Audits",
+      "topicsHeading": "Topics Covered",
+      "topicsList": [
+        "Software Process Models",
+        "Requirements Engineering",
+        "Project Metrics & Estimation",
+        "Risk Analysis & Management",
+        "Project Scheduling & Tracking",
+        "Software Quality Assurance",
+        "Software Re-engineering",
+        "Configuration Management",
+        "Maintenance Types & Models",
+        "Design Documentation"
+      ]
+    }
+  ]
 }
