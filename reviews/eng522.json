@@ -1,0 +1,21 @@
+{
+  "course": "ENG522",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Medium",
+      "reviewHeading": "Paper Review (28 January 2026, 6:00 PM)",
+      "reviewText": "Subjective Part:\n1. Components of Communicative Competence (Canale and Swain 1980).\n2. Two major questions of Linguistics Competence.\n3. Difference between Sex and Gender (2 lines).\n4. Enlist five processes of linguistics diversity.\n5. Enlist three forms of language relativity.\n6. Five possible causes of Language Attrition.\n7. Praxis in critical applied linguistics.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Communicative Competence",
+        "Linguistic Competence",
+        "Sex vs Gender",
+        "Linguistic Diversity",
+        "Language Relativity",
+        "Language Attrition",
+        "Praxis"
+      ]
+    }
+  ]
+}
