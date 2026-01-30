@@ -1,0 +1,35 @@
+{
+  "course": "CS620",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Medium",
+      "reviewHeading": "Paper Review (29 January 2026)",
+      "reviewText": "MCQs handout sy thy kuxh conceptual thy.\nQuestions:\n1. CRN.\n2. Chaos theory.\n3. Bernoulli distribution.\n4. Significance of conducting multiple runs in ABM experiment. How does practice help in distinguishing b/w recurring patterns & one time run occurrence.\n5. Binomial distribution.\n6. Performance evaluation of model.\n7. Give the example of distribution whichever were create on physical basis.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "CRN",
+        "Chaos Theory",
+        "Bernoulli Distribution",
+        "ABM Experiment (Multiple Runs)",
+        "Binomial Distribution",
+        "Model Performance Evaluation",
+        "Physical Basis Distribution"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Medium",
+      "reviewHeading": "Paper Review (29 January 2026)",
+      "reviewText": "Imminent Event mean? Verification role in correctness of model. Distribution sa zyada thy .. Aik debugging sa related tha.\n\nLong question:\n- Common random number.\n- Aik distribution sa tha.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Imminent Event",
+        "Verification Role",
+        "Debugging",
+        "Common Random Number",
+        "Distributions"
+      ]
+    }
+  ]
+}
