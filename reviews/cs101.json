@@ -4,6 +4,23 @@
     {
       "examType": "Final Term",
       "difficulty": "Easy",
+      "reviewHeading": "Paper Review (31 January 2026, 8:14 AM)",
+      "reviewText": "Mostly quizzes from handouts. 90% Handouts, 10% Files.\nQuestions Covered:\n- Stack operations (Push, Delete, Insert, Drop).\n- Tree definitions (Longest path, Parent-Children relationship).\n- MS Word (Symbols, Style group, Text box, Line spacing, Highlight text, Format painter, Drop cap).\n- C++ Operators (%=).\n- XML attributes.\n- Shortcuts (Ctrl+V).\n- Pseudocodes & Algorithms.\n- Waterfall model.\n- Database purpose.\n- Turing test date.\n- Functional paradigm language (Python).\n- AI & Email.\n- History (FORTRAN, COBOL).\n- OOP Languages.\n- HTML extension.\n- Dreamweaver.\n- Computer Fraud and Abuse Act 1984.\n- Encryption (Public Key).\n- HTTPS Protocol.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Data Structures (Stack, Tree)",
+        "MS Word Tools & Groups",
+        "Algorithms & Pseudocodes",
+        "Software Development Models",
+        "Programming Languages (C++, Python, OOP)",
+        "HTML & Web Development",
+        "Security & Acts (ECPA, 1984 Act, HTTPS)",
+        "Database Basics"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
       "reviewHeading": "Paper Review (28 January 2026, 10:59 PM)",
       "reviewText": "Zyada MCQs MS Word ke baare main thay (Tabs, Tools). MS Excel ke 4-5 MCQs thay. MS Access bhi tha.\nSpecific Questions:\n- Condition output finding.\n- Hash function.\n- C++ Modulus (7%3 result).\n- MS Word main image kahan se add karte hain.\n- Illustration group main kya hota hai.\n- Home page par konsi cheezain hoti hain.\n- Zyada paper last walay topics mein se aya tha.",
       "topicsHeading": "Exam Questions",
@@ -82,10 +99,8 @@
     {
       "examType": "Midterm",
       "difficulty": "Easy",
-
       "reviewHeading": "Review",
       "reviewText": "Paper zyada tar handouts se tha. Abbreviations, binary system aur basic networking se conceptual questions aaye. Overall paper easy tha aur handouts parhne walon ke liye simple tha.",
-
       "topicsHeading": "Topics",
       "topicsList": [
         "Abbreviations",
@@ -106,10 +121,8 @@
     {
       "examType": "Final Term",
       "difficulty": "Easy",
-
       "reviewHeading": "Review",
       "reviewText": "Final term paper mostly handouts se aaya. Bits and bytes, OSI model aur GUI se short conceptual questions thay. Definitions aur basics strong hon to paper easy lagta hai.",
-
       "topicsHeading": "Topics",
       "topicsList": [
         "Bits and Bytes",
@@ -123,8 +136,3 @@
     }
   ]
 }
-
-
-
-
-
