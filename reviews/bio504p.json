@@ -4,18 +4,6 @@
     {
       "examType": "Final Term",
       "difficulty": "Easy",
-      "reviewHeading": "Paper Review (28 January 2026, 2:00 PM)",
-      "reviewText": "Paper bht easy thaa. Short and long hafiz expert wali file me sy thyy.\nShort:\n1. Name of Protein test.\n2. Location of Amino acids on chromatogram.\nLong:\n1. Biuret test purpose, principle and procedure.",
-      "topicsHeading": "Exam Questions",
-      "topicsList": [
-        "Protein Test",
-        "Amino Acids Chromatogram",
-        "Biuret Test"
-      ]
-    },
-    {
-      "examType": "Final Term",
-      "difficulty": "Easy",
       "reviewHeading": "Paper Review (Practical) (30 January 2026)",
       "reviewText": "Today paper: practical \nDefine saponification \nDefine concentration and also give details about its four units \nWhat is proteins and it's types \nMcq \nThree saponification Walay topic say tha \nOr ak protein Walay topic say baqi yad nahi h",
       "topicsHeading": "Exam Questions",
@@ -23,6 +11,18 @@
         "Saponification",
         "Concentration & Units",
         "Proteins & Types"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (28 January 2026, 2:00 PM)",
+      "reviewText": "Paper bht easy thaa. Short and long hafiz expert wali file me sy thyy.\nShort:\n1. Name of Protein test.\n2. Location of Amino acids on chromatogram.\nLong:\n1. Biuret test purpose, principle and procedure.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Protein Test",
+        "Amino Acids Chromatogram",
+        "Biuret Test"
       ]
     }
   ]
