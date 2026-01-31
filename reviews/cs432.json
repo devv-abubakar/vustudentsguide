@@ -4,6 +4,22 @@
     {
       "examType": "Final Term",
       "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 February 2026)",
+      "reviewText": "Short Questions:\n- Two strategies of combat control.\n- Three limitations of min hop buffering.\n- Enlist three services of DDL (data link layer).\n- Complete the FTP diagram.\n- Difference between Random mode and script mode in HTTP browser in OMNET++.\nLong Questions:\n- End-end combat control strategy features.\n- Write migral buffering and its features.\n- SMTP scalability (five features).\n- Optimization problems in optima routing.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Combat Control Strategies",
+        "Min Hop Buffering",
+        "DDL Services",
+        "FTP Diagram",
+        "HTTP Browser Modes (OMNET++)",
+        "SMTP Scalability",
+        "Optima Routing"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
       "reviewHeading": "Paper Review (26 Jan 2026, 2:00 PM)",
       "reviewText": "MCQs mostly from 63 pages file.\nShort Questions:\n1. Congestion names.\n2. Bulk transfer usage diagram.\n3. Coaxial cable usage (Table question).\n4. Numerical: Find Buffer size.\n5. Difference between strict priority queue and rate controlled priority queue.\n6. TCP lifecycle to establish TCP connection.",
       "topicsHeading": "Exam Questions",
