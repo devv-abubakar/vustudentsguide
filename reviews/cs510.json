@@ -4,6 +4,20 @@
     {
       "examType": "Final Term",
       "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (29 January 2026, 11:29 AM)",
+      "reviewText": "Short Questions:\n1. Agile technique approaches Name.\n2. Drawbacks of conventional requirement engineering.\n3. Freezing requirements.\n4. Use case scenario.\nLong Questions:\n1. Four strengths of Extreme Engineering and scrum.\n2. Mention software requirement template IEEE.\n3. Why does the GORE use (Enlist 5 reasons).",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Agile & Extreme Engineering",
+        "Requirement Engineering",
+        "IEEE Template",
+        "GORE",
+        "Use Cases"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
       "reviewHeading": "Paper Review (28 January 2026, 08:00 PM)",
       "reviewText": "Short (3 marks):\n1. Objects used in KAOS Responsibility models.\n2. Triggers of state machine.\n3. Symbols used in Responsibility diagram.\n4. Difference between White-box and Black-box testing.\nLong (5 marks):\n1. Scenario: Admin create, update, delete account. Make responsibility diagram.\n2. Metrics of Usability Evaluation.\n3. Why GORE (Goal Oriented Requirement Engineering) is used.",
       "topicsHeading": "Exam Questions",
