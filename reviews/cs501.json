@@ -3,6 +3,19 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (31 January 2026, 11:40 AM)",
+      "reviewText": "Mostly MCQs were repeated from past papers (Al-Junaid).\nShort Questions: Hardware Interrupt, Numericals (finding device capacity). How hazards are detected and resolved by compilers? Why it's not a good option?\nLong Questions: Features of FALCON-A, Types of hardware interrupt.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Hardware Interrupts",
+        "Device Capacity Numerical",
+        "Hazards Resolution (Compilers)",
+        "FALCON-A Features"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Medium",
       "reviewHeading": "Paper Review (29 January 2026)",
       "reviewText": "Short Questions:\n1. Typical memory cell mn kon sy functions use hoty hain.\n2. I/O subsystem k components.\n3. Cache control unit k components.\n4. Falcon A architecture k 2 feature ko explain krna tha.\n\nLong Questions:\n1. Numerical (Page 354 example 1).\n2. How daisy chain interrupt works.\n3. I/O layers ... functional hierarchy.",
