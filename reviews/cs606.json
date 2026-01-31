@@ -1,0 +1,18 @@
+{
+  "course": "CS606",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (30 January 2026, 8:44 AM)",
+      "reviewText": "Objective handouts/conceptual. Subjective:\n1. Attribute grammar evaluation (3 ways).\n2. LR table construction pseudo code.\n3. CFG (count vertex, edges, basic block, leaders, live variables).\n4. LR goto state table action (shift, reduce, accept, error).\n5. Register allocation.\n6. Instruction calculation (ADD, SUB, R1, M1).",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Attribute Grammar",
+        "LR Parsing (Table, Actions)",
+        "Control Flow Graphs (CFG)",
+        "Register Allocation"
+      ]
+    }
+  ]
+}
