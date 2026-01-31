@@ -1,0 +1,19 @@
+{
+  "course": "CS407",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (28 January 2026)",
+      "reviewText": "Shorts:\n1. Write steps of ACL creation (2 steps).\n2. DHCP_pool syntax (command).\n3. What improvements RIP_v2 does (write two)?\n4. Commands to access Media access control table of a switch S2.\nLong:\n1. DHCP-server pool.\n2. Enlist steps to enable/configure RIP_v2.\n3. Write commands in sequence to create VLAN 'CS'.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "ACL Creation",
+        "DHCP Pool Commands",
+        "RIP_v2 Improvements",
+        "MAC Table Commands",
+        "VLAN Creation"
+      ]
+    }
+  ]
+}
