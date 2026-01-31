@@ -4,6 +4,22 @@
     {
       "examType": "Final Term",
       "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (31 January 2026)",
+      "reviewText": "MCQs mostly from highlighted file.\nShort Questions:\n1. Container technology explanation.\n2. Transparency (3 points).\n3. Network virtualization.\n4. File sharing protocols.\nLong Questions:\n1. Ethics of IT infrastructure (5 points).\n2. Storage replication types and differentiation.\n3. OS tasks when application reads a file after READ() system call.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Container Technology",
+        "Transparency",
+        "Network Virtualization",
+        "File Sharing Protocols",
+        "IT Infrastructure Ethics",
+        "Storage Replication",
+        "System Calls (READ)"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
       "reviewHeading": "Paper Review (30 January 2026, 2:33 PM)",
       "reviewText": "MCQs: Handouts, Management console, Network virtualization.\nLong:\n1. Replication types.\n2. IT ethics.\n3. How kernel and memory size affect performance of operating system.",
       "topicsHeading": "Exam Questions",
@@ -24,22 +40,6 @@
         "Containers",
         "ADAP",
         "Infrastructure Ethics"
-      ]
-    },
-    {
-      "examType": "Final Term",
-      "difficulty": "Moderate",
-      "reviewHeading": "Paper Review (31 January 2026)",
-      "reviewText": "MCQs mostly from highlighted file.\nShort Questions:\n1. Container technology explanation.\n2. Transparency (3 points).\n3. Network virtualization.\n4. File sharing protocols.\nLong Questions:\n1. Ethics of IT infrastructure (5 points).\n2. Storage replication types and differentiation.\n3. OS tasks when application reads a file after READ() system call.",
-      "topicsHeading": "Exam Questions",
-      "topicsList": [
-        "Container Technology",
-        "Transparency",
-        "Network Virtualization",
-        "File Sharing Protocols",
-        "IT Infrastructure Ethics",
-        "Storage Replication",
-        "System Calls (READ)"
       ]
     }
   ]
