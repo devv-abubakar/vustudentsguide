@@ -1,7 +1,7 @@
 {
-    "course": "MGT502",
-    "reviews": [
-        {
+  "course": "MGT502",
+  "reviews": [
+    {
       "examType": "Final Term",
       "difficulty": "Easy",
       "reviewHeading": "Paper Review (29 January 2026)",
@@ -13,17 +13,17 @@
         "Formal vs Informal Communication"
       ]
     },
-        {
-            "examType": "Final Term",
-            "difficulty": "Moderate",
-            "reviewHeading": "Paper Review (31-Jul-25, 8:00am)",
-            "reviewText": "Overall paper conceptual based tha koi types nhi thi is trh ka kuch nhi tha 2 questions thy jis ma organization k hawale se reason likhny thy or 2 mcqs handing waly thy baqi sala \nSoch kr or smjh kr likhny wala tha.\n\nFiles ma ne read nhi ki thi to malum nhi ha k is se kuch aya tha k nhi bs handouts ki hi practice ki thi.",
-            "topicsHeading": "Topics Covered",
-            "topicsList": [
-                "Organizational Reasoning Questions",
-                "Conceptual Questions",
-                "Handing (Handling) MCQs"
-            ]
-        }
-    ]
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (31-January-25, 8:00am)",
+      "reviewText": "Overall paper conceptual based tha koi types nhi thi is trh ka kuch nhi tha 2 questions thy jis ma organization k hawale se reason likhny thy or 2 mcqs handing waly thy baqi sala \nSoch kr or smjh kr likhny wala tha.\n\nFiles ma ne read nhi ki thi to malum nhi ha k is se kuch aya tha k nhi bs handouts ki hi practice ki thi.",
+      "topicsHeading": "Topics Covered",
+      "topicsList": [
+        "Organizational Reasoning Questions",
+        "Conceptual Questions",
+        "Handing (Handling) MCQs"
+      ]
+    }
+  ]
 }
