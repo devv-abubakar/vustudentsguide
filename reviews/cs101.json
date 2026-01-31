@@ -3,6 +3,17 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (28 January 2026, 2:00 PM)",
+      "reviewText": "Paper divided into three parts. MS Word (approx 20 MCQs), Excel, PowerPoint. Coding concepts (ICS level). Remaining questions from coding and other concepts.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "MS Office (Word, Excel, PPT)",
+        "Coding Concepts"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Easy",
       "reviewHeading": "Paper Review (31 January 2026, 8:14 AM)",
       "reviewText": "Mostly quizzes from handouts. 90% Handouts, 10% Files.\nQuestions Covered:\n- Stack operations (Push, Delete, Insert, Drop).\n- Tree definitions (Longest path, Parent-Children relationship).\n- MS Word (Symbols, Style group, Text box, Line spacing, Highlight text, Format painter, Drop cap).\n- C++ Operators (%=).\n- XML attributes.\n- Shortcuts (Ctrl+V).\n- Pseudocodes & Algorithms.\n- Waterfall model.\n- Database purpose.\n- Turing test date.\n- Functional paradigm language (Python).\n- AI & Email.\n- History (FORTRAN, COBOL).\n- OOP Languages.\n- HTML extension.\n- Dreamweaver.\n- Computer Fraud and Abuse Act 1984.\n- Encryption (Public Key).\n- HTTPS Protocol.",
