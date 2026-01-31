@@ -1,7 +1,21 @@
 {
-    "course": "MGT501",
-    "reviews": [
-        {
+  "course": "MGT501",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 January 2026, 9:50 AM)",
+      "reviewText": "Short and Long Questions:\n- Power corruption prevention.\n- Assistance program explanation.\n- Benefits of organizational family benefits.\n- Scenario: Alternatives to layoffs.\n- 5 stages of development (2 asked).\nOverall paper was conceptual.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Power Corruption",
+        "Employee Assistance Programs",
+        "Family Benefits",
+        "Layoff Alternatives",
+        "Development Stages"
+      ]
+    },
+    {
       "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Paper Review (27 January 2026, 2:00 PM)",
@@ -15,15 +29,15 @@
         "Layoff Decisions (Scenario)"
       ]
     },
-        {
-            "examType": "Final Term",
-            "difficulty": "Easy",
-            "reviewHeading": "Paper Review",
-            "reviewText": "Timing 9;45\nMcqs handouts say hi thy \nShort question and long bhi \nPaper achaa ho jay gaaa saraaa",
-            "topicsHeading": "Preparation Source",
-            "topicsList": [
-                "Handouts"
-            ]
-        }
-    ]
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review",
+      "reviewText": "Timing 9;45\nMcqs handouts say hi thy \nShort question and long bhi \nPaper achaa ho jay gaaa saraaa",
+      "topicsHeading": "Preparation Source",
+      "topicsList": [
+        "Handouts"
+      ]
+    }
+  ]
 }
