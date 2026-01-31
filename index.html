@@ -3,357 +3,282 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VU Students Guide - Past Papers & Exam Reviews</title>
+    <title>VU Exam Reviews - Authentic Student Experiences</title>
     
-    <meta name="description" content="Largest collection of Virtual University (VU) Midterm and Final Term past paper reviews. CS, MGT, ENG courses updated daily.">
-    <meta name="keywords" content="VU past papers, VU exam reviews, CS101, CS201, MGT101, Virtual University papers">
-    <meta name="author" content="Devv Abubakar">
+    <meta name="description" content="Search authentic Midterm and Final Term paper reviews for Virtual University (VU). CS, MGT, ENG courses. Updated 2026.">
+    <meta name="keywords" content="VU paper reviews, current paper 2026, virtual university past papers, CS101 review">
     
-    <meta property="og:title" content="VU Students Guide - Exam Reviews">
-    <meta property="og:description" content="Read authentic paper reviews from students. Prepare smart for your exams.">
-    <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=VU+Students+Guide">
-    <meta property="og:url" content="https://devv-abubakar.github.io/vustudentsguide/">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1e40af;
-            --secondary: #0f172a;
-            --bg-body: #f1f5f9;
-            --bg-card: #ffffff;
-            --text-main: #1e293b;
-            --text-light: #64748b;
-            --accent-green: #10b981;
+            --primary: #0f172a;    /* Dark Blue */
+            --accent: #2563eb;     /* Bright Blue */
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #334155;
             --border: #e2e8f0;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --ad-bg: #e2e8f0;
+            --ad-placeholder: #e2e8f0;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            line-height: 1.6;
-        }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); }
 
-        /* --- Navbar --- */
+        /* --- NAVBAR --- */
         nav {
-            background: var(--bg-card);
+            background: var(--card-bg);
             padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
+        .logo { font-size: 1.4rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+        .logo span { color: var(--accent); }
 
-        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; }
-        .logo span { color: var(--secondary); }
-        
-        /* --- Layout Grid --- */
-        .main-layout {
-            display: grid;
-            grid-template-columns: 1fr 300px; /* Content Left, Ads Right */
-            gap: 30px;
+        /* --- LAYOUT GRID --- */
+        .container {
             max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
+            margin: 20px auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: 1fr 320px; /* Content Left, Ads Right */
+            gap: 25px;
         }
 
-        /* --- Hero Section --- */
+        /* --- MAIN CONTENT --- */
+        .main-content { min-height: 80vh; }
+
+        /* Search Hero */
         .hero {
-            grid-column: 1 / -1;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            background: linear-gradient(120deg, var(--primary), #1e293b);
             color: white;
-            padding: 50px 30px;
-            border-radius: 16px;
+            padding: 40px 30px;
+            border-radius: 12px;
             text-align: center;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
+            margin-bottom: 25px;
         }
-
-        .hero h1 { font-size: 2.2rem; margin-bottom: 10px; }
-        .hero p { opacity: 0.9; margin-bottom: 25px; font-size: 1.1rem; }
+        .hero h1 { margin-bottom: 10px; font-size: 1.8rem; }
+        .hero p { opacity: 0.8; margin-bottom: 20px; font-size: 0.95rem; }
 
         .search-box {
             width: 100%;
-            max-width: 600px;
+            max-width: 500px;
             padding: 15px 25px;
             border-radius: 50px;
             border: none;
             font-size: 1rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             outline: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        /* --- Ad Slots (Placeholders) --- */
-        .ad-container {
-            background: var(--ad-bg);
-            border: 1px dashed #94a3b8;
-            color: #64748b;
+        /* Course List */
+        .grid-courses {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .course-card {
+            background: var(--card-bg);
+            padding: 15px 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .course-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .code { font-weight: 700; font-size: 1.1rem; }
+        .count { background: #eff6ff; color: var(--accent); padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; }
+
+        /* Review Details */
+        #reviewView { display: none; }
+        .back-btn { cursor: pointer; color: var(--accent); font-weight: 600; margin-bottom: 15px; display: inline-block; }
+        
+        .review-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            margin-bottom: 20px;
+            border-left: 4px solid var(--accent);
+        }
+        .r-header { display: flex; justify-content: space-between; margin-bottom: 10px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; }
+        .r-title { font-weight: 700; font-size: 1rem; }
+        .r-text { white-space: pre-wrap; color: #475569; font-size: 0.95rem; }
+        .topics { margin-top: 15px; background: #f8fafc; padding: 10px; border-radius: 6px; }
+        .tag { display: inline-block; font-size: 0.75rem; background: #e2e8f0; padding: 3px 8px; border-radius: 4px; margin: 2px; }
+
+        /* --- ADVERTISING SLOTS --- */
+        .ad-slot {
+            background: var(--ad-placeholder);
             display: flex;
             justify-content: center;
             align-items: center;
+            color: #94a3b8;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 20px;
             border-radius: 8px;
         }
-        .ad-header { width: 100%; height: 90px; grid-column: 1 / -1; }
-        .ad-sidebar { width: 100%; height: 600px; position: sticky; top: 90px; }
-        .ad-infeed { width: 100%; height: 250px; margin: 30px 0; }
+        .ad-top { width: 100%; height: 90px; margin-bottom: 20px; } /* Leaderboard */
+        .ad-sidebar { width: 100%; height: 600px; position: sticky; top: 90px; } /* Skyscraper */
+        .ad-infeed { width: 100%; height: 250px; margin: 30px 0; border: 1px dashed #cbd5e1; } /* Native */
 
-        /* --- Course Grid (Home) --- */
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .course-card {
-            background: var(--bg-card);
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            cursor: pointer;
-            border: 1px solid var(--border);
-            transition: 0.2s;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .course-card:hover { transform: translateY(-3px); border-color: var(--primary); }
-        .course-code { font-weight: 700; font-size: 1.2rem; }
-        .badge { background: #eff6ff; color: var(--primary); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
-
-        /* --- Review Detail Page --- */
-        .review-detail { display: none; }
-        
-        .breadcrumb { margin-bottom: 20px; color: var(--text-light); }
-        .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 600; cursor: pointer;}
-
-        .review-box {
-            background: var(--bg-card);
-            padding: 25px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            margin-bottom: 20px;
-            border-left: 5px solid var(--accent-green);
-        }
-
-        .review-meta {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #f1f5f9;
-            padding-bottom: 10px;
-        }
-        
-        .review-title { font-weight: 700; color: var(--secondary); font-size: 1.1rem; }
-        .review-diff { background: #f0fdf4; color: #166534; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; height: fit-content; }
-
-        .review-text { white-space: pre-wrap; color: #334155; }
-
-        /* Tags/Topics */
-        .topics { margin-top: 15px; }
-        .tag { display: inline-block; background: #f1f5f9; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; margin: 2px; color: #475569; }
-
-        /* Footer */
-        footer {
-            background: var(--secondary);
-            color: white;
-            text-align: center;
-            padding: 40px;
-            margin-top: 50px;
-        }
-
-        /* --- Mobile Responsive --- */
-        @media (max-width: 850px) {
-            .main-layout { grid-template-columns: 1fr; } /* Sidebar drops down */
-            .ad-sidebar { display: none; } /* Hide sticky sidebar on mobile */
+        /* Mobile Adjustments */
+        @media (max-width: 900px) {
+            .container { grid-template-columns: 1fr; }
+            .ad-sidebar { display: none; } /* Mobile pe sidebar ad chupana better hai UX k liye */
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="logo">VU<span>Guide</span></a>
-        <div>
-            <a href="https://github.com/devv-abubakar/vustudentsguide" target="_blank" style="color:var(--text-main); font-size:1.2rem;"><i class="fab fa-github"></i></a>
-        </div>
+        <a href="index.html" class="logo">VU<span>Reviews</span></a>
+        <a href="https://github.com/devv-abubakar/vustudentsguide" target="_blank"><i class="fab fa-github fa-lg"></i></a>
     </nav>
 
-    <div class="main-layout">
+    <div class="container">
         
-        <div class="ad-container ad-header">
-            Header Ad Slot (728x90)
-        </div>
-
-        <main>
+        <main class="main-content">
             
-            <div id="homeView">
-                <div class="hero">
-                    <h1>Prepare for Success</h1>
-                    <p>Authentic Midterm & Final Term paper reviews shared by students.</p>
-                    <input type="text" id="searchInput" class="search-box" placeholder="Search Course (e.g., CS101, MGT501)..." onkeyup="filterCourses()">
-                </div>
-
-                <h2 style="margin-bottom: 20px;">Available Courses</h2>
-                <div id="loading" style="text-align: center; padding: 20px;">Loading data...</div>
-                <div class="courses-grid" id="coursesGrid"></div>
+            <div class="ad-slot ad-top">
+                Top Banner Ad
             </div>
 
-            <div id="detailView" class="review-detail">
-                <div class="breadcrumb">
-                    <a onclick="goHome()">Home</a> &gt; <span id="courseCodeDisplay"></span>
+            <div id="homeView">
+                <div class="hero">
+                    <h1>Find Paper Reviews</h1>
+                    <p>Enter your course code to see what others say.</p>
+                    <input type="text" id="search" class="search-box" placeholder="e.g. CS101, MGT501..." onkeyup="filterCourses()">
                 </div>
+                
+                <h3 style="margin-bottom:15px; color:var(--primary);">Available Courses</h3>
+                <div id="loader" style="text-align:center;">Loading...</div>
+                <div id="courseGrid" class="grid-courses"></div>
+            </div>
 
-                <div class="hero" style="padding: 30px; text-align: left; display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <h1 id="detailTitle" style="font-size: 2rem; margin:0;"></h1>
-                        <p id="detailCount" style="margin:0; opacity: 0.8;"></p>
-                    </div>
-                </div>
-
-                <div id="reviewsContainer"></div>
+            <div id="reviewView">
+                <div class="back-btn" onclick="goHome()">← Back to Search</div>
+                <h2 id="courseTitle" style="margin-bottom:20px; font-size:1.8rem;"></h2>
+                <div id="reviewsList"></div>
             </div>
 
         </main>
 
         <aside>
-            <div class="ad-container ad-sidebar">
-                Sidebar Ad (300x600)
+            <div class="ad-slot ad-sidebar">
+                Sticky Sidebar Ad
             </div>
         </aside>
 
     </div>
 
-    <footer>
-        <p>&copy; 2026 VU Students Guide. Built for Community.</p>
-    </footer>
-
     <script>
         let allCourses = [];
-        const coursesGrid = document.getElementById('coursesGrid');
         const homeView = document.getElementById('homeView');
-        const detailView = document.getElementById('detailView');
-        const searchInput = document.getElementById('searchInput');
+        const reviewView = document.getElementById('reviewView');
+        const courseGrid = document.getElementById('courseGrid');
+        const loader = document.getElementById('loader');
 
         // Initialize
         window.onload = async () => {
-            await loadIndex();
-            
-            // Check URL parameters for direct link (SEO Friendly)
-            const urlParams = new URLSearchParams(window.location.search);
-            const courseParam = urlParams.get('code');
-            if(courseParam) {
-                const course = allCourses.find(c => c.code.toLowerCase() === courseParam.toLowerCase());
-                if(course) {
-                    loadCourseDetails(course.filename, course.code, course.count);
+            try {
+                // Fetch Index File
+                const res = await fetch('all_courses.json');
+                allCourses = await res.json();
+                loader.style.display = 'none';
+                renderCourses(allCourses);
+
+                // Handle URL Direct Link (?code=CS101)
+                const params = new URLSearchParams(window.location.search);
+                const code = params.get('code');
+                if (code) {
+                    const course = allCourses.find(c => c.code === code.toUpperCase());
+                    if (course) loadReviews(course.filename, course.code);
                 }
+            } catch (err) {
+                loader.innerHTML = 'Error loading data. Try refreshing.';
             }
         };
 
-        // 1. Load All Courses Index
-        async function loadIndex() {
-            try {
-                const res = await fetch('all_courses.json');
-                allCourses = await res.json();
-                document.getElementById('loading').style.display = 'none';
-                renderCourses(allCourses);
-            } catch (err) {
-                document.getElementById('loading').innerHTML = 'Error loading courses.';
-                console.error(err);
-            }
-        }
-
-        // 2. Render Grid
+        // Render Courses List
         function renderCourses(list) {
-            coursesGrid.innerHTML = '';
+            courseGrid.innerHTML = '';
             list.forEach(c => {
-                const card = document.createElement('div');
-                card.className = 'course-card';
-                card.onclick = () => {
-                    // Update URL without reloading (Good for SEO & Sharing)
+                const div = document.createElement('div');
+                div.className = 'course-card';
+                div.onclick = () => {
                     window.history.pushState({}, '', `?code=${c.code}`);
-                    loadCourseDetails(c.filename, c.code, c.count);
+                    loadReviews(c.filename, c.code);
                 };
-                card.innerHTML = `
-                    <span class="course-code">${c.code}</span>
-                    <span class="badge">${c.count} Reviews</span>
-                `;
-                coursesGrid.appendChild(card);
+                div.innerHTML = `<span class="code">${c.code}</span><span class="count">${c.count}</span>`;
+                courseGrid.appendChild(div);
             });
         }
 
-        // 3. Search Function
+        // Search Filter
         function filterCourses() {
-            const query = searchInput.value.toLowerCase();
-            const filtered = allCourses.filter(c => c.code.toLowerCase().includes(query));
+            const query = document.getElementById('search').value.toUpperCase();
+            const filtered = allCourses.filter(c => c.code.includes(query));
             renderCourses(filtered);
         }
 
-        // 4. Load Course Details
-        async function loadCourseDetails(filename, code, count) {
+        // Load Reviews for a Course
+        async function loadReviews(filename, code) {
             homeView.style.display = 'none';
-            detailView.style.display = 'block';
-            window.scrollTo(0, 0);
-
-            document.getElementById('courseCodeDisplay').innerText = code;
-            document.getElementById('detailTitle').innerText = code;
-            document.getElementById('detailCount').innerText = `${count} Total Reviews`;
-
-            const container = document.getElementById('reviewsContainer');
-            container.innerHTML = '<div style="text-align:center; padding:20px;">Loading reviews...</div>';
+            reviewView.style.display = 'block';
+            document.querySelector('.hero').style.display = 'none'; // Hide search on detail page
+            
+            document.getElementById('courseTitle').innerText = `${code} Reviews`;
+            const container = document.getElementById('reviewsList');
+            container.innerHTML = 'Loading...';
 
             try {
-                // Fetch from PASTPAPERS folder
-                const res = await fetch(`pastpapers/${filename}`);
+                // IMPORTANT: Fetching from REVIEWS folder
+                const res = await fetch(`reviews/${filename}`);
                 const data = await res.json();
                 
-                container.innerHTML = ''; // Clear loading
+                container.innerHTML = '';
 
-                // In-Feed Ad Counter
-                let counter = 0;
+                let adCounter = 0;
 
-                data.reviews.forEach((review, index) => {
-                    counter++;
-                    
+                data.reviews.forEach(r => {
                     // Inject Ad after every 3 reviews
-                    if (counter === 4) {
+                    adCounter++;
+                    if (adCounter === 4) {
                         const adDiv = document.createElement('div');
-                        adDiv.className = 'ad-container ad-infeed';
-                        adDiv.innerText = 'In-Feed Ad Slot';
+                        adDiv.className = 'ad-slot ad-infeed';
+                        adDiv.innerText = 'In-Feed Ad';
                         container.appendChild(adDiv);
-                        counter = 0;
+                        adCounter = 0;
                     }
 
                     // Render Review
                     const div = document.createElement('div');
-                    div.className = 'review-box';
+                    div.className = 'review-card';
                     
-                    // Topic Tags
-                    let tagsHtml = '';
-                    if(review.topicsList) {
-                        tagsHtml = `<div class="topics"><strong>Topics:</strong> ${review.topicsList.map(t => `<span class="tag">${t}</span>`).join('')}</div>`;
+                    let topics = '';
+                    if (r.topicsList && r.topicsList.length > 0) {
+                        topics = `<div class="topics"><strong>Key Topics:</strong><br>${r.topicsList.map(t => `<span class="tag">${t}</span>`).join('')}</div>`;
                     }
 
                     div.innerHTML = `
-                        <div class="review-meta">
-                            <span class="review-title">${review.reviewHeading}</span>
-                            <span class="review-diff">${review.difficulty || 'N/A'}</span>
+                        <div class="r-header">
+                            <span class="r-title">${r.reviewHeading}</span>
+                            <small>${r.difficulty || ''}</small>
                         </div>
-                        <div class="review-text">${review.reviewText}</div>
-                        ${tagsHtml}
+                        <div class="r-text">${r.reviewText}</div>
+                        ${topics}
                     `;
                     container.appendChild(div);
                 });
@@ -363,14 +288,14 @@
             }
         }
 
-        // 5. Back Home
+        // Back Button
         function goHome() {
-            detailView.style.display = 'none';
+            reviewView.style.display = 'none';
             homeView.style.display = 'block';
-            window.history.pushState({}, '', window.location.pathname); // Clean URL
-            document.title = "VU Students Guide";
+            document.querySelector('.hero').style.display = 'block';
+            window.history.pushState({}, '', window.location.pathname);
         }
-
     </script>
+
 </body>
 </html>
