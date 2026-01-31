@@ -3,6 +3,21 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (31 January 2026, 5:40 PM)",
+      "reviewText": "Short Qs:\n1. CTAB purpose.\n2. MS medium purpose.\nLong Q:\n1. Why Agrobacterium is considered genetic engineer?\nMCQs: PCR (Verify transgenic event), Genomic analysis (DNA extract reason), 2 micro liter DNA (Concentration), MS medium usage, Nutrient Supply, PGR stock solution purpose, Organic compounds storage (2 weeks), Explant checks (Genetic makeup, age, place).",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "CTAB",
+        "MS Medium",
+        "Agrobacterium (Genetic Engineer)",
+        "PCR",
+        "DNA Extraction & Analysis",
+        "Plant Tissue Culture"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Medium",
       "reviewHeading": "Paper Review (30 January 2026, 3:50 PM)",
       "reviewText": "MCQs:\n- Most common buffer used in DNA extraction.\n- Agrobacterium take what as food from host during infectivity (flavenoids).\n- PGR example (kinetin).\n- Polymerase polymerizes how many bases per minute at its optimum temperature (a thousand).\n- Light dark time for seed growth (16/8).\n\nS.Q:\n1. Callus according to plant tissue culture.\n2. Genetically transformed plants are called transformants? How these transformants can be verified?\n\nL.Q:\n1. PCR Steps In Detail?",
