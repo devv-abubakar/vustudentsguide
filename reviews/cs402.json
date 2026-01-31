@@ -1,7 +1,7 @@
 {
-    "course": "CS402",
-    "reviews": [
-        {
+  "course": "CS402",
+  "reviews": [
+    {
       "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
@@ -14,34 +14,34 @@
         "CFG (Context Free Grammar)"
       ]
     },
-        {
-            "examType": "Final Term",
-            "difficulty": "Moderate",
-            "reviewHeading": "Most Important Topics",
-            "reviewText": "* Finite Automata (DFA & NFA)\nDefinitions, state transitions, conversion from NFA to DFA, acceptance of strings\n\n* Regular Expressions & Languages\nClosure properties, equivalence with DFAs/NFAs, expression simplification\n\n* Pumping Lemma for Regular Languages\nUse for proof of non-regularity, identifying pumping length y\n\n* Context-Free Grammars (CFG)\nTypes, derivation trees, left/right recursion removal, ambiguity\n\n* Pushdown Automata (PDA)\nDefinition, transitions, acceptance by empty stack vs final state\n\n* Conversion Techniques\nDFA/NFA \u2194\ufe0f Regular Expression, CFG \u2194\ufe0f PDA\n\n* Turing Machines Basics\nDefinition, tape, head movement, acceptance, decidability vs recognizability\n\n* Closure Properties\nRegular and context-free langu\u2026",
-            "topicsHeading": "Topics Covered",
-            "topicsList": [
-                "Finite Automata (DFA & NFA)",
-                "Regular Expressions",
-                "Pumping Lemma",
-                "Context-Free Grammars (CFG)",
-                "Pushdown Automata (PDA)",
-                "Conversion Techniques",
-                "Turing Machines Basics",
-                "Closure Properties"
-            ]
-        },
-        {
-            "examType": "Final Term",
-            "difficulty": "Moderate",
-            "reviewHeading": "Paper Review",
-            "reviewText": "mostly mcqs from Junaid file\nCFG se mcqs bht zyada teh\nShort ve 2 CFG ke teh\n2 long ve \nBaaki ik pumping leema ka tah \nTurning machine mein se long or short teh",
-            "topicsHeading": "Exam Questions",
-            "topicsList": [
-                "Context-Free Grammars (CFG)",
-                "Pumping Lemma",
-                "Turing Machine"
-            ]
-        }
-    ]
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Most Important Topics",
+      "reviewText": "* Finite Automata (DFA & NFA)\nDefinitions, state transitions, conversion from NFA to DFA, acceptance of strings\n\n* Regular Expressions & Languages\nClosure properties, equivalence with DFAs/NFAs, expression simplification\n\n* Pumping Lemma for Regular Languages\nUse for proof of non-regularity, identifying pumping length y\n\n* Context-Free Grammars (CFG)\nTypes, derivation trees, left/right recursion removal, ambiguity\n\n* Pushdown Automata (PDA)\nDefinition, transitions, acceptance by empty stack vs final state\n\n* Conversion Techniques\nDFA/NFA \u2194\ufe0f Regular Expression, CFG \u2194\ufe0f PDA\n\n* Turing Machines Basics\nDefinition, tape, head movement, acceptance, decidability vs recognizability\n\n* Closure Properties\nRegular and context-free langu\u2026",
+      "topicsHeading": "Topics Covered",
+      "topicsList": [
+        "Finite Automata (DFA & NFA)",
+        "Regular Expressions",
+        "Pumping Lemma",
+        "Context-Free Grammars (CFG)",
+        "Pushdown Automata (PDA)",
+        "Conversion Techniques",
+        "Turing Machines Basics",
+        "Closure Properties"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review",
+      "reviewText": "mostly mcqs from Januaryaid file\nCFG se mcqs bht zyada teh\nShort ve 2 CFG ke teh\n2 long ve \nBaaki ik pumping leema ka tah \nTurning machine mein se long or short teh",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Context-Free Grammars (CFG)",
+        "Pumping Lemma",
+        "Turing Machine"
+      ]
+    }
+  ]
 }
