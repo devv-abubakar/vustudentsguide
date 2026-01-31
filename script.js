@@ -50,17 +50,21 @@ function renderCourses(list) {
     });
 }
 
-// 3. Detail View (Beautiful Design)
+// script.js
+
+// ... (Baqi code same rahay ga) ...
+
+// Updated loadDetails Function for Beautiful Cards
 async function loadDetails(filename, code, count) {
     document.getElementById('searchView').classList.add('hidden');
     document.getElementById('detailView').classList.remove('hidden');
     
-    // Header update
+    // Header
     document.getElementById('detailHeaderTitle').innerText = code;
     document.getElementById('detailHeaderCount').innerText = `${count} Reviews`;
     
     const list = document.getElementById('reviewsList');
-    list.innerHTML = '<div style="text-align:center; padding:40px;">Loading reviews...</div>';
+    list.innerHTML = '<div style="text-align:center; padding:40px; color:#64748b;">Loading amazing reviews...</div>';
     window.scrollTo(0,0);
 
     try {
@@ -71,8 +75,8 @@ async function loadDetails(filename, code, count) {
         list.innerHTML = '';
         let adCounter = 0;
 
-        reviewsArray.forEach(r => {
-            // In-Feed Ad Logic
+        reviewsArray.forEach((r, index) => {
+            // 1. In-Feed Ad Logic
             adCounter++;
             if(adCounter === 4) {
                 const adDiv = document.createElement('div');
@@ -82,26 +86,44 @@ async function loadDetails(filename, code, count) {
                 adCounter = 0;
             }
 
-            // Create Review Card
+            // 2. Determine Difficulty Color
+            let diffClass = 'diff-medium';
+            const diffText = (r.difficulty || 'Medium').toLowerCase();
+            if(diffText.includes('easy')) diffClass = 'diff-easy';
+            if(diffText.includes('hard') || diffText.includes('tough')) diffClass = 'diff-hard';
+
+            // 3. Create Avatar Initials (Random Letter)
+            const firstLetter = r.reviewHeading ? r.reviewHeading.charAt(0) : 'S';
+
+            // 4. Create Card HTML
             const card = document.createElement('div');
             card.className = 'review-card';
-            
+
             // Topics Logic
             let topicsHtml = '';
             if(r.topicsList && r.topicsList.length > 0) {
-                topicsHtml = `<div class="review-topics">
-                    <small style="display:block; margin-bottom:5px; color:#94a3b8; font-weight:600;">TOPICS COVERED:</small>
-                    ${r.topicsList.map(t => `<span class="topic-tag"># ${t}</span>`).join('')}
+                topicsHtml = `<div class="topics-container">
+                    ${r.topicsList.map(t => `<span class="topic-pill">#${t}</span>`).join('')}
                 </div>`;
             }
 
             card.innerHTML = `
-                <div class="review-heading">
-                    <i class="fas fa-user-circle" style="color:#cbd5e1; font-size:1.5rem;"></i>
-                    <span>${r.reviewHeading || 'Exam Experience'}</span>
-                    <span class="review-diff">${r.difficulty || 'General'}</span>
+                <div class="review-header-row">
+                    <div class="user-info">
+                        <div class="avatar">${firstLetter}</div>
+                        <div class="user-meta">
+                            <h4>Student Review #${index + 1}</h4>
+                            <span>Verified Student</span>
+                        </div>
+                    </div>
+                    <span class="badge-difficulty ${diffClass}">${r.difficulty || 'General'}</span>
                 </div>
-                <div class="review-body">${r.reviewText}</div>
+
+                <div class="review-content">
+                    <strong style="display:block; margin-bottom:10px; color:#0f172a;">${r.reviewHeading}</strong>
+                    ${r.reviewText}
+                </div>
+
                 ${topicsHtml}
             `;
             list.appendChild(card);
