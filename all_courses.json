@@ -26,11 +26,6 @@
   },
   {
     "code": "BIO101",
-    "filename": "BIO101.json",
-    "count": 2
-  },
-  {
-    "code": "BIO101",
     "filename": "bio101.json",
     "count": 4
   },
@@ -42,11 +37,6 @@
   {
     "code": "BIO401",
     "filename": "bio401.json",
-    "count": 1
-  },
-  {
-    "code": "BIO503",
-    "filename": "BIO503.json",
     "count": 1
   },
   {
@@ -77,11 +67,6 @@
   {
     "code": "BIO510",
     "filename": "bio510.json",
-    "count": 1
-  },
-  {
-    "code": "BIO5105",
-    "filename": "BIO5105.json",
     "count": 1
   },
   {
@@ -121,11 +106,6 @@
   },
   {
     "code": "BT513P",
-    "filename": "BT513P.json",
-    "count": 1
-  },
-  {
-    "code": "BT513P",
     "filename": "bt513p.json",
     "count": 1
   },
@@ -151,27 +131,12 @@
   },
   {
     "code": "BT611T_BT404T",
-    "filename": "BT611T_BT404T.json",
-    "count": 4
-  },
-  {
-    "code": "BT611T_BT404T",
     "filename": "bt611t_bt404t.json",
     "count": 2
   },
   {
     "code": "BT612P",
-    "filename": "BT612P.json",
-    "count": 1
-  },
-  {
-    "code": "BT612P",
     "filename": "bt612p.json",
-    "count": 1
-  },
-  {
-    "code": "BT613P",
-    "filename": "BT613P.json",
     "count": 1
   },
   {
@@ -246,11 +211,6 @@
   },
   {
     "code": "CS302P",
-    "filename": "CS302P.json",
-    "count": 2
-  },
-  {
-    "code": "CS302P",
     "filename": "cs302p.json",
     "count": 1
   },
@@ -263,11 +223,6 @@
     "code": "CS304P",
     "filename": "cs304p.json",
     "count": 3
-  },
-  {
-    "code": "CS306",
-    "filename": "CS306.json",
-    "count": 2
   },
   {
     "code": "CS306",
@@ -302,11 +257,6 @@
   {
     "code": "CS403",
     "filename": "cs403.json",
-    "count": 2
-  },
-  {
-    "code": "CS403P",
-    "filename": "CS403P.json",
     "count": 2
   },
   {
@@ -346,18 +296,8 @@
   },
   {
     "code": "CS409P",
-    "filename": "CS409P.json",
-    "count": 2
-  },
-  {
-    "code": "CS409P",
     "filename": "cs409p.json",
     "count": 1
-  },
-  {
-    "code": "CS411",
-    "filename": "CS411.json",
-    "count": 2
   },
   {
     "code": "CS411",
@@ -377,11 +317,6 @@
   {
     "code": "CS441",
     "filename": "cs441.json",
-    "count": 1
-  },
-  {
-    "code": "CS501",
-    "filename": "CS501.json",
     "count": 1
   },
   {
@@ -496,11 +431,6 @@
   },
   {
     "code": "CS620",
-    "filename": "CS620.json",
-    "count": 2
-  },
-  {
-    "code": "CS620",
     "filename": "cs620.json",
     "count": 2
   },
@@ -552,11 +482,6 @@
   {
     "code": "ECO606",
     "filename": "eco606.json",
-    "count": 1
-  },
-  {
-    "code": "ECO610",
-    "filename": "ECO610.json",
     "count": 1
   },
   {
@@ -621,11 +546,6 @@
   },
   {
     "code": "EDU431",
-    "filename": "EDU431.json",
-    "count": 1
-  },
-  {
-    "code": "EDU431",
     "filename": "edu431.json",
     "count": 1
   },
@@ -653,11 +573,6 @@
     "code": "ENG502",
     "filename": "eng502.json",
     "count": 2
-  },
-  {
-    "code": "ENG503",
-    "filename": "ENG503.json",
-    "count": 1
   },
   {
     "code": "ENG503",
@@ -701,11 +616,6 @@
   },
   {
     "code": "ENG511",
-    "filename": "ENG511.json",
-    "count": 2
-  },
-  {
-    "code": "ENG511",
     "filename": "eng511.json",
     "count": 1
   },
@@ -717,11 +627,6 @@
   {
     "code": "ENG513",
     "filename": "eng513.json",
-    "count": 1
-  },
-  {
-    "code": "ENG514",
-    "filename": "ENG514.json",
     "count": 1
   },
   {
@@ -761,11 +666,6 @@
   },
   {
     "code": "ENG522",
-    "filename": "ENG522.json",
-    "count": 2
-  },
-  {
-    "code": "ENG522",
     "filename": "eng522.json",
     "count": 1
   },
@@ -778,11 +678,6 @@
     "code": "ENG524",
     "filename": "eng524.json",
     "count": 3
-  },
-  {
-    "code": "ENG529",
-    "filename": "ENG529.json",
-    "count": 1
   },
   {
     "code": "ENG529",
@@ -836,11 +731,6 @@
   },
   {
     "code": "MB502T",
-    "filename": "MB502T.json",
-    "count": 2
-  },
-  {
-    "code": "MB502T",
     "filename": "mb502t.json",
     "count": 1
   },
@@ -873,11 +763,6 @@
     "code": "MGMT627",
     "filename": "mgmt627.json",
     "count": 2
-  },
-  {
-    "code": "MGMT628",
-    "filename": "MGMT628.json",
-    "count": 1
   },
   {
     "code": "MGMT628",
@@ -966,17 +851,7 @@
   },
   {
     "code": "MIC501T",
-    "filename": "MIC501T.json",
-    "count": 1
-  },
-  {
-    "code": "MIC501T",
     "filename": "mic501t.json",
-    "count": 2
-  },
-  {
-    "code": "MKT501",
-    "filename": "MKT501.json",
     "count": 2
   },
   {
@@ -1013,11 +888,6 @@
     "code": "MTH302",
     "filename": "mth302.json",
     "count": 1
-  },
-  {
-    "code": "MTH401",
-    "filename": "MTH401.json",
-    "count": 2
   },
   {
     "code": "MTH401",
@@ -1115,11 +985,6 @@
     "count": 1
   },
   {
-    "code": "PSY406",
-    "filename": "PSY406.json",
-    "count": 1
-  },
-  {
     "code": "PSY407",
     "filename": "psy407.json",
     "count": 1
@@ -1173,11 +1038,6 @@
     "code": "SOC201",
     "filename": "soc201.json",
     "count": 2
-  },
-  {
-    "code": "SOC401",
-    "filename": "SOC401.json",
-    "count": 4
   },
   {
     "code": "SOC401",
