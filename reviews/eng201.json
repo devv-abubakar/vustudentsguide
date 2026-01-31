@@ -1,7 +1,21 @@
 {
-    "course": "ENG201",
-    "reviews": [
-        {
+  "course": "ENG201",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (28 January 2026, 12:00 PM)",
+      "reviewText": "MCQs: Hyphens, Active/Passive, Visual aid definition, Organizational charts, Pictographs, Report types.\nShort Qs: Transitional devices, Progress reports (T/F), Empirical research report blanks, 'Biggest weakness' question.\nLong Qs: How to write restatement questions, Superstructure of progress report, Order arrangement.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Visual Aids",
+        "Report Writing (Progress, Empirical)",
+        "Grammar (Active/Passive, Hyphens)",
+        "Interview Questions",
+        "Superstructure of Reports"
+      ]
+    },
+    {
       "examType": "Final Term",
       "difficulty": "Easy",
       "reviewHeading": "Paper Review (26 January 2026, 11:40 AM)",
@@ -15,7 +29,7 @@
         "Fill in the Blanks"
       ]
     },
-        {
+    {
       "examType": "Final Term",
       "difficulty": "Easy",
       "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
@@ -28,37 +42,37 @@
         "Fill in the Blanks"
       ]
     },
-        {
-            "examType": "Final Term",
-            "difficulty": "Easy",
-            "reviewHeading": "Paper Review (MCQs & Subjective)",
-            "reviewText": "MCQ\u2019S\n__reports involves intensive informationThe word report means ..\nAnswer -question session at the end....\nUnbridged dictionary is....\nDelivere oral presentation....\nImpromptu means...\nA representator who consistently speaker...\n__coordinate if the modify by same words..\nThe report design should...\nThe chief.... Pictographs\nLine graphs are ... Two children and adult... (Grammar base)\nMy brother.... Football in the same club as me...\nThe best visual aid....\n\nLONG QUESTIONS . \nTrue false ( grammar).. \nTrue false ( handouts)... \nFive parts of proposal.. \nFive steps of bad News message .... \n\nSHORT question\nFill in the blanks ( grammar)... \nTrue false ( handouts)... \nActive passive voice...",
-            "topicsHeading": "Exam Questions",
-            "topicsList": [
-                "Report Definitions",
-                "Unabridged Dictionary",
-                "Impromptu Speaking",
-                "Visual Aids (Pictographs, Line Graphs)",
-                "Grammar (Coordinate, Fill in blanks)",
-                "Parts of Proposal",
-                "Bad News Message Steps",
-                "Active/Passive Voice"
-            ]
-        },
-        {
-            "examType": "Final Term",
-            "difficulty": "Easy",
-            "reviewHeading": "Paper Review (31 July, 2:30)",
-            "reviewText": "In subjective name three parts of formal report wala tha wordy concise krna tha makesure, apparantly,because, furthermore, due to and true false thy thy fill in the blanks thi jo long wali blanks thi us me definition thi good news, empirical report, action ki or du or thi 5 blanks thi anyways jo short me blanks thi wo conceptual thi or true false thy condition di hui thi or mcqs me visual adds  listening, readers,line graph, baar graph, Enumeration, sevens cs se clarity or conciseness k superstructure ka ye tha k general report, feasibility report and progress report  me kitne element hoty hain thats it",
-            "topicsHeading": "Topics Covered",
-            "topicsList": [
-                "Parts of Formal Report",
-                "Conciseness (Wordy sentences)",
-                "Good News/Empirical Report Definitions",
-                "Visual Aids (Line/Bar graphs)",
-                "7 Cs (Clarity, Conciseness)",
-                "Report Elements (General, Feasibility, Progress)"
-            ]
-        }
-    ]
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (MCQs & Subjective)",
+      "reviewText": "MCQ\u2019S\n__reports involves intensive informationThe word report means ..\nAnswer -question session at the end....\nUnbridged dictionary is....\nDelivere oral presentation....\nImpromptu means...\nA representator who consistently speaker...\n__coordinate if the modify by same words..\nThe report design should...\nThe chief.... Pictographs\nLine graphs are ... Two children and adult... (Grammar base)\nMy brother.... Football in the same club as me...\nThe best visual aid....\n\nLONG QUESTIONS . \nTrue false ( grammar).. \nTrue false ( handouts)... \nFive parts of proposal.. \nFive steps of bad News message .... \n\nSHORT question\nFill in the blanks ( grammar)... \nTrue false ( handouts)... \nActive passive voice...",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Report Definitions",
+        "Unabridged Dictionary",
+        "Impromptu Speaking",
+        "Visual Aids (Pictographs, Line Graphs)",
+        "Grammar (Coordinate, Fill in blanks)",
+        "Parts of Proposal",
+        "Bad News Message Steps",
+        "Active/Passive Voice"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (31 July, 2:30)",
+      "reviewText": "In subjective name three parts of formal report wala tha wordy concise krna tha makesure, apparantly,because, furthermore, due to and true false thy thy fill in the blanks thi jo long wali blanks thi us me definition thi good news, empirical report, action ki or du or thi 5 blanks thi anyways jo short me blanks thi wo conceptual thi or true false thy condition di hui thi or mcqs me visual adds  listening, readers,line graph, baar graph, Enumeration, sevens cs se clarity or conciseness k superstructure ka ye tha k general report, feasibility report and progress report  me kitne element hoty hain thats it",
+      "topicsHeading": "Topics Covered",
+      "topicsList": [
+        "Parts of Formal Report",
+        "Conciseness (Wordy sentences)",
+        "Good News/Empirical Report Definitions",
+        "Visual Aids (Line/Bar graphs)",
+        "7 Cs (Clarity, Conciseness)",
+        "Report Elements (General, Feasibility, Progress)"
+      ]
+    }
+  ]
 }
