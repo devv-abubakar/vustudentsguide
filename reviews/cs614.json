@@ -3,6 +3,18 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (31 January 2026)",
+      "reviewText": "Short Questions:\n1. Name two data software parallel.\n2. Scenario based question.\nLong Questions:\n1. Data quality improvement.\n2. Calculation question.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Data Software Parallel",
+        "Data Quality Improvement",
+        "Calculations"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Easy",
       "reviewHeading": "Review (30 January 2026)",
       "reviewText": "MCQs super easy thay, Junaid aur VU Topper file se prepare ho jate. Subjective mein clustering, SQL queries, BSN aur quality management maturity grid se questions aaye.",
