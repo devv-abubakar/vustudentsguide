@@ -3,6 +3,18 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Review (30 January 2026)",
+      "reviewText": "MCQs mostly from Januaryaid file. Subjective questions from Januaryaid file including explanations. Overall paper preparation based on Januaryaid file recommended.",
+      "topicsHeading": "Topics",
+      "topicsList": [
+        "MCQs from Junaid File",
+        "Subjective Questions from Junaid File",
+        "Explanations"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Hard",
       "reviewHeading": "Paper Review (28 January 2026, 9:50 AM)",
       "reviewText": "Questions from:\n- Semaphore, Critical Section, Thread.\n- Memory mapping.\n- Release functions.\n- Affinity mask.\n- Windows API (Return type & Parameters).\nPaper mostly conceptual.",
@@ -12,18 +24,6 @@
         "Threads & Memory Mapping",
         "Affinity Mask",
         "Windows API (Return Types/Parameters)"
-      ]
-    },
-    {
-      "examType": "Final Term",
-      "difficulty": "Moderate",
-      "reviewHeading": "Review (30 January 2026)",
-      "reviewText": "MCQs mostly from Januaryaid file. Subjective questions from Januaryaid file including explanations. Overall paper preparation based on Januaryaid file recommended.",
-      "topicsHeading": "Topics",
-      "topicsList": [
-        "MCQs from Junaid File",
-        "Subjective Questions from Junaid File",
-        "Explanations"
       ]
     }
   ]
