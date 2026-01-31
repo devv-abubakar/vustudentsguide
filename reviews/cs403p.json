@@ -4,21 +4,6 @@
     {
       "examType": "Final Term",
       "difficulty": "Moderate",
-      "reviewHeading": "Paper Review (28 January 2026, 9:51 PM)",
-      "reviewText": "MCQs:\n1. Drop view.\n2. Syntax for create view and create index.\n3. 3NF transitive remove (True).\nSubjective:\n1. Long: Create view 'stdDetail' (stdid, stdname, city) for 'Okara'.\n2. Convert ERD to RDM.\n3. Short: Draw super type and sub type (Shape: triangle, circle, rectangle).\n4. Create table with Primary Key constraint and data types.\nAggregate functions (Min, Max, Sum) didn't come but prepare them.",
-      "topicsHeading": "Exam Questions",
-      "topicsList": [
-        "Views (Create/Drop)",
-        "Indexes",
-        "Normalization (3NF)",
-        "ERD to RDM Conversion",
-        "Super/Sub Type Drawing",
-        "Create Table (Constraints)"
-      ]
-    },
-    {
-      "examType": "Final Term",
-      "difficulty": "Moderate",
       "reviewHeading": "Paper Review (27 January) (30 January 2026)",
       "reviewText": "Mcqs buhat easy thy files mein sy thy Kuch files sy mcqs ka ratta na lagaye ga concept clear kijiye ga\nLong questions \n1.Content level diagram banani thi online clothing store ki\n2.attributes bantany thy 2 entities KY given scenario sy\n3.sql queries likhni the\n4.ERD ko Relational database model mein convert krna tha\n5.programID ki definition bhi the or view ko create krna tha \nSQL queries buhat important hen \nLast wali 3 sy 4 labs long point of view sy important hen",
       "topicsHeading": "Exam Questions",
@@ -29,6 +14,21 @@
         "ERD to Relational Model Conversion",
         "ProgramID Definition",
         "Last 3-4 Labs (Practical)"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (28 January 2026, 9:51 PM)",
+      "reviewText": "MCQs:\n1. Drop view.\n2. Syntax for create view and create index.\n3. 3NF transitive remove (True).\nSubjective:\n1. Long: Create view 'stdDetail' (stdid, stdname, city) for 'Okara'.\n2. Convert ERD to RDM.\n3. Short: Draw super type and sub type (Shape: triangle, circle, rectangle).\n4. Create table with Primary Key constraint and data types.\nAggregate functions (Min, Max, Sum) didn't come but prepare them.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Views (Create/Drop)",
+        "Indexes",
+        "Normalization (3NF)",
+        "ERD to RDM Conversion",
+        "Super/Sub Type Drawing",
+        "Create Table (Constraints)"
       ]
     },
     {
