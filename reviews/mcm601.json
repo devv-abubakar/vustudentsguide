@@ -1,14 +1,30 @@
 {
+  "examType": "Final Term",
+  "difficulty": "Moderate",
+  "reviewHeading": "Paper Review (27 January 2026, 11:40 AM)",
+  "reviewText": "MCQs from research topic (mostly dates).\nShort/Long Questions:\n- Cable television system.\n- What is Society?\n- What is Magazine?\n- What is General Interest Magazine?\n- Categories of Radio programming.",
+  "topicsHeading": "Exam Questions",
+  "topicsList": [
+    "Cable Television System",
+    "Society Definition",
+    "Magazines (General Interest)",
+    "Radio Programming Categories",
+    "Research Dates"
+  ],
+  "reviews": [
+    {
       "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Paper Review (27 January 2026, 11:40 AM)",
-      "reviewText": "MCQs from research topic (mostly dates).\nShort/Long Questions:\n- Cable television system.\n- What is Society?\n- What is Magazine?\n- What is General Interest Magazine?\n- Categories of Radio programming.",
+      "reviewText": "MCQs from research topic, mostly dates.\nShort/Long:\n- Cable television system.\n- What is Society?\n- What is Magazine?\n- General interest magazine.\n- Categories of radio programming.",
       "topicsHeading": "Exam Questions",
       "topicsList": [
-        "Cable Television System",
+        "Cable Television",
         "Society Definition",
-        "Magazines (General Interest)",
-        "Radio Programming Categories",
+        "Magazines",
+        "Radio Programming",
         "Research Dates"
       ]
     }
+  ]
+}
