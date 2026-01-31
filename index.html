@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VU Students Guide - Past Papers, Reviews & App</title>
+    <title>VU Students Guide - Past Papers & Reviews</title>
     
-    <meta name="description" content="Download VU Past Papers Android App. Check authentic Midterm and Final Term paper reviews. CS, MGT, ENG courses updated for 2026.">
-    <meta name="keywords" content="VU students guide, vu past papers app, vu paper reviews, virtual university, CS101, MGT101">
+    <meta name="description" content="Authentic Midterm & Final Term paper reviews for Virtual University (VU). Download past papers and prepare for CS, MGT, ENG exams.">
+    <meta name="keywords" content="VU paper reviews, current paper 2026, vu past papers, virtual university, CS101, MGT101">
     <meta name="author" content="Devv Abubakar">
 
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -32,11 +32,6 @@
             50% { transform: translateY(-20px); }
             100% { transform: translateY(0px); }
         }
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(244, 63, 94, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244, 63, 94, 0); }
-        }
 
         /* --- NAVBAR --- */
         nav {
@@ -58,7 +53,7 @@
         section { padding: 20px; min-height: 80vh; }
         .hidden { display: none !important; }
 
-        /* --- LANDING PAGE (Clean - No Ads) --- */
+        /* --- 1. LANDING PAGE (No Ads) --- */
         #landingPage {
             text-align: center;
             display: flex;
@@ -105,7 +100,6 @@
             background: var(--accent);
             color: white;
             box-shadow: 0 10px 25px rgba(244, 63, 94, 0.4);
-            animation: pulse 2s infinite;
         }
         .btn-app:hover { transform: translateY(-3px); }
 
@@ -116,15 +110,16 @@
         }
         .btn-reviews:hover { background: var(--primary); transform: translateY(-3px); }
 
-        /* --- REVIEWS DASHBOARD --- */
+        /* --- DASHBOARD LAYOUT (Used in Reviews & Detail) --- */
         .dashboard-layout {
             display: grid;
-            grid-template-columns: 1fr 300px;
+            grid-template-columns: 1fr 300px; /* Content Left, Ads Right */
             gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
+        /* --- 2. REVIEWS LIST SECTION --- */
         .top-nav-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
         .back-btn { background: none; border: none; font-size: 1rem; color: var(--text); cursor: pointer; display: flex; align-items: center; gap: 5px; font-weight: 600; }
         .back-btn:hover { color: var(--primary); }
@@ -158,7 +153,7 @@
         .card:hover { border-color: var(--primary); transform: translateY(-3px); }
         .count-badge { background: #e0e7ff; color: var(--primary); padding: 5px 12px; border-radius: 20px; font-weight: 700; font-size: 0.8rem; }
 
-        /* --- REVIEW DETAIL --- */
+        /* --- 3. REVIEW DETAIL SECTION --- */
         .review-box {
             background: white;
             padding: 25px;
@@ -214,7 +209,7 @@
             display: none; /* Hidden initially */
         }
 
-        /* Mobile */
+        /* Mobile Adjustments */
         @media (max-width: 768px) {
             .hero-title { font-size: 2.2rem; }
             .dashboard-layout { grid-template-columns: 1fr; }
@@ -226,7 +221,7 @@
 
     <nav>
         <a href="#" class="logo" onclick="showLanding()">VU<span>StudentsGuide</span></a>
-        <a href="https://play.google.com/store/apps/details?id=YOUR_APP_ID" target="_blank" style="color:var(--text); text-decoration:none; font-weight:600; font-size:0.9rem;">
+        <a href="#" class="btn-app" style="padding: 8px 15px; font-size:0.9rem; border-radius:8px; text-decoration:none; color:white;">
             <i class="fab fa-google-play"></i> Get App
         </a>
     </nav>
@@ -242,9 +237,6 @@
         <p class="hero-sub">Authentic Midterm & Final Term paper reviews. Download past papers and prepare smarter.</p>
         
         <div class="cta-container">
-            <a href="https://play.google.com/store/apps/details?id=YOUR_APP_ID" target="_blank" class="btn btn-app">
-                <i class="fab fa-android"></i> Download App
-            </a>
             <button onclick="showReviews()" class="btn btn-reviews">
                 <i class="fas fa-search"></i> Check Reviews
             </button>
@@ -309,7 +301,7 @@
     </section>
 
     <div id="adModal">
-        <div class="countdown" id="adTimer">Advertisement - Continue in 5s</div>
+        <div class="countdown" id="adTimer">Advertisement - Continue in 3s</div>
         
         <div class="modal-content">
             <div style="background:#f1f5f9; height:250px; display:flex; align-items:center; justify-content:center; border-radius:8px; color:#94a3b8;">
@@ -330,9 +322,9 @@
 
     <script>
         let allCourses = [];
-        let selectedCourseData = null; // Store data to load after ad
+        let selectedCourseData = null; 
 
-        // --- NAVIGATION LOGIC ---
+        // --- NAVIGATION ---
         function showLanding() {
             document.getElementById('landingPage').classList.remove('hidden');
             document.getElementById('reviewsSection').classList.add('hidden');
@@ -345,10 +337,10 @@
             document.getElementById('reviewsSection').classList.remove('hidden');
             document.getElementById('detailSection').classList.add('hidden');
             window.scrollTo(0,0);
-            if(allCourses.length === 0) loadCourses(); // Load data if not loaded
+            if(allCourses.length === 0) loadCourses(); 
         }
 
-        // --- DATA FETCHING ---
+        // --- LOAD DATA ---
         async function loadCourses() {
             try {
                 const res = await fetch('all_courses.json');
@@ -366,7 +358,7 @@
             list.forEach(c => {
                 const card = document.createElement('div');
                 card.className = 'card';
-                // Click triggers Ad Logic first
+                // Click par pehlay AD trigger hoga
                 card.onclick = () => triggerInterstitial(c.filename, c.code, c.count);
                 card.innerHTML = `
                     <span style="font-weight:700; font-size:1.1rem;">${c.code}</span>
@@ -381,12 +373,10 @@
             renderCourses(allCourses.filter(c => c.code.includes(query)));
         }
 
-        // --- AD INTERSTITIAL LOGIC (THE MONEY MAKER) ---
+        // --- AD POPUP LOGIC ---
         function triggerInterstitial(filename, code, count) {
-            // Save data for later
             selectedCourseData = { filename, code, count };
             
-            // Show Modal
             const modal = document.getElementById('adModal');
             const btn = document.getElementById('btnContinue');
             const timer = document.getElementById('adTimer');
@@ -394,8 +384,7 @@
             modal.style.display = 'flex';
             btn.style.display = 'none';
             
-            // Countdown Logic
-            let timeLeft = 3; // 3 Seconds wait (Safe for Policy)
+            let timeLeft = 3; 
             timer.innerText = `Advertisement - Continue in ${timeLeft}s`;
             
             const interval = setInterval(() => {
@@ -404,7 +393,7 @@
                 if(timeLeft <= 0) {
                     clearInterval(interval);
                     timer.innerText = "Thanks for waiting!";
-                    btn.style.display = 'block'; // Show Continue Button
+                    btn.style.display = 'block'; 
                 }
             }, 1000);
         }
@@ -416,7 +405,7 @@
             }
         }
 
-        // --- LOAD ACTUAL CONTENT ---
+        // --- SHOW REVIEWS ---
         async function loadDetailContent(filename, code, count) {
             document.getElementById('reviewsSection').classList.add('hidden');
             document.getElementById('detailSection').classList.remove('hidden');
@@ -429,20 +418,20 @@
             list.innerHTML = '<div style="text-align:center; padding:20px;">Loading reviews...</div>';
 
             try {
-                // Fetch from PASTPAPERS folder
-                const res = await fetch(`pastpapers/${filename}`);
+                // Fetch from REVIEWS folder (Updated here)
+                const res = await fetch(`reviews/${filename}`);
                 const data = await res.json();
                 
                 list.innerHTML = '';
                 let adCounter = 0;
 
                 data.reviews.forEach(r => {
-                    // In-Feed Ad Logic (Every 3 reviews)
+                    // In-Feed Ad (Every 3 reviews)
                     adCounter++;
                     if(adCounter === 4) {
                         const adDiv = document.createElement('div');
                         adDiv.className = 'ad-slot ad-infeed';
-                        adDiv.innerHTML = 'In-Feed Ad Slot (Place Code Here)';
+                        adDiv.innerHTML = 'In-Feed Ad Slot';
                         list.appendChild(adDiv);
                         adCounter = 0;
                     }
@@ -466,7 +455,7 @@
                     list.appendChild(div);
                 });
             } catch (err) {
-                list.innerHTML = "Error loading reviews. Please try again.";
+                list.innerHTML = "Error loading reviews.";
             }
         }
     </script>
