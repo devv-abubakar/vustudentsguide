@@ -3,20 +3,6 @@
   "reviews": [
     {
       "examType": "Final Term",
-      "difficulty": "Moderate",
-      "reviewHeading": "Paper Review (28 January 2026, 11:40 AM)",
-      "reviewText": "MCQs difficult but from handouts.\nQuestions:\n- Overhead projector.\n- Person deixis.\n- Define teaching.\n- Class management related.\n- Code switching.",
-      "topicsHeading": "Exam Questions",
-      "topicsList": [
-        "Overhead Projector",
-        "Person Deixis",
-        "Teaching Definition",
-        "Class Management",
-        "Code Switching"
-      ]
-    },
-    {
-      "examType": "Final Term",
       "difficulty": "Easy",
       "reviewHeading": "Paper Review (30 January 2026)",
       "reviewText": "Paper was very easy, mostly MCQs were covered from files. Subjective questions included:\n- Define Linguistic Imperialism\n- Define Controlled Practice\n- Teacher as an Organizer\n- Question related to ESL and EFL\n- Define Endophoric Reference\n- Benefits of using novels in language teaching\n- 8 stages of creative writing and define the first stage",
@@ -29,6 +15,20 @@
         "Endophoric Reference",
         "Novels in Language Teaching",
         "Creative Writing Stages"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (28 January 2026, 11:40 AM)",
+      "reviewText": "MCQs difficult but from handouts.\nQuestions:\n- Overhead projector.\n- Person deixis.\n- Define teaching.\n- Class management related.\n- Code switching.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Overhead Projector",
+        "Person Deixis",
+        "Teaching Definition",
+        "Class Management",
+        "Code Switching"
       ]
     },
     {
