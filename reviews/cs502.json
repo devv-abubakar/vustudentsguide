@@ -5,7 +5,7 @@
       "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Paper Review (26 January 2026)",
-      "reviewText": "MCQs from Waqar and Junaid files mostly.\nQuestions:\n1. Where clique cover problem arises?\n2. Time complexity of Kruskal, Dijkstra, and Prim's algorithm.\n3. Knapsack related (2 questions).\n4. What is negative cycle with example?\n5. Strong component list.\n6. Adjacency matrix and list (Time complexity).\n7. Chapter 9 most important (Graph solving techniques).",
+      "reviewText": "MCQs from Waqar and Januaryaid files mostly.\nQuestions:\n1. Where clique cover problem arises?\n2. Time complexity of Kruskal, Dijkstra, and Prim's algorithm.\n3. Knapsack related (2 questions).\n4. What is negative cycle with example?\n5. Strong component list.\n6. Adjacency matrix and list (Time complexity).\n7. Chapter 9 most important (Graph solving techniques).",
       "topicsHeading": "Exam Questions",
       "topicsList": [
         "Clique Cover Problem",
