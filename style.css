@@ -12,6 +12,7 @@
     --bg-body: #f8fafc;       /* Slate 50 */
     --white: #ffffff;
     --border: #e2e8f0;
+
     
     /* Shadows & Gradients */
     --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
@@ -185,23 +186,62 @@ nav {
 .course-code { font-weight: 700; font-size: 1.2rem; color: var(--secondary); }
 .review-count { background: var(--primary-light); color: var(--primary); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
 
-/* Review Detail View */
+/* --- REVIEWS DETAIL CARD DESIGN (IMPROVED) --- */
 .review-detail-card {
     background: white;
     border-radius: 16px;
-    padding: 30px;
-    margin-bottom: 25px;
-    box-shadow: var(--shadow-sm);
+    padding: 35px; /* Increased Padding */
+    margin-bottom: 30px;
+    box-shadow: var(--shadow-md);
     border: 1px solid var(--border);
-    border-left: 4px solid var(--primary);
+    position: relative;
+    overflow: hidden;
 }
-.review-header { display: flex; justify-content: space-between; margin-bottom: 15px; }
-.user-avatar { width: 40px; height: 40px; background: #f1f5f9; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--secondary); }
-.review-body { color: var(--text); line-height: 1.7; font-size: 1rem; }
-.badge { padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
-.badge.easy { background: #ecfdf5; color: #047857; }
-.badge.medium { background: #fff7ed; color: #c2410c; }
-.badge.hard { background: #fef2f2; color: #b91c1c; }
+
+/* Left colored border based on difficulty (Handled in JS logic roughly, but here is base) */
+.review-detail-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 5px;
+    background: var(--primary); /* Default */
+}
+.review-detail-card.diff-easy::before { background: #10b981; }
+.review-detail-card.diff-medium::before { background: #f59e0b; }
+.review-detail-card.diff-hard::before { background: #ef4444; }
+
+.review-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 20px; padding-bottom: 20px;
+    border-bottom: 1px dashed var(--border);
+}
+
+.user-profile { display: flex; gap: 15px; align-items: center; }
+.avatar-circle {
+    width: 50px; height: 50px; background: var(--bg-body); border: 2px solid white;
+    box-shadow: var(--shadow-sm); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; font-weight: 700; color: var(--primary);
+}
+
+/* Difficulty Badges */
+.badge { padding: 6px 14px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.badge-easy { background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
+.badge-medium { background: #fffbeb; color: #b45309; border: 1px solid #fde68a; }
+.badge-hard { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+
+/* --- TEXT FORMATTING (MOST IMPORTANT) --- */
+.review-heading-text {
+    font-size: 1.2rem; font-weight: 700; color: var(--secondary);
+    margin-bottom: 15px; display: block;
+}
+
+.review-body-text {
+    font-size: 1.05rem;
+    line-height: 1.8; /* Improves readability */
+    color: #475569;
+    
+    /* This makes line breaks work! */
+    white-space: pre-wrap; 
+    font-family: 'Outfit', sans-serif;
+}
 
 /* --- ADS & SPONSORS --- */
 .ad-slot {
@@ -215,13 +255,35 @@ nav {
 .ad-sidebar { width: 100%; height: 250px; position: sticky; top: 100px; }
 .ad-feed { width: 100%; padding: 20px; border: 2px dashed var(--border); background: transparent; margin: 30px 0; }
 
-/* --- CONTACT & 404 --- */
-.center-box {
-    max-width: 600px; margin: 50px auto; padding: 40px;
-    background: white; border-radius: 20px; box-shadow: var(--shadow-lg); text-align: center;
+/* --- CONTACT PAGE DESIGN (NEW) --- */
+.contact-hero {
+    text-align: center; padding: 60px 20px;
+    max-width: 1000px; margin: 0 auto;
 }
-.form-input { width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid var(--border); border-radius: 8px; outline: none; }
-.form-input:focus { border-color: var(--primary); }
+.contact-hero h1 { font-size: 3rem; color: var(--secondary); margin-bottom: 10px; }
+.contact-cards-container {
+    display: flex; justify-content: center; gap: 30px; margin-top: 50px; flex-wrap: wrap;
+}
+.contact-card {
+    background: white; padding: 40px; border-radius: 20px;
+    box-shadow: var(--shadow-md); border: 1px solid var(--border);
+    width: 350px; text-align: center; transition: 0.3s;
+}
+.contact-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+
+.icon-box {
+    width: 70px; height: 70px; margin: 0 auto 20px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 1.8rem;
+}
+.email-icon { background: #e0f2fe; color: #0284c7; }
+.app-icon { background: #dcfce7; color: #16a34a; }
+
+.contact-card h3 { font-size: 1.5rem; color: var(--secondary); margin-bottom: 10px; }
+.contact-card p { color: var(--text-light); margin-bottom: 20px; line-height: 1.6; }
+.contact-link {
+    display: inline-block; padding: 10px 20px; background: var(--secondary);
+    color: white; text-decoration: none; border-radius: 8px; font-weight: 600;
+}
 
 /* --- FOOTER --- */
 footer { text-align: center; padding: 40px; color: var(--text-light); font-size: 0.9rem; margin-top: auto; border-top: 1px solid var(--border); }
