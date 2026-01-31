@@ -1,7 +1,19 @@
 {
-    "course": "ISL202",
-    "reviews": [
-        {
+  "course": "ISL202",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (27 January 2026, 8:00 AM)",
+      "reviewText": "5-6 MCQs from mids. Final topics: Qabail, Hijri dates (Caliphs), Verse meanings, English words meaning.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Hijri Dates & Caliphs",
+        "Quranic Verses Meanings",
+        "Tribes (Qabail)"
+      ]
+    },
+    {
       "examType": "Final Term",
       "difficulty": "Easy",
       "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
@@ -18,16 +30,16 @@
         "Ihram Location"
       ]
     },
-        {
-            "examType": "Final Term",
-            "difficulty": "Easy",
-            "reviewHeading": "Paper Review",
-            "reviewText": "Bohot easy paper aya hai 70% Files May say Aya hai or dates and Muslim scientists nay Kitni books Likhi Wo Lazmi Dekh k Jayen Baki Bohot easy tha 30 mins May Hogya paper, Alhamdulillah \u2764\ufe0f",
-            "topicsHeading": "Exam Questions",
-            "topicsList": [
-                "Muslim Scientists & Books",
-                "Important Dates"
-            ]
-        }
-    ]
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review",
+      "reviewText": "Bohot easy paper aya hai 70% Files May say Aya hai or dates and Muslim scientists nay Kitni books Likhi Wo Lazmi Dekh k Jayen Baki Bohot easy tha 30 mins May Hogya paper, Alhamdulillah \u2764\ufe0f",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Muslim Scientists & Books",
+        "Important Dates"
+      ]
+    }
+  ]
 }
