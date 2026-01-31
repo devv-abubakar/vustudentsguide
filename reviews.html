@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paper Reviews - VU Students Guide</title>
+    <title>Reviews Dashboard - VU Students Guide</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -11,46 +11,54 @@
 
     <nav>
         <a href="index.html" class="logo">VU<span>StudentsGuide</span></a>
+        <div class="menu-icon" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="reviews.html" class="active">Reviews</a>
-            <a href="papers.html">Past Papers</a>
+            <a href="papers.html">Papers</a>
             <a href="contact.html">Contact</a>
-            <a href="#" class="btn-app">Get App</a>
+            <a href="#" class="btn-nav">Get App</a>
         </div>
     </nav>
 
-    <div class="sponsor-box box-wide" style="margin-top:20px;">Header Ad</div>
+    <div class="sponsor-box box-header">Header Ad Slot</div>
 
     <section>
         <div class="dashboard-layout">
             <main>
                 <div id="searchView">
-                    <h2>Search Paper Reviews</h2>
-                    <input type="text" id="searchInput" class="search-bar" placeholder="Enter Course Code (e.g. CS101)...">
-                    <div id="loader" style="text-align:center;">Loading...</div>
+                    <h2 style="margin-bottom:20px; font-size:2rem; color:var(--secondary);">Search Reviews</h2>
+                    
+                    <div class="search-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="searchInput" class="search-bar" placeholder="Enter Course Code (e.g. CS101)...">
+                    </div>
+
+                    <div id="loader" style="text-align:center; color:#64748b;">Loading Courses...</div>
                     <div id="courseGrid" class="grid"></div>
                 </div>
 
                 <div id="detailView" class="hidden">
-                    <button onclick="goBack()" style="background:none; border:none; cursor:pointer; color:var(--primary); margin-bottom:15px;">
-                        ← Back to Search
-                    </button>
-                    <h1 id="courseTitle"></h1>
+                    <div class="header-flex">
+                        <button onclick="goBack()" class="back-btn">
+                            <i class="fas fa-arrow-left"></i> Back
+                        </button>
+                        <div style="text-align:right;">
+                            <h1 id="detailHeaderTitle" style="margin:0; font-size:2rem; line-height:1;">CODE</h1>
+                            <small id="detailHeaderCount" style="color:var(--primary); font-weight:600;">0 Reviews</small>
+                        </div>
+                    </div>
+
                     <div id="reviewsList"></div>
                 </div>
             </main>
 
             <aside>
-                <div class="sponsor-box box-tall">Sidebar Ad</div>
+                <div class="sponsor-box box-sidebar">Sticky Sidebar Ad</div>
             </aside>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 VU Students Guide</p>
-    </footer>
-
-    <script src="script.js"></script> 
+    <script src="script.js"></script>
 </body>
 </html>
