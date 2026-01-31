@@ -3,6 +3,17 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Hard",
+      "reviewHeading": "Paper Review (31 January 2026, 9:50 AM)",
+      "reviewText": "Important MCQs: Focus on past papers, especially questions from 1992, 1998, 1972, 1978.\nDifficult MCQs: Almost 6 MCQs related to education.\nShort & Long Questions: Cover education-related topics, difference and types.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Education History Dates (1992, 1998, 1972, 1978)",
+        "Education Types & Differences"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Easy",
       "reviewHeading": "Paper Review (26 January 2026, 3:50 PM)",
       "reviewText": "MCQs easy from handouts.\nShort Questions:\n1. Why education is not in the Syed dynasty?\n2. What are pre-literate societies?\n3. Objective of government policy 1998.\nLong Questions:\n1. Challenges education is facing in Pakistan.\n2. 5 points on the literacy 1978.\n3. Differentiate between Discriminism and Volunterism.",
