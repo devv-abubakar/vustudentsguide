@@ -1,20 +1,20 @@
 {
-    "course": "MATH100",
-    "reviews": [
-        {
-            "examType": "Final Term",
-            "difficulty": "Easy",
-            "reviewHeading": "Paper Review (31/jul/2025)",
-            "reviewText": "Math100 31/jul/2025\n\nMcqs \n1. Arithmetic mean of 2 and 32\n2. Smoking person in area is qualitative or quantitative or discrete variable\nShort questions\n1. Compute C(12,6)\n2. D/w qualitative and quantitative var\n3. Cumulative freq krni thi freq ki\nLong questions \n1. Cos (75)\n2. Lower quartile and upper quartile find krni thi data ki",
-            "topicsHeading": "Exam Questions",
-            "topicsList": [
-                "Arithmetic Mean",
-                "Qualitative vs Quantitative Variable",
-                "Combination C(12,6)",
-                "Cumulative Frequency",
-                "Trigonometry (Cos 75)",
-                "Lower & Upper Quartile"
-            ]
-        }
-    ]
+  "course": "MATH100",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (31/jul/2026)",
+      "reviewText": "Math100 31/jul/2026\n\nMcqs \n1. Arithmetic mean of 2 and 32\n2. Smoking person in area is qualitative or quantitative or discrete variable\nShort questions\n1. Compute C(12,6)\n2. D/w qualitative and quantitative var\n3. Cumulative freq krni thi freq ki\nLong questions \n1. Cos (75)\n2. Lower quartile and upper quartile find krni thi data ki",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Arithmetic Mean",
+        "Qualitative vs Quantitative Variable",
+        "Combination C(12,6)",
+        "Cumulative Frequency",
+        "Trigonometry (Cos 75)",
+        "Lower & Upper Quartile"
+      ]
+    }
+  ]
 }
