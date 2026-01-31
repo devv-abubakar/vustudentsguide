@@ -3,6 +3,22 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Medium",
+      "reviewHeading": "Paper Review (30 January 2026, 11:40 AM)",
+      "reviewText": "Mcqs from arham file and some from handouts. Subjective from kainat alvi file and repeated current paper mostly.\n\nShort questions:\n- Define vaccine.\n- Define algae and its structure.\n- Characteristics of antigen.\n- Define morbidity, mortality and pathogenic.\n\nLong questions:\n- Disk diffusion method.\n- Western blotting.\n- Bacteria defense against host defense of body.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Vaccine Definition",
+        "Algae Structure",
+        "Antigen Characteristics",
+        "Morbidity, Mortality, Pathogenic",
+        "Disk Diffusion Method",
+        "Western Blotting",
+        "Bacterial Defense Mechanisms"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Paper Review (27 January 2026)",
       "reviewText": "Totally subjective from Kainat Alvi file. MCQs from Sulman + Arham file.\nMCQs:\n- Hair dye reaction (Hypersensitivity IV).\n- Blood transfusion (Hypersensitivity II).\n- Nucleated cells molecules (MHC Class I).\n- 1st line of defense (Skin).\n- Mycobacterium (Mycolic acid).\n- Person to person transmission.\n- Algae/Fungi lichen relationship.\n- Zygospore formation.\n3 Januaryks Questions:\n1. Antigen vs Epitopes.\n2. Drugs inhibiting cell wall.\n3. Viruses need live organism (Example).\n4. Plasmogamy, Karyogamy, Meiosis definitions.\n5 Januaryks Questions:\n1. Western Blotting technique procedure.\n2. Disk diffusion method detail.\n3. Inflammation and characteristics.",
@@ -16,22 +32,6 @@
         "Inflammation",
         "Viral Growth",
         "Fungal Reproduction"
-      ]
-    },
-    {
-      "examType": "Final Term",
-      "difficulty": "Medium",
-      "reviewHeading": "Paper Review (30 January 2026, 11:40 AM)",
-      "reviewText": "Mcqs from arham file and some from handouts. Subjective from kainat alvi file and repeated current paper mostly.\n\nShort questions:\n- Define vaccine.\n- Define algae and its structure.\n- Characteristics of antigen.\n- Define morbidity, mortality and pathogenic.\n\nLong questions:\n- Disk diffusion method.\n- Western blotting.\n- Bacteria defense against host defense of body.",
-      "topicsHeading": "Exam Questions",
-      "topicsList": [
-        "Vaccine Definition",
-        "Algae Structure",
-        "Antigen Characteristics",
-        "Morbidity, Mortality, Pathogenic",
-        "Disk Diffusion Method",
-        "Western Blotting",
-        "Bacterial Defense Mechanisms"
       ]
     }
   ]
