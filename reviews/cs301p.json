@@ -1,8 +1,7 @@
 {
-    "course": "CS301P",
-    "reviews": [
-
-{
+  "course": "CS301P",
+  "reviews": [
+    {
       "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Paper Review (27 January 2026, 11:26 AM)",
@@ -16,18 +15,18 @@
         "Coding Programs"
       ]
     },
-        {
-            "examType": "Final Term",
-            "difficulty": "Easy",
-            "reviewHeading": "Paper Review (31 July, 8 am)",
-            "reviewText": "Papr bht easy tha binary tree AVL tree min heap max heap sy bhafa hua tha sbb",
-            "topicsHeading": "Exam Questions",
-            "topicsList": [
-                "Binary Tree",
-                "AVL Tree",
-                "Min Heap",
-                "Max Heap"
-            ]
-        }
-    ]
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (31 January, 8 am)",
+      "reviewText": "Papr bht easy tha binary tree AVL tree min heap max heap sy bhafa hua tha sbb",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Binary Tree",
+        "AVL Tree",
+        "Min Heap",
+        "Max Heap"
+      ]
+    }
+  ]
 }
