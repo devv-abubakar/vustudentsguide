@@ -4,6 +4,19 @@
     {
       "examType": "Final Term",
       "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (31 January 2026, 6:38 PM)",
+      "reviewText": "MCQs 6 from files. Subjective:\n1. Benefits of using type 2 hypervisor.\n2. Benefits of virtual machines.\n3. Data define benefits.\n4. NoSQL example separation.\n5. Difference between ESXi and vSphere.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Hypervisors (Type 2)",
+        "Virtual Machines",
+        "NoSQL",
+        "ESXi vs vSphere"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
       "reviewHeading": "Paper Review (28 January 2026, 8:00 AM)",
       "reviewText": "MCQs 7-8 from files, rest conceptual.\nQuestions:\n1. Main purpose of network virtualization.\n2. How Guest OS issues system calls to access hardware in para and full virtualization (reason/justification).\n3. Table given: Identify desktop vs application virtualization.\n4. Difference between ESXi and vSphere.",
       "topicsHeading": "Exam Questions",
