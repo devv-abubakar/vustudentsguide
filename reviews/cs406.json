@@ -4,6 +4,18 @@
     {
       "examType": "Final Term",
       "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (30 January 2026, 1:08 PM)",
+      "reviewText": "1. Benefits of using NoSQL database.\n2. Significance of primary key in database table.\n3. Differentiate between variable scope and global scope.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "NoSQL",
+        "Primary Key",
+        "Variable Scope"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
       "reviewHeading": "Paper Review (27 January 2026)",
       "reviewText": "MCQs: 6 MCQs on Abbreviations.\nShort Questions:\n1. Signed integer vs Unsigned integer difference.\n2. JavaScript question (NaN - Not a Number).\nLong Questions:\n1. SQL related questions.\n2. RAD methodology (4 phases).\n3. Hybrid attribute.\n4. ACID properties (Atomicity, Consistency, Isolation, Durability) - Long & Short.\nAbbreviations: BLOB (Binary Large Object), SOAP.",
       "topicsHeading": "Exam Questions",
