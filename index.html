@@ -8,16 +8,15 @@
     <meta name="description" content="Download VU Past Papers Android App. Check authentic Midterm and Final Term paper reviews. CS, MGT, ENG courses updated for 2026.">
     <meta name="keywords" content="VU students guide, vu past papers app, vu paper reviews, virtual university, CS101, MGT101">
     <meta name="author" content="Devv Abubakar">
-    <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=VU+Students+Guide">
 
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --primary: #4f46e5;   /* Modern Indigo */
-            --secondary: #0f172a; /* Dark Slate */
-            --accent: #f43f5e;    /* Rose/Red for App */
+            --primary: #4f46e5;
+            --secondary: #0f172a;
+            --accent: #f43f5e;
             --bg: #f8fafc;
             --surface: #ffffff;
             --text: #334155;
@@ -41,7 +40,7 @@
 
         /* --- NAVBAR --- */
         nav {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             padding: 15px 5%;
             display: flex;
@@ -52,14 +51,14 @@
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
-        .logo { font-size: 1.5rem; font-weight: 800; color: var(--secondary); text-decoration: none; }
+        .logo { font-size: 1.4rem; font-weight: 800; color: var(--secondary); text-decoration: none; }
         .logo span { color: var(--primary); }
 
         /* --- SECTIONS --- */
         section { padding: 20px; min-height: 80vh; }
         .hidden { display: none !important; }
 
-        /* --- LANDING PAGE (HERO) --- */
+        /* --- LANDING PAGE (Clean - No Ads) --- */
         #landingPage {
             text-align: center;
             display: flex;
@@ -67,31 +66,31 @@
             align-items: center;
             justify-content: center;
             background: radial-gradient(circle at top right, #e0e7ff, transparent);
-            padding-top: 60px;
+            padding-top: 40px;
         }
 
         .hero-icons i {
             font-size: 3rem;
             color: var(--primary);
-            opacity: 0.2;
+            opacity: 0.15;
             position: absolute;
             animation: float 6s infinite ease-in-out;
+            z-index: 0;
         }
-        /* Floating Icons Position */
         .icon-1 { top: 20%; left: 10%; animation-delay: 0s; }
         .icon-2 { top: 30%; right: 15%; animation-delay: 2s; }
         .icon-3 { bottom: 20%; left: 20%; animation-delay: 4s; }
 
-        .hero-title { font-size: 3.5rem; font-weight: 800; line-height: 1.2; color: var(--secondary); margin-bottom: 20px; position: relative; z-index: 2; }
+        .hero-title { font-size: 3rem; font-weight: 800; line-height: 1.2; color: var(--secondary); margin-bottom: 20px; position: relative; z-index: 1; }
         .hero-title span { color: var(--primary); }
-        .hero-sub { font-size: 1.2rem; color: #64748b; max-width: 600px; margin-bottom: 40px; position: relative; z-index: 2; }
+        .hero-sub { font-size: 1.1rem; color: #64748b; max-width: 600px; margin-bottom: 40px; position: relative; z-index: 1; }
 
-        .cta-container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; position: relative; z-index: 2; }
+        .cta-container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; position: relative; z-index: 1; }
         
         .btn {
             padding: 15px 35px;
             border-radius: 50px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             text-decoration: none;
             cursor: pointer;
@@ -126,19 +125,23 @@
             margin: 0 auto;
         }
 
+        .top-nav-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .back-btn { background: none; border: none; font-size: 1rem; color: var(--text); cursor: pointer; display: flex; align-items: center; gap: 5px; font-weight: 600; }
+        .back-btn:hover { color: var(--primary); }
+
         .search-bar {
             width: 100%;
-            padding: 18px 25px;
+            padding: 16px 25px;
             border-radius: 12px;
             border: 2px solid #e2e8f0;
-            font-size: 1.1rem;
+            font-size: 1rem;
             outline: none;
             transition: 0.3s;
             margin-bottom: 30px;
         }
         .search-bar:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1); }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 15px; }
         
         .card {
             background: white;
@@ -179,7 +182,7 @@
             border-radius: 8px;
             margin-bottom: 20px;
         }
-        .ad-leaderboard { width: 100%; height: 90px; margin-top: 20px; }
+        .ad-leaderboard { width: 100%; height: 90px; margin-bottom: 25px; }
         .ad-sidebar { width: 100%; height: 600px; position: sticky; top: 90px; }
         .ad-infeed { width: 100%; height: 250px; margin: 30px 0; border: 1px dashed #cbd5e1; }
 
@@ -206,14 +209,14 @@
         .countdown { color: white; margin-bottom: 15px; font-size: 1.2rem; }
         .btn-continue {
             background: var(--primary); color: white; border: none;
-            padding: 10px 20px; border-radius: 5px; cursor: pointer;
+            padding: 12px 20px; border-radius: 5px; cursor: pointer;
             margin-top: 15px; font-size: 1rem; width: 100%;
             display: none; /* Hidden initially */
         }
 
         /* Mobile */
         @media (max-width: 768px) {
-            .hero-title { font-size: 2.5rem; }
+            .hero-title { font-size: 2.2rem; }
             .dashboard-layout { grid-template-columns: 1fr; }
             .ad-sidebar { display: none; }
         }
@@ -222,15 +225,11 @@
 <body>
 
     <nav>
-        <a href="#" class="logo" onclick="showLanding()">VU<span>Guide</span></a>
-        <a href="https://play.google.com/store/apps/details?id=YOUR_APP_ID" target="_blank" style="color:var(--text); text-decoration:none; font-weight:600;">
+        <a href="#" class="logo" onclick="showLanding()">VU<span>StudentsGuide</span></a>
+        <a href="https://play.google.com/store/apps/details?id=YOUR_APP_ID" target="_blank" style="color:var(--text); text-decoration:none; font-weight:600; font-size:0.9rem;">
             <i class="fab fa-google-play"></i> Get App
         </a>
     </nav>
-
-    <div class="ad-slot ad-leaderboard">
-        Header Ad
-    </div>
 
     <section id="landingPage">
         <div class="hero-icons">
@@ -240,7 +239,7 @@
         </div>
 
         <h1 class="hero-title">Master Your<br><span>VU Exams</span></h1>
-        <p class="hero-sub">The ultimate resource for Virtual University students. Get authentic paper reviews, past papers, and study tools.</p>
+        <p class="hero-sub">Authentic Midterm & Final Term paper reviews. Download past papers and prepare smarter.</p>
         
         <div class="cta-container">
             <a href="https://play.google.com/store/apps/details?id=YOUR_APP_ID" target="_blank" class="btn btn-app">
@@ -253,14 +252,23 @@
     </section>
 
     <section id="reviewsSection" class="hidden">
+        
+        <div class="ad-slot ad-leaderboard">
+            Header Ad Slot
+        </div>
+
         <div class="dashboard-layout">
             <main>
-                <button onclick="showLanding()" style="border:none; background:none; color:var(--text); cursor:pointer; margin-bottom:10px;">← Back Home</button>
-                <h2 style="margin-bottom:20px; font-size:2rem;">Current Paper Reviews</h2>
+                <div class="top-nav-bar">
+                    <button onclick="showLanding()" class="back-btn">
+                        <i class="fas fa-arrow-left"></i> Back Home
+                    </button>
+                    <h2 style="font-size:1.5rem;">Select Course</h2>
+                </div>
                 
-                <input type="text" id="searchInput" class="search-bar" placeholder="Search Course (e.g., CS101, MGT501)..." onkeyup="filterCourses()">
+                <input type="text" id="searchInput" class="search-bar" placeholder="Search Course (e.g., CS101)..." onkeyup="filterCourses()">
                 
-                <div id="loader" style="text-align:center;">Loading Courses...</div>
+                <div id="loader" style="text-align:center; color:#64748b;">Loading Courses...</div>
                 <div id="courseGrid" class="grid"></div>
             </main>
             
@@ -273,14 +281,21 @@
     </section>
 
     <section id="detailSection" class="hidden">
+        
+        <div class="ad-slot ad-leaderboard">
+            Header Ad Slot
+        </div>
+
         <div class="dashboard-layout">
             <main>
-                <button onclick="showReviews()" style="border:none; background:none; color:var(--primary); cursor:pointer; margin-bottom:20px; font-weight:600;">← Back to Search</button>
-                
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-                    <h2 id="detailTitle" style="font-size:2rem;"></h2>
-                    <span id="detailCount" class="count-badge" style="font-size:1rem; padding:8px 15px;"></span>
+                <div class="top-nav-bar">
+                    <button onclick="showReviews()" class="back-btn">
+                        <i class="fas fa-arrow-left"></i> Back to Search
+                    </button>
+                    <span id="detailCount" class="count-badge"></span>
                 </div>
+                
+                <h1 id="detailTitle" style="font-size:2rem; margin-bottom:20px; color:var(--secondary);"></h1>
 
                 <div id="reviewsList"></div>
             </main>
@@ -297,7 +312,7 @@
         <div class="countdown" id="adTimer">Advertisement - Continue in 5s</div>
         
         <div class="modal-content">
-            <div style="background:#ddd; height:250px; display:flex; align-items:center; justify-content:center;">
+            <div style="background:#f1f5f9; height:250px; display:flex; align-items:center; justify-content:center; border-radius:8px; color:#94a3b8;">
                 300x250 Ad Slot
             </div>
             
@@ -308,7 +323,7 @@
     </div>
 
     <footer>
-        <p style="text-align:center; padding:20px; color:#94a3b8; font-size:0.9rem;">
+        <p style="text-align:center; padding:20px; color:#94a3b8; font-size:0.85rem;">
             &copy; 2026 VU Students Guide. Not affiliated with Virtual University.
         </p>
     </footer>
@@ -322,12 +337,14 @@
             document.getElementById('landingPage').classList.remove('hidden');
             document.getElementById('reviewsSection').classList.add('hidden');
             document.getElementById('detailSection').classList.add('hidden');
+            window.scrollTo(0,0);
         }
 
         function showReviews() {
             document.getElementById('landingPage').classList.add('hidden');
             document.getElementById('reviewsSection').classList.remove('hidden');
             document.getElementById('detailSection').classList.add('hidden');
+            window.scrollTo(0,0);
             if(allCourses.length === 0) loadCourses(); // Load data if not loaded
         }
 
@@ -352,7 +369,7 @@
                 // Click triggers Ad Logic first
                 card.onclick = () => triggerInterstitial(c.filename, c.code, c.count);
                 card.innerHTML = `
-                    <span style="font-weight:700; font-size:1.2rem;">${c.code}</span>
+                    <span style="font-weight:700; font-size:1.1rem;">${c.code}</span>
                     <span class="count-badge">${c.count} Reviews</span>
                 `;
                 grid.appendChild(card);
@@ -378,7 +395,7 @@
             btn.style.display = 'none';
             
             // Countdown Logic
-            let timeLeft = 3; // 3 Seconds wait (Policy compliant)
+            let timeLeft = 3; // 3 Seconds wait (Safe for Policy)
             timer.innerText = `Advertisement - Continue in ${timeLeft}s`;
             
             const interval = setInterval(() => {
@@ -405,11 +422,11 @@
             document.getElementById('detailSection').classList.remove('hidden');
             window.scrollTo(0, 0);
 
-            document.getElementById('detailTitle').innerText = code;
-            document.getElementById('detailCount').innerText = `${count} Reviews`;
+            document.getElementById('detailTitle').innerText = `${code} Reviews`;
+            document.getElementById('detailCount').innerText = `${count} Total`;
             
             const list = document.getElementById('reviewsList');
-            list.innerHTML = '<div style="text-align:center;">Loading...</div>';
+            list.innerHTML = '<div style="text-align:center; padding:20px;">Loading reviews...</div>';
 
             try {
                 // Fetch from PASTPAPERS folder
@@ -434,7 +451,7 @@
                     div.className = 'review-box';
                     
                     let topicsHtml = '';
-                    if(r.topicsList) {
+                    if(r.topicsList && r.topicsList.length > 0) {
                         topicsHtml = `<div style="margin-top:10px;"><strong>Topics:</strong> ${r.topicsList.map(t => `<span class="topic-tag">${t}</span>`).join('')}</div>`;
                     }
 
@@ -443,13 +460,13 @@
                             <strong>${r.reviewHeading}</strong>
                             <small style="color:#64748b;">${r.difficulty || ''}</small>
                         </div>
-                        <p style="white-space:pre-wrap; line-height:1.6;">${r.reviewText}</p>
+                        <p style="white-space:pre-wrap; line-height:1.6; font-size:0.95rem;">${r.reviewText}</p>
                         ${topicsHtml}
                     `;
                     list.appendChild(div);
                 });
             } catch (err) {
-                list.innerHTML = "Error loading reviews.";
+                list.innerHTML = "Error loading reviews. Please try again.";
             }
         }
     </script>
