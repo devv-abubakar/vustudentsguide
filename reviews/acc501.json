@@ -1,7 +1,21 @@
 {
-    "course": "ACC501",
-    "reviews": [
-        {
+  "course": "ACC501",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 January 2026, 9:50 AM)",
+      "reviewText": "MCQs mostly handouts se easy thay.\nShort:\n1. Find dividend yield.\n2. MACRS related question.\n3. Find inventory turnover and inventory period.\nLong:\n1. MACRS method depreciation and book value.\n2. Credit instruments (def + types).\n3. Find NPV.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Dividend Yield",
+        "MACRS Depreciation",
+        "Inventory Turnover",
+        "Credit Instruments",
+        "NPV (Net Present Value)"
+      ]
+    },
+    {
       "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
@@ -16,16 +30,16 @@
         "Increase/Decrease Concepts"
       ]
     },
-        {
-            "examType": "Final Term",
-            "difficulty": "Hard",
-            "reviewHeading": "Paper Review",
-            "reviewText": "Mcqs totally conceptual nddd difficult \nShort and long from the practice question file",
-            "topicsHeading": "Preparation Source",
-            "topicsList": [
-                "Conceptual MCQs",
-                "Practice Question File"
-            ]
-        }
-    ]
+    {
+      "examType": "Final Term",
+      "difficulty": "Hard",
+      "reviewHeading": "Paper Review",
+      "reviewText": "Mcqs totally conceptual nddd difficult \nShort and long from the practice question file",
+      "topicsHeading": "Preparation Source",
+      "topicsList": [
+        "Conceptual MCQs",
+        "Practice Question File"
+      ]
+    }
+  ]
 }
