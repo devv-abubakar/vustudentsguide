@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master VU Exams - VU Students Guide</title>
+    <title>VU Students Guide - Past Papers & Reviews</title>
+    <meta name="description" content="Download Virtual University past papers, read student reviews for Midterm and Final term exams. Join the largest VU student community.">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -11,31 +12,57 @@
 
     <nav>
         <a href="index.html" class="logo">VU<span>StudentsGuide</span></a>
-        
-        <div class="menu-icon" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
-        </div>
-
+        <div class="menu-icon" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
         <div class="nav-links">
-            <a href="index.html">Home</a>
+            <a href="index.html" class="active">Home</a>
             <a href="reviews.html">Reviews</a>
             <a href="papers.html">Papers</a>
             <a href="contact.html">Contact</a>
-            <a href="#" class="btn-nav">Get App</a>
+            <a href="https://play.google.com/store/apps/details?id=com.abubakar.vustudentsguide" target="_blank" class="btn-nav">Get App</a>
         </div>
     </nav>
 
     <section class="hero">
-        <i class="fas fa-graduation-cap" style="position:absolute; top:10%; left:5%; font-size:4rem; color:var(--primary); opacity:0.1; animation:float 6s infinite;"></i>
-        <i class="fas fa-book-open" style="position:absolute; bottom:15%; right:5%; font-size:5rem; color:var(--primary); opacity:0.1; animation:float 8s infinite;"></i>
+        <i class="fas fa-file-alt" style="position:absolute; top:15%; left:10%; font-size:3rem; color:var(--primary); opacity:0.1; animation:float 6s infinite;"></i>
+        <i class="fas fa-comments" style="position:absolute; bottom:20%; right:10%; font-size:4rem; color:var(--secondary); opacity:0.05; animation:float 8s infinite;"></i>
 
-        <h1>Master Your<br><span>VU Exams</span></h1>
-        <p>Authentic Midterm & Final Term paper reviews. Download past papers and prepare smarter with our student community.</p>
+        <h1>Exams Preparation <br><span>Made Simple</span></h1>
+        <p>Your one-stop solution for Virtual University midterm & final term preparation. Authentic reviews, solved papers, and a helpful community.</p>
         
-        <a href="reviews.html" class="cta-btn">
-            Check Reviews <i class="fas fa-arrow-right" style="margin-left:5px;"></i>
-        </a>
+        <div class="cta-group">
+            <a href="reviews.html" class="btn-primary">
+                Check Reviews <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.abubakar.vustudentsguide" target="_blank" class="btn-secondary">
+                <i class="fab fa-google-play"></i> Download App
+            </a>
+        </div>
     </section>
+
+    <section style="padding:60px 20px; background:white; text-align:center;">
+        <h2 style="color:var(--secondary); font-size:2rem; margin-bottom:40px;">Why Choose Us?</h2>
+        <div class="grid" style="max-width:1000px; margin:0 auto;">
+            <div style="padding:20px;">
+                <i class="fas fa-users" style="font-size:2.5rem; color:var(--primary); margin-bottom:15px;"></i>
+                <h3>Real Student Reviews</h3>
+                <p style="color:var(--text-light); margin-top:10px;">Don't guess. Read what other students experienced in their exams.</p>
+            </div>
+            <div style="padding:20px;">
+                <i class="fas fa-file-download" style="font-size:2.5rem; color:var(--primary); margin-bottom:15px;"></i>
+                <h3>Solved Papers</h3>
+                <p style="color:var(--text-light); margin-top:10px;">Access huge database of Moaaz & Waqar Siddhu past papers.</p>
+            </div>
+            <div style="padding:20px;">
+                <i class="fas fa-mobile-alt" style="font-size:2.5rem; color:var(--primary); margin-bottom:15px;"></i>
+                <h3>Mobile App</h3>
+                <p style="color:var(--text-light); margin-top:10px;">Study on the go with our fast and responsive Android app.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 VU Students Guide. Developed by Abubakar.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
