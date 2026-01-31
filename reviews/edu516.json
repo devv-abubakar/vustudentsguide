@@ -3,6 +3,21 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (26 January 2026, 2:00 PM)",
+      "reviewText": "MCQs easy thay BahOtttttttt.\nShort Questions:\n1. Individual differences.\n2. Importance of guidance.\n3. Team teach.\n4. Difference between present perfect and past perfect continuous tense.\nLong Questions:\n1. Importance of instructions.\n2. Empathize adjectives.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Individual Differences",
+        "Guidance Importance",
+        "Team Teaching",
+        "Tenses (Present/Past Perfect)",
+        "Instructions Importance",
+        "Empathize Adjectives"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
       "reviewText": "MCQs were difficult (30% from file, rest conceptual/handouts). Subjective was easy.\nShort Questions:\n1. Survey (3 marks).\n2. Three examples of reflexive pronoun (3 marks).\n3. Warmer.\nLong Questions:\n1. Professional development (5 marks).\n2. Difference between Past perfect continuous tense and Present perfect continuous tense (5 marks).\nObjective Topics:\n- Body language.\n- Tenses examples.\n- Feedback.",
