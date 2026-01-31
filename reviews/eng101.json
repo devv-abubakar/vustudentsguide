@@ -1,7 +1,20 @@
 {
-    "course": "ENG101",
-    "reviews": [
-        {
+  "course": "ENG101",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (31 January 2026)",
+      "reviewText": "Almost 50% was choose the correct word/synonym/antonym/punctuation/errors. Topics: Thesis statement, Pronoun reference, Sentence fragments, Fused sentences, Dangler, Parts of paragraph, Purposes of Essay writing.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Grammar & Punctuation",
+        "Thesis Statement",
+        "Sentence Errors (Fragment, Fused, Dangler)",
+        "Essay & Paragraph Writing"
+      ]
+    },
+    {
       "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Paper Review (28 January 2026, 6:46 PM)",
@@ -13,7 +26,7 @@
         "Handouts"
       ]
     },
-        {
+    {
       "examType": "Final Term",
       "difficulty": "Medium",
       "reviewHeading": "Paper Review (27 January 2026, 1:16 PM)",
@@ -29,7 +42,7 @@
         "Essay Writing (Structure & Points)"
       ]
     },
-        {
+    {
       "examType": "Final Term",
       "difficulty": "Easy",
       "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
@@ -41,30 +54,30 @@
         "Grammar Correction"
       ]
     },
-        {
-            "examType": "Final Term",
-            "difficulty": "Easy",
-            "reviewHeading": "Paper Review (8:00 AM)",
-            "reviewText": "paper bht asan tha agr apko grammer atti ha to apka paper easily ho jye ga almost sara paper he grammer sy aya  khuch mcqs ma defination thi handouts wali or sath option thy baqi direct in direct be thy synonyms be thy and tenses verb basic he tha sb",
-            "topicsHeading": "Topics Covered",
-            "topicsList": [
-                "Grammar (Basic Tenses, Verbs)",
-                "Definitions from Handouts",
-                "Direct/Indirect Speech",
-                "Synonyms"
-            ]
-        },
-        {
-            "examType": "Final Term",
-            "difficulty": "Easy",
-            "reviewHeading": "Paper Review",
-            "reviewText": "Ppr bht ezy tha 70% grammar sy tha bki ka 30% slides mai jo writing passage etc us sy related tha but tha ezy \nCompound, complex sentence etc ya chezyn achy sy kryn sb",
-            "topicsHeading": "Topics Covered",
-            "topicsList": [
-                "Grammar",
-                "Writing Passage",
-                "Compound & Complex Sentences"
-            ]
-        }
-    ]
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (8:00 AM)",
+      "reviewText": "paper bht asan tha agr apko grammer atti ha to apka paper easily ho jye ga almost sara paper he grammer sy aya  khuch mcqs ma defination thi handouts wali or sath option thy baqi direct in direct be thy synonyms be thy and tenses verb basic he tha sb",
+      "topicsHeading": "Topics Covered",
+      "topicsList": [
+        "Grammar (Basic Tenses, Verbs)",
+        "Definitions from Handouts",
+        "Direct/Indirect Speech",
+        "Synonyms"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review",
+      "reviewText": "Ppr bht ezy tha 70% grammar sy tha bki ka 30% slides mai jo writing passage etc us sy related tha but tha ezy \nCompound, complex sentence etc ya chezyn achy sy kryn sb",
+      "topicsHeading": "Topics Covered",
+      "topicsList": [
+        "Grammar",
+        "Writing Passage",
+        "Compound & Complex Sentences"
+      ]
+    }
+  ]
 }
