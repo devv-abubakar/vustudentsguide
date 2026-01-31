@@ -1,0 +1,132 @@
+[
+  {
+    "code": "BIO101",
+    "filename": "bio101.json",
+    "count": 0
+  },
+  {
+    "code": "BIO5105",
+    "filename": "bio5105.json",
+    "count": 0
+  },
+  {
+    "code": "CS101",
+    "filename": "cs101.json",
+    "count": 0
+  },
+  {
+    "code": "CS201",
+    "filename": "cs201.json",
+    "count": 0
+  },
+  {
+    "code": "CS201P",
+    "filename": "cs201P.json",
+    "count": 0
+  },
+  {
+    "code": "ECO302",
+    "filename": "eco302.json",
+    "count": 0
+  },
+  {
+    "code": "ECO401",
+    "filename": "eco401.json",
+    "count": 0
+  },
+  {
+    "code": "ENG101",
+    "filename": "eng101.json",
+    "count": 0
+  },
+  {
+    "code": "ENG502",
+    "filename": "eng502.json",
+    "count": 0
+  },
+  {
+    "code": "ETH202",
+    "filename": "eth202.json",
+    "count": 0
+  },
+  {
+    "code": "ISL202",
+    "filename": "isl202.json",
+    "count": 0
+  },
+  {
+    "code": "MCM101",
+    "filename": "mcm101.json",
+    "count": 0
+  },
+  {
+    "code": "MGT211",
+    "filename": "mgt211.json",
+    "count": 0
+  },
+  {
+    "code": "MGT503",
+    "filename": "mgt503.json",
+    "count": 0
+  },
+  {
+    "code": "MTH100",
+    "filename": "mth100.json",
+    "count": 0
+  },
+  {
+    "code": "MTH101",
+    "filename": "mth101.json",
+    "count": 0
+  },
+  {
+    "code": "MTH104",
+    "filename": "mth104.json",
+    "count": 0
+  },
+  {
+    "code": "MTH202",
+    "filename": "mth202.json",
+    "count": 0
+  },
+  {
+    "code": "MTH5101",
+    "filename": "mth5101.json",
+    "count": 0
+  },
+  {
+    "code": "PAK301",
+    "filename": "pak301.json",
+    "count": 0
+  },
+  {
+    "code": "PHY101",
+    "filename": "phy101.json",
+    "count": 0
+  },
+  {
+    "code": "PHY301",
+    "filename": "phy301.json",
+    "count": 0
+  },
+  {
+    "code": "PSY101",
+    "filename": "psy101.json",
+    "count": 0
+  },
+  {
+    "code": "SOC101",
+    "filename": "soc101.json",
+    "count": 0
+  },
+  {
+    "code": "SOC201",
+    "filename": "soc201.json",
+    "count": 0
+  },
+  {
+    "code": "SOC301",
+    "filename": "soc301.json",
+    "count": 0
+  }
+]
