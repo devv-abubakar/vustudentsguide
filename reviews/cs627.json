@@ -1,0 +1,20 @@
+{
+  "course": "CS627",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
+      "reviewText": "MCQs: Slides/Conceptual (Cybercrime types, Buffer, Nmap, Flags).\nShort Questions:\n1. Buffer overflow explain + famous type.\n2. Flags names.\n3. Coordination function (Wireless LANs).\n4. Differentiate White risk, Grey risk, Black risk.\nLong Questions:\n1. Nmap scanning flags with description.\n2. HTTPS list and explain essential steps.\n3. Shellcode related to buffer overflow.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Buffer Overflow & Shellcode",
+        "Nmap Flags",
+        "Wireless LANs (Coordination Function)",
+        "Risk Types (White, Grey, Black)",
+        "HTTPS Steps",
+        "Cybercrime Types"
+      ]
+    }
+  ]
+}
