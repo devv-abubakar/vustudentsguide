@@ -4,6 +4,17 @@
     {
       "examType": "Final Term",
       "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (31 January 2026)",
+      "reviewText": "INT k sab function jo hain wo lazmi krny hain, adhy sy zyada mcqs usi my sy thay (Int21, Int10, Int11).\nRegisters: AX, DX, AH types k jo sab hain wo bhi krny hain, subjective k liy important hain.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Interrupts (Int21, Int10, Int11)",
+        "Registers (AX, DX, AH)"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
       "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
       "reviewText": "MCQs mostly from files (VU topper, Junaid, Moaz). Practical MCQs from YouTube channel 'Study Track'. Subjective portion was not good/relevant.",
       "topicsHeading": "Preparation Source",
