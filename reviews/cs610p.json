@@ -1,0 +1,19 @@
+{
+  "course": "CS610P",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (28 January 2026, 9:53 PM)",
+      "reviewText": "MCQs: Packet Tracer workspace, Thin wire Ethernet segment length, Routed protocol (IP), Class B IP distribution, CIDR notation (172.22.0.0/20), Subnet mask calculation, IPv4 address count, DHCP client.\nLong Questions:\n1. Packet Tracer: Change Router name, Set password, Check IP of interfaces.\n2. Communication Address Types: Head office to other office, Within head office, Protocol for mapping addresses.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Packet Tracer Tasks",
+        "IP Addressing & CIDR",
+        "Subnet Mask",
+        "DHCP",
+        "Router Configuration"
+      ]
+    }
+  ]
+}
