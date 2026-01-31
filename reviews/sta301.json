@@ -1,7 +1,20 @@
 {
-    "course": "STA301",
-    "reviews": [
-        {
+  "course": "STA301",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (28 January 2026, 9:50 AM)",
+      "reviewText": "Max paper from Lecture 30-45. T-test, Z-test most important.\nQuestions:\n- F-test MCQs.\n- Parameters related MCQs.\n- Table given, write intervals.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "T-Test, Z-Test, F-Test",
+        "Parameters",
+        "Intervals (Table based)",
+        "Lectures 30-45"
+      ]
+    },
+    {
       "examType": "Final Term",
       "difficulty": "Easy",
       "reviewHeading": "Paper Review (26-01-2026, 8:00 AM)",
@@ -12,21 +25,21 @@
         "YouTube Videos"
       ]
     },
-        {
-            "examType": "Final Term",
-            "difficulty": "Easy",
-            "reviewHeading": "Final Term Summary",
-            "reviewText": "\ud83d\udcdd MCQs:  \n\u2705 All MCQs were from files  \n\ud83d\ude0c Easy and less formula-based  \n\n\u270d\ufe0f Subjective Questions:  \n1\ufe0f\u20e3 Define Null and Alternative Hypothesis  \n2\ufe0f\u20e3 Compute Sampling Distribution (Table with frequencies was given)  \n3\ufe0f\u20e3 Find the Confidence Interval  \n4\ufe0f\u20e3 Calculate Point Estimator  \n5\ufe0f\u20e3 Find relevant Hypothesis (Question was based on national cholesterol average e.g., 190 in America)  \n6\ufe0f\u20e3 E(X + 4) type question  \n7\ufe0f\u20e3 Properties of Density Function  \n\n\ud83d\udcda Overall: Prepare theory well and revise file-based questions for better performance!",
-            "topicsHeading": "Exam Questions",
-            "topicsList": [
-                "Null & Alternative Hypothesis",
-                "Sampling Distribution",
-                "Confidence Interval",
-                "Point Estimator",
-                "Hypothesis Testing Scenario",
-                "Expected Value E(X+4)",
-                "Density Function Properties"
-            ]
-        }
-    ]
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Final Term Summary",
+      "reviewText": "\ud83d\udcdd MCQs:  \n\u2705 All MCQs were from files  \n\ud83d\ude0c Easy and less formula-based  \n\n\u270d\ufe0f Subjective Questions:  \n1\ufe0f\u20e3 Define Null and Alternative Hypothesis  \n2\ufe0f\u20e3 Compute Sampling Distribution (Table with frequencies was given)  \n3\ufe0f\u20e3 Find the Confidence Interval  \n4\ufe0f\u20e3 Calculate Point Estimator  \n5\ufe0f\u20e3 Find relevant Hypothesis (Question was based on national cholesterol average e.g., 190 in America)  \n6\ufe0f\u20e3 E(X + 4) type question  \n7\ufe0f\u20e3 Properties of Density Function  \n\n\ud83d\udcda Overall: Prepare theory well and revise file-based questions for better performance!",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Null & Alternative Hypothesis",
+        "Sampling Distribution",
+        "Confidence Interval",
+        "Point Estimator",
+        "Hypothesis Testing Scenario",
+        "Expected Value E(X+4)",
+        "Density Function Properties"
+      ]
+    }
+  ]
 }
