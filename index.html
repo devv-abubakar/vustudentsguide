@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VU Students Guide - Past Papers, Reviews & App</title>
+    
+    <meta name="description" content="Download VU Past Papers Android App. Check authentic Midterm and Final Term paper reviews. CS, MGT, ENG courses updated for 2026.">
+    <meta name="keywords" content="VU students guide, vu past papers app, vu paper reviews, virtual university, CS101, MGT101">
+    <meta name="author" content="Devv Abubakar">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=VU+Students+Guide">
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #4f46e5;   /* Modern Indigo */
+            --secondary: #0f172a; /* Dark Slate */
+            --accent: #f43f5e;    /* Rose/Red for App */
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text: #334155;
+            --ad-bg: #e2e8f0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+        /* --- ANIMATIONS --- */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(244, 63, 94, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244, 63, 94, 0); }
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--secondary); text-decoration: none; }
+        .logo span { color: var(--primary); }
+
+        /* --- SECTIONS --- */
+        section { padding: 20px; min-height: 80vh; }
+        .hidden { display: none !important; }
+
+        /* --- LANDING PAGE (HERO) --- */
+        #landingPage {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at top right, #e0e7ff, transparent);
+            padding-top: 60px;
+        }
+
+        .hero-icons i {
+            font-size: 3rem;
+            color: var(--primary);
+            opacity: 0.2;
+            position: absolute;
+            animation: float 6s infinite ease-in-out;
+        }
+        /* Floating Icons Position */
+        .icon-1 { top: 20%; left: 10%; animation-delay: 0s; }
+        .icon-2 { top: 30%; right: 15%; animation-delay: 2s; }
+        .icon-3 { bottom: 20%; left: 20%; animation-delay: 4s; }
+
+        .hero-title { font-size: 3.5rem; font-weight: 800; line-height: 1.2; color: var(--secondary); margin-bottom: 20px; position: relative; z-index: 2; }
+        .hero-title span { color: var(--primary); }
+        .hero-sub { font-size: 1.2rem; color: #64748b; max-width: 600px; margin-bottom: 40px; position: relative; z-index: 2; }
+
+        .cta-container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; position: relative; z-index: 2; }
+        
+        .btn {
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-app {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 10px 25px rgba(244, 63, 94, 0.4);
+            animation: pulse 2s infinite;
+        }
+        .btn-app:hover { transform: translateY(-3px); }
+
+        .btn-reviews {
+            background: var(--secondary);
+            color: white;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.3);
+        }
+        .btn-reviews:hover { background: var(--primary); transform: translateY(-3px); }
+
+        /* --- REVIEWS DASHBOARD --- */
+        .dashboard-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 18px 25px;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+            font-size: 1.1rem;
+            outline: none;
+            transition: 0.3s;
+            margin-bottom: 30px;
+        }
+        .search-bar:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1); }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
+        
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card:hover { border-color: var(--primary); transform: translateY(-3px); }
+        .count-badge { background: #e0e7ff; color: var(--primary); padding: 5px 12px; border-radius: 20px; font-weight: 700; font-size: 0.8rem; }
+
+        /* --- REVIEW DETAIL --- */
+        .review-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .review-meta { display: flex; justify-content: space-between; margin-bottom: 10px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; }
+        .topic-tag { display: inline-block; background: #f1f5f9; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin: 2px; }
+
+        /* --- AD SLOTS --- */
+        .ad-slot {
+            background: var(--ad-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #94a3b8;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .ad-leaderboard { width: 100%; height: 90px; margin-top: 20px; }
+        .ad-sidebar { width: 100%; height: 600px; position: sticky; top: 90px; }
+        .ad-infeed { width: 100%; height: 250px; margin: 30px 0; border: 1px dashed #cbd5e1; }
+
+        /* --- INTERSTITIAL AD MODAL (POPUP) --- */
+        #adModal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        .countdown { color: white; margin-bottom: 15px; font-size: 1.2rem; }
+        .btn-continue {
+            background: var(--primary); color: white; border: none;
+            padding: 10px 20px; border-radius: 5px; cursor: pointer;
+            margin-top: 15px; font-size: 1rem; width: 100%;
+            display: none; /* Hidden initially */
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .dashboard-layout { grid-template-columns: 1fr; }
+            .ad-sidebar { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo" onclick="showLanding()">VU<span>Guide</span></a>
+        <a href="https://play.google.com/store/apps/details?id=YOUR_APP_ID" target="_blank" style="color:var(--text); text-decoration:none; font-weight:600;">
+            <i class="fab fa-google-play"></i> Get App
+        </a>
+    </nav>
+
+    <div class="ad-slot ad-leaderboard">
+        Header Ad
+    </div>
+
+    <section id="landingPage">
+        <div class="hero-icons">
+            <i class="fas fa-book-open icon-1"></i>
+            <i class="fas fa-graduation-cap icon-2"></i>
+            <i class="fas fa-mobile-alt icon-3"></i>
+        </div>
+
+        <h1 class="hero-title">Master Your<br><span>VU Exams</span></h1>
+        <p class="hero-sub">The ultimate resource for Virtual University students. Get authentic paper reviews, past papers, and study tools.</p>
+        
+        <div class="cta-container">
+            <a href="https://play.google.com/store/apps/details?id=YOUR_APP_ID" target="_blank" class="btn btn-app">
+                <i class="fab fa-android"></i> Download App
+            </a>
+            <button onclick="showReviews()" class="btn btn-reviews">
+                <i class="fas fa-search"></i> Check Reviews
+            </button>
+        </div>
+    </section>
+
+    <section id="reviewsSection" class="hidden">
+        <div class="dashboard-layout">
+            <main>
+                <button onclick="showLanding()" style="border:none; background:none; color:var(--text); cursor:pointer; margin-bottom:10px;">← Back Home</button>
+                <h2 style="margin-bottom:20px; font-size:2rem;">Current Paper Reviews</h2>
+                
+                <input type="text" id="searchInput" class="search-bar" placeholder="Search Course (e.g., CS101, MGT501)..." onkeyup="filterCourses()">
+                
+                <div id="loader" style="text-align:center;">Loading Courses...</div>
+                <div id="courseGrid" class="grid"></div>
+            </main>
+            
+            <aside>
+                <div class="ad-slot ad-sidebar">
+                    Sticky Sidebar Ad
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <section id="detailSection" class="hidden">
+        <div class="dashboard-layout">
+            <main>
+                <button onclick="showReviews()" style="border:none; background:none; color:var(--primary); cursor:pointer; margin-bottom:20px; font-weight:600;">← Back to Search</button>
+                
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                    <h2 id="detailTitle" style="font-size:2rem;"></h2>
+                    <span id="detailCount" class="count-badge" style="font-size:1rem; padding:8px 15px;"></span>
+                </div>
+
+                <div id="reviewsList"></div>
+            </main>
+
+            <aside>
+                <div class="ad-slot ad-sidebar">
+                    Sticky Sidebar Ad
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <div id="adModal">
+        <div class="countdown" id="adTimer">Advertisement - Continue in 5s</div>
+        
+        <div class="modal-content">
+            <div style="background:#ddd; height:250px; display:flex; align-items:center; justify-content:center;">
+                300x250 Ad Slot
+            </div>
+            
+            <button id="btnContinue" class="btn-continue" onclick="closeAdAndShowContent()">
+                Continue to Reviews
+            </button>
+        </div>
+    </div>
+
+    <footer>
+        <p style="text-align:center; padding:20px; color:#94a3b8; font-size:0.9rem;">
+            &copy; 2026 VU Students Guide. Not affiliated with Virtual University.
+        </p>
+    </footer>
+
+    <script>
+        let allCourses = [];
+        let selectedCourseData = null; // Store data to load after ad
+
+        // --- NAVIGATION LOGIC ---
+        function showLanding() {
+            document.getElementById('landingPage').classList.remove('hidden');
+            document.getElementById('reviewsSection').classList.add('hidden');
+            document.getElementById('detailSection').classList.add('hidden');
+        }
+
+        function showReviews() {
+            document.getElementById('landingPage').classList.add('hidden');
+            document.getElementById('reviewsSection').classList.remove('hidden');
+            document.getElementById('detailSection').classList.add('hidden');
+            if(allCourses.length === 0) loadCourses(); // Load data if not loaded
+        }
+
+        // --- DATA FETCHING ---
+        async function loadCourses() {
+            try {
+                const res = await fetch('all_courses.json');
+                allCourses = await res.json();
+                document.getElementById('loader').style.display = 'none';
+                renderCourses(allCourses);
+            } catch (err) {
+                document.getElementById('loader').innerHTML = "Error loading data.";
+            }
+        }
+
+        function renderCourses(list) {
+            const grid = document.getElementById('courseGrid');
+            grid.innerHTML = '';
+            list.forEach(c => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                // Click triggers Ad Logic first
+                card.onclick = () => triggerInterstitial(c.filename, c.code, c.count);
+                card.innerHTML = `
+                    <span style="font-weight:700; font-size:1.2rem;">${c.code}</span>
+                    <span class="count-badge">${c.count} Reviews</span>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterCourses() {
+            const query = document.getElementById('searchInput').value.toUpperCase();
+            renderCourses(allCourses.filter(c => c.code.includes(query)));
+        }
+
+        // --- AD INTERSTITIAL LOGIC (THE MONEY MAKER) ---
+        function triggerInterstitial(filename, code, count) {
+            // Save data for later
+            selectedCourseData = { filename, code, count };
+            
+            // Show Modal
+            const modal = document.getElementById('adModal');
+            const btn = document.getElementById('btnContinue');
+            const timer = document.getElementById('adTimer');
+            
+            modal.style.display = 'flex';
+            btn.style.display = 'none';
+            
+            // Countdown Logic
+            let timeLeft = 3; // 3 Seconds wait (Policy compliant)
+            timer.innerText = `Advertisement - Continue in ${timeLeft}s`;
+            
+            const interval = setInterval(() => {
+                timeLeft--;
+                timer.innerText = `Advertisement - Continue in ${timeLeft}s`;
+                if(timeLeft <= 0) {
+                    clearInterval(interval);
+                    timer.innerText = "Thanks for waiting!";
+                    btn.style.display = 'block'; // Show Continue Button
+                }
+            }, 1000);
+        }
+
+        function closeAdAndShowContent() {
+            document.getElementById('adModal').style.display = 'none';
+            if(selectedCourseData) {
+                loadDetailContent(selectedCourseData.filename, selectedCourseData.code, selectedCourseData.count);
+            }
+        }
+
+        // --- LOAD ACTUAL CONTENT ---
+        async function loadDetailContent(filename, code, count) {
+            document.getElementById('reviewsSection').classList.add('hidden');
+            document.getElementById('detailSection').classList.remove('hidden');
+            window.scrollTo(0, 0);
+
+            document.getElementById('detailTitle').innerText = code;
+            document.getElementById('detailCount').innerText = `${count} Reviews`;
+            
+            const list = document.getElementById('reviewsList');
+            list.innerHTML = '<div style="text-align:center;">Loading...</div>';
+
+            try {
+                // Fetch from PASTPAPERS folder
+                const res = await fetch(`pastpapers/${filename}`);
+                const data = await res.json();
+                
+                list.innerHTML = '';
+                let adCounter = 0;
+
+                data.reviews.forEach(r => {
+                    // In-Feed Ad Logic (Every 3 reviews)
+                    adCounter++;
+                    if(adCounter === 4) {
+                        const adDiv = document.createElement('div');
+                        adDiv.className = 'ad-slot ad-infeed';
+                        adDiv.innerHTML = 'In-Feed Ad Slot (Place Code Here)';
+                        list.appendChild(adDiv);
+                        adCounter = 0;
+                    }
+
+                    const div = document.createElement('div');
+                    div.className = 'review-box';
+                    
+                    let topicsHtml = '';
+                    if(r.topicsList) {
+                        topicsHtml = `<div style="margin-top:10px;"><strong>Topics:</strong> ${r.topicsList.map(t => `<span class="topic-tag">${t}</span>`).join('')}</div>`;
+                    }
+
+                    div.innerHTML = `
+                        <div class="review-meta">
+                            <strong>${r.reviewHeading}</strong>
+                            <small style="color:#64748b;">${r.difficulty || ''}</small>
+                        </div>
+                        <p style="white-space:pre-wrap; line-height:1.6;">${r.reviewText}</p>
+                        ${topicsHtml}
+                    `;
+                    list.appendChild(div);
+                });
+            } catch (err) {
+                list.innerHTML = "Error loading reviews.";
+            }
+        }
+    </script>
+</body>
+</html>
