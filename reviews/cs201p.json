@@ -3,6 +3,19 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (31 January 2026, 10:44 AM)",
+      "reviewText": "Paper asan tha, handouts se tha aur repeated tha.\nQuestions:\n- Overloading related (4-6 MCQs).\n- Switch statement question (Salary user input, deduction, total).\n- Output finding (2 questions).\n- Error finding (1 question).",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Function Overloading",
+        "Switch Statement",
+        "Code Output",
+        "Error Finding"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
       "reviewText": "Overloading ke related 4 se 6 MCQs thay. Ek question switch statement se tha (salary lo user se, deduction batao aur total). Do questions ke output batane thay aur ek mein error find karna tha.",
