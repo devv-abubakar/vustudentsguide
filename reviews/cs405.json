@@ -3,6 +3,20 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Hard",
+      "reviewHeading": "Paper Review (31 January 2026, 11:47 AM)",
+      "reviewText": "Paper bonga tha. MCQs conceptual/handouts.\nShort Questions:\n- Exception types names.\n- URD k do step.\nLong Questions:\n- Nth attribute delete attributes.\n- Code writing (Scenario based).\n- Debugging check.\n4 seedhy code waly questions thay.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Exceptions Types",
+        "URD Steps",
+        "Attribute Deletion",
+        "Coding Scenarios",
+        "Debugging"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Easy",
       "reviewHeading": "Paper Review (27 January 2026, 9:50 AM)",
       "reviewText": "MCQs mostly from Cursor, Exception, Loops, and Triggers.\nShort Questions:\n1. What is user defined exception? Is it available by default?\n2. Syntax of searched case statement.\n3. Syntax of trigger enable and disable.\n4. Mandatory steps to process a cursor (4 steps).\nLong Questions:\n1. Create Procedure and insert data into table (e.g., orders table) using cursors.\n2. Searched case statement program (Display messages based on grades).",
