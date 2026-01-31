@@ -4,6 +4,19 @@
     {
       "examType": "Final Term",
       "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (31 January 2026, 11:40 PM)",
+      "reviewText": "OOP Concepts. Short/Long: Codes output btana tha (3 short, 1 long), Code writing (1 short, 1 long), Container types.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "OOP Concepts",
+        "Code Output Finding",
+        "Code Writing",
+        "Container Types"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
       "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
       "reviewText": "MCQs were easy and conceptual.\nShort Questions:\n- Iterator types.\n- Write output.\n- Find error.\nLong Questions:\n- Programs (Write output).\n- Template function with class (get/set functions provided, write remaining program).",
       "topicsHeading": "Exam Questions",
