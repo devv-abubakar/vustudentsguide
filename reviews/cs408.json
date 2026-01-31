@@ -1,19 +1,19 @@
 {
-    "course": "CS408",
-    "reviews": [
-        {
-            "examType": "Final Term",
-            "difficulty": "Moderate",
-            "reviewHeading": "Paper Review (31 July 2025, 8am)",
-            "reviewText": "Cs408 31 July 2025 8am\n\nAll mcq is from handouts \nMa koi file read nahin karta is lia mujh ideas nahin kis file sa aya \ud83d\ude02\nMa na just Almas Afzal highlights handouts read kia aur short video watch ki\n\nShort\n* Quantities data in format?\n* Arthrography (early phase)\n* 2 way of Digital concept\n\nLong\n* Explain DECIDE explain karna tha\n* Concept Framework explains karna tha\n\nBus yahi yad hain\nOverall paper bot acha hua jatna pera tha\ud83d\ude02",
-            "topicsHeading": "Exam Questions",
-            "topicsList": [
-                "Quantities Data Format",
-                "Arthrography (Early Phase)",
-                "Digital Concept (2 ways)",
-                "DECIDE Framework",
-                "Concept Framework"
-            ]
-        }
-    ]
+  "course": "CS408",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (31 January 2026, 8am)",
+      "reviewText": "Cs408 31 January 2026 8am\n\nAll mcq is from handouts \nMa koi file read nahin karta is lia mujh ideas nahin kis file sa aya \ud83d\ude02\nMa na just Almas Afzal highlights handouts read kia aur short video watch ki\n\nShort\n* Quantities data in format?\n* Arthrography (early phase)\n* 2 way of Digital concept\n\nLong\n* Explain DECIDE explain karna tha\n* Concept Framework explains karna tha\n\nBus yahi yad hain\nOverall paper bot acha hua jatna pera tha\ud83d\ude02",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Quantities Data Format",
+        "Arthrography (Early Phase)",
+        "Digital Concept (2 ways)",
+        "DECIDE Framework",
+        "Concept Framework"
+      ]
+    }
+  ]
 }
