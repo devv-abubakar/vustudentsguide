@@ -4,6 +4,20 @@
     {
       "examType": "Final Term",
       "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (30 January 2026)",
+      "reviewText": "Kuch mcqs files sy thy almost half or baki kuch handouts or kuch conceptual.  thy\nShort mn BFS ki definition and  working \nCommunication network mn kya problem hoti ya kis wja sy hoti hy (ye file m ay hi tha)\nChain matrix sy tha ik\nActivity selection algorithm mn sylong or short dono thy\nLong m ik chain multiplication matrix m sy tha \nIk scenario tha railway track wla btana tha kon sa algorithm vest rhay ga",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "BFS Definition & Working",
+        "Communication Network Problems",
+        "Matrix Chain Multiplication",
+        "Activity Selection Algorithm",
+        "Railway Track Scenario"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
       "reviewHeading": "Paper Review (26 January 2026)",
       "reviewText": "MCQs from Waqar and Januaryaid files mostly.\nQuestions:\n1. Where clique cover problem arises?\n2. Time complexity of Kruskal, Dijkstra, and Prim's algorithm.\n3. Knapsack related (2 questions).\n4. What is negative cycle with example?\n5. Strong component list.\n6. Adjacency matrix and list (Time complexity).\n7. Chapter 9 most important (Graph solving techniques).",
       "topicsHeading": "Exam Questions",
@@ -15,20 +29,6 @@
         "Strong Components",
         "Adjacency Matrix/List",
         "Graph Techniques"
-      ]
-    },
-    {
-      "examType": "Final Term",
-      "difficulty": "Moderate",
-      "reviewHeading": "Paper Review (30 January 2026)",
-      "reviewText": "Kuch mcqs files sy thy almost half or baki kuch handouts or kuch conceptual.  thy\nShort mn BFS ki definition and  working \nCommunication network mn kya problem hoti ya kis wja sy hoti hy (ye file m ay hi tha)\nChain matrix sy tha ik\nActivity selection algorithm mn sylong or short dono thy\nLong m ik chain multiplication matrix m sy tha \nIk scenario tha railway track wla btana tha kon sa algorithm vest rhay ga",
-      "topicsHeading": "Exam Questions",
-      "topicsList": [
-        "BFS Definition & Working",
-        "Communication Network Problems",
-        "Matrix Chain Multiplication",
-        "Activity Selection Algorithm",
-        "Railway Track Scenario"
       ]
     }
   ]
