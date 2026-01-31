@@ -4,6 +4,21 @@
     {
       "examType": "Final Term",
       "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (28 January 2026, 08:00 PM)",
+      "reviewText": "Short (3 marks):\n1. Objects used in KAOS Responsibility models.\n2. Triggers of state machine.\n3. Symbols used in Responsibility diagram.\n4. Difference between White-box and Black-box testing.\nLong (5 marks):\n1. Scenario: Admin create, update, delete account. Make responsibility diagram.\n2. Metrics of Usability Evaluation.\n3. Why GORE (Goal Oriented Requirement Engineering) is used.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "KAOS Responsibility Models",
+        "State Machine Triggers",
+        "White-box vs Black-box Testing",
+        "Responsibility Diagram",
+        "Usability Evaluation Metrics",
+        "GORE (Goal Oriented Requirement Engineering)"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
       "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
       "reviewText": "Questions:\n1. Define feasibility? Give an example of unfeasible.\n2. Main constraints of feasibility.\n3. Name 4 cognitive requirement techniques.\n4. Write three disadvantages of brainstorming.",
       "topicsHeading": "Exam Questions",
