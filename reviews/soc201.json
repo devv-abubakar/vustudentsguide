@@ -1,0 +1,23 @@
+{
+  "course": "SOC201",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Hard",
+      "reviewHeading": "Paper Review (31 January 2026, 2:00 PM)",
+      "reviewText": "MCQs zyada tar SPSS, Chi-square test, Hypothesis testing se thy.\nQuestions:\n1. What is measurement design? Briefly explain.\n2. What is Negative correlation? Explain with one example.\n3. Difference between spearman & partial?\n4. What type use alpha in hypothesis for Chi-square test.\n5. What type of SPSS in ANOVA test & Positive correlation / Repeated measurement example.\n6. What is alternative hypothesis.\n7. Multiple regression aur list wise details.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "SPSS",
+        "Hypothesis Testing",
+        "Chi-Square Test",
+        "Measurement Design",
+        "Correlation (Negative, Spearman, Partial)",
+        "ANOVA",
+        "Alternative Hypothesis",
+        "Repeated Measurement",
+        "Multiple Regression"
+      ]
+    }
+  ]
+}
