@@ -1,0 +1,18 @@
+{
+  "course": "EDU430",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Hard",
+      "reviewHeading": "Paper Review (29 January 2026, 5:46 PM)",
+      "reviewText": "MCQs: BIOS Abbreviation (rest handouts). Short:\n1. Define internet.\n2. Cache.\n3. File server.\n4. BIOS & BIT.\nLong:\n1. ICT related.\n2. Technology related.\nPaper was very tough.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Internet & Networking",
+        "BIOS & BIT",
+        "ICT & Technology",
+        "Cache"
+      ]
+    }
+  ]
+}
