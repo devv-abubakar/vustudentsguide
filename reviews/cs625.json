@@ -4,6 +4,22 @@
     {
       "examType": "Final Term",
       "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026)",
+      "reviewText": "MCQs were all from handouts. Make sure to read them carefully.\nShort Questions:\n1. List the types of password attacks.\n2. Name 3 rights given by the copyright laws.\n3. Write 3 main components of risk management.\n4. For the given scenario, name the types of unauthorized activities.\nLong Questions:\n1. Explain consequence of ambiguous contract with an example.\n2. List five common social networking sites.\n3. For the given scenario, name the types of fraud.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Password Attacks",
+        "Copyright Laws",
+        "Risk Management Components",
+        "Unauthorized Activities",
+        "Ambiguous Contracts",
+        "Social Networking Sites",
+        "Computer Fraud Types"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
       "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
       "reviewText": "MCQs mostly from handouts.\nShort Questions:\n1. CIA information security principles.\n2. Types of software contract.\n3. Scenario based: Regulatory process.\n4. Information not to share on social media.\nLong Questions:\n1. Factors affecting system security.\n2. Categories of computer fraud.\n3. Five common social network sites.",
       "topicsHeading": "Exam Questions",
