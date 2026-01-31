@@ -31,7 +31,7 @@
       "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Review",
-      "reviewText": "Paper 8 Aug 12 PM ko tha. MCQs zyada tar handouts se aaye, files se sirf 5 ya 6 percent thay. Output operator overloading aur logical operations se related questions thay. For loop ka output poocha gaya, public aur private class ka question tha. setfill aur setw se related output bhi aayi jaisa ke cout<<setfill(\"*\")<<setw(10)<<750;.",
+      "reviewText": "Paper 8 January 12 PM ko tha. MCQs zyada tar handouts se aaye, files se sirf 5 ya 6 percent thay. Output operator overloading aur logical operations se related questions thay. For loop ka output poocha gaya, public aur private class ka question tha. setfill aur setw se related output bhi aayi jaisa ke cout<<setfill(\"*\")<<setw(10)<<750;.",
       "topicsHeading": "Topics",
       "topicsList": [
         "Handouts MCQs",
