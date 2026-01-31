@@ -1,7 +1,22 @@
 {
-    "course": "CS302",
-    "reviews": [
-        {
+  "course": "CS302",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 11:40 AM)",
+      "reviewText": "Most MCQs related to Asynchronous/Synchronous counters, Flip flops.\nShort Questions:\n1. Draw 4 bit base address decoder (from table).\n2. GAL fixed OR array and programmed AND gate array difference.\nLong Questions:\n1. Draw D latch circuit diagram.\n2. Draw Bi-directional 4 bit diagram from serial in/right shift register.\n3. 5 statements (True/False).",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Asynchronous/Synchronous Counters",
+        "Flip Flops",
+        "Address Decoder (4-bit)",
+        "GAL Arrays",
+        "D Latch Circuit",
+        "Shift Registers (Bi-directional)"
+      ]
+    },
+    {
       "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
@@ -16,19 +31,19 @@
         "Shift Registers (Bi-directional)"
       ]
     },
-        {
-            "examType": "Final Term",
-            "difficulty": "Moderate",
-            "reviewHeading": "Paper Review (11:30, 27/1/25)",
-            "reviewText": "Equation definition of 3 bit up down counter in Abel\nDown counter 1111 to four time iski output likhni thi\nGoto statements of a b c to up count\n1 circuit aya tha skip ker diya\nShort may\n Function of register\n How many flip flop is used for 32 bit divider circuit",
-            "topicsHeading": "Exam Questions",
-            "topicsList": [
-                "3-bit Up/Down Counter (Abel)",
-                "Down Counter Output",
-                "Goto Statements",
-                "Register Function",
-                "Flip Flop for 32-bit Divider"
-            ]
-        }
-    ]
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (11:30, 27/1/25)",
+      "reviewText": "Equation definition of 3 bit up down counter in Abel\nDown counter 1111 to four time iski output likhni thi\nGoto statements of a b c to up count\n1 circuit aya tha skip ker diya\nShort may\n Function of register\n How many flip flop is used for 32 bit divider circuit",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "3-bit Up/Down Counter (Abel)",
+        "Down Counter Output",
+        "Goto Statements",
+        "Register Function",
+        "Flip Flop for 32-bit Divider"
+      ]
+    }
+  ]
 }
