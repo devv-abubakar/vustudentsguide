@@ -4,21 +4,6 @@
     {
       "examType": "Final Term",
       "difficulty": "Moderate",
-      "reviewHeading": "Paper Review (26 January 2026)",
-      "reviewText": "Short:\n1. Levels of friendship.\n2. Attitude and its characteristics.\n3. Conceptual scenario (Ali hit a ball).\n4. Social comparison theory & Social exchange theory.\nLong:\n1. Transformation letter characteristics.\n2. Factors influencing aggression.\n3. Operant vs Classical conditioning examples.",
-      "topicsHeading": "Exam Questions",
-      "topicsList": [
-        "Friendship Levels",
-        "Attitude",
-        "Social Comparison/Exchange Theory",
-        "Transformation Letter",
-        "Aggression Factors",
-        "Conditioning (Operant/Classical)"
-      ]
-    },
-    {
-      "examType": "Final Term",
-      "difficulty": "Moderate",
       "reviewHeading": "Paper Review (30 January 2026)",
       "reviewText": "Objective question from handout and concept base...\nShort question... personal identity...\nWrite a note Affiliations own perception.\nAnd other 4 question scenario base.\nLong question...(1)operant conditioning and classical conditioning...\n(2) Write a note on obedience and crimes obedience.\n(3) Threatening situation al question concept base...",
       "topicsHeading": "Exam Questions",
@@ -29,6 +14,21 @@
         "Obedience & Crimes of Obedience",
         "Threatening Situations",
         "Scenario Based Questions"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026)",
+      "reviewText": "Short:\n1. Levels of friendship.\n2. Attitude and its characteristics.\n3. Conceptual scenario (Ali hit a ball).\n4. Social comparison theory & Social exchange theory.\nLong:\n1. Transformation letter characteristics.\n2. Factors influencing aggression.\n3. Operant vs Classical conditioning examples.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Friendship Levels",
+        "Attitude",
+        "Social Comparison/Exchange Theory",
+        "Transformation Letter",
+        "Aggression Factors",
+        "Conditioning (Operant/Classical)"
       ]
     }
   ]
