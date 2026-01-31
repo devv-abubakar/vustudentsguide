@@ -3,6 +3,19 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (26 January 2026)",
+      "reviewText": "MCQs easy thay (World of Education prep).\nShort Questions:\n- 3 programs k error find krna tha.\n- Program for set precision.\nLong Questions:\n- Program: User se int number lena tha or left/right operator lgana tha.\n- Output finding question.\nNote: No theory questions, focus on practice.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Error Finding",
+        "Set Precision",
+        "Bitwise Operators (Left/Right Shift)",
+        "Code Output"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
       "reviewText": "Sare lectures mein se jitne bhi programs hain sare parh kar jana. Sare programs ke output find karne thay long mein bhi aur short mein bhi. Ek bhi program ka output na chorna.",
