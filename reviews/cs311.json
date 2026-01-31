@@ -3,18 +3,6 @@
   "reviews": [
     {
       "examType": "Final Term",
-      "difficulty": "Easy",
-      "reviewHeading": "Paper Review (29 January 2026, 9:56 AM)",
-      "reviewText": "Paper easy tha.\nShort:\n- SOAP, XML-RPC, UDDI.\n- HTTP methods (write three).\nLong:\n- HTTP methods (write five).\n- Books code (Long).\n- Teacher/Staff code (remove attributes).\nMa'am Sabahat Saad handouts recommended.",
-      "topicsHeading": "Exam Questions",
-      "topicsList": [
-        "Web Services (SOAP, XML-RPC, UDDI)",
-        "HTTP Methods",
-        "Coding (Books/Teacher attributes)"
-      ]
-    },
-    {
-      "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Important Topics (30 January 2026)",
       "reviewText": "* XML Fundamentals: well-formed vs valid documents, DTDs, XSLT, DOM vs SAX parsing\n* JAXP: Definition and purpose (Java API for XML Processing)\n* Servlet Lifecycle Methods: init(), service(), destroy(), explanation of doGet()/doPost(), coding logic in servlets\n* Session Tracking Techniques: cookies, URL rewriting, HTTPSession\n* JDBC Basics: five steps \u2014 register driver, create statement, connect, execute query, close connection\n* Web Service Types: XML-RPC vs SOAP vs REST differences, UDDI roles\n* Parsing APIs: importance and usage of SAX builder, DOM selection, JDOM step-by-step code\n* Architecture Views: functional vs technical views, web service plug-ability layer concepts",
@@ -28,6 +16,18 @@
         "Web Service Types (XML-RPC, SOAP, REST)",
         "Parsing APIs (SAX, DOM, JDOM)",
         "Architecture Views"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (29 January 2026, 9:56 AM)",
+      "reviewText": "Paper easy tha.\nShort:\n- SOAP, XML-RPC, UDDI.\n- HTTP methods (write three).\nLong:\n- HTTP methods (write five).\n- Books code (Long).\n- Teacher/Staff code (remove attributes).\nMa'am Sabahat Saad handouts recommended.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Web Services (SOAP, XML-RPC, UDDI)",
+        "HTTP Methods",
+        "Coding (Books/Teacher attributes)"
       ]
     }
   ]
