@@ -1,0 +1,20 @@
+{
+  "course": "CS636",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (26 January 2026, 9:50 AM)",
+      "reviewText": "MCQs from slides. Robot Monitoring Sys and last 3 topics slides are important.\nShort Questions:\n- Union of sets.\n- Universal quantifier.\n- Role of proofs.\n- Elems operator.\nLong Questions:\n- Difference operator.\n- Components of VDM-SL specifications.\n- Robustness aspects.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Set Operators (Union, Difference)",
+        "Quantifiers (Universal)",
+        "VDM-SL Specifications",
+        "Robot Monitoring System",
+        "Robustness",
+        "Proofs"
+      ]
+    }
+  ]
+}
