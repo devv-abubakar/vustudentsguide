@@ -72,18 +72,20 @@ function renderCourses(list) {
 
 // Show Review Details (Optimized Navigation)
 async function showDetails(course) {
-    searchView.classList.add('hidden'); // Hide Search
-    detailView.classList.remove('hidden'); // Show Details
-    detailView.style.display = 'block'; // Ensure block display
-    searchView.style.display = 'none';
+    const searchView = document.getElementById('searchView');
+    const detailView = document.getElementById('detailView');
     
-    window.scrollTo(0,0); // Scroll to top
+    // Switch Views
+    searchView.style.display = 'none';
+    detailView.style.display = 'block';
+    
+    window.scrollTo(0,0);
 
-    // Update Header
-    document.getElementById('detailHeaderTitle').innerText = course.code;
+    // Update Header Title
+    document.getElementById('detailHeaderTitle').innerText = `${course.code} Reviews`;
     
     const list = document.getElementById('reviewsList');
-    list.innerHTML = '<div style="text-align:center; padding:40px;">Loading...</div>';
+    list.innerHTML = '<div style="text-align:center; padding:50px;">Loading Reviews...</div>';
 
     try {
         const res = await fetch(`reviews/${course.filename}`);
@@ -92,35 +94,57 @@ async function showDetails(course) {
         
         list.innerHTML = '';
         
-        reviews.forEach((r, i) => {
-            // Difficulty Badge Logic
-            let badgeClass = 'medium';
-            const diff = (r.difficulty || 'Medium').toLowerCase();
-            if(diff.includes('easy')) badgeClass = 'easy';
-            if(diff.includes('hard')) badgeClass = 'hard';
+        if(reviews.length === 0) {
+            list.innerHTML = '<p style="text-align:center;">No reviews found.</p>';
+            return;
+        }
 
-            // Create Card
+        reviews.forEach((r, i) => {
+            // 1. Determine Difficulty Style
+            let badgeClass = 'badge-medium';
+            let cardBorderClass = 'diff-medium';
+            
+            // Safe check for difficulty text
+            const diffText = (r.difficulty || 'Medium').toLowerCase();
+            
+            if(diffText.includes('easy')) {
+                badgeClass = 'badge-easy';
+                cardBorderClass = 'diff-easy';
+            } 
+            else if(diffText.includes('hard') || diffText.includes('tough')) {
+                badgeClass = 'badge-hard';
+                cardBorderClass = 'diff-hard';
+            }
+
+            // 2. Avatar Letter
+            const initial = r.reviewHeading ? r.reviewHeading.charAt(0).toUpperCase() : 'S';
+
+            // 3. Create Element
             const card = document.createElement('div');
-            card.className = 'review-detail-card';
+            // Adding dynamic class for border color
+            card.className = `review-detail-card ${cardBorderClass}`; 
+
             card.innerHTML = `
                 <div class="review-header">
-                    <div style="display:flex; gap:10px; align-items:center;">
-                        <div class="user-avatar">${r.reviewHeading ? r.reviewHeading.charAt(0) : 'S'}</div>
+                    <div class="user-profile">
+                        <div class="avatar-circle">${initial}</div>
                         <div>
-                            <h4 style="margin:0; color:var(--secondary);">Student Review</h4>
-                            <small style="color:var(--text-light);">Verified User</small>
+                            <h4 style="margin:0; color:var(--secondary); font-size:1.1rem;">Student Review #${i + 1}</h4>
+                            <small style="color:var(--text-light);">Verified Submission</small>
                         </div>
                     </div>
-                    <span class="badge ${badgeClass}">${r.difficulty || 'General'}</span>
+                    <span class="badge ${badgeClass}">${r.difficulty || 'Medium'}</span>
                 </div>
-                <div class="review-body">
-                    <strong>${r.reviewHeading}</strong><br><br>
-                    ${r.reviewText}
+
+                <div class="review-content-area">
+                    <strong class="review-heading-text">${r.reviewHeading}</strong>
+                    <div class="review-body-text">${r.reviewText}</div>
                 </div>
             `;
+            
             list.appendChild(card);
 
-            // Insert Ad after every 3 reviews (Optional)
+            // 4. Inject Ad after every 3rd review
             if((i + 1) % 3 === 0) {
                 const ad = document.createElement('div');
                 ad.className = 'ad-slot ad-feed';
@@ -130,7 +154,8 @@ async function showDetails(course) {
         });
 
     } catch (err) {
-        list.innerHTML = '<p style="color:red; text-align:center;">Reviews not available yet.</p>';
+        console.error(err);
+        list.innerHTML = '<div style="text-align:center; color:red; padding:20px;">Error loading reviews. Please try again later.</div>';
     }
 }
 
