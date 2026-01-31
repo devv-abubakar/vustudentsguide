@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master Your VU Exams - VU Students Guide</title>
-    
+    <title>Master VU Exams - VU Students Guide</title>
     <link rel="stylesheet" href="style.css">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
     <nav>
         <a href="index.html" class="logo">VU<span>StudentsGuide</span></a>
+        
+        <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="reviews.html">Reviews</a>
@@ -23,19 +26,17 @@
     </nav>
 
     <section class="hero">
-        <i class="fas fa-graduation-cap bg-icon icon-1"></i>
-        <i class="fas fa-book-open bg-icon icon-2"></i>
-        <i class="fas fa-file-alt bg-icon icon-3"></i>
-        <i class="fas fa-laptop-code bg-icon icon-4"></i>
+        <i class="fas fa-graduation-cap" style="position:absolute; top:10%; left:5%; font-size:4rem; color:var(--primary); opacity:0.1; animation:float 6s infinite;"></i>
+        <i class="fas fa-book-open" style="position:absolute; bottom:15%; right:5%; font-size:5rem; color:var(--primary); opacity:0.1; animation:float 8s infinite;"></i>
 
         <h1>Master Your<br><span>VU Exams</span></h1>
-        
         <p>Authentic Midterm & Final Term paper reviews. Download past papers and prepare smarter with our student community.</p>
         
         <a href="reviews.html" class="cta-btn">
-            Check Reviews <i class="fas fa-arrow-right"></i>
+            Check Reviews <i class="fas fa-arrow-right" style="margin-left:5px;"></i>
         </a>
     </section>
 
+    <script src="script.js"></script>
 </body>
 </html>
