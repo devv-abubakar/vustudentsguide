@@ -1,0 +1,31 @@
+{
+  "course": "EDU402",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (29 January 2026, 5:46 PM)",
+      "reviewText": "Questions:\n1. Objectives of source curriculum.\n2. Learning experience.\n3. Integrate the evaluation process.\n4. How learning can be done by paper pencil test.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Source Curriculum",
+        "Learning Experience",
+        "Evaluation Process",
+        "Testing Methods"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Hard",
+      "reviewHeading": "Paper Review (29 January 2026, 5:46 PM)",
+      "reviewText": "33 MCQs (25 from File). Short:\n1. 3 Domains of taxonomy.\n2. 3 Learning Experiences.\n3. Three Hypothesis Outcomes.\n4. Core curriculum Definition.\nLong (Tough):\n1. Integrated Thinking Definition.\n2. Integrated thinking Experiences.\n3. 5 outcome Experience of follow up study.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Taxonomy Domains",
+        "Core Curriculum",
+        "Integrated Thinking",
+        "Hypothesis Outcomes"
+      ]
+    }
+  ]
+}
