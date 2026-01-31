@@ -1,7 +1,20 @@
 {
-    "course": "CS205",
-    "reviews": [
-        {
+  "course": "CS205",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (31 January 2026)",
+      "reviewText": "Questions:\n- Initial and Intermediate levels.\n- InfoSec and IT team.\n- Recommendations scenario.\n- Scenario asking which international technique to use for security purpose.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Security Levels (Initial/Intermediate)",
+        "InfoSec & IT Teams",
+        "International Security Techniques",
+        "Scenario Based Recommendations"
+      ]
+    },
+    {
       "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Paper Review (26 January 2026, 11:40 AM)",
@@ -13,7 +26,7 @@
         "Table Matching Questions"
       ]
     },
-        {
+    {
       "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
@@ -30,19 +43,19 @@
         "ISO 27001:2013 (Clause 5 & 7)"
       ]
     },
-        {
-            "examType": "Final Term",
-            "difficulty": "Easy",
-            "reviewHeading": "Paper Review (31-July-25, 8:00AM)",
-            "reviewText": "\u27a1\ufe0f MSQS ..... Quite\n Easy \n\n\u27a1\ufe0f Short Questions \n1\ufe0f\u20e3 Write the free tools and free scanners of the qualys.\n2\ufe0f\u20e3 Vulnerability Qualys scanners given....indetify which 2 are not used as scanners.\n3\ufe0f\u20e3 Which is Vulnerability scanner used for both code and secure configuration Vulnerability \n4\ufe0f\u20e3 Statement given..... required write the correct statement \n5\ufe0f\u20e3 Scenario given (related SDLC)..... write the name of the development approach \n6\ufe0f\u20e3 Write the 1st layer name of the CSMM\n\n\u27a1\ufe0f Long Questions  \n1\ufe0f\u20e3 Rearrange Layers and services of CSMM\n2\ufe0f\u20e3 Rearrange work and teamtable\n3\ufe0f\u20e3 Write the board or IT operation respected to the responsibility \n4\ufe0f\u20e3 Rearrange team And work table",
-            "topicsHeading": "Exam Questions",
-            "topicsList": [
-                "Qualys Free Tools/Scanners",
-                "Vulnerability Scanners",
-                "SDLC Scenario",
-                "CSMM Layers & Services",
-                "IT Operation Responsibility"
-            ]
-        }
-    ]
+    {
+      "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (31-July-25, 8:00AM)",
+      "reviewText": "\u27a1\ufe0f MSQS ..... Quite\n Easy \n\n\u27a1\ufe0f Short Questions \n1\ufe0f\u20e3 Write the free tools and free scanners of the qualys.\n2\ufe0f\u20e3 Vulnerability Qualys scanners given....indetify which 2 are not used as scanners.\n3\ufe0f\u20e3 Which is Vulnerability scanner used for both code and secure configuration Vulnerability \n4\ufe0f\u20e3 Statement given..... required write the correct statement \n5\ufe0f\u20e3 Scenario given (related SDLC)..... write the name of the development approach \n6\ufe0f\u20e3 Write the 1st layer name of the CSMM\n\n\u27a1\ufe0f Long Questions  \n1\ufe0f\u20e3 Rearrange Layers and services of CSMM\n2\ufe0f\u20e3 Rearrange work and teamtable\n3\ufe0f\u20e3 Write the board or IT operation respected to the responsibility \n4\ufe0f\u20e3 Rearrange team And work table",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Qualys Free Tools/Scanners",
+        "Vulnerability Scanners",
+        "SDLC Scenario",
+        "CSMM Layers & Services",
+        "IT Operation Responsibility"
+      ]
+    }
+  ]
 }
