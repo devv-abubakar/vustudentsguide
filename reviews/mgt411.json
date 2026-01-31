@@ -3,6 +3,18 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (28 January 2026, 9:50 AM)",
+      "reviewText": "MCQs conceptual (half easy/half difficult).\nShort:\n- 3 True/False questions.\nLong:\n1. Trading risk.\n2. Monetary policy reaction curve.\n3. Central bank as a last resort.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Trading Risk",
+        "Monetary Policy Reaction Curve",
+        "Central Bank (Last Resort)"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Easy",
       "reviewHeading": "Paper Review (27 January 2026, 8:00 AM)",
       "reviewText": "Paper was easy and conceptual. MCQs mostly conceptual, few formulas (Present Value, Money Multiplier), Demand/Supply and Equilibrium curve.\nShort Questions:\n1. Relationship between quality of money and price value (Quantity theory of money).\n2. Difference between required reserves and excess reserves.\n3. Define collateral funds and why banks demand it.\n4. Define sovereign risk and its causes.\nLong Questions:\n1. Define liabilities of banks: Currency, Govt deposit account, Commercial banks deposit account.\n2. Negative effect of information costs and its solutions.",
