@@ -3,6 +3,19 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Hard",
+      "reviewHeading": "Paper Review (31 January 2026, 6:23 PM)",
+      "reviewText": "MCQs conceptual. Short:\n- Semantic error scenario.\n- Shannon's principal.\n- Implementation approach scenario.\nLong:\n- Diagram draw.\n- Process quality improvement.\n- Kimball approach.\n- Drawback of tradition.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Data Warehouse Approaches (Kimball)",
+        "Quality Improvement",
+        "Semantic Errors",
+        "Shannon's Principal"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Paper Review (31 January 2026)",
       "reviewText": "Short Questions:\n1. Name two data software parallel.\n2. Scenario based question.\nLong Questions:\n1. Data quality improvement.\n2. Calculation question.",
