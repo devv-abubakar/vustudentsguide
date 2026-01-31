@@ -3,6 +3,20 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (29 January 2026, 11:02 AM)",
+      "reviewText": "Paper was easy. MCQs: Templates, Specialization, Inheritance, Error handling, Virtual, Overloading, Operators.\nShort:\n- Constructor program output.\n- Overloading insertion operator definition.\n- Iterator types (vector, list, deque, set).\nLong:\n- Max function output.\n- Constructor output.\n- Static template program output.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Templates & Specialization",
+        "Inheritance",
+        "Operator Overloading",
+        "STL Iterators",
+        "Constructors"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Paper Review (31 January 2026, 11:40 PM)",
       "reviewText": "OOP Concepts. Short/Long: Codes output btana tha (3 short, 1 long), Code writing (1 short, 1 long), Container types.",
