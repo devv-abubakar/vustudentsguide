@@ -4,6 +4,20 @@
     {
       "examType": "Final Term",
       "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (27 January 2026, 5:40 PM)",
+      "reviewText": "Paper was mostly conceptual.\nImportant Topics:\n- AVL trees (types, cases).\n- Heap (types).\n- All formulas.\n- Hashing.\n- Last 5 lectures (41-45).\nAdvice: Clear concepts and focus on details.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "AVL Trees",
+        "Heap",
+        "Hashing",
+        "Formulas",
+        "Lectures 41-45"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
       "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
       "reviewText": "MCQs zyada tar theorems, AVL trees, stack, queue aur levels wale thay.\nShort Questions:\n1. AVL tree hai ya nahi (3 scenarios).\n2. Output finding function (parameter 19 pass kiya hua tha).\n3. Array sort karna tha Bubble Sort se.\n4. Min Heap banana tha (array pehle se sorted thi).\n\nLong Questions:\n1. AVL tree banana tha (double right shift se balance ho gaya tha, -1 property fulfill ho rahi thi).\n2. Stack given tha, values sort kar ke heap banana tha aur indexing karni thi.\n3. Values given thin, unhein conditions ke hisab se complete binary tree mein change karna tha, phir expression tree create karna tha.",
       "topicsHeading": "Exam Questions",
