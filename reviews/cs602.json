@@ -4,6 +4,18 @@
     {
       "examType": "Final Term",
       "difficulty": "Hard",
+      "reviewHeading": "Paper Review (26 January 2026, 11:40 AM)",
+      "reviewText": "Paper bekar tha. Past files se kuch nahi aya. 1700 MCQs parhay thay, sirf 1 aya. Master lecture se 8% aya. Sara paper conceptual aur tricky tha. Handouts mein itna nahi parhaya jitna pooch liya.",
+      "topicsHeading": "Paper Analysis",
+      "topicsList": [
+        "Conceptual & Tricky",
+        "Out of Past Papers",
+        "Difficult MCQs"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Hard",
       "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
       "reviewText": "Paper was very difficult and conceptual. Past files were not helpful. Questions were tricky and required deep understanding of handouts and lectures. Topics covered went beyond basic lecture content.",
       "topicsHeading": "Preparation Tips",
