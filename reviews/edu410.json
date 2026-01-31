@@ -3,6 +3,20 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (31 January 2026, 3:50 PM)",
+      "reviewText": "Questions: 3-2-1 Reading strategy, Tenses, Sentence types, Syllables (photograph), Skimming, Double/Triple consonant blends, Importance of language learning.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Reading Strategy (3-2-1)",
+        "Tenses & Sentences",
+        "Syllables & Blends",
+        "Skimming",
+        "Language Learning Importance"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Easy",
       "reviewHeading": "Paper Review (26 January 2026, 2:00 PM)",
       "reviewText": "MCQs mostly from files, some from handouts.\nQuestions:\n- Strategies for teaching spellings.\n- Principles teaching speaking skills.\n- Clauses and phrases.\n- What makes a word difficult.\n- Types of speaking.\n- What do good writers do.\n- Importance of spellings in writing.",
