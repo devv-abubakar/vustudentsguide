@@ -4,6 +4,19 @@
     {
       "examType": "Final Term",
       "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (28 January 2026, 2:00 PM)",
+      "reviewText": "MCQs last portion se thay (Lec 40-45) aur kuch shuru se.\nLong Questions:\n1. Hash functioning properties.\n2. SQL code likhna tha.\n3. Properties k name btanay thay (2 cases: pseudo, union refrectivity).\nAdvice: Must do from Lect 20-30 and SQL.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Hash Functions",
+        "SQL Coding",
+        "Properties (Pseudo, Union Reflectivity)",
+        "Lectures 40-45"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
       "reviewHeading": "Paper Review (8:00 AM) (30 January 2026)",
       "reviewText": "3  long questions from SQL\n1long was to convert 1NF to 2NF\n2 shorts from SQL\n1 short was to convert 2 NF table to 1 NF table.\nCharacteristics of physical storage model.\nName of the problems arrive while concurrent transaction\nMcqs were from handouts.",
       "topicsHeading": "Exam Questions",
