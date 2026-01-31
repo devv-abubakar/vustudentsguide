@@ -3,6 +3,18 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Medium",
+      "reviewHeading": "Paper Review (27 January 2026)",
+      "reviewText": "Kafi MCQs mutation ke mutaliq thay. Bohat zyada conceptual questions thay like 'agar ye function kharab ho jaye to kya hoga'. Mendel's law ke 2-3 questions thay. Paper 50% conceptual tha.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Mutation",
+        "Mendel's Law",
+        "Conceptual (Function Failure Scenarios)"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Paper Review (26 January 2026, 11:40 AM)",
       "reviewText": "MCQs: Mitosis, Meiosis, Mendel's law, Mitochondria, Viruses, Bacteria, Organelles, Ecology.\nZyada tar Mitosis Meiosis or unke phases se related thay.\nTopics: Heart, Lungs, Small Intestine.",
@@ -43,18 +55,6 @@
         "Handouts Based MCQs",
         "Insight Quiz Videos",
         "Final Lessons Concepts"
-      ]
-    },
-    {
-      "examType": "Final Term",
-      "difficulty": "Medium",
-      "reviewHeading": "Paper Review (27 January 2026)",
-      "reviewText": "Kafi MCQs mutation ke mutaliq thay. Bohat zyada conceptual questions thay like 'agar ye function kharab ho jaye to kya hoga'. Mendel's law ke 2-3 questions thay. Paper 50% conceptual tha.",
-      "topicsHeading": "Exam Questions",
-      "topicsList": [
-        "Mutation",
-        "Mendel's Law",
-        "Conceptual (Function Failure Scenarios)"
       ]
     }
   ]
