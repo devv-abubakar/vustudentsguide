@@ -3,6 +3,30 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (29 January 2026, 6:34 PM)",
+      "reviewText": "Long:\n1. Procedure code (Scenario based).\n2. Loop code (Scenario based).\n3. User defined vs internal exception difference.\nShort:\n1. For loop error finding.\n2. Output of for loop.\n3. Raise_application_error Syntax.\n4. Routine service Table vector service (Out of syllabus?).",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "PL/SQL Coding (Procedures, Loops)",
+        "Exceptions",
+        "Code Debugging"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (31 January 2026, 6:22 PM)",
+      "reviewText": "Short:\n- While and Do-while difference.\n- Count scenario.\n- Loop execution count code.\n- Exception init pragma.\nLong:\n- User defined exception code.\n- Table based code.\n- Case statement code.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Loops (While/Do-While)",
+        "Exception Handling",
+        "PL/SQL Code Writing"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Hard",
       "reviewHeading": "Paper Review (31 January 2026, 11:47 AM)",
       "reviewText": "Paper bonga tha. MCQs conceptual/handouts.\nShort Questions:\n- Exception types names.\n- URD k do step.\nLong Questions:\n- Nth attribute delete attributes.\n- Code writing (Scenario based).\n- Debugging check.\n4 seedhy code waly questions thay.",
