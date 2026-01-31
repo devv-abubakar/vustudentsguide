@@ -3,6 +3,19 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (28 January 2026, 8:00 AM)",
+      "reviewText": "MCQs 7-8 from files, rest conceptual.\nQuestions:\n1. Main purpose of network virtualization.\n2. How Guest OS issues system calls to access hardware in para and full virtualization (reason/justification).\n3. Table given: Identify desktop vs application virtualization.\n4. Difference between ESXi and vSphere.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Network Virtualization",
+        "Para vs Full Virtualization",
+        "Desktop vs Application Virtualization",
+        "ESXi vs vSphere"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Easy",
       "reviewHeading": "Paper Review (26 January 2026, 3:50 PM)",
       "reviewText": "MCQs conceptual but easy (from slides).\nQuestions:\n1. Host OS issues system calls in Both Para and Full virtualization. Explain How.\n2. Write proper steps to enable Hyper-V in window.\n3. Write 5 benefits of virtualization.\n4. Write uses of Virtual Machine.",
