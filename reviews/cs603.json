@@ -1,0 +1,35 @@
+{
+  "course": "CS603",
+  "reviews": [
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (31 January 2026, 2:00 PM)",
+      "reviewText": "MCQs were all from handouts.\n\nShort Questions:\n1. Difference between Refactoring and Optimization.\n2. Identify types of duplicated code.\n3. Explain Open Layer.\n\nLong Questions:\n1. Write names of 4+1 view model.\n2. 3 Benefits of correct exception handling.\n3. Key aspects of Architectural Style.\n\nNote: MCQs and subjective questions were largely from these videos:\n1. https://youtu.be/aTBFXbjDuqE?si=0Em0s8r0xYcT8ZYG\n2. https://youtu.be/y-OwXBUmAJU?si=zGXzENH76Te0hs5d",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "Refactoring vs Optimization",
+        "Duplicated Code",
+        "Open Layer",
+        "4+1 View Model",
+        "Exception Handling",
+        "Architectural Style"
+      ]
+    },
+    {
+      "examType": "Final Term",
+      "difficulty": "Moderate",
+      "reviewHeading": "Paper Review (31 January 2026, 2:00 PM)",
+      "reviewText": "MCQs were from PPTs. The paper was neither too easy nor too difficult.\n\nShort Questions:\n1. 3 properties of system at run time.\n2. Benefits of refactoring.\n3. Write 2 points to improve availability of system in cloud computing.\n\nLong Questions:\n1. A code was given to refactor using Extract Method and write steps.\n2. 2 deployment models of Cloud Computing.\n3. Problems of Refactoring.\n4. Scenario: Identify and explain architectural pattern for a system where modules are developed and maintained independently.",
+      "topicsHeading": "Exam Questions",
+      "topicsList": [
+        "System Runtime Properties",
+        "Refactoring",
+        "Cloud Computing Availability",
+        "Extract Method",
+        "Cloud Deployment Models",
+        "Architectural Patterns"
+      ]
+    }
+  ]
+}
