@@ -3,6 +3,17 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Easy",
+      "reviewHeading": "Paper Review (01 February 2026)",
+      "reviewText": "MTH101 was easy. The paper was based entirely on the materials and videos provided by Maam Kinza Bilal.",
+      "topicsHeading": "Preparation Source",
+      "topicsList": [
+        "Kinza Bilal Videos",
+        "Handouts"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Medium",
       "reviewHeading": "Paper Review (30 January 2026, 5:00 PM)",
       "reviewText": "Paper mostly handouts mainse tha. Files karne ki koi zarorat nahi agar handouts achy se read kiye hue hain to easily solve hojana hai paper. Topics covered: Integral, Series/Sequence, and Area/Volume.",
