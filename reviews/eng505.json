@@ -3,6 +3,20 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Medium",
+      "reviewHeading": "Paper Review (04 February 2026)",
+      "reviewText": "MCQs were from Maha Malik file and handouts.\n\nSubjective Questions:\n1. Three factor language consideration.\n2. Three types of direct strategies (Oxford's Taxonomy).\n3. Need analysis.\n4. One feature of Schmidt noticing hypothesis.\n5. Two differences between traditional classroom and 21st century classroom learning.\n6. Behaviorist viewpoint.",
+      "topicsHeading": "Key Topics",
+      "topicsList": [
+        "Language Learning Strategies",
+        "SLA Theories",
+        "Syllabus Design & ESP",
+        "Educational Psychology",
+        "Schmidt Hypothesis"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Hard",
       "reviewHeading": "Paper Review (26 January 2026, 8:00 AM)",
       "reviewText": "MCQs mostly files se thay, 2-3 handouts se thay. Subjective questions kafi mushkil thay, koi repeat nahi hua. True/False nahi thay.\nQuestions:\n- Long Term vs Short Term Memory.\n- Cognitive Strategy (Silverman related).\n- Reference Approach (Long question).",
