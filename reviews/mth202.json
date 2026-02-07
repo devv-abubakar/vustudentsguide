@@ -3,6 +3,19 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Medium",
+      "reviewHeading": "Paper Review (03 February 2026)",
+      "reviewText": "Paper average tha, majority handouts main se aya hua tha. Files karnay ki zarorat nahi.\n\nRecommendation: Kinza Bilal ke short lectures zaror lein, kafi helpful hain.",
+      "topicsHeading": "Exam Topics",
+      "topicsList": [
+        "Recurring Functions",
+        "Probability",
+        "Graphs",
+        "Handouts"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Moderate",
       "reviewHeading": "Paper Review (27 January 2026, 3:50 PM)",
       "reviewText": "MCQs: Square matrix, Permutation def. Questions: Probability (die, group), Proof (odd number = 3x+1 then x is even), Graph theory (Hamiltonian or Eulerian proof).",
