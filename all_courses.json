@@ -587,7 +587,7 @@
   {
     "code": "ENG505",
     "filename": "eng505.json",
-    "count": 1
+    "count": 2
   },
   {
     "code": "ENG506",
@@ -867,7 +867,7 @@
   {
     "code": "MTH101",
     "filename": "mth101.json",
-    "count": 6
+    "count": 7
   },
   {
     "code": "MTH104",
@@ -877,7 +877,7 @@
   {
     "code": "MTH202",
     "filename": "mth202.json",
-    "count": 5
+    "count": 6
   },
   {
     "code": "MTH301",
@@ -952,7 +952,7 @@
   {
     "code": "PAK301",
     "filename": "pak301.json",
-    "count": 3
+    "count": 4
   },
   {
     "code": "PHY101",
