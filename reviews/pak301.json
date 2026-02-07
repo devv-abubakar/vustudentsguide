@@ -3,6 +3,18 @@
   "reviews": [
     {
       "examType": "Final Term",
+      "difficulty": "Medium",
+      "reviewHeading": "Paper Review (04 February 2026)",
+      "reviewText": "Paper average tha aur conceptual tha. Files karnay ki koi zarorat nahi, only handouts karein, aadhy se ziada paper cover hojaye ga.",
+      "topicsHeading": "Exam Topics",
+      "topicsList": [
+        "3 Contributions",
+        "Agriculture",
+        "History"
+      ]
+    },
+    {
+      "examType": "Final Term",
       "difficulty": "Easy",
       "reviewHeading": "Paper Review (30 January 2026, 8:44 AM)",
       "reviewText": "Super easy. Focus on Handouts, Dates, PMs.\nQuestions:\n- Industries (5 MCQs).\n- Objectives resolution.\n- Constitution Articles & Seats.\n- Shariah court date.\n- Minerals.\n- Relations: Russia, Jordan, China, India (Kashmir).\n- Steel mills (Russia).\n- Basic democracies.\n- 1973 Constitution status (1999-2002).\n- Musharraf coups.\n- Ayub/Bhutto power dates.\n- Education levels & Female literacy.\n- OIC establishment.",
