@@ -31,11 +31,19 @@
             margin-top: 25px;
             font-size: 1.4em;
         }
+        h3 {
+            color: #444;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
         p {
             margin-bottom: 15px;
         }
         ul {
             margin-bottom: 15px;
+        }
+        li {
+            margin-bottom: 8px;
         }
         .footer {
             margin-top: 40px;
@@ -45,53 +53,77 @@
             border-top: 1px solid #eee;
             padding-top: 20px;
         }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+        a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>Privacy Policy</h1>
-    <p><strong>Effective Date:</strong> January 22, 2026</p>
+    <p><strong>Effective Date:</strong> February 16, 2026</p>
 
-    <p>Welcome to <strong>VU Students Guide</strong>. This privacy policy describes how we handle information when you use our mobile application. We are committed to protecting your privacy and ensuring a safe experience.</p>
+    <p>Welcome to <strong>VU Students Guide</strong>. This privacy policy describes how we collect, use, and handle your information when you use our mobile application. We are committed to protecting your privacy and ensuring a safe experience.</p>
     
     <p><strong>Unofficial Status:</strong> Please note that this application is an unofficial educational tool and is not affiliated with the Virtual University of Pakistan.</p>
 
-    <h2>1. Information Collection and Use</h2>
-    <p>We respect your privacy. We do <strong>not</strong> collect, store, or share any Personally Identifiable Information (PII) such as your name, phone number, or email address regarding your use of the app itself.</p>
+    <h2>1. Information We Collect</h2>
+    <p>With the introduction of User Accounts in <strong>Version 2.1.0</strong>, we now collect limited personal information to provide personalized features.</p>
     
-    <h3>Log Data & Crash Reports</h3>
-    <p>In the case of an error in the app, we may collect data and information (through third-party products like Google Play Services) on your phone called Log Data to help us fix bugs.</p>
-
-    <h2>2. LMS Feature and Login Data (WebView)</h2>
-    <p>The app includes a feature that allows users to access the official university Learning Management System (LMS). Please understand the following:</p>
+    <h3>A. Personal Information (App Account)</h3>
+    <p>When you register for an account within the app, we collect the following data via <strong>Supabase Authentication</strong>:</p>
     <ul>
-        <li><strong>WebView Technology:</strong> The LMS is displayed using an Android WebView, which acts like a built-in web browser. It simply loads the official university URL.</li>
-        <li><strong>No Password Storage:</strong> We do <strong>NOT</strong> save, record, or store your LMS Student ID or Password on our servers.</li>
-        <li><strong>Direct Interaction:</strong> When you log in to the LMS, you are interacting directly with the official university server, not with our app.</li>
+        <li><strong>Full Name:</strong> To display on your Profile and the Leaderboard.</li>
+        <li><strong>Email Address:</strong> Used for secure login, account recovery, and unique identification.</li>
+    </ul>
+    <p>This information is used strictly to maintain your user profile, track your leaderboard points, and manage your posted reviews.</p>
+
+    <h3>B. Log Data & Device Info</h3>
+    <p>In the case of an error in the app, we may collect data and information (through third-party products like Google Play Services) on your phone called Log Data to help us fix bugs. This may include your device model, operating system version, and the time of the error.</p>
+
+    <h2>2. LMS Feature vs. App Account</h2>
+    <p>It is important to distinguish between your <strong>App Account</strong> and your <strong>University LMS Account</strong>:</p>
+    <ul>
+        <li><strong>App Account:</strong> The email/password you use to log in to <em>VU Students Guide</em> is stored securely on our backend (Supabase).</li>
+        <li><strong>LMS Access (WebView):</strong> The "LMS Portal" feature in the app loads the official university website (vulms.vu.edu.pk) via an Android WebView. <strong>We do NOT save, record, or store your official LMS Password or Student ID.</strong> When you log in to the LMS, you are interacting directly with the university's server.</li>
     </ul>
 
-    <h2>3. External Links and Content</h2>
-    <p>Our Service contains links to other sites and resources that are not operated by us. Specifically, this app facilitates access to study materials hosted on:</p>
+    <h2>3. How We Use Your Data</h2>
+    <p>We use the collected data for the following purposes:</p>
     <ul>
-        <li><strong>GitHub:</strong> Used for repository hosting.</li>
-        <li><strong>Mega.nz:</strong> Used for file downloads (past papers, handouts).</li>
-        <li><strong>Official University Website:</strong> Accessed via WebView for LMS.</li>
-    </ul>
-    <p>We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.</p>
-
-    <h2>4. App Permissions</h2>
-    <p>To function correctly, the app may require basic permissions such as:</p>
-    <ul>
-        <li><strong>Internet Access:</strong> To fetch the latest study materials and load the LMS.</li>
-        <li><strong>Storage/Download Manager:</strong> To allow you to save handouts or past papers to your device.</li>
+        <li>To provide and maintain the Service (e.g., saving your CGPA goals).</li>
+        <li>To manage your account and registration.</li>
+        <li>To enable interactive features like the <strong>Leaderboard</strong> and <strong>Paper Reviews</strong>.</li>
+        <li>To provide customer support.</li>
     </ul>
 
-    <h2>5. Changes to This Privacy Policy</h2>
-    <p>We may update our Privacy Policy from time to time. You are advised to review this page periodically for any changes.</p>
+    <h2>4. Third-Party Services</h2>
+    <p>We use trusted third-party services to operate the app:</p>
+    <ul>
+        <li><strong>Supabase:</strong> For secure database hosting, authentication, and user data storage.</li>
+        <li><strong>Mega.nz:</strong> Used for hosting study material files (handouts, past papers).</li>
+        <li><strong>Google Play Services:</strong> For app distribution and core functionality.</li>
+    </ul>
 
-    <h2>6. Contact Us</h2>
-    <p>If you have any questions about our Privacy Policy, please contact us at:</p>
+    <h2>5. Data Retention & Deletion Rights</h2>
+    <p>We retain your personal data only for as long as is necessary for the purposes set out in this Privacy Policy.</p>
+    <p><span class="highlight"><strong>Your Right to Delete:</strong></span> If you wish to delete your account and all associated data (including your leaderboard rank and reviews), you may request this at any time by contacting us at the email below. We will delete your data from our servers within 30 days of the request.</p>
+
+    <h2>6. Security of Your Data</h2>
+    <p>The security of your data is important to us. All communication between the app and our servers (Supabase) is encrypted using HTTPS (SSL/TLS). However, remember that no method of transmission over the Internet is 100% secure.</p>
+
+    <h2>7. Changes to This Privacy Policy</h2>
+    <p>We may update our Privacy Policy from time to time. You are advised to review this page periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+
+    <h2>8. Contact Us</h2>
+    <p>If you have any questions about our Privacy Policy or wish to request data deletion, please contact us at:</p>
     <p><strong>Email:</strong> <a href="mailto:devv.abubakar@gmail.com">devv.abubakar@gmail.com</a></p>
 
     <div class="footer">
