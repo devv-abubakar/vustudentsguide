@@ -2,488 +2,176 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevPath - Learn Web Development</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sorry Roshni 🥺</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-color: #f9fafb;
-            --sidebar-bg: #ffffff;
-            --text-main: #111827;
-            --text-muted: #6b7280;
-            --border-color: #e5e7eb;
-            --primary: #000000;
-            --primary-hover: #374151;
-            --accent: #3b82f6;
-            --code-bg: #1f2937;
-            --code-text: #e5e7eb;
-            --note-bg: #f3f4f6;
-        }
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            display: flex;
+            font-family: 'Poppins', sans-serif;
+            /* Material Design inspired gradient */
+            background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%);
             height: 100vh;
-            overflow: hidden;
-        }
-
-        /* Sidebar Styling */
-        .sidebar {
-            width: 300px;
-            background-color: var(--sidebar-bg);
-            border-right: 1px solid var(--border-color);
             display: flex;
-            flex-direction: column;
-            overflow-y: auto;
-        }
-
-        .sidebar-header {
-            padding: 24px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .logo {
-            font-weight: 700;
-            font-size: 1.25rem;
-            margin-bottom: 4px;
-        }
-
-        .course-title {
-            color: var(--text-muted);
-            font-size: 0.875rem;
-        }
-
-        .progress-section {
-            padding: 24px;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 0.875rem;
-        }
-
-        .progress-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .progress-bar {
-            height: 8px;
-            background-color: var(--border-color);
-            border-radius: 4px;
-            margin-bottom: 8px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background-color: var(--primary);
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-
-        .progress-text {
-            color: var(--text-muted);
-            font-size: 0.75rem;
-        }
-
-        .module {
-            padding: 16px 24px;
-        }
-
-        .module h3 {
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .module h3 span {
-            color: var(--text-muted);
-            font-weight: 400;
-        }
-
-        .module ul {
-            list-style: none;
-        }
-
-        .module li {
-            font-size: 0.875rem;
-            padding: 8px 12px;
-            margin-bottom: 4px;
-            border-radius: 6px;
-            cursor: pointer;
-            color: var(--text-muted);
-        }
-
-        .module li:hover {
-            background-color: var(--note-bg);
-        }
-
-        .module li.active {
-            background-color: #eff6ff;
-            color: var(--accent);
-            font-weight: 500;
-        }
-
-        /* Main Content Styling */
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto;
-            background-color: var(--sidebar-bg);
-        }
-
-        .content-header {
-            padding: 32px 48px 16px;
-            max-width: 1000px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .breadcrumb {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            margin-bottom: 16px;
-            display: block;
-        }
-
-        .content-header h1 {
-            font-size: 2.25rem;
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-
-        .content-header p {
-            font-size: 1.125rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .content-body {
-            padding: 16px 48px 48px;
-            max-width: 1000px;
-            margin: 0 auto;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-
-        /* Theory Section */
-        h2 {
-            font-size: 1.5rem;
-            margin-bottom: 24px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 8px;
-        }
-
-        h3 {
-            font-size: 1.125rem;
-            margin: 24px 0 12px;
-        }
-
-        .theory p, .theory ul {
-            margin-bottom: 16px;
-            line-height: 1.7;
-            color: #374151;
-        }
-
-        .theory ul {
-            padding-left: 24px;
-        }
-
-        .info-box {
-            background-color: var(--note-bg);
-            border-left: 4px solid var(--text-muted);
-            padding: 16px;
-            margin: 24px 0;
-            border-radius: 0 6px 6px 0;
-        }
-
-        .info-box strong {
-            display: block;
-            margin-bottom: 4px;
-            color: var(--text-main);
-        }
-
-        code {
-            background-color: var(--note-bg);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 0.875em;
-            font-family: monospace;
-        }
-
-        /* Code Examples Section */
-        .code-block {
-            margin-bottom: 24px;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-        }
-
-        .code-header {
-            background-color: #f3f4f6;
-            padding: 8px 16px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .code-header span {
-            color: var(--accent);
-            margin-right: 8px;
-        }
-
-        pre {
-            background-color: var(--code-bg);
-            color: var(--code-text);
-            padding: 16px;
-            overflow-x: auto;
-            font-size: 0.875rem;
-            line-height: 1.5;
-        }
-
-        /* Footer / Actions */
-        .actions {
-            display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            padding-top: 32px;
-            margin-top: 32px;
-            border-top: 1px solid var(--border-color);
-            grid-column: 1 / -1;
+            overflow: hidden;
+            color: #ffffff;
         }
 
-        .btn {
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            cursor: pointer;
-            border: none;
-            transition: all 0.2s;
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-hover);
-        }
-
-        .btn-secondary {
-            background-color: white;
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-        }
-
-        .btn-secondary:hover:not(:disabled) {
-            background-color: var(--note-bg);
-        }
-
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .nav-buttons {
+        /* Mobile Container Constraint */
+        .mobile-app {
+            width: 100%;
+            height: 100%;
+            max-width: 420px; /* Restricts to mobile width even on desktop */
             display: flex;
-            gap: 12px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            text-align: center;
+            position: relative;
         }
 
-        /* Responsive */
-        @media (max-width: 900px) {
-            .content-body {
-                grid-template-columns: 1fr;
-            }
+        /* Floating Animation for the top icon */
+        .icon-container {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
         }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Message Box styling */
+        .message-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px 20px;
+            width: 100%;
+            min-height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .text-content {
+            font-size: 22px;
+            font-weight: 600;
+            line-height: 1.5;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Utility classes for JS animation */
+        .fade-out {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Decorative glowing orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            z-index: -1;
+            opacity: 0.6;
+        }
+        .orb-1 {
+            width: 150px; height: 150px;
+            background: #ff758c;
+            top: 10%; left: -20%;
+            animation: moveOrb 8s alternate infinite;
+        }
+        .orb-2 {
+            width: 200px; height: 200px;
+            background: #ff7eb3;
+            bottom: 10%; right: -20%;
+            animation: moveOrb 10s alternate-reverse infinite;
+        }
+
+        @keyframes moveOrb {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.2) translate(30px, -30px); }
+        }
+
     </style>
 </head>
 <body>
 
-    <aside class="sidebar">
-        <div class="sidebar-header">
-            <div class="logo">DevPath</div>
-            <div class="course-title">Web Development</div>
+    <div class="mobile-app">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+
+        <div class="icon-container" id="emoji">
+            🥺
         </div>
 
-        <div class="progress-section">
-            <div class="progress-header">
-                <span>14 Lessons</span>
-                <span id="progress-percent">0%</span>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progress-fill"></div>
-            </div>
-            <div class="progress-text" id="progress-text">0 of 14 lessons completed</div>
-        </div>
-
-        <div class="module">
-            <h3>HTML Fundamentals <span id="module-progress">0/8 complete</span></h3>
-            <ul>
-                <li class="active">Introduction to HTML</li>
-                <li>Text Content & Typography</li>
-                <li>Lists & Navigation</li>
-                <li>Links, Images & Media</li>
-                <li>Tables & Structured Data</li>
-                <li>Forms & User Input</li>
-                <li>Semantic HTML & Accessibility</li>
-                <li>Head, Meta & SEO</li>
-            </ul>
-        </div>
-
-        <div class="module">
-            <h3>CSS Styling <span>0/3 complete</span></h3>
-        </div>
-
-        <div class="module">
-            <h3>JavaScript Essentials <span>0/3 complete</span></h3>
-        </div>
-    </aside>
-
-    <main class="main-content">
-        <header class="content-header">
-            <span class="breadcrumb">HTML Fundamentals / Introduction to HTML</span>
-            <h1>Introduction to HTML</h1>
-            <p>Understand what HTML is, why it matters, and how it forms the backbone of every web page on the internet.</p>
-        </header>
-
-        <div class="content-body">
-            <section class="theory">
-                <h2>Theory</h2>
-                
-                <h3>What is HTML?</h3>
-                <p>HTML (HyperText Markup Language) is the standard markup language used to create and structure content on the web. It is not a programming language — it is a markup language that tells browsers how to organize text, images, links, and other elements into a structured document that users can see and interact with.</p>
-                <p>Every website you visit — from search engines to social networks to online stores — is built on an HTML foundation. HTML provides the skeleton; CSS adds the visual styling, and JavaScript provides interactivity. Together they form the three core pillars of front-end web development.</p>
-
-                <h3>How HTML Works</h3>
-                <p>When you open a web page, your browser downloads the HTML file from a server and parses it top-to-bottom. It builds a tree-like structure called the DOM (Document Object Model), which represents every element on the page. The browser then renders this tree visually on your screen.</p>
-                <ul>
-                    <li>The browser requests an HTML file from the web server</li>
-                    <li>The server responds with raw HTML text</li>
-                    <li>The browser parses the HTML and constructs the DOM tree</li>
-                    <li>The browser then renders the page by painting pixels to the screen</li>
-                    <li>CSS and JavaScript files referenced in the HTML are fetched and applied</li>
-                </ul>
-
-                <h3>The Basic HTML Document Structure</h3>
-                <p>Every HTML document follows a standard structure. The <code>&lt;!DOCTYPE html&gt;</code> declaration tells the browser this is an HTML5 document. The <code>&lt;html&gt;</code> element is the root that contains everything. Inside it, <code>&lt;head&gt;</code> holds metadata (title, character set, linked stylesheets), and <code>&lt;body&gt;</code> holds all the visible content users see on the page.</p>
-
-                <div class="info-box">
-                    <strong>Tip</strong>
-                    Always include the lang attribute on the <code>&lt;html&gt;</code> tag (e.g., lang="en"). This helps screen readers pronounce content correctly and improves SEO.
-                </div>
-
-                <h3>HTML Tags vs. Elements vs. Attributes</h3>
-                <p>A tag is the code between angle brackets, like <code>&lt;p&gt;</code> or <code>&lt;/p&gt;</code>. An element is the complete unit: the opening tag, content, and closing tag combined, e.g. <code>&lt;p&gt;Hello&lt;/p&gt;</code>. An attribute provides extra information about an element and is written inside the opening tag, like <code>&lt;a href="https://example.com"&gt;</code>.</p>
-                <ul>
-                    <li>Tag: The markup notation, e.g., <code>&lt;h1&gt;</code> (opening) and <code>&lt;/h1&gt;</code> (closing)</li>
-                    <li>Element: The opening tag + content + closing tag as a whole</li>
-                    <li>Attribute: Key-value pairs inside the opening tag, e.g., class="title"</li>
-                    <li>Self-closing tags: Elements like <code>&lt;img /&gt;</code>, <code>&lt;br /&gt;</code>, and <code>&lt;input /&gt;</code> have no closing tag</li>
-                </ul>
-
-                <div class="info-box">
-                    <strong>Note</strong>
-                    HTML is not case-sensitive, but the convention is to write all tags in lowercase. This keeps your code consistent and readable.
-                </div>
-            </section>
-
-            <section class="code-examples">
-                <h2>Code Examples</h2>
-                
-                <div class="code-block">
-                    <div class="code-header"><span>HTML</span> Basic HTML Document</div>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;My First Web Page&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;Hello, World!&lt;/h1&gt;
-    &lt;p&gt;This is my first ever HTML web page.&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-                </div>
-
-                <div class="code-block">
-                    <div class="code-header"><span>HTML</span> Tags, Elements & Attributes</div>
-<pre><code>&lt;!-- This is an HTML comment --&gt;
-
-&lt;!-- Element with attributes --&gt;
-&lt;a href="https://example.com" target="_blank" rel="noopener noreferrer"&gt;
-    Visit Example
-&lt;/a&gt;
-
-&lt;!-- Self-closing elements --&gt;
-&lt;img src="photo.jpg" alt="A sunset over the ocean" width="600" height="400" /&gt;
-
-&lt;br /&gt;
-
-&lt;input type="text" placeholder="Enter name" required /&gt;</code></pre>
-                </div>
-            </section>
-
-            <div class="actions">
-                <button class="btn btn-primary" id="markCompleteBtn">Mark as Complete</button>
-                <div class="nav-buttons">
-                    <button class="btn btn-secondary" disabled>Prev Lesson</button>
-                    <button class="btn btn-secondary">Next Lesson</button>
-                </div>
+        <div class="message-box">
+            <div class="text-content" id="dynamicText">
+                Hey Roshni...
             </div>
         </div>
-    </main>
+    </div>
 
     <script>
-        // Simple JavaScript to handle the "Mark as Complete" functionality
-        const markCompleteBtn = document.getElementById('markCompleteBtn');
-        const progressFill = document.getElementById('progress-fill');
-        const progressPercent = document.getElementById('progress-percent');
-        const progressText = document.getElementById('progress-text');
-        const moduleProgress = document.getElementById('module-progress');
-        
-        let isCompleted = false;
+        // Array of messages that will change every 3 seconds
+        const messages = [
+            "Hey Roshni...",
+            "Mujhe pata hai main ghalat tha...",
+            "Aur mera irada tumhe hurt karna bilkul nahi tha.",
+            "I am really, really sorry! 😔",
+            "Tum meri bohat achi dost ho...",
+            "Meri ghalti ko maaf kar do na?",
+            "Promise, aage se aesa nahi hoga. 🤝",
+            "Friends again? ✨"
+        ];
 
-        markCompleteBtn.addEventListener('click', () => {
-            if (!isCompleted) {
-                // Update Button State
-                markCompleteBtn.textContent = 'Completed';
-                markCompleteBtn.style.backgroundColor = '#10b981'; // Green color for success
+        // Emojis matching the mood of the text
+        const emojis = ["🥺", "😔", "💔", "🙏", "💖", "🥹", "🤝", "😊"];
+
+        const textElement = document.getElementById('dynamicText');
+        const emojiElement = document.getElementById('emoji');
+        let currentIndex = 0;
+
+        function changeContent() {
+            // Step 1: Fade out the current text
+            textElement.classList.remove('fade-in');
+            textElement.classList.add('fade-out');
+
+            // Step 2: Wait for fade out to complete, then change text and fade in
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % messages.length;
                 
-                // Update Progress Math (1 out of 14 lessons = ~7%)
-                progressFill.style.width = '7%';
-                progressPercent.textContent = '7%';
-                progressText.textContent = '1 of 14 lessons completed';
-                moduleProgress.textContent = '1/8 complete';
-                
-                isCompleted = true;
-            } else {
-                // Revert Back
-                markCompleteBtn.textContent = 'Mark as Complete';
-                markCompleteBtn.style.backgroundColor = ''; 
-                
-                progressFill.style.width = '0%';
-                progressPercent.textContent = '0%';
-                progressText.textContent = '0 of 14 lessons completed';
-                moduleProgress.textContent = '0/8 complete';
-                
-                isCompleted = false;
-            }
-        });
+                textElement.innerText = messages[currentIndex];
+                emojiElement.innerText = emojis[currentIndex];
+
+                textElement.classList.remove('fade-out');
+                textElement.classList.add('fade-in');
+            }, 500); // 500ms matches the CSS transition time
+        }
+
+        // Change text every 3.5 seconds (3s display + 0.5s transition)
+        setInterval(changeContent, 3500);
     </script>
+
 </body>
 </html>
