@@ -3,16 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>For You, Roshni ✨</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>For My Special Roshni ☀️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --gold-light: #f9d976;
-            --gold-dark: #e9b646;
-            --bg-dark: #0a0510;
-            --bg-glow: #231236;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -22,31 +15,50 @@
         }
 
         body {
-            background-color: var(--bg-dark);
+            font-family: 'Outfit', sans-serif;
+            /* Smooth Day Gradient */
+            background: linear-gradient(-45deg, #ffb347, #ffcc33, #ffb677, #ff9a9e, #fecfef);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             height: 100vh;
             width: 100vw;
             overflow: hidden;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            font-family: 'Poppins', sans-serif;
             color: #ffffff;
-            transition: background 2s ease;
+            position: relative;
         }
 
-        /* Magical Glowing Background */
-        .ambient-glow {
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Ambient Glowing Sun */
+        .sun {
             position: absolute;
-            width: 100vw;
-            height: 100vh;
-            background: radial-gradient(circle at 50% 50%, var(--bg-glow) 0%, var(--bg-dark) 80%);
-            opacity: 0;
-            transition: opacity 3s ease;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,245,200,0.8) 40%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            box-shadow: 0 0 60px 30px rgba(255,215,0,0.4);
+            animation: sunPulse 4s infinite alternate ease-in-out;
             z-index: 1;
         }
 
-        /* Fireflies / Glowing Dust */
-        #fireflies {
+        @keyframes sunPulse {
+            0% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+            100% { transform: translateX(-50%) scale(1.1); opacity: 1; box-shadow: 0 0 100px 50px rgba(255,215,0,0.6); }
+        }
+
+        /* Interactive Canvas for Floating Light Particles */
+        #lightCanvas {
             position: absolute;
             top: 0;
             left: 0;
@@ -56,293 +68,297 @@
             pointer-events: none;
         }
 
-        .firefly {
-            position: absolute;
-            background: var(--gold-light);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--gold-light), 0 0 20px var(--gold-light);
-            animation: floatFly var(--duration) infinite ease-in-out alternate;
-            opacity: 0;
-            transition: opacity 2s;
-        }
-
-        @keyframes floatFly {
-            0% { transform: translate(0, 0) scale(0.8); opacity: 0.3; }
-            100% { transform: translate(var(--moveX), var(--moveY)) scale(1.2); opacity: 1; }
-        }
-
-        /* --- Intro Screen --- */
-        #introScreen {
-            position: absolute;
-            z-index: 20;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 1.5s ease;
-        }
-
-        .tap-btn {
-            background: transparent;
-            border: 2px solid var(--gold-dark);
-            color: var(--gold-light);
-            font-family: 'Playfair Display', serif;
-            font-size: 22px;
-            font-style: italic;
-            padding: 15px 40px;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 0 20px rgba(233, 182, 70, 0.2), inset 0 0 10px rgba(233, 182, 70, 0.1);
-            animation: pulseGlow 2s infinite alternate;
-            transition: transform 0.3s;
-        }
-
-        .tap-btn:active {
-            transform: scale(0.95);
-        }
-
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 0 15px rgba(233, 182, 70, 0.2), inset 0 0 10px rgba(233, 182, 70, 0.1); }
-            100% { box-shadow: 0 0 30px rgba(233, 182, 70, 0.6), inset 0 0 20px rgba(233, 182, 70, 0.4); text-shadow: 0 0 8px var(--gold-light); }
-        }
-
-        /* --- Main Story Card --- */
-        #mainCard {
+        /* Glassmorphism Story Container */
+        .glass-container {
             position: relative;
             z-index: 10;
             width: 90%;
-            max-width: 380px;
-            background: rgba(20, 10, 30, 0.4);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(233, 182, 70, 0.3);
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 30px;
-            padding: 40px 30px;
+            padding: 40px 25px;
             text-align: center;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5), inset 0 0 20px rgba(233, 182, 70, 0.05);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1), inset 0 0 20px rgba(255, 255, 255, 0.2);
+            min-height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Cinematic Text Animation */
+        .story-text {
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #ffffff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: absolute;
+            width: 85%;
             opacity: 0;
             transform: translateY(30px) scale(0.95);
-            transition: all 1.5s cubic-bezier(0.25, 1, 0.5, 1);
-            display: none;
-        }
-
-        /* Golden Gradient Text for Name */
-        .gold-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            font-weight: 600;
-            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
-        }
-
-        /* Story Text */
-        .story-content {
-            font-size: 19px;
-            line-height: 1.7;
-            min-height: 160px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #e0dced;
-        }
-
-        .text-fade {
-            opacity: 0;
-            transform: translateY(15px);
-            transition: all 0.8s ease;
-        }
-
-        .text-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Elegant Next Button */
-        .next-icon {
-            margin-top: 30px;
-            font-size: 30px;
-            color: var(--gold-light);
-            cursor: pointer;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.5s ease;
-            animation: floatArrow 2s infinite ease-in-out;
-            display: inline-block;
-        }
-
-        .next-icon.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @keyframes floatArrow {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(8px); }
-            100% { transform: translateY(0); }
-        }
-
-        /* Romantic Floating Hearts at the end */
-        .heart {
-            position: absolute;
-            color: var(--gold-light);
-            font-size: 20px;
-            opacity: 0;
+            filter: blur(10px);
+            transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
             pointer-events: none;
-            z-index: 5;
         }
 
-        @keyframes floatHeart {
-            0% { transform: translateY(0) scale(0.5) rotate(-15deg); opacity: 1; }
-            100% { transform: translateY(-100vh) scale(1.5) rotate(15deg); opacity: 0; }
+        .story-text.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0px);
         }
 
+        .story-text.exit {
+            opacity: 0;
+            transform: translateY(-30px) scale(1.05);
+            filter: blur(10px);
+        }
+
+        /* Emoji Enhancements */
+        .emoji {
+            font-size: 40px;
+            display: block;
+            margin-bottom: 15px;
+            animation: floatEmoji 3s infinite ease-in-out;
+        }
+
+        @keyframes floatEmoji {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Tap Indicator */
+        .tap-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            letter-spacing: 2px;
+            opacity: 0.6;
+            animation: pulseText 2s infinite;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        @keyframes pulseText {
+            0%, 100% { opacity: 0.3; transform: translate(-50%, 0); }
+            50% { opacity: 0.8; transform: translate(-50%, -5px); }
+        }
+
+        /* Touch Ripple Effect */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(0);
+            animation: rippleAnim 0.8s linear;
+            pointer-events: none;
+            z-index: 20;
+        }
+
+        @keyframes rippleAnim {
+            to { transform: scale(4); opacity: 0; }
+        }
+
+        /* Signature at the end */
+        .signature {
+            font-size: 20px;
+            font-style: italic;
+            font-weight: 600;
+            margin-top: 20px;
+            color: #ffeaa7;
+            opacity: 0;
+            transition: opacity 2s ease 1s;
+        }
     </style>
 </head>
-<body>
+<body id="mainBody">
 
-    <div class="ambient-glow" id="ambientBg"></div>
-    <div id="fireflies"></div>
+    <div class="sun"></div>
+    <canvas id="lightCanvas"></canvas>
 
-    <div id="introScreen">
-        <button class="tap-btn" onclick="startMagic()">Tap to open ✨</button>
-    </div>
-
-    <div id="mainCard">
-        <div class="gold-text" id="heading">Roshni...</div>
-        <div class="story-content">
-            <div class="text-fade" id="textContent"></div>
+    <div class="glass-container" id="storyContainer">
         </div>
-        <div class="next-icon" id="nextBtn" onclick="nextSlide()">🡣</div>
-    </div>
+
+    <div class="tap-indicator" id="tapHint">SCREEN PAR TAP KAREIN 👆</div>
 
     <script>
-        // Story Lines specially crafted with the "Roshni" (Light) theme
-        const story = [
-            "Aap ka naam hi 'Roshni' hai...",
-            "Aur sach kahun, aapke aanay se meri life mein waqayi bohat roshni aagayi hai. ✨",
-            "Jab aap naraz theen, toh lag raha tha jaise sab kuch andhera sa ho gaya hai.",
-            "Lekin aapne mujhe maaf kar ke mera aasmaan wapis chamka diya! 🌌",
-            "Aap jaisi caring aur special dost kismat walon ko milti hai.",
-            "Meri dua hai ke aapki life hamesha is chamakte hue taaron ki tarah bright rahay. 🌟",
-            "Ab ek pyari si smile dein... aur saari tensions bhool jayen.",
-            "Khush rahen, abaad rahen!\nGood Night, Sweet Dreams. 🌙\n\n- Aapka dost, Abubakar"
+        // Highly emotional and meaningful story
+        const storyLines = [
+            { text: "Naya din, nayi shuruwat! ☀️", emoji: "🌅" },
+            { text: "Socha aaj ke is khubsurat din mein, aapko ek choti si baat bataun...", emoji: "✨" },
+            { text: "Aap mere liye sirf ek dost nahi, meri sabse pyari aur khaas dost hain. 💛", emoji: "🤝" },
+            { text: "Jaise is din ko mukammal hone ke liye 'Roshni' ki zaroorat hoti hai...", emoji: "☀️" },
+            { text: "Bilkul waise hi meri zindagi mein aapki dosti ki zaroorat hai.", emoji: "🌻" },
+            { text: "Aapki ek smile se mera poora din acha ho jata hai.", emoji: "😊" },
+            { text: "Main chahta hoon aap hamesha aise hi muskurati rahein aur meri dost ban kar rahein.", emoji: "🤞" },
+            { text: "Have a beautiful and happy day, Roshni! 🌸", emoji: "✨", isLast: true }
         ];
 
         let currentIndex = 0;
         let isAnimating = false;
-
-        const introScreen = document.getElementById('introScreen');
-        const mainCard = document.getElementById('mainCard');
-        const ambientBg = document.getElementById('ambientBg');
-        const textContent = document.getElementById('textContent');
-        const nextBtn = document.getElementById('nextBtn');
-        const firefliesContainer = document.getElementById('fireflies');
-
-        // Function to create magical fireflies
-        function createFireflies() {
-            for (let i = 0; i < 40; i++) {
-                let fly = document.createElement('div');
-                fly.classList.add('firefly');
+        const container = document.getElementById('storyContainer');
+        const tapHint = document.getElementById('tapHint');
+        
+        // Initialize the first text immediately
+        function initStory() {
+            storyLines.forEach((item, index) => {
+                const textDiv = document.createElement('div');
+                textDiv.className = 'story-text';
+                textDiv.id = `slide-${index}`;
                 
-                // Random positioning and sizes
-                let size = Math.random() * 3 + 1;
-                fly.style.width = `${size}px`;
-                fly.style.height = `${size}px`;
-                fly.style.left = `${Math.random() * 100}vw`;
-                fly.style.top = `${Math.random() * 100}vh`;
+                let content = `<span class="emoji">${item.emoji}</span>${item.text}`;
                 
-                // Random animation variables
-                fly.style.setProperty('--moveX', `${(Math.random() - 0.5) * 100}px`);
-                fly.style.setProperty('--moveY', `${(Math.random() - 0.5) * 100 - 50}px`);
-                fly.style.setProperty('--duration', `${Math.random() * 4 + 3}s`);
-                
-                // Staggered appearance
-                setTimeout(() => {
-                    fly.style.opacity = Math.random() * 0.8 + 0.2;
-                }, Math.random() * 2000);
+                // Add signature if it's the last slide
+                if (item.isLast) {
+                    content += `<div class="signature" id="sig">- Aapka dost, Abubakar</div>`;
+                }
 
-                firefliesContainer.appendChild(fly);
-            }
-        }
+                textDiv.innerHTML = content;
+                container.appendChild(textDiv);
+            });
 
-        // Triggered when she taps the intro button
-        function startMagic() {
-            // Fade out intro
-            introScreen.style.opacity = '0';
-            
+            // Show first slide
             setTimeout(() => {
-                introScreen.style.display = 'none';
-                
-                // Turn on ambient light and fireflies
-                ambientBg.style.opacity = '1';
-                createFireflies();
-
-                // Show main card
-                mainCard.style.display = 'block';
-                setTimeout(() => {
-                    mainCard.style.opacity = '1';
-                    mainCard.style.transform = 'translateY(0) scale(1)';
-                    
-                    // Start story
-                    showText(0);
-                }, 100);
-                
-            }, 1000);
+                document.getElementById('slide-0').classList.add('active');
+            }, 100);
         }
 
-        function showText(index) {
-            textContent.classList.remove('text-visible');
-            nextBtn.classList.remove('show');
+        // Advance to next slide smoothly
+        function nextSlide(e) {
+            // Create Ripple Effect
+            createRipple(e);
 
-            setTimeout(() => {
-                // Formatting text properly (handling line breaks)
-                textContent.innerHTML = story[index].replace(/\n/g, '<br>');
-                textContent.classList.add('text-visible');
-
-                // Show next button after text appears
-                setTimeout(() => {
-                    if (index < story.length - 1) {
-                        nextBtn.classList.add('show');
-                    } else {
-                        // At the last slide
-                        document.getElementById('heading').innerText = "Hamesha Khush Rahein 💛";
-                        document.getElementById('heading').style.fontSize = "26px";
-                        spawnHearts();
-                    }
-                    isAnimating = false;
-                }, 1000); // Delay before showing next button
-                
-            }, 600); // Delay for fade out
-        }
-
-        function nextSlide() {
-            if (isAnimating) return;
+            if (isAnimating || currentIndex >= storyLines.length - 1) return;
             isAnimating = true;
+
+            const currentSlide = document.getElementById(`slide-${currentIndex}`);
+            const nextSlide = document.getElementById(`slide-${currentIndex + 1}`);
+
+            // Move current out
+            currentSlide.classList.remove('active');
+            currentSlide.classList.add('exit');
+
+            // Bring next in
             currentIndex++;
-            showText(currentIndex);
+            nextSlide.classList.add('active');
+
+            // Hide tap hint on last slide and show signature
+            if (currentIndex === storyLines.length - 1) {
+                tapHint.style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('sig').style.opacity = '1';
+                }, 800);
+            }
+
+            // Unlock animation lock
+            setTimeout(() => {
+                isAnimating = false;
+            }, 1000); // Wait for transition to complete
         }
 
-        // Special effect for the end
-        function spawnHearts() {
-            for (let i = 0; i < 20; i++) {
-                setTimeout(() => {
-                    let heart = document.createElement('div');
-                    heart.classList.add('heart');
-                    heart.innerText = ['✨', '🌟', '💛', '💫'][Math.floor(Math.random() * 4)];
-                    heart.style.left = `${Math.random() * 80 + 10}%`;
-                    heart.style.bottom = `-20px`;
-                    heart.style.animation = `floatHeart ${Math.random() * 3 + 4}s ease-in forwards`;
-                    
-                    document.body.appendChild(heart);
-                    
-                    // Clean up
-                    setTimeout(() => heart.remove(), 7000);
-                }, i * 300);
+        // Ripple Effect Generator
+        function createRipple(e) {
+            const body = document.getElementById('mainBody');
+            const circle = document.createElement('div');
+            circle.classList.add('ripple');
+
+            // Get touch or click coordinates
+            const x = e.touches ? e.touches[0].clientX : e.clientX;
+            const y = e.touches ? e.touches[0].clientY : e.clientY;
+
+            // Ripple size logic
+            const size = 100; // base size
+            circle.style.width = circle.style.height = `${size}px`;
+            circle.style.left = `${x - size / 2}px`;
+            circle.style.top = `${y - size / 2}px`;
+
+            body.appendChild(circle);
+
+            setTimeout(() => {
+                circle.remove();
+            }, 800);
+        }
+
+        // Bind events
+        document.body.addEventListener('click', nextSlide);
+        document.body.addEventListener('touchstart', (e) => {
+            nextSlide(e);
+        });
+
+        // ----------------------------------------------------
+        // CANVAS ANIMATION: Floating Morning Light / Dust
+        // ----------------------------------------------------
+        const canvas = document.getElementById('lightCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        let particles = [];
+        const particleCount = 40;
+
+        class LightParticle {
+            constructor() {
+                this.reset();
+                this.y = Math.random() * canvas.height; // Initial random spawn
+            }
+            
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + Math.random() * 100;
+                this.size = Math.random() * 3 + 1;
+                this.speedY = Math.random() * 1 + 0.5; // Drift upwards slowly
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.opacity = Math.random() * 0.5 + 0.1;
+            }
+
+            update() {
+                this.y -= this.speedY;
+                this.x += this.speedX;
+
+                // Reset if it goes off top screen
+                if (this.y < -10) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+                ctx.fill();
             }
         }
+
+        function initParticles() {
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new LightParticle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        // Start Everything
+        initStory();
+        initParticles();
+        animateParticles();
+
     </script>
 </body>
 </html>
