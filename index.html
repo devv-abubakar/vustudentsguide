@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Sorry Roshni 🙏</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>Sorry Roshni 🥺</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6a11cb;
-            --secondary: #2575fc;
-            --accent: #ff0844;
-            --text-light: #f8f9fa;
-            --glass-bg: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.15);
+            --bg-color: #0d1117;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-color: #e6edf3;
+            --accent: #ff4d4d;
+            --yes-btn: #2ea043;
         }
 
         * {
@@ -24,57 +23,32 @@
         }
 
         body {
-            background-color: #0f172a;
+            background-color: var(--bg-color);
             height: 100vh;
+            width: 100vw;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            color: var(--text-light);
+            color: var(--text-color);
         }
 
-        /* Ambient Animated Background */
-        .ambient-bg {
+        /* Ambient Emotional Glow */
+        .glow {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,77,77,0.15) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            animation: breathe 6s infinite alternate ease-in-out;
             z-index: 0;
-            overflow: hidden;
         }
 
-        .blob {
-            position: absolute;
-            filter: blur(80px);
-            opacity: 0.6;
-            animation: floatBlob 12s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+        @keyframes breathe {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1.2); opacity: 1; }
         }
 
-        .blob-1 {
-            width: 250px; height: 250px;
-            background: var(--primary);
-            top: -50px; left: -50px;
-        }
-
-        .blob-2 {
-            width: 300px; height: 300px;
-            background: var(--secondary);
-            bottom: -100px; right: -50px;
-            animation-delay: -4s;
-        }
-
-        .blob-3 {
-            width: 200px; height: 200px;
-            background: var(--accent);
-            top: 40%; left: 30%;
-            animation-duration: 15s;
-            opacity: 0.4;
-        }
-
-        @keyframes floatBlob {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(40px, -60px) scale(1.2); }
-        }
-
-        /* Mobile Constraint Wrapper */
         .mobile-container {
             position: relative;
             z-index: 1;
@@ -85,214 +59,268 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 25px;
+            padding: 20px;
         }
 
-        /* Progress Bar */
-        .progress-container {
-            position: absolute;
-            top: 40px;
-            width: 85%;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #00c6ff, #0072ff);
-            transition: width 0.5s ease;
-        }
-
-        /* Advanced Glassmorphism Card */
+        /* Glassmorphism Card */
         .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            border-radius: 30px;
-            padding: 40px 25px;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 35px 25px;
             width: 100%;
+            min-height: 380px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 320px;
             justify-content: center;
             position: relative;
         }
 
-        /* Emoji Animation */
-        .emoji-wrapper {
-            font-size: 70px;
-            margin-bottom: 25px;
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        .emoji-display {
+            font-size: 65px;
+            margin-bottom: 20px;
+            transition: all 1s ease;
         }
 
-        /* Cinematic Text Reveal */
-        .message-text {
-            font-size: 24px;
-            font-weight: 500;
-            line-height: 1.4;
-            letter-spacing: 0.5px;
-            min-height: 80px;
+        .text-display {
+            font-size: 21px;
+            font-weight: 400;
+            line-height: 1.6;
+            min-height: 140px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.8s ease;
+            transition: opacity 1s ease, transform 1s ease;
         }
 
-        /* Text States */
-        .text-hide {
+        .fade-out {
             opacity: 0;
-            transform: translateY(20px) scale(0.95);
-            filter: blur(8px);
+            transform: translateY(15px);
+            filter: blur(5px);
         }
 
-        .text-show {
+        .fade-in {
             opacity: 1;
-            transform: translateY(0) scale(1);
+            transform: translateY(0);
             filter: blur(0);
         }
 
-        /* Material Design Action Button */
-        .action-btn {
+        /* Buttons Section */
+        .btn-container {
+            display: none;
+            width: 100%;
             margin-top: 30px;
-            background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%);
-            color: white;
-            border: none;
-            padding: 16px 40px;
-            font-size: 18px;
-            font-weight: 700;
-            border-radius: 50px;
-            box-shadow: 0 10px 20px rgba(255, 8, 68, 0.3);
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            gap: 15px;
+            justify-content: center;
             position: relative;
+            min-height: 60px;
+        }
+
+        .btn {
+            padding: 14px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            color: white;
+        }
+
+        .btn-yes {
+            background: var(--yes-btn);
+            box-shadow: 0 8px 20px rgba(46, 160, 67, 0.4);
+            z-index: 10;
+        }
+
+        .btn-yes:active {
+            transform: scale(0.95);
+        }
+
+        .btn-no {
+            background: var(--accent);
+            box-shadow: 0 8px 20px rgba(255, 77, 77, 0.4);
+            position: relative; /* Changes to absolute via JS */
+            z-index: 5;
+        }
+
+        /* Sneaky Message when clicking No */
+        .sneaky-text {
+            position: absolute;
+            bottom: -30px;
+            font-size: 14px;
+            color: #ff9999;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-style: italic;
+        }
+
+        /* Progress Line */
+        .progress-bar {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 3px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
             overflow: hidden;
         }
-
-        .action-btn.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: #fff;
+            transition: width 0.5s ease;
         }
-
-        /* Button Pulse Effect */
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 8, 68, 0.6); }
-            70% { box-shadow: 0 0 0 15px rgba(255, 8, 68, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 8, 68, 0); }
-        }
-
-        .action-btn.show {
-            animation: pulse 2s infinite;
-        }
-
     </style>
 </head>
 <body>
 
-    <div class="ambient-bg">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-    </div>
+    <div class="glow"></div>
 
-    <div class="mobile-container">
-        
-        <div class="progress-container">
-            <div class="progress-bar" id="progressBar"></div>
-        </div>
+    <div class="mobile-container" id="mainContainer">
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 
-        <div class="glass-card">
-            <div class="emoji-wrapper" id="emojiDisplay">✨</div>
-            <div class="message-text text-hide" id="textDisplay"></div>
+        <div class="glass-card" id="card">
+            <div class="emoji-display" id="emoji">🥺</div>
+            <div class="text-display" id="text">Roshni... mujhe aapse kuch kehna hai...</div>
             
-            <button class="action-btn" id="forgiveBtn" onclick="forgiveAction()">
-                Maaf Kiya! 💖
-            </button>
+            <div class="btn-container" id="btnContainer">
+                <button class="btn btn-yes" onclick="sayYes()">Haan, Maaf Kiya</button>
+                <button class="btn btn-no" id="noBtn">Nahi</button>
+                <div class="sneaky-text" id="sneakyText"></div>
+            </div>
         </div>
-
     </div>
 
     <script>
-        // Highly detailed, emotional story array
+        // Apki feelings ko ek proper story mein convert kiya hai
         const story = [
-            { text: "Roshni... Ek chhoti si baat karni thi aap se...", emoji: "🥺" },
-            { text: "Pichle kuch dino se aap naraz hain...", emoji: "😔" },
-            { text: "Aur sach kahun, toh mera kahin bhi dil nahi lag raha.", emoji: "🥀" },
-            { text: "Mujhe apni ghalti ka poora ehsas hai.", emoji: "🙏" },
-            { text: "Mera irada aap ko kabhi hurt karne ka nahi tha.", emoji: "💔" },
-            { text: "Aap meri bohat pyari aur khaas dost hain.", emoji: "✨" },
-            { text: "Kya aap apni is dost ki nadani ko maaf kar sakti hain?", emoji: "🥹" },
-            { text: "Please... Maaf kar dein na? Main intazar kar raha hoon...", emoji: "🤲" }
+            { text: "Roshni... mujhe aapse kuch kehna hai...", emoji: "🥺" },
+            { text: "Main sach mein majboor tha, aaj aapko time nahi de saka...", emoji: "😔" },
+            { text: "Wallah mujhe bohat bura lag raha hai, main bohat udaas hoon ke aap mujhse naraz hain.", emoji: "🥀" },
+            { text: "Aapko lagta hai ke sirf aapka dil tha baat karne ka?", emoji: "💔" },
+            { text: "Wallah main bohat excited ho jata hoon jab aapse baat start hoti hai...", emoji: "🥹" },
+            { text: "Aapse baat karke main apni saari tensions aur pareshaniyan bhool jata hoon.", emoji: "✨" },
+            { text: "Aap meri life mein aayi hain toh lagta hai ke life mein kuch interesting hai.", emoji: "💫" },
+            { text: "Aap wahid girl ho jisko main sachay dil se dost manta hoon.", emoji: "💖" },
+            { text: "Aap bohat achi ho, aur main aapko kabhi khona nahi chahta.", emoji: "🤝" },
+            { text: "Kya aap apne is dost ko maaf karengi?", emoji: "🤲" }
         ];
 
-        const textElement = document.getElementById('textDisplay');
-        const emojiElement = document.getElementById('emojiDisplay');
-        const progressBar = document.getElementById('progressBar');
-        const forgiveBtn = document.getElementById('forgiveBtn');
-        
-        let currentIndex = 0;
-        const intervalTime = 3500; // 3.5 seconds per slide for better reading time
+        const noMessages = [
+            "Aise mat karo na 🥺", 
+            "Please maan jao na 😭", 
+            "Nahi par click mat karo! 💔", 
+            "Main sachi mein sorry hoon 🥺", 
+            "Thora sa toh taras khao 🙈",
+            "Aap bohat ziddi ho! 😂"
+        ];
+        let noMsgIndex = 0;
 
-        function updateContent() {
-            // Cinematic Fade Out
-            textElement.classList.remove('text-show');
-            textElement.classList.add('text-hide');
-            emojiElement.style.transform = "scale(0.5) rotate(-15deg)";
-            emojiElement.style.opacity = "0";
+        const textEl = document.getElementById('text');
+        const emojiEl = document.getElementById('emoji');
+        const progressFill = document.getElementById('progressFill');
+        const btnContainer = document.getElementById('btnContainer');
+        const noBtn = document.getElementById('noBtn');
+        const sneakyText = document.getElementById('sneakyText');
+        const card = document.getElementById('card');
+
+        let currentIndex = 0;
+        const intervalTime = 6000; // 6 seconds taake aaram se parh sake
+
+        function updateSlide() {
+            // Fade out
+            textEl.classList.remove('fade-in');
+            textEl.classList.add('fade-out');
+            emojiEl.style.opacity = '0';
+            emojiEl.style.transform = 'scale(0.8)';
 
             setTimeout(() => {
-                // Update Content
-                textElement.innerText = story[currentIndex].text;
-                emojiElement.innerText = story[currentIndex].emoji;
+                currentIndex++;
+                
+                // Update text and emoji
+                textEl.innerText = story[currentIndex].text;
+                emojiEl.innerText = story[currentIndex].emoji;
+                
+                // Update Progress
+                progressFill.style.width = `${((currentIndex + 1) / story.length) * 100}%`;
 
-                // Update Progress Bar
-                const progress = ((currentIndex + 1) / story.length) * 100;
-                progressBar.style.width = `${progress}%`;
+                // Fade in
+                textEl.classList.remove('fade-out');
+                textEl.classList.add('fade-in');
+                emojiEl.style.opacity = '1';
+                emojiEl.style.transform = 'scale(1)';
 
-                // Cinematic Fade In
-                textElement.classList.remove('text-hide');
-                textElement.classList.add('text-show');
-                emojiElement.style.transform = "scale(1) rotate(0deg)";
-                emojiElement.style.opacity = "1";
-
-                // Check if it's the last message
+                // Check if it's the last slide
                 if (currentIndex === story.length - 1) {
-                    clearInterval(storyInterval); // Stop the loop
+                    clearInterval(slideInterval);
                     setTimeout(() => {
-                        forgiveBtn.classList.add('show'); // Show the button
+                        btnContainer.style.display = "flex";
+                        // Setup dodge effect for "No" button
+                        setupDodgeButton();
                     }, 1000);
-                } else {
-                    currentIndex++;
                 }
-            }, 600); // Wait for fade-out transition
+            }, 1000);
         }
 
-        // Button Action
-        function forgiveAction() {
-            forgiveBtn.innerText = "Thank You Roshni! ✨";
-            forgiveBtn.style.background = "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)";
-            textElement.innerText = "Aap ka bohat shukriya! Dosti hamesha zindabad. 🤝";
-            emojiElement.innerText = "🎉";
+        // Start animation
+        progressFill.style.width = `${(1 / story.length) * 100}%`;
+        const slideInterval = setInterval(updateSlide, intervalTime);
+
+        // --- Dodge "No" Button Logic ---
+        function setupDodgeButton() {
+            // Touch & Mouse events for mobile & desktop
+            noBtn.addEventListener('touchstart', moveNoBtn, {passive: false});
+            noBtn.addEventListener('click', moveNoBtn);
+            noBtn.addEventListener('mouseover', moveNoBtn);
+        }
+
+        function moveNoBtn(e) {
+            e.preventDefault(); // Prevents actual click
             
-            // Add a small celebration pop effect
-            emojiElement.style.transform = "scale(1.3)";
-            setTimeout(() => { emojiElement.style.transform = "scale(1)"; }, 300);
+            // Randomly move button inside the card boundaries
+            const cardRect = card.getBoundingClientRect();
+            const btnRect = noBtn.getBoundingClientRect();
+
+            // Calculate safe boundaries
+            const maxX = cardRect.width - btnRect.width - 20;
+            const maxY = cardRect.height - btnRect.height - 20;
+
+            const randomX = Math.floor(Math.random() * maxX) - (maxX / 2) + 20;
+            const randomY = Math.floor(Math.random() * maxY) - (maxY / 2) + 20;
+
+            noBtn.style.position = "absolute";
+            noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+
+            // Show sneaky text
+            sneakyText.innerText = noMessages[noMsgIndex];
+            sneakyText.style.opacity = "1";
+            noMsgIndex = (noMsgIndex + 1) % noMessages.length;
+
+            setTimeout(() => {
+                sneakyText.style.opacity = "0";
+            }, 1500);
         }
 
-        // Start the story
-        setTimeout(updateContent, 100); // Initial load
-        const storyInterval = setInterval(updateContent, intervalTime);
+        // --- Yes Button Logic ---
+        function sayYes() {
+            btnContainer.style.display = "none";
+            emojiEl.innerText = "🎉";
+            emojiEl.style.transform = "scale(1.5)";
+            textEl.innerHTML = "<span style='color: #38ef7d; font-size: 26px; font-weight: 600;'>Thank you so muchhh! ❤️</span><br><br>Aap waqayi bohat achiii ho!";
+            
+            // Extra celebration effects can be added here
+            setInterval(() => {
+                emojiEl.style.transform = emojiEl.style.transform === "scale(1.5)" ? "scale(1.2)" : "scale(1.5)";
+            }, 500);
+        }
 
     </script>
 </body>
