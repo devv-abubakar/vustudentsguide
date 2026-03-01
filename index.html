@@ -11,7 +11,7 @@
             --card-bg: rgba(255, 255, 255, 0.05);
             --text-color: #e6edf3;
             --accent: #ff4d4d;
-            --yes-btn: #2ea043;
+            --next-btn: #0072ff;
         }
 
         * {
@@ -71,7 +71,7 @@
             border-radius: 25px;
             padding: 35px 25px;
             width: 100%;
-            min-height: 380px;
+            min-height: 400px;
             text-align: center;
             box-shadow: 0 15px 35px rgba(0,0,0,0.5);
             display: flex;
@@ -84,7 +84,7 @@
         .emoji-display {
             font-size: 65px;
             margin-bottom: 20px;
-            transition: all 1s ease;
+            transition: all 0.5s ease;
         }
 
         .text-display {
@@ -95,7 +95,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: opacity 1s ease, transform 1s ease;
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
         .fade-out {
@@ -110,17 +110,7 @@
             filter: blur(0);
         }
 
-        /* Buttons Section */
-        .btn-container {
-            display: none;
-            width: 100%;
-            margin-top: 30px;
-            gap: 15px;
-            justify-content: center;
-            position: relative;
-            min-height: 60px;
-        }
-
+        /* Buttons Styling */
         .btn {
             padding: 14px 30px;
             font-size: 18px;
@@ -130,16 +120,27 @@
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
             color: white;
+            margin-top: 20px;
         }
 
-        .btn-yes {
-            background: var(--yes-btn);
-            box-shadow: 0 8px 20px rgba(46, 160, 67, 0.4);
+        .btn-next {
+            background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+            box-shadow: 0 8px 20px rgba(0, 114, 255, 0.4);
             z-index: 10;
         }
 
-        .btn-yes:active {
+        .btn-next:active {
             transform: scale(0.95);
+        }
+
+        .btn-container {
+            display: none;
+            width: 100%;
+            margin-top: 20px;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            min-height: 80px;
         }
 
         .btn-no {
@@ -152,12 +153,15 @@
         /* Sneaky Message when clicking No */
         .sneaky-text {
             position: absolute;
-            bottom: -30px;
-            font-size: 14px;
+            bottom: -40px;
+            font-size: 15px;
             color: #ff9999;
             opacity: 0;
             transition: opacity 0.3s;
             font-style: italic;
+            width: 100%;
+            text-align: center;
+            pointer-events: none;
         }
 
         /* Progress Line */
@@ -176,7 +180,7 @@
             height: 100%;
             width: 0%;
             background: #fff;
-            transition: width 0.5s ease;
+            transition: width 0.3s ease;
         }
     </style>
 </head>
@@ -191,8 +195,9 @@
             <div class="emoji-display" id="emoji">🥺</div>
             <div class="text-display" id="text">Roshni... mujhe aapse kuch kehna hai...</div>
             
+            <button class="btn btn-next" id="nextBtn" onclick="nextSlide()">Aage Parhein ➔</button>
+            
             <div class="btn-container" id="btnContainer">
-                <button class="btn btn-yes" onclick="sayYes()">Haan, Maaf Kiya</button>
                 <button class="btn btn-no" id="noBtn">Nahi</button>
                 <div class="sneaky-text" id="sneakyText"></div>
             </div>
@@ -200,7 +205,6 @@
     </div>
 
     <script>
-        // Apki feelings ko ek proper story mein convert kiya hai
         const story = [
             { text: "Roshni... mujhe aapse kuch kehna hai...", emoji: "🥺" },
             { text: "Main sach mein majboor tha, aaj aapko time nahi de saka...", emoji: "😔" },
@@ -220,23 +224,32 @@
             "Nahi par click mat karo! 💔", 
             "Main sachi mein sorry hoon 🥺", 
             "Thora sa toh taras khao 🙈",
-            "Aap bohat ziddi ho! 😂"
+            "Aap bohat ziddi ho! 😂",
+            "Ab toh haan karni padegi! ✨"
         ];
         let noMsgIndex = 0;
 
         const textEl = document.getElementById('text');
         const emojiEl = document.getElementById('emoji');
         const progressFill = document.getElementById('progressFill');
+        const nextBtn = document.getElementById('nextBtn');
         const btnContainer = document.getElementById('btnContainer');
         const noBtn = document.getElementById('noBtn');
         const sneakyText = document.getElementById('sneakyText');
         const card = document.getElementById('card');
 
         let currentIndex = 0;
-        const intervalTime = 6000; // 6 seconds taake aaram se parh sake
+        let isAnimating = false;
 
-        function updateSlide() {
-            // Fade out
+        // Initial Progress setup
+        progressFill.style.width = `${(1 / story.length) * 100}%`;
+
+        function nextSlide() {
+            // Prevent multiple clicks while animating
+            if (isAnimating) return;
+            isAnimating = true;
+
+            // Fade out current text and emoji
             textEl.classList.remove('fade-in');
             textEl.classList.add('fade-out');
             emojiEl.style.opacity = '0';
@@ -249,49 +262,43 @@
                 textEl.innerText = story[currentIndex].text;
                 emojiEl.innerText = story[currentIndex].emoji;
                 
-                // Update Progress
+                // Update Progress Bar
                 progressFill.style.width = `${((currentIndex + 1) / story.length) * 100}%`;
 
-                // Fade in
+                // Fade in new text and emoji
                 textEl.classList.remove('fade-out');
                 textEl.classList.add('fade-in');
                 emojiEl.style.opacity = '1';
                 emojiEl.style.transform = 'scale(1)';
 
+                isAnimating = false;
+
                 // Check if it's the last slide
                 if (currentIndex === story.length - 1) {
-                    clearInterval(slideInterval);
-                    setTimeout(() => {
-                        btnContainer.style.display = "flex";
-                        // Setup dodge effect for "No" button
-                        setupDodgeButton();
-                    }, 1000);
+                    nextBtn.style.display = "none"; // Hide Next Button
+                    btnContainer.style.display = "flex"; // Show No Button area
+                    setupDodgeButton();
                 }
-            }, 1000);
+            }, 400); // 400ms delay for smooth transition
         }
-
-        // Start animation
-        progressFill.style.width = `${(1 / story.length) * 100}%`;
-        const slideInterval = setInterval(updateSlide, intervalTime);
 
         // --- Dodge "No" Button Logic ---
         function setupDodgeButton() {
-            // Touch & Mouse events for mobile & desktop
             noBtn.addEventListener('touchstart', moveNoBtn, {passive: false});
             noBtn.addEventListener('click', moveNoBtn);
             noBtn.addEventListener('mouseover', moveNoBtn);
         }
 
         function moveNoBtn(e) {
-            e.preventDefault(); // Prevents actual click
+            e.preventDefault(); 
             
-            // Randomly move button inside the card boundaries
+            // Get boundaries of the card
             const cardRect = card.getBoundingClientRect();
             const btnRect = noBtn.getBoundingClientRect();
 
-            // Calculate safe boundaries
-            const maxX = cardRect.width - btnRect.width - 20;
-            const maxY = cardRect.height - btnRect.height - 20;
+            // Calculate safe movement area so it stays inside the glass card
+            const maxX = cardRect.width - btnRect.width - 40;
+            const maxY = cardRect.height - btnRect.height - 80;
 
             const randomX = Math.floor(Math.random() * maxX) - (maxX / 2) + 20;
             const randomY = Math.floor(Math.random() * maxY) - (maxY / 2) + 20;
@@ -307,19 +314,6 @@
             setTimeout(() => {
                 sneakyText.style.opacity = "0";
             }, 1500);
-        }
-
-        // --- Yes Button Logic ---
-        function sayYes() {
-            btnContainer.style.display = "none";
-            emojiEl.innerText = "🎉";
-            emojiEl.style.transform = "scale(1.5)";
-            textEl.innerHTML = "<span style='color: #38ef7d; font-size: 26px; font-weight: 600;'>Thank you so muchhh! ❤️</span><br><br>Aap waqayi bohat achiii ho!";
-            
-            // Extra celebration effects can be added here
-            setInterval(() => {
-                emojiEl.style.transform = emojiEl.style.transform === "scale(1.5)" ? "scale(1.2)" : "scale(1.5)";
-            }, 500);
         }
 
     </script>
