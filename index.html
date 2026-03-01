@@ -3,273 +3,570 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Good Night Roshni ✨</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Surprise For Roshni 🎈</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* =========================================
+           ADVANCED CSS ARCHITECTURE & VARIABLES
+           ========================================= */
         :root {
-            --bg-top: #0b0f19;
-            --bg-bottom: #1a1543;
-            --card-bg: rgba(255, 255, 255, 0.08);
-            --text-color: #f0f4f8;
-            --btn-color: #fbc531;
+            --bg-gradient-start: #ff9a9e;
+            --bg-gradient-end: #fecfef;
+            --card-glass: rgba(255, 255, 255, 0.4);
+            --card-border: rgba(255, 255, 255, 0.6);
+            --text-dark: #2d3436;
+            --text-light: #636e72;
+            --btn-bg: #ff7675;
+            --btn-hover: #d63031;
+            --bubble-1: rgba(255, 118, 117, 0.7);
+            --bubble-2: rgba(116, 185, 255, 0.7);
+            --bubble-3: rgba(162, 155, 254, 0.7);
+            --bubble-4: rgba(253, 203, 110, 0.7);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            user-select: none;
             -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background: linear-gradient(to bottom, var(--bg-top), var(--bg-bottom));
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
             height: 100vh;
             width: 100vw;
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
-            color: var(--text-color);
             position: relative;
         }
 
-        /* Starry Sky Animation */
-        .stars {
+        /* Canvas for Confetti & Particles */
+        #fxCanvas {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 0;
+            z-index: 50;
             pointer-events: none;
         }
 
-        .star {
+        /* =========================================
+           SCENE 1: BUBBLE POP GAME
+           ========================================= */
+        #gameScene {
             position: absolute;
-            background-color: white;
-            border-radius: 50%;
-            opacity: 0;
-            animation: twinkle var(--duration) infinite ease-in-out alternate;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 20;
+            transition: opacity 1s ease;
         }
 
-        @keyframes twinkle {
-            0% { opacity: 0.1; transform: scale(0.8); }
-            100% { opacity: 0.8; transform: scale(1.2); box-shadow: 0 0 8px white; }
+        .game-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 28px;
+            color: #fff;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+            text-align: center;
+            padding: 0 20px;
+            animation: bounceIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* Glowing Moon */
-        .moon {
-            position: absolute;
-            top: 40px;
-            right: 40px;
-            width: 80px;
-            height: 80px;
-            background: #fdf5e6;
-            border-radius: 50%;
-            box-shadow: 0 0 40px #fdf5e6, inset -10px -10px 20px rgba(0,0,0,0.1);
-            z-index: 1;
-            animation: floatMoon 6s infinite alternate ease-in-out;
-        }
-
-        @keyframes floatMoon {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(15px); }
-        }
-
-        .mobile-container {
+        .bubble-container {
             position: relative;
-            z-index: 2;
+            width: 100%;
+            height: 60vh;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            box-shadow: inset -10px -10px 20px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
+            cursor: pointer;
+            transition: transform 0.2s;
+            animation: float 4s ease-in-out infinite alternate;
+        }
+
+        .bubble:active {
+            transform: scale(0.9);
+        }
+
+        /* Bubble popping animation */
+        .pop-anim {
+            animation: popOut 0.3s forwards;
+        }
+
+        @keyframes popOut {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.4); opacity: 0.8; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-30px) rotate(10deg); }
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); opacity: 1; }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+
+        /* =========================================
+           SCENE 2: STORY CARD (3D TILT)
+           ========================================= */
+        #storyScene {
+            position: relative;
+            z-index: 30;
             width: 100%;
             max-width: 400px;
             padding: 20px;
+            display: none;
+            opacity: 0;
+            perspective: 1000px;
         }
 
-        /* Premium Glass Card */
         .glass-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 30px;
-            padding: 40px 25px;
-            min-height: 420px;
-            text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            background: var(--card-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 2px solid var(--card-border);
+            border-radius: 35px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            text-align: center;
+            min-height: 400px;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out;
         }
 
-        .emoji-display {
-            font-size: 70px;
-            margin-bottom: 25px;
-            filter: drop-shadow(0 0 15px rgba(255,255,255,0.3));
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        .emoji-wrapper {
+            font-size: 75px;
+            margin-bottom: 20px;
+            transform: translateZ(50px); /* 3D effect */
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .text-display {
-            font-size: 22px;
-            font-weight: 400;
-            line-height: 1.5;
-            min-height: 130px;
+        .text-wrapper {
+            transform: translateZ(30px); /* 3D effect */
+            min-height: 140px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
-        .fade-out {
+        .main-text {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 24px;
+            color: var(--text-dark);
+            line-height: 1.5;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .sub-text {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-top: 10px;
             opacity: 0;
-            transform: scale(0.95);
+            animation: fadeIn 1s forwards 0.5s;
         }
 
-        .fade-in {
+        .text-hidden {
+            opacity: 0;
+            transform: translateY(20px) scale(0.9);
+        }
+
+        .text-visible {
             opacity: 1;
-            transform: scale(1);
+            transform: translateY(0) scale(1);
         }
 
-        /* Action Button */
-        .btn-next {
-            background: var(--btn-color);
-            color: #111;
-            padding: 15px 35px;
-            font-size: 18px;
-            font-weight: 600;
-            border-radius: 30px;
-            border: none;
-            cursor: pointer;
+        /* Playful Button */
+        .btn-playful {
             margin-top: 30px;
-            box-shadow: 0 8px 25px rgba(251, 197, 49, 0.4);
-            transition: all 0.3s;
+            background: var(--btn-bg);
+            color: white;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 20px;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(255, 118, 117, 0.4), inset 0 -4px 0 rgba(0,0,0,0.1);
+            cursor: pointer;
+            transform: translateZ(40px); /* 3D effect */
+            transition: all 0.2s;
         }
 
-        .btn-next:active {
-            transform: scale(0.95);
+        .btn-playful:active {
+            transform: translateZ(40px) translateY(4px);
+            box-shadow: 0 5px 10px rgba(255, 118, 117, 0.4), inset 0 0px 0 rgba(0,0,0,0.1);
         }
 
-        /* Progress Dots */
-        .dots-container {
+        /* Progress Tracker */
+        .progress-container {
             display: flex;
-            gap: 8px;
-            position: absolute;
-            bottom: 30px;
+            gap: 10px;
+            margin-top: 30px;
+            transform: translateZ(20px);
         }
 
-        .dot {
-            width: 8px;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            transition: all 0.4s ease;
+        .heart-dot {
+            font-size: 14px;
+            opacity: 0.3;
+            transition: all 0.4s;
+            filter: grayscale(100%);
         }
 
-        .dot.active {
-            background: var(--btn-color);
-            width: 20px;
-            border-radius: 10px;
+        .heart-dot.active {
+            opacity: 1;
+            transform: scale(1.5);
+            filter: grayscale(0%);
         }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
     </style>
 </head>
 <body>
 
-    <div class="stars" id="starContainer"></div>
-    <div class="moon"></div>
+    <canvas id="fxCanvas"></canvas>
 
-    <div class="mobile-container">
-        <div class="glass-card">
-            <div class="emoji-display" id="emoji">✨</div>
-            <div class="text-display" id="text">Roshni...</div>
+    <div id="gameScene">
+        <h1 class="game-title" id="gameTitle">Roshni, In 3 balloons ko phoriye! 🎈</h1>
+        <div class="bubble-container" id="bubbleContainer"></div>
+    </div>
+
+    <div id="storyScene">
+        <div class="glass-card" id="tiltCard">
+            <div class="emoji-wrapper" id="emoji">✨</div>
+            <div class="text-wrapper">
+                <div class="main-text text-hidden" id="text"></div>
+            </div>
             
-            <button class="btn-next" id="nextBtn" onclick="nextSlide()">Aage Parhein ➔</button>
+            <button class="btn-playful" id="nextBtn" onclick="nextSlide()">Aage Chalein 🐾</button>
 
-            <div class="dots-container" id="dotsContainer"></div>
+            <div class="progress-container" id="progressDots"></div>
         </div>
     </div>
 
     <script>
-        // Generating random stars
-        const starContainer = document.getElementById('starContainer');
-        for (let i = 0; i < 60; i++) {
-            let star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = Math.random() * 100 + 'vw';
-            star.style.top = Math.random() * 100 + 'vh';
-            star.style.width = Math.random() * 3 + 1 + 'px';
-            star.style.height = star.style.width;
-            star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
-            starContainer.appendChild(star);
-        }
+        /* =========================================
+           ADVANCED JAVASCRIPT LOGIC & PHYSICS
+           ========================================= */
 
-        // Happy & Sweet Story Array
-        const story = [
-            { text: "Roshni...", emoji: "✨" },
-            { text: "Maaf karne ke liye aapka bohat bohat shukriya!", emoji: "💖" },
-            { text: "Sach bataun toh meri life mein sukoon wapis aagaya hai.", emoji: "😌" },
-            { text: "Aapki smile aur aapki dosti mere liye bohat keemti hai.", emoji: "🌸" },
-            { text: "Aap waqayi bohat special hain, aur hamesha rahengi.", emoji: "🤝" },
-            { text: "Ab saari pareshaniyan bhool jayen...", emoji: "🍃" },
-            { text: "Aur is pyari si raat mein ek sweet si smile ke sath so jayen.", emoji: "😇" },
-            { text: "Sweet Dreams Roshni! Good Night! 🌙\n\n- Aapka dost, Abubakar", emoji: "🌌" }
-        ];
-
+        // --- DOM Elements ---
+        const gameScene = document.getElementById('gameScene');
+        const bubbleContainer = document.getElementById('bubbleContainer');
+        const gameTitle = document.getElementById('gameTitle');
+        const storyScene = document.getElementById('storyScene');
+        const tiltCard = document.getElementById('tiltCard');
         const textEl = document.getElementById('text');
         const emojiEl = document.getElementById('emoji');
         const nextBtn = document.getElementById('nextBtn');
-        const dotsContainer = document.getElementById('dotsContainer');
+        const progressDots = document.getElementById('progressDots');
 
+        // --- State Variables ---
+        let bubblesToPop = 3;
+        let poppedCount = 0;
         let currentIndex = 0;
         let isAnimating = false;
 
-        // Create dots for progress
-        story.forEach((_, index) => {
-            const dot = document.createElement('div');
-            dot.className = `dot ${index === 0 ? 'active' : ''}`;
-            dot.id = `dot-${index}`;
-            dotsContainer.appendChild(dot);
-        });
+        // --- Story Data ---
+        const story = [
+            { text: "Tadaaa! 🎉", emoji: "✨" },
+            { text: "Aapne mujhe maaf kar ke mera din bana diya! Sach mein!", emoji: "🎈" },
+            { text: "Pata hai? Aapki smile kisi bhi udaas din ko roshan kar sakti hai.", emoji: "🌻" },
+            { text: "Aap jaisi achi aur caring dost milna sach mein ek blessing hai.", emoji: "🤲" },
+            { text: "Main hamesha koshish karunga ke aapke chehre par aisi hi muskurahat rahe.", emoji: "🧸" },
+            { text: "Ab ek pyari si smile dein... Haan, bilkul aise!", emoji: "😊" },
+            { text: "Hamesha khush rahen, Roshni! 💖\n\n- Abubakar", emoji: "🌌" }
+        ];
 
-        function updateDots() {
-            document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
-            document.getElementById(`dot-${currentIndex}`).classList.add('active');
+        /* -----------------------------------------
+           PART 1: THE BUBBLE POP GAME ENGINE
+           ----------------------------------------- */
+        const bubbleColors = ['var(--bubble-1)', 'var(--bubble-2)', 'var(--bubble-3)', 'var(--bubble-4)'];
+        const bubbleEmojis = ['🎈', '🧸', '💖', '🌻', '🌸'];
+
+        function initBubbles() {
+            for(let i=0; i<5; i++) {
+                createBubble();
+            }
         }
 
-        function nextSlide() {
-            if (isAnimating) return;
-            isAnimating = true;
+        function createBubble() {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+            
+            // Random styling
+            const size = Math.floor(Math.random() * 40) + 70; // 70px to 110px
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+            
+            const color = bubbleColors[Math.floor(Math.random() * bubbleColors.length)];
+            bubble.style.background = color;
+            
+            bubble.innerText = bubbleEmojis[Math.floor(Math.random() * bubbleEmojis.length)];
+            
+            // Random positioning inside container
+            bubble.style.left = `${Math.floor(Math.random() * 70)}%`;
+            bubble.style.top = `${Math.floor(Math.random() * 70)}%`;
+            
+            // Random float animation delay
+            bubble.style.animationDelay = `${Math.random() * 2}s`;
 
-            // Fade out
-            textEl.classList.remove('fade-in');
-            textEl.classList.add('fade-out');
-            emojiEl.style.opacity = '0';
-            emojiEl.style.transform = 'translateY(-20px)';
+            // Pop Event
+            bubble.addEventListener('touchstart', (e) => popBubble(e, bubble), {passive: false});
+            bubble.addEventListener('click', (e) => popBubble(e, bubble));
+
+            bubbleContainer.appendChild(bubble);
+        }
+
+        function popBubble(e, element) {
+            e.preventDefault();
+            if(element.classList.contains('pop-anim')) return;
+
+            // Trigger Pop Animation
+            element.classList.add('pop-anim');
+            poppedCount++;
+
+            // Update Game Title
+            const remaining = bubblesToPop - poppedCount;
+            if(remaining > 0) {
+                gameTitle.innerText = `Great! Ab ${remaining} aur phoriye! 🎈`;
+                gameTitle.style.animation = 'none';
+                void gameTitle.offsetWidth; // trigger reflow
+                gameTitle.style.animation = 'bounceIn 0.5s';
+            } else if (remaining === 0) {
+                gameTitle.innerText = "Yay! Perfect! ✨";
+                setTimeout(transitionToStory, 800);
+            }
+
+            // Remove element after animation
+            setTimeout(() => {
+                element.remove();
+            }, 300);
+        }
+
+        /* -----------------------------------------
+           PART 2: TRANSITION & STORY LOGIC
+           ----------------------------------------- */
+        function transitionToStory() {
+            gameScene.style.opacity = '0';
+            setTimeout(() => {
+                gameScene.style.display = 'none';
+                storyScene.style.display = 'block';
+                
+                // Trigger Fade In for Story
+                setTimeout(() => {
+                    storyScene.style.opacity = '1';
+                    setupStoryDots();
+                    showStory(0);
+                    initTiltEffect();
+                }, 100);
+            }, 1000);
+        }
+
+        function setupStoryDots() {
+            story.forEach((_, idx) => {
+                const dot = document.createElement('div');
+                dot.className = 'heart-dot';
+                dot.innerHTML = '❤️';
+                dot.id = `dot-${idx}`;
+                progressDots.appendChild(dot);
+            });
+        }
+
+        function showStory(index) {
+            // Hide current
+            textEl.classList.remove('text-visible');
+            textEl.classList.add('text-hidden');
+            emojiEl.style.transform = "translateZ(50px) scale(0.5) rotate(-20deg)";
+            emojiEl.style.opacity = "0";
 
             setTimeout(() => {
-                currentIndex++;
-                
-                // Update Content
-                textEl.innerText = story[currentIndex].text;
-                emojiEl.innerText = story[currentIndex].emoji;
-                
-                updateDots();
+                // Update content
+                textEl.innerText = story[index].text;
+                emojiEl.innerText = story[index].emoji;
 
-                // Fade in
-                textEl.classList.remove('fade-out');
-                textEl.classList.add('fade-in');
-                emojiEl.style.opacity = '1';
-                emojiEl.style.transform = 'translateY(0)';
+                // Update Dots
+                document.querySelectorAll('.heart-dot').forEach(d => {
+                    d.classList.remove('active');
+                    d.style.filter = "grayscale(100%)";
+                });
+                const activeDot = document.getElementById(`dot-${index}`);
+                activeDot.classList.add('active');
+                activeDot.style.filter = "grayscale(0%)";
+
+                // Show new
+                textEl.classList.remove('text-hidden');
+                textEl.classList.add('text-visible');
+                emojiEl.style.transform = "translateZ(50px) scale(1) rotate(0deg)";
+                emojiEl.style.opacity = "1";
 
                 isAnimating = false;
 
-                // If last slide, hide the button
-                if (currentIndex === story.length - 1) {
+                // Handle Last Slide
+                if(index === story.length - 1) {
                     nextBtn.style.display = "none";
-                    // Extra magical effect at the end
-                    emojiEl.style.filter = "drop-shadow(0 0 30px #fbc531)";
+                    emojiEl.classList.add('pop-anim');
+                    setTimeout(() => {
+                        emojiEl.classList.remove('pop-anim');
+                        emojiEl.style.filter = "drop-shadow(0 0 20px rgba(255,105,180,0.8))";
+                    }, 300);
+                    // Trigger massive confetti
+                    fireConfetti();
                 }
-            }, 500); // Wait for fade-out to complete
+            }, 400);
         }
+
+        function nextSlide() {
+            if(isAnimating) return;
+            isAnimating = true;
+            currentIndex++;
+            
+            // Add a playful button bounce
+            nextBtn.style.transform = "translateZ(40px) scale(0.9)";
+            setTimeout(() => {
+                nextBtn.style.transform = "translateZ(40px) scale(1)";
+            }, 150);
+
+            showStory(currentIndex);
+        }
+
+        /* -----------------------------------------
+           PART 3: 3D TILT EFFECT (Vanilla JS Physics)
+           ----------------------------------------- */
+        function initTiltEffect() {
+            // Mouse movement for desktop
+            document.addEventListener('mousemove', handleTilt);
+            // Device orientation for mobile (if granted)
+            window.addEventListener('deviceorientation', handleDeviceTilt);
+        }
+
+        function handleTilt(e) {
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+            tiltCard.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        }
+
+        function handleDeviceTilt(e) {
+            if(!e.beta || !e.gamma) return;
+            // Limit the rotation so it doesn't flip over
+            const x = Math.max(-15, Math.min(15, e.gamma / 2));
+            const y = Math.max(-15, Math.min(15, (e.beta - 45) / 2));
+            tiltCard.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
+        }
+
+        /* -----------------------------------------
+           PART 4: HIGH-PERFORMANCE CANVAS CONFETTI
+           ----------------------------------------- */
+        const canvas = document.getElementById('fxCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particles = [];
+        const colors = ['#ff7675', '#74b9ff', '#a29bfe', '#fdcb6e', '#55efc4', '#ffeaa7'];
+
+        class Particle {
+            constructor() {
+                this.x = canvas.width / 2;
+                this.y = canvas.height / 2 + 100; // Start from button area
+                this.size = Math.random() * 10 + 5;
+                this.speedX = Math.random() * 20 - 10; // Wide spread
+                this.speedY = Math.random() * -20 - 5; // Shoot up
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.gravity = 0.5;
+                this.rotation = Math.random() * 360;
+                this.rotationSpeed = Math.random() * 10 - 5;
+                this.opacity = 1;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.speedY += this.gravity; // Gravity pull
+                this.rotation += this.rotationSpeed;
+                this.opacity -= 0.005; // Slowly fade out
+            }
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation * Math.PI / 180);
+                ctx.globalAlpha = Math.max(0, this.opacity);
+                ctx.fillStyle = this.color;
+                // Draw a random shape (square or circle)
+                if (Math.random() > 0.5) {
+                    ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size);
+                } else {
+                    ctx.beginPath();
+                    ctx.arc(0, 0, this.size/2, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                ctx.restore();
+            }
+        }
+
+        function handleParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for(let i=0; i<particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                // Remove invisible particles
+                if(particles[i].opacity <= 0 || particles[i].y > canvas.height) {
+                    particles.splice(i, 1);
+                    i--;
+                }
+            }
+            requestAnimationFrame(handleParticles);
+        }
+
+        function fireConfetti() {
+            // Generate 200 particles
+            for(let i=0; i<200; i++) {
+                particles.push(new Particle());
+            }
+            handleParticles(); // Start animation loop
+            
+            // Extra bursts
+            setTimeout(() => {
+                for(let i=0; i<100; i++) particles.push(new Particle());
+            }, 500);
+            setTimeout(() => {
+                for(let i=0; i<100; i++) particles.push(new Particle());
+            }, 1000);
+        }
+
+        // Handle Window Resize for Canvas
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Initialize Game
+        initBubbles();
 
     </script>
 </body>
