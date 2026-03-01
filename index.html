@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Sawal Hai... ✨</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>A Cute Story ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,318 +15,316 @@
         }
 
         body {
-            font-family: 'Outfit', sans-serif;
-            /* Post-Iftar Magical Evening Theme */
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            font-family: 'Baloo 2', cursive;
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
             height: 100vh;
             width: 100vw;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #ffffff;
-            position: relative;
+            color: #333;
         }
 
-        /* Ambient Stars / Dust */
-        .stars {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .star {
-            position: absolute;
-            background: #fff;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #fff;
-            animation: twinkle var(--dur) infinite alternate;
-        }
-
-        @keyframes twinkle {
-            0% { opacity: 0.2; transform: scale(0.8); }
-            100% { opacity: 1; transform: scale(1.2); }
-        }
-
-        /* Glassmorphism Card */
-        .glass-card {
-            position: relative;
-            z-index: 10;
+        /* Mobile Container */
+        .story-container {
             width: 90%;
-            max-width: 380px;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            max-width: 400px;
+            height: 85vh;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
             border-radius: 30px;
-            padding: 40px 25px;
-            text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            min-height: 400px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1), inset 0 0 0 8px rgba(255,255,255,0.5);
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            padding: 20px;
+            position: relative;
         }
 
-        .emoji-display {
-            font-size: 50px;
-            margin-bottom: 20px;
-            transition: all 0.5s ease;
-            filter: drop-shadow(0 0 15px rgba(255,255,255,0.2));
-        }
-
-        .text-display {
-            font-size: 22px;
-            font-weight: 400;
-            line-height: 1.5;
-            min-height: 120px;
+        /* Scene Area */
+        .scene {
+            flex: 1;
+            width: 100%;
             display: flex;
-            align-items: center;
             justify-content: center;
-            transition: opacity 0.5s, transform 0.5s;
+            align-items: center;
+            position: relative;
         }
 
+        /* Stickers Styling */
+        .stickers-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.5s ease;
+        }
+
+        .sticker {
+            font-size: 80px;
+            filter: drop-shadow(0 10px 10px rgba(0,0,0,0.15));
+            animation: float 3s ease-in-out infinite alternate;
+            position: relative;
+        }
+
+        /* Different float timings for stickers */
+        .sticker:nth-child(1) { animation-delay: 0s; }
+        .sticker:nth-child(2) { animation-delay: 1s; }
+        .sticker:nth-child(3) { animation-delay: 0.5s; }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-15px) rotate(5deg); }
+        }
+
+        /* Action/Thought Bubbles */
+        .mini-bubble {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 30px;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Text Area */
+        .text-box {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            width: 100%;
+            min-height: 140px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Speech tail */
+        .text-box::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 0 15px 15px 15px;
+            border-style: solid;
+            border-color: transparent transparent white transparent;
+        }
+
+        .story-text {
+            font-size: 20px;
+            line-height: 1.5;
+            transition: opacity 0.5s;
+        }
+
+        .highlight-text {
+            color: #ff4757;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        /* Button */
+        .next-btn {
+            background: #ff6b81;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 20px;
+            font-family: 'Baloo 2', cursive;
+            font-weight: 700;
+            border-radius: 50px;
+            box-shadow: 0 8px 20px rgba(255, 107, 129, 0.4);
+            cursor: pointer;
+            transition: transform 0.2s;
+            width: 80%;
+        }
+
+        .next-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Entry/Exit Animations */
         .fade-out {
             opacity: 0;
-            transform: translateY(-20px);
+            transform: scale(0.9);
+            transition: all 0.4s;
         }
-
         .fade-in {
             opacity: 1;
-            transform: translateY(0);
+            transform: scale(1);
+            transition: all 0.4s;
         }
 
-        /* Tap to continue indicator */
-        .tap-text {
+        @keyframes popIn {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Confetti for the end */
+        .confetti {
             position: absolute;
-            bottom: 20px;
-            font-size: 13px;
-            letter-spacing: 1px;
-            opacity: 0.5;
-            animation: pulse 2s infinite;
+            width: 10px;
+            height: 10px;
+            background: #ff4757;
+            animation: fall linear forwards;
+            z-index: 100;
         }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.8; }
-        }
-
-        /* --- Buttons Section --- */
-        .action-area {
-            display: none;
-            width: 100%;
-            height: 200px;
-            position: relative;
-            margin-top: 20px;
-        }
-
-        .btn {
-            padding: 15px 35px;
-            font-size: 18px;
-            font-weight: 600;
-            border-radius: 50px;
-            border: none;
-            cursor: pointer;
-            color: white;
-            transition: all 0.3s cubic-bezier(0.25, 1.5, 0.5, 1);
-            position: absolute;
-        }
-
-        .btn-yes {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-            box-shadow: 0 10px 20px rgba(56, 239, 125, 0.4);
-            left: 50%;
-            top: 20px;
-            transform: translateX(-50%);
-            z-index: 5;
-        }
-
-        .btn-no {
-            background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
-            box-shadow: 0 10px 20px rgba(255, 75, 43, 0.4);
-            left: 50%;
-            top: 100px;
-            transform: translateX(-50%);
-            z-index: 15; /* Kept higher so it doesn't hide behind Yes */
-        }
-
-        /* Funny floating text when No is clicked */
-        .funny-text {
-            position: absolute;
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 18px;
-            font-weight: 600;
-            color: #ffb677;
-            opacity: 0;
-            white-space: nowrap;
-            transition: opacity 0.3s;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
-            pointer-events: none;
-            z-index: 20;
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(720deg); }
         }
 
     </style>
 </head>
-<body id="mainBody" onclick="nextSlide(event)">
+<body>
 
-    <div class="stars" id="starContainer"></div>
-
-    <div class="glass-card" id="card">
-        <div class="emoji-display" id="emoji">🌙</div>
-        <div class="text-display" id="text">Aftari toh ho gayi hogi...</div>
+    <div class="story-container">
         
-        <div class="tap-text" id="tapHint">Screen par tap karein</div>
-
-        <div class="action-area" id="actionArea">
-            <div class="funny-text" id="funnyText"></div>
-            <button class="btn btn-yes" id="yesBtn" onclick="sayYes(event)">Haan! 💚</button>
-            <button class="btn btn-no" id="noBtn">Nahi 💔</button>
+        <div class="scene">
+            <div class="stickers-wrapper" id="stickers">
+                </div>
         </div>
+
+        <div class="text-box">
+            <div class="story-text" id="text"></div>
+        </div>
+
+        <button class="next-btn" id="btn" onclick="nextScene()">Aage Parhein ➔</button>
+
     </div>
 
     <script>
-        // Generate Stars
-        const starContainer = document.getElementById('starContainer');
-        for(let i=0; i<40; i++){
-            let star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = Math.random() * 100 + 'vw';
-            star.style.top = Math.random() * 100 + 'vh';
-            let size = Math.random() * 3 + 1;
-            star.style.width = size + 'px';
-            star.style.height = size + 'px';
-            star.style.setProperty('--dur', (Math.random() * 2 + 1) + 's');
-            starContainer.appendChild(star);
-        }
+        // Character Definitions
+        const Roshni = '👧🏻';
+        const Abubakar = '👦🏻';
+        const JK = '👱🏼‍♂️';
 
-        // Story with deep emotional connection
         const story = [
-            { text: "Aftari toh ho gayi hogi... 🌙", emoji: "✨" },
-            { text: "Namaz aur duaon ka waqt chal raha hai, toh dil se ek dua nikli...", emoji: "🤲" },
-            { text: "Allah kare aapki har khwahish aur har dua qabool ho! Aameen.", emoji: "🌸" },
-            { text: "Pata nahi kyun...", emoji: "🤔" },
-            { text: "Lekin aapke sath ek bohat deep aur pyara connection feel hota hai.", emoji: "💫" },
-            { text: "Jaise aap meri life ka ek bohat important hissa ban chuki hain.", emoji: "💖" },
-            { text: "Is liye socha aaj ek chota sa sawal puch hi loon...", emoji: "🙈" },
-            { text: "Kya main bhi aapko acha lagta hoon?", emoji: "🥺", isLast: true }
+            {
+                text: "Roshni aur Abubakar bohat achay dost the. Lekin Roshni hamesha JK ki baatein karti rehti thi...",
+                stickers: `
+                    <div class="sticker">${Roshni}<div class="mini-bubble">💬</div></div>
+                    <div class="sticker" style="filter: grayscale(100%); opacity: 0.6;">${JK}</div>
+                    <div class="sticker">${Abubakar}<div class="mini-bubble">😒</div></div>
+                `
+            },
+            {
+                text: "Abubakar ko thori jealousy hoti thi. Phir ek din, JK sach mein Roshni ki life mein aagaya.",
+                stickers: `
+                    <div class="sticker">${Roshni}</div>
+                    <div class="sticker">${JK}<div class="mini-bubble">🌹</div></div>
+                    <div class="sticker" style="margin-left: 30px;">${Abubakar}<div class="mini-bubble">💔</div></div>
+                `
+            },
+            {
+                text: "Start mein toh Roshni bohat khush thi. Lekin kuch waqt baad, usay ehsas hua ke JK ke sath wo sukoon nahi hai...",
+                stickers: `
+                    <div class="sticker">${Roshni}<div class="mini-bubble">😔</div></div>
+                    <div class="sticker">${JK}<div class="mini-bubble">📱</div></div>
+                `
+            },
+            {
+                text: "Wo wahan ho kar bhi khush nahi thi. Uska dil wapis apne sab se achay dost ke paas aane ko chaha.",
+                stickers: `
+                    <div class="sticker">${Roshni}<div class="mini-bubble">💭👦🏻</div></div>
+                `
+            },
+            {
+                text: "Ek din Abubakar akela aur udaas betha tha... tabhi achanak Roshni uske paas aagayi!",
+                stickers: `
+                    <div class="sticker">${Abubakar}<div class="mini-bubble">😞</div></div>
+                    <div class="sticker" style="transform: scaleX(-1);">${Roshni}<div class="mini-bubble">🏃🏻‍♀️</div></div>
+                `
+            },
+            {
+                text: "Abubakar usay wapis dekh kar bohat khush hua! Dono ke chehron par ek pyari si smile aagayi.",
+                stickers: `
+                    <div class="sticker">${Abubakar}<div class="mini-bubble">🥺</div></div>
+                    <div class="sticker">${Roshni}<div class="mini-bubble">😊</div></div>
+                `
+            },
+            {
+                text: "Toh Roshni ne uski taraf dekha aur bohat pyaar se kaha...",
+                stickers: `
+                    <div class="sticker">${Abubakar}</div>
+                    <div class="sticker">${Roshni}<div class="mini-bubble">✨</div></div>
+                `
+            },
+            {
+                text: "<span class='highlight-text'>\"Main thi toh udhar...<br>Lekin sirf aapki yadon mein thi!\"</span> 💖",
+                stickers: `
+                    <div class="sticker" style="font-size: 100px;">🫂</div>
+                `
+            },
+            {
+                text: "Aise unki dosti aur connection pehle se bhi zyada strong ho gaya! <br><br><b>✨ Happy Ending ✨</b>",
+                stickers: `
+                    <div class="sticker">👦🏻</div>
+                    <div class="sticker">💖</div>
+                    <div class="sticker">👧🏻</div>
+                `,
+                isLast: true
+            }
         ];
-
-        const textEl = document.getElementById('text');
-        const emojiEl = document.getElementById('emoji');
-        const tapHint = document.getElementById('tapHint');
-        const actionArea = document.getElementById('actionArea');
-        const yesBtn = document.getElementById('yesBtn');
-        const noBtn = document.getElementById('noBtn');
-        const funnyText = document.getElementById('funnyText');
 
         let currentIndex = 0;
         let isAnimating = false;
-        let yesScale = 1; // Starting scale for Yes button
 
-        const funnyMessages = [
-            "Zalim!", 
-            "Zulam nah kro!", 
-            "Aray aray!", 
-            "Aise toh na karo 🥺", 
-            "Maan jao na!",
-            "Itna gussa?",
-            "Yes par click kro chup kar k 😂"
-        ];
-        let funnyIndex = 0;
+        const textEl = document.getElementById('text');
+        const stickersEl = document.getElementById('stickers');
+        const btn = document.getElementById('btn');
 
-        function nextSlide(e) {
-            // Prevent sliding if clicking buttons
-            if (e.target.id === 'yesBtn' || e.target.id === 'noBtn') return;
-            
-            if (isAnimating || currentIndex >= story.length - 1) return;
-            isAnimating = true;
-
+        function loadScene(index) {
+            // Fade out
             textEl.classList.remove('fade-in');
             textEl.classList.add('fade-out');
-            emojiEl.style.transform = 'scale(0.5)';
-            emojiEl.style.opacity = '0';
+            stickersEl.classList.remove('fade-in');
+            stickersEl.classList.add('fade-out');
 
             setTimeout(() => {
-                currentIndex++;
-                textEl.innerText = story[currentIndex].text;
-                emojiEl.innerText = story[currentIndex].emoji;
+                // Update content
+                textEl.innerHTML = story[index].text;
+                stickersEl.innerHTML = story[index].stickers;
 
+                // Fade in
                 textEl.classList.remove('fade-out');
                 textEl.classList.add('fade-in');
-                emojiEl.style.transform = 'scale(1)';
-                emojiEl.style.opacity = '1';
-
-                if (story[currentIndex].isLast) {
-                    tapHint.style.display = 'none';
-                    actionArea.style.display = 'block';
-                    setupDodgeLogic();
-                }
+                stickersEl.classList.remove('fade-out');
+                stickersEl.classList.add('fade-in');
 
                 isAnimating = false;
-            }, 500);
+
+                if (story[index].isLast) {
+                    btn.style.display = 'none';
+                    shootConfetti();
+                }
+            }, 400);
         }
 
-        // --- Dodging Logic for "No" Button ---
-        function setupDodgeLogic() {
-            noBtn.addEventListener('touchstart', dodgeNo, {passive: false});
-            noBtn.addEventListener('mouseover', dodgeNo);
-            noBtn.addEventListener('click', dodgeNo);
+        function nextScene() {
+            if (isAnimating) return;
+            isAnimating = true;
+            currentIndex++;
+            loadScene(currentIndex);
         }
 
-        function dodgeNo(e) {
-            e.preventDefault(); // Prevents click
-
-            // 1. Move the No button
-            const areaWidth = actionArea.clientWidth;
-            const areaHeight = actionArea.clientHeight;
-            const btnWidth = noBtn.clientWidth;
-            const btnHeight = noBtn.clientHeight;
-
-            // Calculate random position strictly inside the action area
-            const randomX = Math.random() * (areaWidth - btnWidth);
-            const randomY = Math.random() * (areaHeight - btnHeight);
-
-            // Important: We use transform translation from the top-left of the action area
-            noBtn.style.left = '0px';
-            noBtn.style.top = '0px';
-            noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
-
-            // 2. Increase the size of the Yes button
-            if (yesScale < 3) { // Cap the scale so it doesn't break the screen completely
-                yesScale += 0.2;
-                yesBtn.style.transform = `translateX(-50%) scale(${yesScale})`;
+        // Confetti logic for Happy Ending
+        function shootConfetti() {
+            const colors = ['#ff4757', '#ffa502', '#2ed573', '#1e90ff', '#ff6b81'];
+            for (let i = 0; i < 100; i++) {
+                let confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                confetti.style.animationDelay = (Math.random() * 2) + 's';
+                document.body.appendChild(confetti);
             }
-
-            // 3. Show Funny Text
-            funnyText.innerText = funnyMessages[funnyIndex];
-            funnyText.style.opacity = '1';
-            funnyIndex = (funnyIndex + 1) % funnyMessages.length;
-
-            // Hide funny text after a moment
-            setTimeout(() => {
-                funnyText.style.opacity = '0';
-            }, 1000);
         }
 
-        // --- Success Logic ---
-        function sayYes(e) {
-            e.stopPropagation(); // Prevents slide from advancing
-            
-            actionArea.style.display = 'none';
-            emojiEl.innerText = "🎉";
-            emojiEl.style.transform = 'scale(1.5)';
-            textEl.innerHTML = "<span style='color: #38ef7d; font-size: 26px; font-weight: 600;'>Yahooo! 😍</span><br><br>Aapne toh mera aftari ke baad ka waqt aur bhi pyara kar diya! ❤️";
-            
-            // Celebration effect
-            setInterval(() => {
-                emojiEl.style.transform = emojiEl.style.transform === "scale(1.5)" ? "scale(1.2)" : "scale(1.5)";
-            }, 500);
-        }
+        // Load first scene on start
+        loadScene(0);
 
     </script>
 </body>
