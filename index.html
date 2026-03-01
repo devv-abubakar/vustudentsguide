@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Sorry Roshni 🥺</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Good Night Roshni ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0d1117;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --text-color: #e6edf3;
-            --accent: #ff4d4d;
-            --next-btn: #0072ff;
+            --bg-top: #0b0f19;
+            --bg-bottom: #1a1543;
+            --card-bg: rgba(255, 255, 255, 0.08);
+            --text-color: #f0f4f8;
+            --btn-color: #fbc531;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Poppins', sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background-color: var(--bg-color);
+            background: linear-gradient(to bottom, var(--bg-top), var(--bg-bottom));
             height: 100vh;
             width: 100vw;
             display: flex;
@@ -31,289 +31,244 @@
             align-items: center;
             overflow: hidden;
             color: var(--text-color);
+            position: relative;
         }
 
-        /* Ambient Emotional Glow */
-        .glow {
+        /* Starry Sky Animation */
+        .stars {
             position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(255,77,77,0.15) 0%, rgba(0,0,0,0) 70%);
-            border-radius: 50%;
-            animation: breathe 6s infinite alternate ease-in-out;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: 0;
+            pointer-events: none;
         }
 
-        @keyframes breathe {
-            0% { transform: scale(0.8); opacity: 0.5; }
-            100% { transform: scale(1.2); opacity: 1; }
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: twinkle var(--duration) infinite ease-in-out alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.1; transform: scale(0.8); }
+            100% { opacity: 0.8; transform: scale(1.2); box-shadow: 0 0 8px white; }
+        }
+
+        /* Glowing Moon */
+        .moon {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            width: 80px;
+            height: 80px;
+            background: #fdf5e6;
+            border-radius: 50%;
+            box-shadow: 0 0 40px #fdf5e6, inset -10px -10px 20px rgba(0,0,0,0.1);
+            z-index: 1;
+            animation: floatMoon 6s infinite alternate ease-in-out;
+        }
+
+        @keyframes floatMoon {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(15px); }
         }
 
         .mobile-container {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             width: 100%;
             max-width: 400px;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
             padding: 20px;
         }
 
-        /* Glassmorphism Card */
+        /* Premium Glass Card */
         .glass-card {
             background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            padding: 35px 25px;
-            width: 100%;
-            min-height: 400px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 30px;
+            padding: 40px 25px;
+            min-height: 420px;
             text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            position: relative;
         }
 
         .emoji-display {
-            font-size: 65px;
-            margin-bottom: 20px;
-            transition: all 0.5s ease;
+            font-size: 70px;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 15px rgba(255,255,255,0.3));
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .text-display {
-            font-size: 21px;
+            font-size: 22px;
             font-weight: 400;
-            line-height: 1.6;
-            min-height: 140px;
+            line-height: 1.5;
+            min-height: 130px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         .fade-out {
             opacity: 0;
-            transform: translateY(15px);
-            filter: blur(5px);
+            transform: scale(0.95);
         }
 
         .fade-in {
             opacity: 1;
-            transform: translateY(0);
-            filter: blur(0);
+            transform: scale(1);
         }
 
-        /* Buttons Styling */
-        .btn {
-            padding: 14px 30px;
+        /* Action Button */
+        .btn-next {
+            background: var(--btn-color);
+            color: #111;
+            padding: 15px 35px;
             font-size: 18px;
             font-weight: 600;
             border-radius: 30px;
             border: none;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            color: white;
-            margin-top: 20px;
-        }
-
-        .btn-next {
-            background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
-            box-shadow: 0 8px 20px rgba(0, 114, 255, 0.4);
-            z-index: 10;
+            margin-top: 30px;
+            box-shadow: 0 8px 25px rgba(251, 197, 49, 0.4);
+            transition: all 0.3s;
         }
 
         .btn-next:active {
             transform: scale(0.95);
         }
 
-        .btn-container {
-            display: none;
-            width: 100%;
-            margin-top: 20px;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            min-height: 80px;
-        }
-
-        .btn-no {
-            background: var(--accent);
-            box-shadow: 0 8px 20px rgba(255, 77, 77, 0.4);
-            position: relative; /* Changes to absolute via JS */
-            z-index: 5;
-        }
-
-        /* Sneaky Message when clicking No */
-        .sneaky-text {
+        /* Progress Dots */
+        .dots-container {
+            display: flex;
+            gap: 8px;
             position: absolute;
-            bottom: -40px;
-            font-size: 15px;
-            color: #ff9999;
-            opacity: 0;
-            transition: opacity 0.3s;
-            font-style: italic;
-            width: 100%;
-            text-align: center;
-            pointer-events: none;
+            bottom: 30px;
         }
 
-        /* Progress Line */
-        .progress-bar {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 3px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 5px;
-            overflow: hidden;
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transition: all 0.4s ease;
         }
-        .progress-fill {
-            height: 100%;
-            width: 0%;
-            background: #fff;
-            transition: width 0.3s ease;
+
+        .dot.active {
+            background: var(--btn-color);
+            width: 20px;
+            border-radius: 10px;
         }
     </style>
 </head>
 <body>
 
-    <div class="glow"></div>
+    <div class="stars" id="starContainer"></div>
+    <div class="moon"></div>
 
-    <div class="mobile-container" id="mainContainer">
-        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="mobile-container">
+        <div class="glass-card">
+            <div class="emoji-display" id="emoji">✨</div>
+            <div class="text-display" id="text">Roshni...</div>
+            
+            <button class="btn-next" id="nextBtn" onclick="nextSlide()">Aage Parhein ➔</button>
 
-        <div class="glass-card" id="card">
-            <div class="emoji-display" id="emoji">🥺</div>
-            <div class="text-display" id="text">Roshni... mujhe aapse kuch kehna hai...</div>
-            
-            <button class="btn btn-next" id="nextBtn" onclick="nextSlide()">Aage Parhein ➔</button>
-            
-            <div class="btn-container" id="btnContainer">
-                <button class="btn btn-no" id="noBtn">Nahi</button>
-                <div class="sneaky-text" id="sneakyText"></div>
-            </div>
+            <div class="dots-container" id="dotsContainer"></div>
         </div>
     </div>
 
     <script>
-        const story = [
-            { text: "Roshni... mujhe aapse kuch kehna hai...", emoji: "🥺" },
-            { text: "Main sach mein majboor tha, aaj aapko time nahi de saka...", emoji: "😔" },
-            { text: "Wallah mujhe bohat bura lag raha hai, main bohat udaas hoon ke aap mujhse naraz hain.", emoji: "🥀" },
-            { text: "Aapko lagta hai ke sirf aapka dil tha baat karne ka?", emoji: "💔" },
-            { text: "Wallah main bohat excited ho jata hoon jab aapse baat start hoti hai...", emoji: "🥹" },
-            { text: "Aapse baat karke main apni saari tensions aur pareshaniyan bhool jata hoon.", emoji: "✨" },
-            { text: "Aap meri life mein aayi hain toh lagta hai ke life mein kuch interesting hai.", emoji: "💫" },
-            { text: "Aap wahid girl ho jisko main sachay dil se dost manta hoon.", emoji: "💖" },
-            { text: "Aap bohat achi ho, aur main aapko kabhi khona nahi chahta.", emoji: "🤝" },
-            { text: "Kya aap apne is dost ko maaf karengi?", emoji: "🤲" }
-        ];
+        // Generating random stars
+        const starContainer = document.getElementById('starContainer');
+        for (let i = 0; i < 60; i++) {
+            let star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.width = Math.random() * 3 + 1 + 'px';
+            star.style.height = star.style.width;
+            star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
+            starContainer.appendChild(star);
+        }
 
-        const noMessages = [
-            "Aise mat karo na 🥺", 
-            "Please maan jao na 😭", 
-            "Nahi par click mat karo! 💔", 
-            "Main sachi mein sorry hoon 🥺", 
-            "Thora sa toh taras khao 🙈",
-            "Aap bohat ziddi ho! 😂",
-            "Ab toh haan karni padegi! ✨"
+        // Happy & Sweet Story Array
+        const story = [
+            { text: "Roshni...", emoji: "✨" },
+            { text: "Maaf karne ke liye aapka bohat bohat shukriya!", emoji: "💖" },
+            { text: "Sach bataun toh meri life mein sukoon wapis aagaya hai.", emoji: "😌" },
+            { text: "Aapki smile aur aapki dosti mere liye bohat keemti hai.", emoji: "🌸" },
+            { text: "Aap waqayi bohat special hain, aur hamesha rahengi.", emoji: "🤝" },
+            { text: "Ab saari pareshaniyan bhool jayen...", emoji: "🍃" },
+            { text: "Aur is pyari si raat mein ek sweet si smile ke sath so jayen.", emoji: "😇" },
+            { text: "Sweet Dreams Roshni! Good Night! 🌙\n\n- Aapka dost, Abubakar", emoji: "🌌" }
         ];
-        let noMsgIndex = 0;
 
         const textEl = document.getElementById('text');
         const emojiEl = document.getElementById('emoji');
-        const progressFill = document.getElementById('progressFill');
         const nextBtn = document.getElementById('nextBtn');
-        const btnContainer = document.getElementById('btnContainer');
-        const noBtn = document.getElementById('noBtn');
-        const sneakyText = document.getElementById('sneakyText');
-        const card = document.getElementById('card');
+        const dotsContainer = document.getElementById('dotsContainer');
 
         let currentIndex = 0;
         let isAnimating = false;
 
-        // Initial Progress setup
-        progressFill.style.width = `${(1 / story.length) * 100}%`;
+        // Create dots for progress
+        story.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.className = `dot ${index === 0 ? 'active' : ''}`;
+            dot.id = `dot-${index}`;
+            dotsContainer.appendChild(dot);
+        });
+
+        function updateDots() {
+            document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
+            document.getElementById(`dot-${currentIndex}`).classList.add('active');
+        }
 
         function nextSlide() {
-            // Prevent multiple clicks while animating
             if (isAnimating) return;
             isAnimating = true;
 
-            // Fade out current text and emoji
+            // Fade out
             textEl.classList.remove('fade-in');
             textEl.classList.add('fade-out');
             emojiEl.style.opacity = '0';
-            emojiEl.style.transform = 'scale(0.8)';
+            emojiEl.style.transform = 'translateY(-20px)';
 
             setTimeout(() => {
                 currentIndex++;
                 
-                // Update text and emoji
+                // Update Content
                 textEl.innerText = story[currentIndex].text;
                 emojiEl.innerText = story[currentIndex].emoji;
                 
-                // Update Progress Bar
-                progressFill.style.width = `${((currentIndex + 1) / story.length) * 100}%`;
+                updateDots();
 
-                // Fade in new text and emoji
+                // Fade in
                 textEl.classList.remove('fade-out');
                 textEl.classList.add('fade-in');
                 emojiEl.style.opacity = '1';
-                emojiEl.style.transform = 'scale(1)';
+                emojiEl.style.transform = 'translateY(0)';
 
                 isAnimating = false;
 
-                // Check if it's the last slide
+                // If last slide, hide the button
                 if (currentIndex === story.length - 1) {
-                    nextBtn.style.display = "none"; // Hide Next Button
-                    btnContainer.style.display = "flex"; // Show No Button area
-                    setupDodgeButton();
+                    nextBtn.style.display = "none";
+                    // Extra magical effect at the end
+                    emojiEl.style.filter = "drop-shadow(0 0 30px #fbc531)";
                 }
-            }, 400); // 400ms delay for smooth transition
-        }
-
-        // --- Dodge "No" Button Logic ---
-        function setupDodgeButton() {
-            noBtn.addEventListener('touchstart', moveNoBtn, {passive: false});
-            noBtn.addEventListener('click', moveNoBtn);
-            noBtn.addEventListener('mouseover', moveNoBtn);
-        }
-
-        function moveNoBtn(e) {
-            e.preventDefault(); 
-            
-            // Get boundaries of the card
-            const cardRect = card.getBoundingClientRect();
-            const btnRect = noBtn.getBoundingClientRect();
-
-            // Calculate safe movement area so it stays inside the glass card
-            const maxX = cardRect.width - btnRect.width - 40;
-            const maxY = cardRect.height - btnRect.height - 80;
-
-            const randomX = Math.floor(Math.random() * maxX) - (maxX / 2) + 20;
-            const randomY = Math.floor(Math.random() * maxY) - (maxY / 2) + 20;
-
-            noBtn.style.position = "absolute";
-            noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
-
-            // Show sneaky text
-            sneakyText.innerText = noMessages[noMsgIndex];
-            sneakyText.style.opacity = "1";
-            noMsgIndex = (noMsgIndex + 1) % noMessages.length;
-
-            setTimeout(() => {
-                sneakyText.style.opacity = "0";
-            }, 1500);
+            }, 500); // Wait for fade-out to complete
         }
 
     </script>
