@@ -3,25 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Surprise For Roshni 🎈</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <title>For You, Roshni ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        /* =========================================
-           ADVANCED CSS ARCHITECTURE & VARIABLES
-           ========================================= */
         :root {
-            --bg-gradient-start: #ff9a9e;
-            --bg-gradient-end: #fecfef;
-            --card-glass: rgba(255, 255, 255, 0.4);
-            --card-border: rgba(255, 255, 255, 0.6);
-            --text-dark: #2d3436;
-            --text-light: #636e72;
-            --btn-bg: #ff7675;
-            --btn-hover: #d63031;
-            --bubble-1: rgba(255, 118, 117, 0.7);
-            --bubble-2: rgba(116, 185, 255, 0.7);
-            --bubble-3: rgba(162, 155, 254, 0.7);
-            --bubble-4: rgba(253, 203, 110, 0.7);
+            --gold-light: #f9d976;
+            --gold-dark: #e9b646;
+            --bg-dark: #0a0510;
+            --bg-glow: #231236;
         }
 
         * {
@@ -33,541 +22,327 @@
         }
 
         body {
-            font-family: 'Nunito', sans-serif;
-            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            background-color: var(--bg-dark);
             height: 100vh;
             width: 100vw;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+            transition: background 2s ease;
         }
 
-        /* Canvas for Confetti & Particles */
-        #fxCanvas {
+        /* Magical Glowing Background */
+        .ambient-glow {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at 50% 50%, var(--bg-glow) 0%, var(--bg-dark) 80%);
+            opacity: 0;
+            transition: opacity 3s ease;
+            z-index: 1;
+        }
+
+        /* Fireflies / Glowing Dust */
+        #fireflies {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 50;
+            z-index: 2;
             pointer-events: none;
         }
 
-        /* =========================================
-           SCENE 1: BUBBLE POP GAME
-           ========================================= */
-        #gameScene {
+        .firefly {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 20;
-            transition: opacity 1s ease;
-        }
-
-        .game-title {
-            font-family: 'Fredoka', sans-serif;
-            font-size: 28px;
-            color: #fff;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            margin-bottom: 20px;
-            text-align: center;
-            padding: 0 20px;
-            animation: bounceIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .bubble-container {
-            position: relative;
-            width: 100%;
-            height: 60vh;
-        }
-
-        .bubble {
-            position: absolute;
+            background: var(--gold-light);
             border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 30px;
-            box-shadow: inset -10px -10px 20px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.1);
-            backdrop-filter: blur(5px);
-            cursor: pointer;
-            transition: transform 0.2s;
-            animation: float 4s ease-in-out infinite alternate;
-        }
-
-        .bubble:active {
-            transform: scale(0.9);
-        }
-
-        /* Bubble popping animation */
-        .pop-anim {
-            animation: popOut 0.3s forwards;
-        }
-
-        @keyframes popOut {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.4); opacity: 0.8; }
-            100% { transform: scale(0); opacity: 0; }
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-30px) rotate(10deg); }
-        }
-
-        @keyframes bounceIn {
-            0% { transform: scale(0.3); opacity: 0; }
-            50% { transform: scale(1.05); opacity: 1; }
-            70% { transform: scale(0.9); }
-            100% { transform: scale(1); }
-        }
-
-        /* =========================================
-           SCENE 2: STORY CARD (3D TILT)
-           ========================================= */
-        #storyScene {
-            position: relative;
-            z-index: 30;
-            width: 100%;
-            max-width: 400px;
-            padding: 20px;
-            display: none;
+            box-shadow: 0 0 10px var(--gold-light), 0 0 20px var(--gold-light);
+            animation: floatFly var(--duration) infinite ease-in-out alternate;
             opacity: 0;
-            perspective: 1000px;
+            transition: opacity 2s;
         }
 
-        .glass-card {
-            background: var(--card-glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 2px solid var(--card-border);
-            border-radius: 35px;
-            padding: 40px 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        @keyframes floatFly {
+            0% { transform: translate(0, 0) scale(0.8); opacity: 0.3; }
+            100% { transform: translate(var(--moveX), var(--moveY)) scale(1.2); opacity: 1; }
+        }
+
+        /* --- Intro Screen --- */
+        #introScreen {
+            position: absolute;
+            z-index: 20;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            transition: opacity 1.5s ease;
+        }
+
+        .tap-btn {
+            background: transparent;
+            border: 2px solid var(--gold-dark);
+            color: var(--gold-light);
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-style: italic;
+            padding: 15px 40px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(233, 182, 70, 0.2), inset 0 0 10px rgba(233, 182, 70, 0.1);
+            animation: pulseGlow 2s infinite alternate;
+            transition: transform 0.3s;
+        }
+
+        .tap-btn:active {
+            transform: scale(0.95);
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 15px rgba(233, 182, 70, 0.2), inset 0 0 10px rgba(233, 182, 70, 0.1); }
+            100% { box-shadow: 0 0 30px rgba(233, 182, 70, 0.6), inset 0 0 20px rgba(233, 182, 70, 0.4); text-shadow: 0 0 8px var(--gold-light); }
+        }
+
+        /* --- Main Story Card --- */
+        #mainCard {
+            position: relative;
+            z-index: 10;
+            width: 90%;
+            max-width: 380px;
+            background: rgba(20, 10, 30, 0.4);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(233, 182, 70, 0.3);
+            border-radius: 30px;
+            padding: 40px 30px;
             text-align: center;
-            min-height: 400px;
-            transform-style: preserve-3d;
-            transition: transform 0.1s ease-out;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5), inset 0 0 20px rgba(233, 182, 70, 0.05);
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            transition: all 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+            display: none;
         }
 
-        .emoji-wrapper {
-            font-size: 75px;
+        /* Golden Gradient Text for Name */
+        .gold-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 600;
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 20px;
-            transform: translateZ(50px); /* 3D effect */
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
         }
 
-        .text-wrapper {
-            transform: translateZ(30px); /* 3D effect */
-            min-height: 140px;
+        /* Story Text */
+        .story-content {
+            font-size: 19px;
+            line-height: 1.7;
+            min-height: 160px;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: #e0dced;
         }
 
-        .main-text {
-            font-family: 'Fredoka', sans-serif;
-            font-size: 24px;
-            color: var(--text-dark);
-            line-height: 1.5;
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-
-        .sub-text {
-            font-size: 16px;
-            color: var(--text-light);
-            margin-top: 10px;
+        .text-fade {
             opacity: 0;
-            animation: fadeIn 1s forwards 0.5s;
-        }
-
-        .text-hidden {
-            opacity: 0;
-            transform: translateY(20px) scale(0.9);
+            transform: translateY(15px);
+            transition: all 0.8s ease;
         }
 
         .text-visible {
             opacity: 1;
-            transform: translateY(0) scale(1);
+            transform: translateY(0);
         }
 
-        /* Playful Button */
-        .btn-playful {
+        /* Elegant Next Button */
+        .next-icon {
             margin-top: 30px;
-            background: var(--btn-bg);
-            color: white;
-            font-family: 'Fredoka', sans-serif;
-            font-size: 20px;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 50px;
-            box-shadow: 0 10px 25px rgba(255, 118, 117, 0.4), inset 0 -4px 0 rgba(0,0,0,0.1);
+            font-size: 30px;
+            color: var(--gold-light);
             cursor: pointer;
-            transform: translateZ(40px); /* 3D effect */
-            transition: all 0.2s;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.5s ease;
+            animation: floatArrow 2s infinite ease-in-out;
+            display: inline-block;
         }
 
-        .btn-playful:active {
-            transform: translateZ(40px) translateY(4px);
-            box-shadow: 0 5px 10px rgba(255, 118, 117, 0.4), inset 0 0px 0 rgba(0,0,0,0.1);
-        }
-
-        /* Progress Tracker */
-        .progress-container {
-            display: flex;
-            gap: 10px;
-            margin-top: 30px;
-            transform: translateZ(20px);
-        }
-
-        .heart-dot {
-            font-size: 14px;
-            opacity: 0.3;
-            transition: all 0.4s;
-            filter: grayscale(100%);
-        }
-
-        .heart-dot.active {
+        .next-icon.show {
             opacity: 1;
-            transform: scale(1.5);
-            filter: grayscale(0%);
+            transform: translateY(0);
         }
 
-        @keyframes fadeIn {
-            to { opacity: 1; }
+        @keyframes floatArrow {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Romantic Floating Hearts at the end */
+        .heart {
+            position: absolute;
+            color: var(--gold-light);
+            font-size: 20px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        @keyframes floatHeart {
+            0% { transform: translateY(0) scale(0.5) rotate(-15deg); opacity: 1; }
+            100% { transform: translateY(-100vh) scale(1.5) rotate(15deg); opacity: 0; }
         }
 
     </style>
 </head>
 <body>
 
-    <canvas id="fxCanvas"></canvas>
+    <div class="ambient-glow" id="ambientBg"></div>
+    <div id="fireflies"></div>
 
-    <div id="gameScene">
-        <h1 class="game-title" id="gameTitle">Roshni, In 3 balloons ko phoriye! 🎈</h1>
-        <div class="bubble-container" id="bubbleContainer"></div>
+    <div id="introScreen">
+        <button class="tap-btn" onclick="startMagic()">Tap to open ✨</button>
     </div>
 
-    <div id="storyScene">
-        <div class="glass-card" id="tiltCard">
-            <div class="emoji-wrapper" id="emoji">✨</div>
-            <div class="text-wrapper">
-                <div class="main-text text-hidden" id="text"></div>
-            </div>
-            
-            <button class="btn-playful" id="nextBtn" onclick="nextSlide()">Aage Chalein 🐾</button>
-
-            <div class="progress-container" id="progressDots"></div>
+    <div id="mainCard">
+        <div class="gold-text" id="heading">Roshni...</div>
+        <div class="story-content">
+            <div class="text-fade" id="textContent"></div>
         </div>
+        <div class="next-icon" id="nextBtn" onclick="nextSlide()">🡣</div>
     </div>
 
     <script>
-        /* =========================================
-           ADVANCED JAVASCRIPT LOGIC & PHYSICS
-           ========================================= */
+        // Story Lines specially crafted with the "Roshni" (Light) theme
+        const story = [
+            "Aap ka naam hi 'Roshni' hai...",
+            "Aur sach kahun, aapke aanay se meri life mein waqayi bohat roshni aagayi hai. ✨",
+            "Jab aap naraz theen, toh lag raha tha jaise sab kuch andhera sa ho gaya hai.",
+            "Lekin aapne mujhe maaf kar ke mera aasmaan wapis chamka diya! 🌌",
+            "Aap jaisi caring aur special dost kismat walon ko milti hai.",
+            "Meri dua hai ke aapki life hamesha is chamakte hue taaron ki tarah bright rahay. 🌟",
+            "Ab ek pyari si smile dein... aur saari tensions bhool jayen.",
+            "Khush rahen, abaad rahen!\nGood Night, Sweet Dreams. 🌙\n\n- Aapka dost, Abubakar"
+        ];
 
-        // --- DOM Elements ---
-        const gameScene = document.getElementById('gameScene');
-        const bubbleContainer = document.getElementById('bubbleContainer');
-        const gameTitle = document.getElementById('gameTitle');
-        const storyScene = document.getElementById('storyScene');
-        const tiltCard = document.getElementById('tiltCard');
-        const textEl = document.getElementById('text');
-        const emojiEl = document.getElementById('emoji');
-        const nextBtn = document.getElementById('nextBtn');
-        const progressDots = document.getElementById('progressDots');
-
-        // --- State Variables ---
-        let bubblesToPop = 3;
-        let poppedCount = 0;
         let currentIndex = 0;
         let isAnimating = false;
 
-        // --- Story Data ---
-        const story = [
-            { text: "Tadaaa! 🎉", emoji: "✨" },
-            { text: "Aapne mujhe maaf kar ke mera din bana diya! Sach mein!", emoji: "🎈" },
-            { text: "Pata hai? Aapki smile kisi bhi udaas din ko roshan kar sakti hai.", emoji: "🌻" },
-            { text: "Aap jaisi achi aur caring dost milna sach mein ek blessing hai.", emoji: "🤲" },
-            { text: "Main hamesha koshish karunga ke aapke chehre par aisi hi muskurahat rahe.", emoji: "🧸" },
-            { text: "Ab ek pyari si smile dein... Haan, bilkul aise!", emoji: "😊" },
-            { text: "Hamesha khush rahen, Roshni! 💖\n\n- Abubakar", emoji: "🌌" }
-        ];
+        const introScreen = document.getElementById('introScreen');
+        const mainCard = document.getElementById('mainCard');
+        const ambientBg = document.getElementById('ambientBg');
+        const textContent = document.getElementById('textContent');
+        const nextBtn = document.getElementById('nextBtn');
+        const firefliesContainer = document.getElementById('fireflies');
 
-        /* -----------------------------------------
-           PART 1: THE BUBBLE POP GAME ENGINE
-           ----------------------------------------- */
-        const bubbleColors = ['var(--bubble-1)', 'var(--bubble-2)', 'var(--bubble-3)', 'var(--bubble-4)'];
-        const bubbleEmojis = ['🎈', '🧸', '💖', '🌻', '🌸'];
-
-        function initBubbles() {
-            for(let i=0; i<5; i++) {
-                createBubble();
-            }
-        }
-
-        function createBubble() {
-            const bubble = document.createElement('div');
-            bubble.classList.add('bubble');
-            
-            // Random styling
-            const size = Math.floor(Math.random() * 40) + 70; // 70px to 110px
-            bubble.style.width = `${size}px`;
-            bubble.style.height = `${size}px`;
-            
-            const color = bubbleColors[Math.floor(Math.random() * bubbleColors.length)];
-            bubble.style.background = color;
-            
-            bubble.innerText = bubbleEmojis[Math.floor(Math.random() * bubbleEmojis.length)];
-            
-            // Random positioning inside container
-            bubble.style.left = `${Math.floor(Math.random() * 70)}%`;
-            bubble.style.top = `${Math.floor(Math.random() * 70)}%`;
-            
-            // Random float animation delay
-            bubble.style.animationDelay = `${Math.random() * 2}s`;
-
-            // Pop Event
-            bubble.addEventListener('touchstart', (e) => popBubble(e, bubble), {passive: false});
-            bubble.addEventListener('click', (e) => popBubble(e, bubble));
-
-            bubbleContainer.appendChild(bubble);
-        }
-
-        function popBubble(e, element) {
-            e.preventDefault();
-            if(element.classList.contains('pop-anim')) return;
-
-            // Trigger Pop Animation
-            element.classList.add('pop-anim');
-            poppedCount++;
-
-            // Update Game Title
-            const remaining = bubblesToPop - poppedCount;
-            if(remaining > 0) {
-                gameTitle.innerText = `Great! Ab ${remaining} aur phoriye! 🎈`;
-                gameTitle.style.animation = 'none';
-                void gameTitle.offsetWidth; // trigger reflow
-                gameTitle.style.animation = 'bounceIn 0.5s';
-            } else if (remaining === 0) {
-                gameTitle.innerText = "Yay! Perfect! ✨";
-                setTimeout(transitionToStory, 800);
-            }
-
-            // Remove element after animation
-            setTimeout(() => {
-                element.remove();
-            }, 300);
-        }
-
-        /* -----------------------------------------
-           PART 2: TRANSITION & STORY LOGIC
-           ----------------------------------------- */
-        function transitionToStory() {
-            gameScene.style.opacity = '0';
-            setTimeout(() => {
-                gameScene.style.display = 'none';
-                storyScene.style.display = 'block';
+        // Function to create magical fireflies
+        function createFireflies() {
+            for (let i = 0; i < 40; i++) {
+                let fly = document.createElement('div');
+                fly.classList.add('firefly');
                 
-                // Trigger Fade In for Story
+                // Random positioning and sizes
+                let size = Math.random() * 3 + 1;
+                fly.style.width = `${size}px`;
+                fly.style.height = `${size}px`;
+                fly.style.left = `${Math.random() * 100}vw`;
+                fly.style.top = `${Math.random() * 100}vh`;
+                
+                // Random animation variables
+                fly.style.setProperty('--moveX', `${(Math.random() - 0.5) * 100}px`);
+                fly.style.setProperty('--moveY', `${(Math.random() - 0.5) * 100 - 50}px`);
+                fly.style.setProperty('--duration', `${Math.random() * 4 + 3}s`);
+                
+                // Staggered appearance
                 setTimeout(() => {
-                    storyScene.style.opacity = '1';
-                    setupStoryDots();
-                    showStory(0);
-                    initTiltEffect();
+                    fly.style.opacity = Math.random() * 0.8 + 0.2;
+                }, Math.random() * 2000);
+
+                firefliesContainer.appendChild(fly);
+            }
+        }
+
+        // Triggered when she taps the intro button
+        function startMagic() {
+            // Fade out intro
+            introScreen.style.opacity = '0';
+            
+            setTimeout(() => {
+                introScreen.style.display = 'none';
+                
+                // Turn on ambient light and fireflies
+                ambientBg.style.opacity = '1';
+                createFireflies();
+
+                // Show main card
+                mainCard.style.display = 'block';
+                setTimeout(() => {
+                    mainCard.style.opacity = '1';
+                    mainCard.style.transform = 'translateY(0) scale(1)';
+                    
+                    // Start story
+                    showText(0);
                 }, 100);
+                
             }, 1000);
         }
 
-        function setupStoryDots() {
-            story.forEach((_, idx) => {
-                const dot = document.createElement('div');
-                dot.className = 'heart-dot';
-                dot.innerHTML = '❤️';
-                dot.id = `dot-${idx}`;
-                progressDots.appendChild(dot);
-            });
-        }
-
-        function showStory(index) {
-            // Hide current
-            textEl.classList.remove('text-visible');
-            textEl.classList.add('text-hidden');
-            emojiEl.style.transform = "translateZ(50px) scale(0.5) rotate(-20deg)";
-            emojiEl.style.opacity = "0";
+        function showText(index) {
+            textContent.classList.remove('text-visible');
+            nextBtn.classList.remove('show');
 
             setTimeout(() => {
-                // Update content
-                textEl.innerText = story[index].text;
-                emojiEl.innerText = story[index].emoji;
+                // Formatting text properly (handling line breaks)
+                textContent.innerHTML = story[index].replace(/\n/g, '<br>');
+                textContent.classList.add('text-visible');
 
-                // Update Dots
-                document.querySelectorAll('.heart-dot').forEach(d => {
-                    d.classList.remove('active');
-                    d.style.filter = "grayscale(100%)";
-                });
-                const activeDot = document.getElementById(`dot-${index}`);
-                activeDot.classList.add('active');
-                activeDot.style.filter = "grayscale(0%)";
-
-                // Show new
-                textEl.classList.remove('text-hidden');
-                textEl.classList.add('text-visible');
-                emojiEl.style.transform = "translateZ(50px) scale(1) rotate(0deg)";
-                emojiEl.style.opacity = "1";
-
-                isAnimating = false;
-
-                // Handle Last Slide
-                if(index === story.length - 1) {
-                    nextBtn.style.display = "none";
-                    emojiEl.classList.add('pop-anim');
-                    setTimeout(() => {
-                        emojiEl.classList.remove('pop-anim');
-                        emojiEl.style.filter = "drop-shadow(0 0 20px rgba(255,105,180,0.8))";
-                    }, 300);
-                    // Trigger massive confetti
-                    fireConfetti();
-                }
-            }, 400);
+                // Show next button after text appears
+                setTimeout(() => {
+                    if (index < story.length - 1) {
+                        nextBtn.classList.add('show');
+                    } else {
+                        // At the last slide
+                        document.getElementById('heading').innerText = "Hamesha Khush Rahein 💛";
+                        document.getElementById('heading').style.fontSize = "26px";
+                        spawnHearts();
+                    }
+                    isAnimating = false;
+                }, 1000); // Delay before showing next button
+                
+            }, 600); // Delay for fade out
         }
 
         function nextSlide() {
-            if(isAnimating) return;
+            if (isAnimating) return;
             isAnimating = true;
             currentIndex++;
-            
-            // Add a playful button bounce
-            nextBtn.style.transform = "translateZ(40px) scale(0.9)";
-            setTimeout(() => {
-                nextBtn.style.transform = "translateZ(40px) scale(1)";
-            }, 150);
-
-            showStory(currentIndex);
+            showText(currentIndex);
         }
 
-        /* -----------------------------------------
-           PART 3: 3D TILT EFFECT (Vanilla JS Physics)
-           ----------------------------------------- */
-        function initTiltEffect() {
-            // Mouse movement for desktop
-            document.addEventListener('mousemove', handleTilt);
-            // Device orientation for mobile (if granted)
-            window.addEventListener('deviceorientation', handleDeviceTilt);
-        }
-
-        function handleTilt(e) {
-            const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
-            const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
-            tiltCard.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
-        }
-
-        function handleDeviceTilt(e) {
-            if(!e.beta || !e.gamma) return;
-            // Limit the rotation so it doesn't flip over
-            const x = Math.max(-15, Math.min(15, e.gamma / 2));
-            const y = Math.max(-15, Math.min(15, (e.beta - 45) / 2));
-            tiltCard.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
-        }
-
-        /* -----------------------------------------
-           PART 4: HIGH-PERFORMANCE CANVAS CONFETTI
-           ----------------------------------------- */
-        const canvas = document.getElementById('fxCanvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        let particles = [];
-        const colors = ['#ff7675', '#74b9ff', '#a29bfe', '#fdcb6e', '#55efc4', '#ffeaa7'];
-
-        class Particle {
-            constructor() {
-                this.x = canvas.width / 2;
-                this.y = canvas.height / 2 + 100; // Start from button area
-                this.size = Math.random() * 10 + 5;
-                this.speedX = Math.random() * 20 - 10; // Wide spread
-                this.speedY = Math.random() * -20 - 5; // Shoot up
-                this.color = colors[Math.floor(Math.random() * colors.length)];
-                this.gravity = 0.5;
-                this.rotation = Math.random() * 360;
-                this.rotationSpeed = Math.random() * 10 - 5;
-                this.opacity = 1;
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                this.speedY += this.gravity; // Gravity pull
-                this.rotation += this.rotationSpeed;
-                this.opacity -= 0.005; // Slowly fade out
-            }
-            draw() {
-                ctx.save();
-                ctx.translate(this.x, this.y);
-                ctx.rotate(this.rotation * Math.PI / 180);
-                ctx.globalAlpha = Math.max(0, this.opacity);
-                ctx.fillStyle = this.color;
-                // Draw a random shape (square or circle)
-                if (Math.random() > 0.5) {
-                    ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size);
-                } else {
-                    ctx.beginPath();
-                    ctx.arc(0, 0, this.size/2, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-                ctx.restore();
+        // Special effect for the end
+        function spawnHearts() {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    let heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    heart.innerText = ['✨', '🌟', '💛', '💫'][Math.floor(Math.random() * 4)];
+                    heart.style.left = `${Math.random() * 80 + 10}%`;
+                    heart.style.bottom = `-20px`;
+                    heart.style.animation = `floatHeart ${Math.random() * 3 + 4}s ease-in forwards`;
+                    
+                    document.body.appendChild(heart);
+                    
+                    // Clean up
+                    setTimeout(() => heart.remove(), 7000);
+                }, i * 300);
             }
         }
-
-        function handleParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for(let i=0; i<particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
-                // Remove invisible particles
-                if(particles[i].opacity <= 0 || particles[i].y > canvas.height) {
-                    particles.splice(i, 1);
-                    i--;
-                }
-            }
-            requestAnimationFrame(handleParticles);
-        }
-
-        function fireConfetti() {
-            // Generate 200 particles
-            for(let i=0; i<200; i++) {
-                particles.push(new Particle());
-            }
-            handleParticles(); // Start animation loop
-            
-            // Extra bursts
-            setTimeout(() => {
-                for(let i=0; i<100; i++) particles.push(new Particle());
-            }, 500);
-            setTimeout(() => {
-                for(let i=0; i<100; i++) particles.push(new Particle());
-            }, 1000);
-        }
-
-        // Handle Window Resize for Canvas
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-
-        // Initialize Game
-        initBubbles();
-
     </script>
 </body>
 </html>
