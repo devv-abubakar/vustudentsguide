@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>A Cute Story ✨</title>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Dudu ki Tension 🍜</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,93 +15,120 @@
         }
 
         body {
-            font-family: 'Baloo 2', cursive;
-            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+            font-family: 'Fredoka', sans-serif;
+            background: #ffecd2;
+            background: linear-gradient(135deg, #fcb69f 0%, #ffecd2 100%);
             height: 100vh;
             width: 100vw;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #333;
+            color: #4a4a4a;
         }
 
-        /* Mobile Container */
-        .story-container {
-            width: 90%;
-            max-width: 400px;
-            height: 85vh;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(15px);
+        /* Noodle Rain Container */
+        #noodleRain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .noodle-drop {
+            position: absolute;
+            font-size: 30px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Main Comic Card */
+        .comic-card {
+            background: #ffffff;
+            border: 4px solid #333;
             border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1), inset 0 0 0 8px rgba(255,255,255,0.5);
+            width: 90%;
+            max-width: 380px;
+            height: 70vh;
+            position: relative;
+            z-index: 10;
+            box-shadow: 8px 8px 0px #333; /* Hard comic shadow */
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
-            position: relative;
+            padding: 30px 20px;
+            text-align: center;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* Scene Area */
-        .scene {
-            flex: 1;
-            width: 100%;
+        /* Avatar / Emoji Area */
+        .avatar-area {
+            height: 150px;
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
+            margin-bottom: 20px;
         }
 
-        /* Stickers Styling */
-        .stickers-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            transition: all 0.5s ease;
-        }
-
-        .sticker {
+        .emoji-char {
             font-size: 80px;
-            filter: drop-shadow(0 10px 10px rgba(0,0,0,0.15));
-            animation: float 3s ease-in-out infinite alternate;
-            position: relative;
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            filter: drop-shadow(0 10px 10px rgba(0,0,0,0.1));
         }
 
-        /* Different float timings for stickers */
-        .sticker:nth-child(1) { animation-delay: 0s; }
-        .sticker:nth-child(2) { animation-delay: 1s; }
-        .sticker:nth-child(3) { animation-delay: 0.5s; }
-
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            100% { transform: translateY(-15px) rotate(5deg); }
+        /* Funny Animations for Emoji */
+        .fat-emoji {
+            transform: scale(1.4) scaleX(1.5); /* Makes it wide/fat */
         }
 
-        /* Action/Thought Bubbles */
-        .mini-bubble {
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            font-size: 30px;
-            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        .thin-emoji {
+            transform: scale(0.9) scaleX(0.4); /* Makes it super thin */
         }
 
-        /* Text Area */
-        .text-box {
-            background: white;
+        .shake-emoji {
+            animation: shake 0.5s infinite;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+
+        /* Speech Bubble Text */
+        .speech-bubble {
+            background: #f1f2f6;
+            border: 3px solid #333;
             border-radius: 20px;
             padding: 20px;
-            width: 100%;
-            min-height: 140px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
-            text-align: center;
+            font-size: 22px;
+            font-weight: 600;
+            line-height: 1.4;
             position: relative;
+            width: 100%;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* Speech tail */
-        .text-box::before {
+        .speech-bubble::before {
             content: '';
             position: absolute;
             top: -15px;
@@ -109,222 +136,170 @@
             transform: translateX(-50%);
             border-width: 0 15px 15px 15px;
             border-style: solid;
-            border-color: transparent transparent white transparent;
+            border-color: transparent transparent #333 transparent;
+        }
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 0 12px 12px 12px;
+            border-style: solid;
+            border-color: transparent transparent #f1f2f6 transparent;
         }
 
-        .story-text {
-            font-size: 20px;
-            line-height: 1.5;
-            transition: opacity 0.5s;
+        .text-content {
+            opacity: 1;
+            transition: opacity 0.3s;
         }
 
-        .highlight-text {
-            color: #ff4757;
-            font-size: 24px;
-            font-weight: 700;
+        .text-hide {
+            opacity: 0;
         }
 
-        /* Button */
-        .next-btn {
-            background: #ff6b81;
+        /* Next Button */
+        .btn-next {
+            margin-top: 20px;
+            background: #ff4757;
             color: white;
-            border: none;
-            padding: 15px 40px;
+            border: 3px solid #333;
+            padding: 12px 30px;
             font-size: 20px;
-            font-family: 'Baloo 2', cursive;
+            font-family: 'Fredoka', sans-serif;
             font-weight: 700;
             border-radius: 50px;
-            box-shadow: 0 8px 20px rgba(255, 107, 129, 0.4);
             cursor: pointer;
-            transition: transform 0.2s;
+            box-shadow: 4px 4px 0px #333;
+            transition: all 0.1s;
             width: 80%;
         }
 
-        .next-btn:active {
-            transform: scale(0.95);
+        .btn-next:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px #333;
         }
 
-        /* Entry/Exit Animations */
-        .fade-out {
-            opacity: 0;
-            transform: scale(0.9);
-            transition: all 0.4s;
-        }
-        .fade-in {
-            opacity: 1;
-            transform: scale(1);
-            transition: all 0.4s;
-        }
-
-        @keyframes popIn {
-            0% { transform: scale(0); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        /* Confetti for the end */
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: #ff4757;
-            animation: fall linear forwards;
-            z-index: 100;
-        }
-        @keyframes fall {
-            to { transform: translateY(100vh) rotate(720deg); }
+        .highlight {
+            color: #ff4757;
+            font-size: 26px;
         }
 
     </style>
 </head>
 <body>
 
-    <div class="story-container">
+    <div id="noodleRain"></div>
+
+    <div class="comic-card" id="card">
+        <div class="avatar-area">
+            <div class="emoji-char" id="emoji">☀️</div>
+        </div>
         
-        <div class="scene">
-            <div class="stickers-wrapper" id="stickers">
-                </div>
+        <div class="speech-bubble">
+            <div class="text-content" id="text">Subah Bakhair Bubu! Uth jao!</div>
         </div>
 
-        <div class="text-box">
-            <div class="story-text" id="text"></div>
-        </div>
-
-        <button class="next-btn" id="btn" onclick="nextScene()">Aage Parhein ➔</button>
-
+        <button class="btn-next" id="nextBtn" onclick="nextSlide()">Aage Parho ➔</button>
     </div>
 
     <script>
-        // Character Definitions
-        const Roshni = '👧🏻';
-        const Abubakar = '👦🏻';
-        const JK = '👱🏼‍♂️';
-
+        // Story Array with actions for animations
         const story = [
-            {
-                text: "Roshni aur Abubakar bohat achay dost the. Lekin Roshni hamesha JK ki baatein karti rehti thi...",
-                stickers: `
-                    <div class="sticker">${Roshni}<div class="mini-bubble">💬</div></div>
-                    <div class="sticker" style="filter: grayscale(100%); opacity: 0.6;">${JK}</div>
-                    <div class="sticker">${Abubakar}<div class="mini-bubble">😒</div></div>
-                `
-            },
-            {
-                text: "Abubakar ko thori jealousy hoti thi. Phir ek din, JK sach mein Roshni ki life mein aagaya.",
-                stickers: `
-                    <div class="sticker">${Roshni}</div>
-                    <div class="sticker">${JK}<div class="mini-bubble">🌹</div></div>
-                    <div class="sticker" style="margin-left: 30px;">${Abubakar}<div class="mini-bubble">💔</div></div>
-                `
-            },
-            {
-                text: "Start mein toh Roshni bohat khush thi. Lekin kuch waqt baad, usay ehsas hua ke JK ke sath wo sukoon nahi hai...",
-                stickers: `
-                    <div class="sticker">${Roshni}<div class="mini-bubble">😔</div></div>
-                    <div class="sticker">${JK}<div class="mini-bubble">📱</div></div>
-                `
-            },
-            {
-                text: "Wo wahan ho kar bhi khush nahi thi. Uska dil wapis apne sab se achay dost ke paas aane ko chaha.",
-                stickers: `
-                    <div class="sticker">${Roshni}<div class="mini-bubble">💭👦🏻</div></div>
-                `
-            },
-            {
-                text: "Ek din Abubakar akela aur udaas betha tha... tabhi achanak Roshni uske paas aagayi!",
-                stickers: `
-                    <div class="sticker">${Abubakar}<div class="mini-bubble">😞</div></div>
-                    <div class="sticker" style="transform: scaleX(-1);">${Roshni}<div class="mini-bubble">🏃🏻‍♀️</div></div>
-                `
-            },
-            {
-                text: "Abubakar usay wapis dekh kar bohat khush hua! Dono ke chehron par ek pyari si smile aagayi.",
-                stickers: `
-                    <div class="sticker">${Abubakar}<div class="mini-bubble">🥺</div></div>
-                    <div class="sticker">${Roshni}<div class="mini-bubble">😊</div></div>
-                `
-            },
-            {
-                text: "Toh Roshni ne uski taraf dekha aur bohat pyaar se kaha...",
-                stickers: `
-                    <div class="sticker">${Abubakar}</div>
-                    <div class="sticker">${Roshni}<div class="mini-bubble">✨</div></div>
-                `
-            },
-            {
-                text: "<span class='highlight-text'>\"Main thi toh udhar...<br>Lekin sirf aapki yadon mein thi!\"</span> 💖",
-                stickers: `
-                    <div class="sticker" style="font-size: 100px;">🫂</div>
-                `
-            },
-            {
-                text: "Aise unki dosti aur connection pehle se bhi zyada strong ho gaya! <br><br><b>✨ Happy Ending ✨</b>",
-                stickers: `
-                    <div class="sticker">👦🏻</div>
-                    <div class="sticker">💖</div>
-                    <div class="sticker">👧🏻</div>
-                `,
-                isLast: true
-            }
+            { text: "Subah Bakhair Bubu! Uth jao! ☀️", emoji: "👧🏻" },
+            { text: "Tumhara Dudu subah subah ek bohat bari tension mein utha hai...", emoji: "🧑🏻‍🦱💆🏻‍♂️", action: "shake" },
+            { text: "Tension yeh hai ke tum dhang ka khana kyun nahi khati? Sirf <span class='highlight'>NOODLES!</span> 🍜", emoji: "🥢", action: "rain" },
+            { text: "Mujhe samajh nahi aati main kis cheez ki tension loon...", emoji: "🤯" },
+            { text: "Is baat ki ke noodles kha kha kar tum Bubu se <span class='highlight'>'Gol Matol Bubu'</span> ban jaogi? 🐡😂", emoji: "👧🏻", action: "fat" },
+            { text: "Ya is baat ki... ke acha khana na kha kar tum bilkul <span class='highlight'>Kamzor si Teeli</span> ho jaogi? 🥀🥺", emoji: "👧🏻", action: "thin" },
+            { text: "Dudu ki baat mano, aaj koi acha aur healthy sa khana kha lena please? 🥗🍖", emoji: "🙏", action: "normal" },
+            { text: "Warna main khud aa kar zabardasti khilaunga! Love you Bubu! 💖🏃🏻‍♂️", emoji: "💖", isLast: true }
         ];
 
         let currentIndex = 0;
         let isAnimating = false;
 
         const textEl = document.getElementById('text');
-        const stickersEl = document.getElementById('stickers');
-        const btn = document.getElementById('btn');
+        const emojiEl = document.getElementById('emoji');
+        const card = document.getElementById('card');
+        const nextBtn = document.getElementById('nextBtn');
 
-        function loadScene(index) {
-            // Fade out
-            textEl.classList.remove('fade-in');
-            textEl.classList.add('fade-out');
-            stickersEl.classList.remove('fade-in');
-            stickersEl.classList.add('fade-out');
-
-            setTimeout(() => {
-                // Update content
-                textEl.innerHTML = story[index].text;
-                stickersEl.innerHTML = story[index].stickers;
-
-                // Fade in
-                textEl.classList.remove('fade-out');
-                textEl.classList.add('fade-in');
-                stickersEl.classList.remove('fade-out');
-                stickersEl.classList.add('fade-in');
-
-                isAnimating = false;
-
-                if (story[index].isLast) {
-                    btn.style.display = 'none';
-                    shootConfetti();
-                }
-            }, 400);
-        }
-
-        function nextScene() {
+        function nextSlide() {
             if (isAnimating) return;
             isAnimating = true;
-            currentIndex++;
-            loadScene(currentIndex);
+
+            // Animate Card bounce
+            card.style.transform = "scale(0.95)";
+            setTimeout(() => { card.style.transform = "scale(1)"; }, 150);
+
+            // Fade out text
+            textEl.classList.add('text-hide');
+
+            setTimeout(() => {
+                currentIndex++;
+                const currentSlide = story[currentIndex];
+
+                // Update content
+                textEl.innerHTML = currentSlide.text;
+                emojiEl.innerText = currentSlide.emoji;
+
+                // Handle Custom Funny Actions
+                emojiEl.className = 'emoji-char'; // Reset classes
+                if (currentSlide.action === "fat") {
+                    emojiEl.classList.add('fat-emoji');
+                } else if (currentSlide.action === "thin") {
+                    emojiEl.classList.add('thin-emoji');
+                } else if (currentSlide.action === "shake") {
+                    emojiEl.classList.add('shake-emoji');
+                } else if (currentSlide.action === "rain") {
+                    startNoodleRain();
+                }
+
+                // Fade in text
+                textEl.classList.remove('text-hide');
+
+                if (currentSlide.isLast) {
+                    nextBtn.style.display = 'none';
+                    stopNoodleRain();
+                    card.style.borderColor = "#ff4757";
+                    card.style.boxShadow = "8px 8px 0px #ff4757";
+                }
+
+                isAnimating = false;
+            }, 300);
         }
 
-        // Confetti logic for Happy Ending
-        function shootConfetti() {
-            const colors = ['#ff4757', '#ffa502', '#2ed573', '#1e90ff', '#ff6b81'];
-            for (let i = 0; i < 100; i++) {
-                let confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.top = '-10px';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                confetti.style.animationDelay = (Math.random() * 2) + 's';
-                document.body.appendChild(confetti);
+        // Noodle Rain Logic
+        let rainInterval;
+        const rainContainer = document.getElementById('noodleRain');
+
+        function createNoodle() {
+            const noodle = document.createElement('div');
+            noodle.classList.add('noodle-drop');
+            // Randomly pick between noodle bowl or chopsticks
+            noodle.innerText = Math.random() > 0.5 ? '🍜' : '🍝'; 
+            noodle.style.left = Math.random() * 100 + 'vw';
+            noodle.style.animationDuration = (Math.random() * 2 + 2) + 's'; // 2s to 4s
+            noodle.style.fontSize = (Math.random() * 20 + 20) + 'px'; // 20px to 40px
+            
+            rainContainer.appendChild(noodle);
+
+            // Remove after animation ends
+            setTimeout(() => {
+                noodle.remove();
+            }, 4000);
+        }
+
+        function startNoodleRain() {
+            if(!rainInterval) {
+                rainInterval = setInterval(createNoodle, 200); // Drop a noodle every 200ms
             }
         }
 
-        // Load first scene on start
-        loadScene(0);
+        function stopNoodleRain() {
+            clearInterval(rainInterval);
+            rainInterval = null;
+        }
 
     </script>
 </body>
