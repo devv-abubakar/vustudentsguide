@@ -3,47 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Settings Bypass Link</title>
+    <title>Working FRP Settings Bypass</title>
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            padding: 20px; 
-            background-color: #f4f4f4;
-        }
-        .link-container {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .bypass-btn { 
+        body { font-family: sans-serif; padding: 20px; }
+        a, button { 
             display: block; 
             padding: 15px; 
-            margin: 10px 0; 
-            background-color: #007bff; 
+            margin-bottom: 15px; 
+            background: #28a745; 
             color: white; 
             text-decoration: none; 
-            border-radius: 5px; 
-            font-size: 16px; 
-            font-weight: bold;
+            text-align: center; 
+            font-weight: bold; 
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+            font-size: 16px;
         }
     </style>
 </head>
 <body>
 
-    <div class="link-container">
-        <h3>FRP Style Settings Links</h3>
-        <p>In links par click karein. Yeh direct Android system ko target karte hain:</p>
+    <h2>Click Any Button to Open Settings</h2>
 
-        <a href="intent:#Intent;action=android.settings.SETTINGS;end" class="bypass-btn">
-            ▶ Open Settings App (General)
-        </a>
-        
-        <a href="intent://com.android.settings/#Intent;scheme=android-app;package=com.android.settings;end" class="bypass-btn">
-            ▶ Open Settings App (Package Target)
-        </a>
+    <a href="intent://com.android.settings/#Intent;scheme=android-app;package=com.android.settings;end">1. Open Settings (Vnrom Method)</a>
 
-    </div>
+    <a href="intent:#Intent;action=android.settings.SETTINGS;end">2. Open Settings (Action Method)</a>
+
+    <a href="intent://com.android.settings/#Intent;scheme=android-app;package=com.android.settings;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;end">3. Open Settings (Samsung Specific)</a>
+
+    <button onclick="window.location.href='intent://com.android.settings/#Intent;scheme=android-app;package=com.android.settings;end';">4. Open Settings (Force via JS)</button>
 
 </body>
 </html>
