@@ -5,7 +5,222 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For My Best Friend Roshni 💖</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #4a0010, #8c0424, #1d191a);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            overflow-x: hidden;
+            color: white;
+        }
+
+        /* Moving Background Gradient */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* FLOATING HEARTS */
+        .heart {
+            position: fixed;
+            bottom: -10px;
+            font-size: 20px;
+            animation: float linear infinite;
+            opacity: 0.6;
+            z-index: -1;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 0.8;}
+            100% { transform: translateY(-110vh) scale(1.5) rotate(360deg); opacity: 0;}
+        }
+
+        /* HEADER */
+        .header {
+            text-align: center;
+            padding: 60px 20px 20px;
+        }
+
+        .avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 5px solid #ff9eb5;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(255, 158, 181, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 38px;
+            letter-spacing: 1px;
+            font-family: 'Dancing Script', cursive;
+            color: #ff9eb5;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+
+        /* TYPING TEXT */
+        .typing {
+            font-size: 18px;
+            margin-top: 10px;
+            height: 30px;
+            color: #ffd1dc;
+            font-weight: 300;
+        }
+
+        /* CONTAINER */
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        /* GLASSMORPHISM CARD */
+        .card {
+            margin: 30px 0;
+            padding: 35px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255, 158, 181, 0.2);
+        }
+
+        .card h2 {
+            color: #ff9eb5;
+            margin-bottom: 15px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 32px;
+        }
+
+        .card p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #f8f8f8;
+        }
+
+        /* GRID */
+        .grid {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .box {
+            flex: 1;
+            min-width: 250px;
+            padding: 25px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.3s ease;
+        }
+
+        .box:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .box h3 {
+            margin-bottom: 10px;
+            color: #ffb6c1;
+            font-size: 20px;
+        }
+
+        .box ul {
+            list-style-type: none;
+            line-height: 2;
+        }
+
+        .box ul li {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .box ul li::before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+            font-size: 14px;
+        }
+
+        /* MESSAGE */
+        .message {
+            text-align: center;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 16px;
+            opacity: 0.9;
+            color: #ffd1dc;
+            line-height: 1.6;
+        }
+
+        /* SURPRISE BUTTON */
+        .surprise-btn {
+            background: linear-gradient(45deg, #ff4d6d, #ff8fa3);
+            border: none;
+            padding: 16px 32px;
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 8px 20px rgba(255, 77, 109, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .surprise-btn:hover {
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 12px 25px rgba(255, 77, 109, 0.6);
+        }
+
+        /* SECRET MESSAGE */
+        .secret-box {
+            display: none;
+            margin-top: 30px;
+            padding: 30px;
+            border-radius: 18px;
+            background: rgba(255, 158, 181, 0.15);
+            border: 1px solid rgba(255, 158, 181, 0.3);
+            backdrop-filter: blur(12px);
+            line-height: 1.9;
+            font-size: 17px;
+            animation: fadeIn 0.8s ease forwards;
+            box-shadow: 0 0 30px rgba(255, 77, 109, 0.2);
+            text-align: left;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
 
@@ -26,7 +241,7 @@
     </script>
 
     <div class="header">
-        <img src="photo/friend.jpeg" alt="Roshni" class="avatar">
+        <img src="photo/friend.PNG" alt="Roshni" class="avatar">
         <h1>For My Best Friend Roshni 💞</h1>
         <div class="typing" id="typing"></div>
     </div>
@@ -92,7 +307,7 @@
 
     <div class="footer">
         Made with memories, respect & true friendship 💗<br>
-        <span style="font-family: 'Dancing Script', cursive; font-size: 24px;">I love you sooo much jannn 💗</span>
+        <span style="font-family: 'Dancing Script', cursive; font-size: 24px;">I really respect & value you Roshni 💗</span>
     </div>
 
     <script>
