@@ -3,10 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chand Raat Mubarak, Roshni! 🌙</title>
+    <title>Chand Raat Mubarak, Roshni 🌙✨</title>
     <style>
-        /* --- GLOBAL STYLES --- */
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap');
+        /* === ADVANCED GLOBAL STYLES & VARIABLES === */
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@300;400;600&family=Sacramento&display=swap');
+
+        :root {
+            --bg-color: #0b0914;
+            --primary-glow: #d4af37; /* Rich Gold */
+            --accent-color: #ff3366; /* Soft Neon Pink */
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
 
         * {
             margin: 0;
@@ -14,256 +22,382 @@
             box-sizing: border-box;
         }
 
-        body {
-            background: linear-gradient(to bottom, #020111, #20124d, #000022);
+        body, html {
+            background-color: var(--bg-color);
             color: #fff;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        /* --- ANIMATIONS --- */
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-        }
-
-        @keyframes pulseMoon {
-            0% { box-shadow: 0 0 20px #fff, 0 0 40px #ffeb3b; }
-            50% { box-shadow: 0 0 40px #fff, 0 0 80px #ffeb3b; }
-            100% { box-shadow: 0 0 20px #fff, 0 0 40px #ffeb3b; }
-        }
-
-        @keyframes slideIn {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes sway {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(20px); }
-        }
-
-        /* --- BACKGROUND STARS --- */
-        .stars {
+        /* === DYNAMIC BACKGROUND === */
+        .background-container {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1; pointer-events: none;
-        }
-        
-        .star {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle infinite ease-in-out;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: radial-gradient(circle at 50% 100%, #1c1535 0%, #0b0914 80%);
+            z-index: -2;
         }
 
-        /* --- FLOATING STICKERS / MEMORIES --- */
-        .stickers-container {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 0; pointer-events: none;
+        /* === COMPLEX ANIMATIONS === */
+        @keyframes glowingMoon {
+            0% { box-shadow: 0 0 30px var(--primary-glow), 0 0 60px inset rgba(255,255,255,0.8); }
+            50% { box-shadow: 0 0 60px var(--primary-glow), 0 0 80px inset rgba(255,255,255,1); }
+            100% { box-shadow: 0 0 30px var(--primary-glow), 0 0 60px inset rgba(255,255,255,0.8); }
         }
 
-        .sticker {
-            position: absolute;
-            font-size: 2rem;
-            animation: floatUp infinite linear;
+        @keyframes shootingStar {
+            0% { transform: translateX(0) translateY(0) rotate(45deg); opacity: 1; }
+            100% { transform: translateX(-1000px) translateY(1000px) rotate(45deg); opacity: 0; }
+        }
+
+        @keyframes floatEffect {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        @keyframes textGlow {
+            0%, 100% { text-shadow: 0 0 10px var(--primary-glow), 0 0 20px var(--primary-glow); }
+            50% { text-shadow: 0 0 20px var(--primary-glow), 0 0 40px #fff; }
+        }
+
+        /* === GLASSMORPHISM CARDS === */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             opacity: 0;
+            transform: translateY(100px);
+            transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* --- SECTIONS --- */
-        section {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hidden {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 1.5s ease-out;
-        }
-
-        .show {
+        .glass-card.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* --- HERO SECTION --- */
-        .moon {
-            width: 150px;
-            height: 150px;
-            background: #fff;
-            border-radius: 50%;
-            margin-bottom: 2rem;
-            animation: pulseMoon 3s infinite;
+        /* === HERO SECTION === */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
             position: relative;
         }
-        
-        .moon::after {
+
+        .moon-wrapper {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .moon {
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle at 30% 30%, #fff, #f5df9a);
+            border-radius: 50%;
+            animation: glowingMoon 4s infinite alternate;
+        }
+
+        .hero h1 {
+            font-family: 'Sacramento', cursive;
+            font-size: 6rem;
+            color: #fff;
+            animation: textGlow 3s infinite;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            color: #e0e0e0;
+            font-family: 'Cinzel', serif;
+        }
+
+        /* === STORY TYPOGRAPHY === */
+        h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--primary-glow);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-glow);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        p.story-text {
+            font-size: 1.2rem;
+            line-height: 2;
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+
+        .highlight-neon {
+            color: var(--accent-color);
+            font-weight: 600;
+            text-shadow: 0 0 8px var(--accent-color);
+        }
+
+        /* === POLAROID MEMORIES (STICKERS/PICS) === */
+        .memories-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 50px 20px;
+        }
+
+        .polaroid {
+            background: #fff;
+            padding: 15px 15px 40px 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            transform: rotate(-5deg);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            animation: floatEffect 6s infinite ease-in-out;
+            cursor: pointer;
+            width: 250px;
+        }
+
+        .polaroid:nth-child(even) {
+            transform: rotate(5deg);
+            animation-delay: 1s;
+        }
+
+        .polaroid:hover {
+            transform: scale(1.1) rotate(0deg);
+            box-shadow: 0 25px 50px rgba(212, 175, 55, 0.4);
+            z-index: 10;
+        }
+
+        .polaroid-img {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #1c1535, #ff3366); /* Replace with real image */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .polaroid-caption {
+            color: #000;
+            text-align: center;
+            font-family: 'Sacramento', cursive;
+            font-size: 1.8rem;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* === FINAL BUTTON === */
+        .btn-container {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .wish-btn {
+            background: transparent;
+            color: var(--primary-glow);
+            border: 2px solid var(--primary-glow);
+            padding: 20px 50px;
+            font-size: 1.5rem;
+            font-family: 'Cinzel', serif;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .wish-btn::before {
             content: '';
             position: absolute;
-            top: 10px; right: 20px;
-            width: 30px; height: 30px;
-            background: rgba(0,0,0,0.1);
-            border-radius: 50%;
+            top: 0; left: 0; width: 0%; height: 100%;
+            background: var(--primary-glow);
+            z-index: -1;
+            transition: all 0.4s;
         }
 
-        h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4.5rem;
-            color: #ffeb3b;
-            text-shadow: 2px 2px 10px rgba(255, 235, 59, 0.5);
-            margin-bottom: 1rem;
-        }
-
-        p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            max-width: 800px;
-            margin: 1rem auto;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 15px;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .highlight {
-            color: #ffeb3b;
-            font-weight: 600;
-        }
-
-        /* --- SCROLL PROMPT --- */
-        .scroll-down {
-            position: absolute;
-            bottom: 30px;
-            font-size: 2rem;
-            animation: slideIn 2s infinite alternate;
-        }
-
-        /* --- CUSTOM BUTTON --- */
-        .wish-btn {
-            background: linear-gradient(45deg, #ffeb3b, #ff9800);
-            color: #000;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.5rem;
-            border-radius: 30px;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            font-weight: bold;
-            margin-top: 2rem;
-            transition: transform 0.3s;
-            box-shadow: 0 5px 15px rgba(255, 235, 59, 0.4);
+        .wish-btn:hover::before {
+            width: 100%;
         }
 
         .wish-btn:hover {
-            transform: scale(1.1);
+            color: #000;
+            box-shadow: 0 0 30px var(--primary-glow);
+            transform: scale(1.05);
+        }
+
+        /* === PARTICLES === */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
         }
 
     </style>
 </head>
 <body>
 
-    <div class="stars" id="stars-container"></div>
+    <div class="background-container"></div>
+    <canvas id="particles-js"></canvas>
 
-    <div class="stickers-container" id="stickers-container"></div>
-
-    <section>
-        <div class="moon"></div>
-        <h1 class="hidden">Chand Raat Mubarak, Roshni! ✨</h1>
-        <p class="hidden">Asman par chand nikal aya hai, aur mere dil mein tumhara khayal. Kal Eid hai, par meri eidi toh tumse baat karke hi mukammal hoti hai.</p>
-        <div class="scroll-down">👇</div>
+    <section class="hero">
+        <div class="moon-wrapper">
+            <div class="moon"></div>
+        </div>
+        <h1>Chand Raat Mubarak</h1>
+        <p>To the brightest Roshni of my life ✨</p>
     </section>
 
-    <section>
-        <h1 class="hidden">Pehli Nazar, Pehli Baat 💫</h1>
-        <p class="hidden">Mujhe aaj bhi yaad hai jab maine pehli baar tumhe us group mein dekha tha. Us waqt nahi pata tha ke ek random si mulakat mere liye itni special ban jayegi.</p>
-        <p class="hidden">Tum <span class="highlight">bohat achi ho</span>, Roshni. Maine aaj tak apni zindagi mein is tarha ki larki nahi dekhi jiski vibes itni pure aur dil itna saaf ho.</p>
+    <section class="story-section">
+        <div class="glass-card scroll-anim">
+            <h2>Pehli Nazar</h2>
+            <p class="story-text">Hamari kahani kahan se shuru hui? Mujhe aaj bhi wo din yaad hai jab maine pehli baar us group mein tumhein dekha tha.</p>
+            <p class="story-text">Mujhe nahi pata tha ke wo ek lamha meri aane wali zindagi ka sabse khubsurat hissa ban jayega. Tum <span class="highlight-neon">bohat achi ho</span>, Roshni. Itni pure aur itni sachi.</p>
+        </div>
+
+        <div class="glass-card scroll-anim">
+            <h2>Tumhari Baatein</h2>
+            <p class="story-text">Maine aaj tak is tarha ki larki nahi dekhi. Tumhari har baat itni pyari hoti hai ke mujhe aaj tak tumhari koi baat buri nahi lagi.</p>
+            <p class="story-text">Jab tumse baat hoti hai, toh main hamesha khush hota hoon. Pura din bas is ek cheez ka <span class="highlight-neon">hamesha wait karta hoon</span> ke Roshni kab free hogi aur hum kab baat karenge.</p>
+        </div>
     </section>
 
-    <section>
-        <h1 class="hidden">Tumhari Baatein 🌸</h1>
-        <p class="hidden">Sach kahu? Mujhe aaj tak tumhari koi baat buri nahi lagi. Tum jab baat karti ho toh main bas hamesha khush hota hoon.</p>
-        <p class="hidden">Mera din is intezar mein guzarta hai ke <span class="highlight">Roshni kab free hogi</span> aur hum kab baat karenge. Tumhari maujoodgi mere din ka sabse behtareen hissa hoti hai.</p>
+    <section class="memories-section">
+        <div class="glass-card scroll-anim" style="max-width: 1000px;">
+            <h2>Hamari Memories</h2>
+            <p class="story-text" style="text-align: center;">Kuch pyare lamhe jo hamesha yaad rahenge...</p>
+            
+            <div class="memories-container">
+                <div class="polaroid">
+                    <div class="polaroid-img">💌</div> 
+                    <div class="polaroid-caption">Pehli Baat</div>
+                </div>
+                <div class="polaroid">
+                    <div class="polaroid-img" style="background: linear-gradient(45deg, #0f2027, #203a43, #2c5364);">😂</div>
+                    <div class="polaroid-caption">Late Night Chats</div>
+                </div>
+                <div class="polaroid">
+                    <div class="polaroid-img" style="background: linear-gradient(45deg, #f12711, #f5af19);">🥺</div>
+                    <div class="polaroid-caption">Mera Wait Karna</div>
+                </div>
+                 <div class="polaroid">
+                    <div class="polaroid-img" style="background: linear-gradient(45deg, #8A2387, #E94057, #F27121);">💖</div>
+                    <div class="polaroid-caption">Sabse Special</div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section>
-        <h1 class="hidden">Meri Ek Hi Khwahish 🤲</h1>
-        <p class="hidden">Is Chand Raat par, chand ko dekhte hue meri bas ek hi dua hai...</p>
-        <p class="hidden">Meri khwahish hai ke aaj ki is Chand Raat ki tarha, hum future ki <span class="highlight">har Chand Raat ko isi tarha sath rahein</span>. Hamari dosti aur bond waqt ke sath aur bhi gehra hota jaye.</p>
-        <button class="wish-btn hidden" onclick="triggerConfetti()">Eid Mubarak Advance Mein! 🎉</button>
+    <section class="promise-section">
+        <div class="glass-card scroll-anim">
+            <h2>Hamesha Ke Liye</h2>
+            <p class="story-text">Meri khwahish hai ke aaj ki is Chand Raat ki tarha, hum future ki <span class="highlight-neon">har Chand Raat ko isi tarha sath rahein</span>.</p>
+            <p class="story-text">Tum meri zindagi ka wo hissa ho jise main kabhi nahi khona chahta. Eid ki dheron khushiyan mubarak hon tumhein!</p>
+        </div>
     </section>
+
+    <div class="btn-container scroll-anim">
+        <button class="wish-btn" onclick="celebrate()">Eid Mubarak! 🌙 - Dudu</button>
+    </div>
 
     <script>
-        // 1. Generate Random Stars
-        const starsContainer = document.getElementById('stars-container');
-        for (let i = 0; i < 200; i++) {
-            let star = document.createElement('div');
-            star.className = 'star';
-            star.style.width = Math.random() * 3 + 'px';
-            star.style.height = star.style.width;
-            star.style.left = Math.random() * 100 + 'vw';
-            star.style.top = Math.random() * 100 + 'vh';
-            star.style.animationDuration = (Math.random() * 3 + 1) + 's';
-            star.style.animationDelay = Math.random() * 2 + 's';
-            starsContainer.appendChild(star);
-        }
-
-        // 2. Generate Floating Memory Stickers (Emojis as stickers)
-        const stickersContainer = document.getElementById('stickers-container');
-        const stickers = ['💖', '🌙', '✨', '🥺', '🦋', '🌸', '💫', '💌', '🥰', '🎈'];
-        
-        for (let i = 0; i < 40; i++) {
-            let sticker = document.createElement('div');
-            sticker.className = 'sticker';
-            sticker.innerText = stickers[Math.floor(Math.random() * stickers.length)];
-            sticker.style.left = Math.random() * 100 + 'vw';
-            sticker.style.animationDuration = (Math.random() * 10 + 10) + 's'; // 10 to 20 seconds
-            sticker.style.animationDelay = (Math.random() * 15) + 's';
-            sticker.style.fontSize = (Math.random() * 2 + 1.5) + 'rem';
-            stickersContainer.appendChild(sticker);
-        }
-
-        // 3. Scroll Reveal Animation Logic
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
+        // 1. SCROLL ANIMATION LOGIC (Glass cards fade & slide up)
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.2 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
+                    entry.target.classList.add('visible');
                 }
             });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-anim').forEach(el => {
+            observer.observe(el);
         });
 
-        const hiddenElements = document.querySelectorAll('.hidden');
-        hiddenElements.forEach((el) => observer.observe(el));
+        // 2. ADVANCED PARTICLE SYSTEM (Stars & Fireflies)
+        const canvas = document.getElementById('particles-js');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-        // 4. Button Click Confetti (Extra interaction)
-        function triggerConfetti() {
-            for (let i = 0; i < 50; i++) {
-                let conf = document.createElement('div');
-                conf.className = 'sticker';
-                conf.innerText = '✨';
-                conf.style.left = Math.random() * 100 + 'vw';
-                conf.style.bottom = '0';
-                conf.style.animationDuration = '2s';
-                document.body.appendChild(conf);
-                setTimeout(() => conf.remove(), 2000);
+        let particlesArray = [];
+        
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+                this.color = Math.random() > 0.5 ? '#ffffff' : '#d4af37'; 
             }
-            alert("Chand Raat aur Eid bohat bohat Mubarak ho Roshni! Khush raho hamesha. - Dudu");
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particlesArray = [];
+            for (let i = 0; i < 150; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initParticles();
+        });
+
+        // 3. CELEBRATION EFFECT (When clicking final button)
+        function celebrate() {
+            alert("Roshni, tum sach mein bohat special ho! Chand Raat aur Eid Mubarak! ✨");
+            // Creates shooting stars effect dynamically
+            for(let i=0; i<10; i++) {
+                let star = document.createElement('div');
+                star.style.position = 'fixed';
+                star.style.width = '100px';
+                star.style.height = '2px';
+                star.style.background = 'linear-gradient(90deg, #fff, transparent)';
+                star.style.top = Math.random() * window.innerHeight + 'px';
+                star.style.right = '-100px';
+                star.style.zIndex = '9999';
+                star.style.animation = `shootingStar ${Math.random() * 1 + 0.5}s linear forwards`;
+                document.body.appendChild(star);
+                setTimeout(() => { star.remove() }, 1500);
+            }
         }
     </script>
 </body>
