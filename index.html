@@ -7,7 +7,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary-blue: #1E3A8A; /* Aapki app ka primary color */
+            --primary-blue: #1E3A8A;
             --light-blue: #DBEAFE;
             --white: #FFFFFF;
             --dark-gray: #333333;
@@ -154,27 +154,55 @@
             margin-bottom: 10px;
         }
 
-        /* Footer */
+        /* Footer & Contact Section */
         footer {
             background-color: var(--primary-blue);
             color: var(--white);
             text-align: center;
-            padding: 30px 10%;
+            padding: 40px 10%;
             margin-top: 50px;
         }
 
+        .contact-info {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        
+        .contact-info p {
+            margin: 10px 0;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--light-blue);
+        }
+
+        .contact-info a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+            color: var(--light-blue);
+        }
+
         .footer-links {
-            margin-top: 15px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
         }
 
         .footer-links a {
             color: var(--light-blue);
             text-decoration: none;
-            margin: 0 10px;
+            margin: 0 15px;
+            font-size: 14px;
         }
 
         .footer-links a:hover {
             text-decoration: underline;
+            color: var(--white);
         }
 
         /* Responsive Design */
@@ -192,7 +220,7 @@
                 font-size: 36px;
             }
             .nav-links {
-                display: none; /* Mobile par links hide kar diye hain simplicity ke liye */
+                display: none;
             }
         }
     </style>
@@ -205,16 +233,15 @@
         </a>
         <nav class="nav-links">
             <a href="#features">Features</a>
-            <a href="#about">About</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
 
     <section class="hero">
         <div class="hero-content">
-            <h1>Aces Your Exams with VU Students Guide!</h1>
+            <h1>Ace Your Exams with VU Students Guide!</h1>
             <p>Your ultimate Virtual University study companion. Access chapter-wise MCQs, attempt Grand Tests, calculate your GPA, and relax with our mini brain games. Everything you need, right in your pocket.</p>
-            <a href="#" class="download-btn">
+            <a href="https://play.google.com/store/apps/details?id=com.abubakar.vustudentsguide" target="_blank" class="download-btn">
                 <i class="fab fa-google-play"></i> Get it on Play Store
             </a>
         </div>
@@ -250,10 +277,15 @@
     </section>
 
     <footer id="contact">
-        <p>&copy; 2026 VU Students Guide. All rights reserved.</p>
+        <div class="contact-info">
+            <h3>Contact Developer</h3>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:devv.abubakar@gmail.com">devv.abubakar@gmail.com</a></p>
+            <p><i class="fas fa-phone-alt"></i> <a href="tel:03280110191">03280110191</a></p>
+        </div>
+
         <div class="footer-links">
             <a href="privacy-policy.html">Privacy Policy</a>
-            <a href="mailto:contact@vustudentsguide.online">Contact Support</a>
+            <span>&copy; 2026 VU Students Guide. All rights reserved.</span>
         </div>
     </footer>
 
