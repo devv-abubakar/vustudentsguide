@@ -3,268 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chand Raat Mubarak, Roshni! 🌙</title>
+    <title>VU Students Guide - Your Ultimate Study Companion</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* --- GLOBAL STYLES --- */
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap');
+        :root {
+            --primary-blue: #1E3A8A; /* Aapki app ka primary color */
+            --light-blue: #DBEAFE;
+            --white: #FFFFFF;
+            --dark-gray: #333333;
+            --light-gray: #F3F4F6;
+        }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background: linear-gradient(to bottom, #020111, #20124d, #000022);
-            color: #fff;
-            font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            line-height: 1.6;
         }
 
-        /* --- ANIMATIONS --- */
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-        }
-
-        @keyframes pulseMoon {
-            0% { box-shadow: 0 0 20px #fff, 0 0 40px #ffeb3b; }
-            50% { box-shadow: 0 0 40px #fff, 0 0 80px #ffeb3b; }
-            100% { box-shadow: 0 0 20px #fff, 0 0 40px #ffeb3b; }
-        }
-
-        @keyframes slideIn {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes sway {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(20px); }
-        }
-
-        /* --- BACKGROUND STARS --- */
-        .stars {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1; pointer-events: none;
-        }
-        
-        .star {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle infinite ease-in-out;
-        }
-
-        /* --- FLOATING STICKERS / MEMORIES --- */
-        .stickers-container {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 0; pointer-events: none;
-        }
-
-        .sticker {
-            position: absolute;
-            font-size: 2rem;
-            animation: floatUp infinite linear;
-            opacity: 0;
-        }
-
-        /* --- SECTIONS --- */
-        section {
-            min-height: 100vh;
+        /* Navbar */
+        header {
+            background-color: var(--white);
+            padding: 20px 10%;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            text-align: center;
-            padding: 2rem;
-            position: relative;
-            z-index: 1;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .hidden {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 1.5s ease-out;
-        }
-
-        .show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- HERO SECTION --- */
-        .moon {
-            width: 150px;
-            height: 150px;
-            background: #fff;
-            border-radius: 50%;
-            margin-bottom: 2rem;
-            animation: pulseMoon 3s infinite;
-            position: relative;
-        }
-        
-        .moon::after {
-            content: '';
-            position: absolute;
-            top: 10px; right: 20px;
-            width: 30px; height: 30px;
-            background: rgba(0,0,0,0.1);
-            border-radius: 50%;
-        }
-
-        h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4.5rem;
-            color: #ffeb3b;
-            text-shadow: 2px 2px 10px rgba(255, 235, 59, 0.5);
-            margin-bottom: 1rem;
-        }
-
-        p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            max-width: 800px;
-            margin: 1rem auto;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 15px;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .highlight {
-            color: #ffeb3b;
-            font-weight: 600;
-        }
-
-        /* --- SCROLL PROMPT --- */
-        .scroll-down {
-            position: absolute;
-            bottom: 30px;
-            font-size: 2rem;
-            animation: slideIn 2s infinite alternate;
-        }
-
-        /* --- CUSTOM BUTTON --- */
-        .wish-btn {
-            background: linear-gradient(45deg, #ffeb3b, #ff9800);
-            color: #000;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.5rem;
-            border-radius: 30px;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
+        .logo {
+            font-size: 24px;
             font-weight: bold;
-            margin-top: 2rem;
+            color: var(--primary-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 10%;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 100%);
+        }
+
+        .hero-content {
+            max-width: 50%;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(30, 58, 138, 0.5);
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 10%;
+            text-align: center;
+            background-color: var(--white);
+        }
+
+        .features h2 {
+            font-size: 36px;
+            color: var(--primary-blue);
+            margin-bottom: 50px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--light-gray);
+            padding: 30px;
+            border-radius: 15px;
             transition: transform 0.3s;
-            box-shadow: 0 5px 15px rgba(255, 235, 59, 0.4);
         }
 
-        .wish-btn:hover {
-            transform: scale(1.1);
+        .feature-card:hover {
+            transform: translateY(-10px);
         }
 
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 10%;
+            margin-top: 50px;
+        }
+
+        .footer-links {
+            margin-top: 15px;
+        }
+
+        .footer-links a {
+            color: var(--light-blue);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 5%;
+            }
+            .hero-content {
+                max-width: 100%;
+                margin-bottom: 40px;
+            }
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            .nav-links {
+                display: none; /* Mobile par links hide kar diye hain simplicity ke liye */
+            }
+        }
     </style>
 </head>
 <body>
 
-    <div class="stars" id="stars-container"></div>
+    <header>
+        <a href="#" class="logo">
+            <i class="fas fa-graduation-cap"></i> VU Students Guide
+        </a>
+        <nav class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-    <div class="stickers-container" id="stickers-container"></div>
-
-    <section>
-        <div class="moon"></div>
-        <h1 class="hidden">Chand Raat Mubarak, Roshni! ✨</h1>
-        <p class="hidden">Asman par chand nikal aya hai, aur mere dil mein aapka khayal. Kal Eid hai, par meri eidi toh aapse baat karke hi mukammal hoti hai.</p>
-        <div class="scroll-down">👇</div>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Aces Your Exams with VU Students Guide!</h1>
+            <p>Your ultimate Virtual University study companion. Access chapter-wise MCQs, attempt Grand Tests, calculate your GPA, and relax with our mini brain games. Everything you need, right in your pocket.</p>
+            <a href="#" class="download-btn">
+                <i class="fab fa-google-play"></i> Get it on Play Store
+            </a>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=400&h=500" alt="App Mockup">
+        </div>
     </section>
 
-    <section>
-        <h1 class="hidden">Pehli Nazar, Pehli Baat 💫</h1>
-        <p class="hidden">Mujhe aaj bhi yaad hai jab maine pehli baar aapko us group mein dekha tha. Us waqt nahi pata tha ke ek random si mulakat mere liye itni special ban jayegi.</p>
-        <p class="hidden">Aap <span class="highlight">bohat achi hain</span>, Roshni. Maine aaj tak apni zindagi mein is tarha ki larki nahi dekhi jiski vibes itni pure aur dil itna saaf ho.</p>
+    <section id="features" class="features">
+        <h2>App Features</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <i class="fas fa-tasks feature-icon"></i>
+                <h3>Grand Quizzes</h3>
+                <p>Prepare for your exams with our comprehensive chapter-wise MCQs and custom Grand Tests.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-calculator feature-icon"></i>
+                <h3>GPA Calculator</h3>
+                <p>Easily calculate and track your semester GPA and CGPA without any hassle.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-gamepad feature-icon"></i>
+                <h3>Mini Games</h3>
+                <p>Take a break from studies! Sharpen your mind with Connect4, Memory Games, and Vocab challenges.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chart-line feature-icon"></i>
+                <h3>Test History</h3>
+                <p>Track your progress over time with a detailed history of all your attempted quizzes.</p>
+            </div>
+        </div>
     </section>
 
-    <section>
-        <h1 class="hidden">Aapki Baatein 🌸</h1>
-        <p class="hidden">Sach kahun? Mujhe aaj tak aapki koi baat buri nahi lagi. Aap jab baat karti hain toh main bas hamesha khush hota hoon.</p>
-        <p class="hidden">Mera din is intezar mein guzarta hai ke <span class="highlight">Roshni kab free hogi</span> aur hum kab baat karenge. Aapki maujoodgi mere din ka sabse behtareen hissa hoti hai.</p>
-    </section>
+    <footer id="contact">
+        <p>&copy; 2026 VU Students Guide. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="mailto:contact@vustudentsguide.online">Contact Support</a>
+        </div>
+    </footer>
 
-    <section>
-        <h1 class="hidden">Meri Ek Hi Khwahish 🤲</h1>
-        <p class="hidden">Is Chand Raat par, chand ko dekhte hue meri bas ek hi dua hai...</p>
-        <p class="hidden">Meri khwahish hai ke aaj ki is Chand Raat ki tarha, hum future ki <span class="highlight">har Chand Raat ko isi tarha sath rahein</span>. Hamari dosti aur bond waqt ke sath aur bhi gehra hota jaye.</p>
-        <button class="wish-btn hidden" onclick="triggerConfetti()">Eid Mubarak Advance Mein! 🎉</button>
-    </section>
-
-    <script>
-        // 1. Generate Random Stars
-        const starsContainer = document.getElementById('stars-container');
-        for (let i = 0; i < 200; i++) {
-            let star = document.createElement('div');
-            star.className = 'star';
-            star.style.width = Math.random() * 3 + 'px';
-            star.style.height = star.style.width;
-            star.style.left = Math.random() * 100 + 'vw';
-            star.style.top = Math.random() * 100 + 'vh';
-            star.style.animationDuration = (Math.random() * 3 + 1) + 's';
-            star.style.animationDelay = Math.random() * 2 + 's';
-            starsContainer.appendChild(star);
-        }
-
-        // 2. Generate Floating Memory Stickers (Emojis as stickers)
-        const stickersContainer = document.getElementById('stickers-container');
-        const stickers = ['💖', '🌙', '✨', '🥺', '🦋', '🌸', '💫', '💌', '🥰', '🎈'];
-        
-        for (let i = 0; i < 40; i++) {
-            let sticker = document.createElement('div');
-            sticker.className = 'sticker';
-            sticker.innerText = stickers[Math.floor(Math.random() * stickers.length)];
-            sticker.style.left = Math.random() * 100 + 'vw';
-            sticker.style.animationDuration = (Math.random() * 10 + 10) + 's'; // 10 to 20 seconds
-            sticker.style.animationDelay = (Math.random() * 15) + 's';
-            sticker.style.fontSize = (Math.random() * 2 + 1.5) + 'rem';
-            stickersContainer.appendChild(sticker);
-        }
-
-        // 3. Scroll Reveal Animation Logic
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                }
-            });
-        });
-
-        const hiddenElements = document.querySelectorAll('.hidden');
-        hiddenElements.forEach((el) => observer.observe(el));
-
-        // 4. Button Click Confetti (Extra interaction)
-        function triggerConfetti() {
-            for (let i = 0; i < 50; i++) {
-                let conf = document.createElement('div');
-                conf.className = 'sticker';
-                conf.innerText = '✨';
-                conf.style.left = Math.random() * 100 + 'vw';
-                conf.style.bottom = '0';
-                conf.style.animationDuration = '2s';
-                document.body.appendChild(conf);
-                setTimeout(() => conf.remove(), 2000);
-            }
-            alert("Chand Raat aur Eid bohat bohat Mubarak ho Roshni! Khush rahein hamesha. - Dudu");
-        }
-    </script>
 </body>
 </html>
