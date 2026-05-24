@@ -3,291 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VU Students Guide - Your Ultimate Study Companion</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>VU Students Guide - Official Portal</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <style>
-        :root {
-            --primary-blue: #1E3A8A;
-            --light-blue: #DBEAFE;
-            --white: #FFFFFF;
-            --dark-gray: #333333;
-            --light-gray: #F3F4F6;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
         body {
-            background-color: var(--light-gray);
-            color: var(--dark-gray);
-            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fc;
+            color: #2c2e3e;
+            overflow-x: hidden;
         }
 
         /* Navbar */
-        header {
-            background-color: var(--white);
-            padding: 20px 10%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 15px 50px;
         }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--primary-blue);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .navbar-brand {
+            font-weight: 700;
+            color: #2f74ad !important;
+            font-size: 1.5rem;
         }
-
-        .nav-links a {
-            margin-left: 20px;
-            text-decoration: none;
-            color: var(--dark-gray);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-blue);
-        }
-
+        
         /* Hero Section */
-        .hero {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 80px 10%;
-            background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 100%);
+        .hero-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #e0f0ff 0%, #ffffff 100%);
+            text-align: center;
         }
-
-        .hero-content {
-            max-width: 50%;
-        }
-
-        .hero-content h1 {
-            font-size: 48px;
-            color: var(--primary-blue);
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #151f2f;
             margin-bottom: 20px;
-            line-height: 1.2;
         }
-
-        .hero-content p {
-            font-size: 18px;
-            margin-bottom: 30px;
+        .hero-subtitle {
+            font-size: 1.2rem;
             color: #555;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            line-height: 1.6;
         }
 
-        .download-btn {
-            display: inline-block;
-            background-color: var(--primary-blue);
-            color: var(--white);
-            padding: 15px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+        /* Action Buttons */
+        .btn-custom {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            margin: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-
-        .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(30, 58, 138, 0.5);
+        .btn-primary-custom {
+            background-color: #2f74ad;
+            color: white;
+            border: 2px solid #2f74ad;
         }
-
-        .hero-image img {
-            max-width: 100%;
-            width: 400px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        .btn-primary-custom:hover {
+            background-color: transparent;
+            color: #2f74ad;
+        }
+        .btn-success-custom {
+            background-color: #34bfa3;
+            color: white;
+            border: 2px solid #34bfa3;
+        }
+        .btn-success-custom:hover {
+            background-color: transparent;
+            color: #34bfa3;
         }
 
         /* Features Section */
-        .features {
-            padding: 80px 10%;
-            text-align: center;
-            background-color: var(--white);
+        .features-section {
+            padding: 80px 0;
+            background-color: #ffffff;
         }
-
-        .features h2 {
-            font-size: 36px;
-            color: var(--primary-blue);
-            margin-bottom: 50px;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
         .feature-card {
-            background: var(--light-gray);
             padding: 30px;
-            border-radius: 15px;
+            border-radius: 10px;
+            background: #f8f9fc;
+            text-align: center;
             transition: transform 0.3s;
+            border: 1px solid #ebedf2;
+            height: 100%;
         }
-
         .feature-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
         }
-
         .feature-icon {
-            font-size: 40px;
-            color: var(--primary-blue);
+            font-size: 2.5rem;
+            color: #8950fc;
             margin-bottom: 20px;
         }
 
-        .feature-card h3 {
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
-
-        /* Footer & Contact Section */
-        footer {
-            background-color: var(--primary-blue);
-            color: var(--white);
+        /* App Banner Section */
+        .app-banner {
+            background: linear-gradient(135deg, #2f74ad 0%, #151f2f 100%);
+            color: white;
+            padding: 60px 0;
             text-align: center;
-            padding: 40px 10%;
-            margin-top: 50px;
         }
-
-        .contact-info {
-            margin-bottom: 20px;
-            font-size: 16px;
-        }
-        
-        .contact-info p {
-            margin: 10px 0;
-        }
-
-        .contact-info i {
-            margin-right: 10px;
-            color: var(--light-blue);
-        }
-
-        .contact-info a {
-            color: var(--white);
+        .btn-google-play {
+            background-color: white;
+            color: #151f2f;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
             text-decoration: none;
-        }
-
-        .contact-info a:hover {
-            text-decoration: underline;
-            color: var(--light-blue);
-        }
-
-        .footer-links {
+            transition: all 0.3s;
             margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.2);
         }
-
-        .footer-links a {
-            color: var(--light-blue);
+        .btn-google-play:hover {
+            background-color: #f1f1f1;
             text-decoration: none;
+            color: #2f74ad;
+            transform: scale(1.05);
+        }
+        .btn-google-play i {
+            font-size: 1.5rem;
+            margin-right: 10px;
+            color: #34A853; /* Google Play Icon Color */
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #151f2f;
+            color: #a2a5b9;
+            padding: 40px 0 20px 0;
+            text-align: center;
+        }
+        .contact-links a {
+            color: #ffffff;
             margin: 0 15px;
-            font-size: 14px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: color 0.3s;
         }
-
-        .footer-links a:hover {
-            text-decoration: underline;
-            color: var(--white);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding: 40px 5%;
-            }
-            .hero-content {
-                max-width: 100%;
-                margin-bottom: 40px;
-            }
-            .hero-content h1 {
-                font-size: 36px;
-            }
-            .nav-links {
-                display: none;
-            }
+        .contact-links a:hover {
+            color: #34bfa3;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <a href="#" class="logo">
-            <i class="fas fa-graduation-cap"></i> VU Students Guide
-        </a>
-        <nav class="nav-links">
-            <a href="#features">Features</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-graduation-cap"></i> VU Students Guide</a>
+            <div class="ml-auto">
+                <a href="#contact" class="btn btn-outline-secondary btn-sm rounded-pill px-3">Contact Us</a>
+            </div>
+        </div>
+    </nav>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Ace Your Exams with VU Students Guide!</h1>
-            <p>Your ultimate Virtual University study companion. Access chapter-wise MCQs, attempt Grand Tests, calculate your GPA, and relax with our mini brain games. Everything you need, right in your pocket.</p>
-            <a href="https://play.google.com/store/apps/details?id=com.abubakar.vustudentsguide" target="_blank" class="download-btn">
-                <i class="fab fa-google-play"></i> Get it on Play Store
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">Master Your VU Exams</h1>
+            <p class="hero-subtitle">The ultimate examination portal and academic companion for Virtual University students. Book your mock tests, analyze your preparation, and achieve top grades.</p>
+            
+            <div>
+                <a href="book_test.html" class="btn btn-custom btn-primary-custom">
+                    <i class="fas fa-calendar-alt"></i> Book Your Test
+                </a>
+                <a href="login.html" class="btn btn-custom btn-success-custom">
+                    <i class="fas fa-play-circle"></i> Start Test
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="font-weight-bold">Why Choose Us?</h2>
+                    <p class="text-muted">Everything you need to succeed in your Virtual University journey.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card">
+                        <i class="fas fa-laptop-code feature-icon"></i>
+                        <h4 class="font-weight-bold">Real Exam Interface</h4>
+                        <p class="text-muted">Experience the exact VUTES environment before your actual exams to build confidence.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card">
+                        <i class="fas fa-robot feature-icon"></i>
+                        <h4 class="font-weight-bold">AI-Assisted Learning</h4>
+                        <p class="text-muted">Get help solving complex quizzes and understanding core concepts with advanced AI tools.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card">
+                        <i class="fas fa-file-download feature-icon"></i>
+                        <h4 class="font-weight-bold">Past Papers Archive</h4>
+                        <p class="text-muted">Access a massive library of past papers and study materials directly from your mobile device.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="app-banner">
+        <div class="container">
+            <h2>Take Your Prep Anywhere!</h2>
+            <p style="font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">Download the official Android application. Get instant access to AI quiz solvers, lecture skipping tools, and comprehensive past papers.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.abubakar.vustudentsguide&hl=en" target="_blank" class="btn-google-play">
+                <i class="fab fa-google-play"></i> Get it on Google Play
             </a>
         </div>
-        <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=400&h=500" alt="App Mockup">
-        </div>
     </section>
 
-    <section id="features" class="features">
-        <h2>App Features</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <i class="fas fa-tasks feature-icon"></i>
-                <h3>Grand Quizzes</h3>
-                <p>Prepare for your exams with our comprehensive chapter-wise MCQs and custom Grand Tests.</p>
+    <footer class="footer" id="contact">
+        <div class="container">
+            <h4 class="text-white mb-4">Get In Touch</h4>
+            <div class="contact-links mb-4">
+                <a href="https://wa.me/923164458624" target="_blank" title="WhatsApp">
+                    <i class="fab fa-whatsapp"></i> +92 316 4458624
+                </a>
+                <a href="mailto:devv.abubakar@gmail.com" title="Email">
+                    <i class="fas fa-envelope"></i> devv.abubakar@gmail.com
+                </a>
             </div>
-            <div class="feature-card">
-                <i class="fas fa-calculator feature-icon"></i>
-                <h3>GPA Calculator</h3>
-                <p>Easily calculate and track your semester GPA and CGPA without any hassle.</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-gamepad feature-icon"></i>
-                <h3>Mini Games</h3>
-                <p>Take a break from studies! Sharpen your mind with Connect4, Memory Games, and Vocab challenges.</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-chart-line feature-icon"></i>
-                <h3>Test History</h3>
-                <p>Track your progress over time with a detailed history of all your attempted quizzes.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contact">
-        <div class="contact-info">
-            <h3>Contact Developer</h3>
-            <p><i class="fas fa-envelope"></i> <a href="mailto:devv.abubakar@gmail.com">devv.abubakar@gmail.com</a></p>
-            <p><i class="fas fa-phone-alt"></i> <a href="tel:03280110191">03280110191</a></p>
-        </div>
-
-        <div class="footer-links">
-            <a href="privacy-policy.html">Privacy Policy</a>
-            <span>&copy; 2026 VU Students Guide. All rights reserved.</span>
+            <p class="mb-0" style="font-size: 0.9rem;">&copy; 2026 VU Students Guide. Developed with <i class="fas fa-heart text-danger"></i> for VU Students.</p>
         </div>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
