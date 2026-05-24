@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VU Examination System - Paper</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #e9eaec; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow: hidden; height: 100vh; }
+
+        :root {
+            --vu-dark: #1e2030;
+            --vu-purple: #7c3aed;
+            --vu-purple-light: #8b5cf6;
+            --vu-purple-dark: #6d28d9;
+            --vu-red: #ef4444;
+            --vu-yellow: #f59e0b;
+            --vu-teal: #10b981;
+            --vu-cyan: #06b6d4;
+        }
+
+        /* ===== TOP BAR ===== */
+        .vu-top-bar {
+            background-color: var(--vu-dark);
+            color: white;
+            height: 64px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            position: relative;
+            z-index: 100;
+        }
+        .vu-course-title { font-size: 1rem; font-weight: 600; color: #fff; flex: 1; }
+        .vu-user-info { display: flex; align-items: center; gap: 12px; flex: 1; justify-content: flex-end; }
+        .vu-user-text { text-align: right; font-size: 0.78rem; line-height: 1.5; }
+        .vu-user-text strong { font-size: 0.82rem; }
+        .vu-profile-icon {
+            width: 52px; height: 52px; border-radius: 50%; background: #9ca3af;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden; border: 2px solid #6b7280;
+        }
+        .vu-profile-icon i { font-size: 2.8rem; color: #e5e7eb; line-height: 1; margin-top: 6px; }
+
+        /* ===== ANIMATED CIRCULAR TIMER ===== */
+        .vu-timer-wrapper {
+            position: absolute; left: 50%; top: 0;
+            transform: translateX(-50%); z-index: 200;
+        }
+        .vu-timer-circle {
+            width: 82px; height: 82px; border-radius: 50%;
+            background-color: #1e2030;
+            border: 4px solid #22d3ee;
+            display: flex; flex-direction: row; justify-content: center; align-items: center;
+            color: white; font-size: 1.35rem; font-weight: 700;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            gap: 5px; margin-top: 6px;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Animated clock face inside timer */
+        .timer-clock-svg {
+            width: 22px; height: 22px; flex-shrink: 0;
+        }
+        .clock-face {
+            fill: none; stroke: #22d3ee; stroke-width: 1.5;
+        }
+        .clock-hour {
+            stroke: #22d3ee; stroke-width: 2; stroke-linecap: round;
+            transform-origin: 10px 10px;
+            animation: rotateHour 43200s linear infinite;
+        }
+        .clock-minute {
+            stroke: #fff; stroke-width: 1.5; stroke-linecap: round;
+            transform-origin: 10px 10px;
+            animation: rotateMinute 3600s linear infinite;
+        }
+        .clock-second {
+            stroke: var(--vu-red); stroke-width: 1; stroke-linecap: round;
+            transform-origin: 10px 10px;
+            animation: rotateSecond 60s linear infinite;
+        }
+        @keyframes rotateHour   { from { transform: rotate(0deg);   } to { transform: rotate(360deg);   } }
+        @keyframes rotateMinute { from { transform: rotate(0deg);   } to { transform: rotate(360deg);   } }
+        @keyframes rotateSecond { from { transform: rotate(0deg);   } to { transform: rotate(360deg);   } }
+        /* Sweep glow on border */
+        @keyframes timerBorderSpin {
+            0%   { box-shadow: 0 4px 15px rgba(0,0,0,0.4), 0 0 8px #22d3ee; border-color: #22d3ee; }
+            50%  { box-shadow: 0 4px 15px rgba(0,0,0,0.4), 0 0 18px #22d3ee; border-color: #67e8f9; }
+            100% { box-shadow: 0 4px 15px rgba(0,0,0,0.4), 0 0 8px #22d3ee; border-color: #22d3ee; }
+        }
+        .vu-timer-circle { animation: timerBorderSpin 2s ease-in-out infinite; }
+
+        /* ===== MAIN LAYOUT ===== */
+        .vu-body {
+            height: calc(100vh - 124px);
+            display: flex; gap: 8px; padding: 8px; overflow: hidden;
+        }
+        .vu-left-col {
+            flex: 1; display: flex; flex-direction: column;
+            gap: 8px; min-width: 0; overflow: hidden;
+        }
+        .vu-right-col { width: 230px; flex-shrink: 0; }
+
+        /* ===== PANELS ===== */
+        .vu-panel {
+            background: #fff; border-radius: 4px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+            display: flex; flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* --- MCQ mode ---
+           Question: auto height (content-sized) + small bottom padding, max 40%, scrollable
+           Answer: takes remaining flex space */
+        .vu-left-col.mode-mcq .vu-panel-question {
+            flex: 0 0 auto;
+            max-height: 40%;
+            min-height: 60px;
+        }
+        .vu-left-col.mode-mcq .vu-panel-answer {
+            flex: 1;
+            min-height: 0;
+        }
+
+        /* --- Subjective mode ---
+           Question: auto height, max 38%, scrollable + small bottom padding
+           Answer: takes remaining flex space */
+        .vu-left-col.mode-subjective .vu-panel-question {
+            flex: 0 0 auto;
+            max-height: 38%;
+            min-height: 60px;
+        }
+        .vu-left-col.mode-subjective .vu-panel-answer {
+            flex: 1;
+            min-height: 0;
+        }
+
+        .vu-panel-summary { height: 100%; display: flex; flex-direction: column; }
+
+        /* ===== PURPLE HEADERS ===== */
+        .vu-purple-header {
+            background: linear-gradient(90deg, #6d28d9 0%, #7c3aed 50%, #8b5cf6 100%);
+            color: white; padding: 10px 16px;
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.9rem; font-weight: 500; flex-shrink: 0; min-height: 42px;
+        }
+        .vu-purple-header .marks-info { display: flex; align-items: center; gap: 6px; }
+        .vu-purple-header .marks-info .mark-val { color: #fbbf24; font-weight: 700; }
+        .vu-purple-header .marks-info .warn-icon { color: #fbbf24; font-size: 1rem; }
+
+        /* ===== QUESTION TEXT ===== */
+        /* Extra bottom padding so last line has breathing room before scroll end */
+        .vu-q-body {
+            padding: 14px 18px 22px 18px;
+            font-size: 0.97rem; color: #1f2937;
+            overflow-y: auto; flex: 1;
+        }
+
+        /* ===== MCQ OPTIONS ===== */
+        .vu-answer-body { overflow-y: auto; flex: 1; }
+        .vu-option-item {
+            display: flex; align-items: center;
+            padding: 13px 18px; border-bottom: 1px solid #f0f0f0;
+            cursor: pointer; transition: background 0.15s; gap: 14px;
+        }
+        .vu-option-item:last-child { border-bottom: none; }
+        .vu-option-item:hover { background: #f9fafb; }
+        .vu-option-item.selected { background: #f0ebff; border-left: 4px solid var(--vu-purple); }
+        .vu-option-item input[type="radio"] {
+            width: 18px; height: 18px; flex-shrink: 0;
+            cursor: pointer; accent-color: var(--vu-purple);
+        }
+        .vu-option-text { font-size: 0.95rem; color: #374151; line-height: 1.4; }
+
+        /* ===== CUSTOM RICH TEXT EDITOR (Objective) ===== */
+        /* matches the toolbar in the image exactly */
+        #pnlAnswerSubjective {
+            display: flex; flex-direction: column; flex: 1; min-height: 0; overflow: hidden;
+        }
+        .rte-toolbar {
+            display: flex; flex-wrap: wrap; align-items: center; gap: 1px;
+            padding: 5px 8px; border-bottom: 1px solid #e0e0e0;
+            background: #f8f8f8; flex-shrink: 0; user-select: none;
+        }
+        .rte-toolbar .rte-sep {
+            width: 1px; height: 20px; background: #d0d0d0; margin: 0 3px;
+        }
+        .rte-btn {
+            width: 26px; height: 26px; border: none; background: transparent;
+            border-radius: 3px; cursor: pointer; font-size: 0.78rem; font-weight: 700;
+            color: #333; display: flex; align-items: center; justify-content: center;
+            transition: background 0.12s; padding: 0; flex-shrink: 0;
+        }
+        .rte-btn:hover { background: #e0e0e0; }
+        .rte-btn.active { background: #d0c4f7; color: var(--vu-purple); }
+        .rte-btn i { font-size: 0.72rem; pointer-events: none; }
+        .rte-btn span { pointer-events: none; }
+        .rte-select {
+            height: 26px; border: 1px solid #d0d0d0; border-radius: 3px;
+            font-size: 0.75rem; color: #444; background: white;
+            padding: 0 4px; cursor: pointer; outline: none; max-width: 80px;
+        }
+        .rte-select:hover { border-color: #aaa; }
+        /* Color picker buttons */
+        .rte-color-btn {
+            width: 26px; height: 26px; border: none; background: transparent;
+            border-radius: 3px; cursor: pointer; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 1px; padding: 3px;
+            transition: background 0.12s; flex-shrink: 0;
+        }
+        .rte-color-btn:hover { background: #e0e0e0; }
+        .rte-color-letter { font-size: 0.78rem; font-weight: 700; line-height: 1; color: #333; }
+        .rte-color-bar { width: 14px; height: 3px; border-radius: 1px; }
+        /* Editor area */
+        .rte-editor {
+            flex: 1; min-height: 0; overflow-y: auto;
+            padding: 10px 14px 20px 14px;
+            font-size: 0.95rem; color: #1f2937; line-height: 1.6;
+            outline: none; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .rte-editor:empty::before {
+            content: attr(data-placeholder);
+            color: #9ca3af; pointer-events: none;
+        }
+        .rte-editor:focus { outline: none; }
+
+        /* ===== SUMMARY PANEL ===== */
+        .vu-summary-header {
+            background: linear-gradient(90deg, #6d28d9 0%, #8b5cf6 100%);
+            color: white; padding: 10px 16px; font-size: 0.9rem; font-weight: 500;
+            flex-shrink: 0; min-height: 42px; display: flex; align-items: center;
+        }
+        .vu-summary-grid {
+            padding: 10px 8px; display: flex; flex-wrap: wrap; gap: 4px;
+            overflow-y: auto; flex: 1; align-content: flex-start; justify-content: center;
+        }
+        .vu-q-btn {
+            width: 34px; height: 34px; border-radius: 50%;
+            border: 1.5px solid #d1d5db; background: white;
+            font-size: 0.72rem; font-weight: 600; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            color: #374151; transition: all 0.15s; flex-shrink: 0;
+        }
+        .vu-q-btn:hover { border-color: var(--vu-purple); color: var(--vu-purple); }
+        .vu-q-btn.answered { background: var(--vu-teal); color: white; border-color: var(--vu-teal); }
+        .vu-q-btn.flagged { background: var(--vu-yellow); color: white; border-color: var(--vu-yellow); }
+        .vu-q-btn.current { border: 2.5px solid var(--vu-purple); color: var(--vu-purple); font-weight: 700; }
+        .vu-q-btn.answered.current { border: 2.5px solid #1f2937; }
+
+        /* ===== SUMMARY STATS ===== */
+        .vu-summary-stats { padding: 12px 16px; border-top: 1px solid #e5e7eb; flex-shrink: 0; }
+        .vu-pct-text { font-size: 1.8rem; font-weight: 700; color: #1f2937; line-height: 1.2; }
+        .vu-progress-bar { height: 6px; background: #e5e7eb; border-radius: 3px; margin: 6px 0 10px; overflow: hidden; }
+        .vu-progress-fill { height: 100%; background: var(--vu-teal); border-radius: 3px; width: 0%; transition: width 0.3s; }
+        .vu-stat-row { display: flex; justify-content: space-between; font-size: 0.88rem; font-weight: 500; color: #374151; margin-bottom: 5px; }
+        .vu-stat-row .stat-val-teal { color: var(--vu-teal); font-weight: 700; }
+        .vu-stat-row .stat-val-purple { color: var(--vu-purple); font-weight: 700; }
+        .vu-stat-row .stat-val { font-weight: 700; color: #1f2937; }
+
+        /* ===== BOTTOM BAR ===== */
+        .vu-bottom-bar {
+            position: fixed; bottom: 0; left: 0; width: 100%; height: 60px;
+            background: var(--vu-dark); display: flex; justify-content: space-between;
+            align-items: center; padding: 0 18px; z-index: 100;
+        }
+        .vu-btn {
+            height: 38px; padding: 0 16px; border: none; border-radius: 4px;
+            font-size: 0.85rem; font-weight: 600; cursor: pointer; color: white;
+            display: flex; align-items: center; gap: 6px; white-space: nowrap;
+        }
+        .vu-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-finish { background: var(--vu-red); }
+        .btn-finish:hover { background: #dc2626; }
+        .btn-flag { background: var(--vu-purple); }
+        .btn-flag:hover { background: var(--vu-purple-dark); }
+        .btn-save { background: var(--vu-teal); }
+        .btn-save:hover { background: #059669; }
+        .btn-nav-grp { display: flex; }
+        .btn-nav {
+            background: var(--vu-yellow); color: #1c1c1c; height: 38px; padding: 0 14px;
+            border: none; font-size: 0.85rem; font-weight: 600; cursor: pointer;
+            display: flex; align-items: center; gap: 5px; white-space: nowrap;
+        }
+        .btn-nav:first-child { border-radius: 4px 0 0 4px; border-right: 1px solid rgba(0,0,0,0.15); }
+        .btn-nav:last-child { border-radius: 0 4px 4px 0; }
+        .btn-nav:hover { background: #d97706; }
+        .btn-nav:disabled { opacity: 0.4; cursor: not-allowed; }
+        .bottom-center-group { display: flex; align-items: center; gap: 10px; }
+
+        /* ===== MODALS ===== */
+        #ajaxWait, #completedScreen {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: white; z-index: 2000; justify-content: center; align-items: center; flex-direction: column;
+        }
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); z-index: 1500; justify-content: center; align-items: center;
+        }
+        .modal-overlay.show { display: flex; }
+        .custom-modal { background: white; padding: 28px; border-radius: 6px; width: 460px; max-width: 92%; }
+        .custom-modal h4 { font-size: 1.1rem; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid #e5e7eb; }
+
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #c4c4c4; border-radius: 3px; }
+    </style>
+</head>
+<body>
+
+    <div id="ajaxWait">
+        <i class="fas fa-spinner fa-spin fa-3x mb-3" style="color: var(--vu-purple);"></i>
+        <h4>Please wait...</h4>
+    </div>
+
+    <div id="completedScreen">
+        <i class="fas fa-check-circle fa-5x mb-4" style="color: var(--vu-teal);"></i>
+        <h2 style="color: var(--vu-dark);">Test Already Completed</h2>
+        <p class="text-muted mt-2">You have successfully submitted your exam. Your result will be announced soon.</p>
+        <a href="index.html" class="btn btn-primary mt-4 px-4" style="background: var(--vu-purple); border:none;">Back to Home</a>
+    </div>
+
+    <!-- TOP BAR -->
+    <div class="vu-top-bar">
+        <div class="vu-course-title">
+            <span id="lblCourseCode">...</span> (<span id="lblCourseTitle">...</span>)
+        </div>
+
+        <div class="vu-timer-wrapper">
+            <div class="vu-timer-circle">
+                <!-- Animated SVG Clock -->
+                <svg class="timer-clock-svg" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="clock-face" cx="10" cy="10" r="8.5"/>
+                    <!-- Hour hand -->
+                    <line class="clock-hour" id="clockHour" x1="10" y1="10" x2="10" y2="5"/>
+                    <!-- Minute hand -->
+                    <line class="clock-minute" id="clockMinute" x1="10" y1="10" x2="10" y2="3.5"/>
+                    <!-- Second hand -->
+                    <line class="clock-second" id="clockSecond" x1="10" y1="10" x2="10" y2="3"/>
+                    <!-- Center dot -->
+                    <circle cx="10" cy="10" r="1" fill="#22d3ee"/>
+                    <!-- Hour markers -->
+                    <line x1="10" y1="2" x2="10" y2="3" stroke="#22d3ee" stroke-width="1"/>
+                    <line x1="18" y1="10" x2="17" y2="10" stroke="#22d3ee" stroke-width="1"/>
+                    <line x1="10" y1="18" x2="10" y2="17" stroke="#22d3ee" stroke-width="1"/>
+                    <line x1="2" y1="10" x2="3" y2="10" stroke="#22d3ee" stroke-width="1"/>
+                </svg>
+                <span id="timerMins">--</span>
+            </div>
+        </div>
+
+        <div class="vu-user-info">
+            <div class="vu-user-text">
+                <strong>Login Time <span id="lblSTime"></span></strong><br>
+                <span id="lblStudentID"></span><br>
+                <span id="lblStudentName"></span>
+            </div>
+            <div class="vu-profile-icon">
+                <i class="fas fa-user"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN BODY -->
+    <div class="vu-body">
+        <div class="vu-left-col mode-mcq" id="leftCol">
+
+            <!-- Question Panel -->
+            <div class="vu-panel vu-panel-question">
+                <div class="vu-purple-header">
+                    <span>Question No : <span id="lblQuestionNo">0 of 0</span></span>
+                    <div class="marks-info">
+                        <span>Marks: <span id="lblMarks" class="mark-val">0</span> (Time <span id="lblBTime">0</span> Min)</span>
+                        <i class="fas fa-exclamation-circle warn-icon"></i>
+                    </div>
+                </div>
+                <div class="vu-q-body" id="qText">Loading question...</div>
+            </div>
+
+            <!-- Answer Panel -->
+            <div class="vu-panel vu-panel-answer">
+                <div class="vu-purple-header">
+                    <span>Answer</span>
+                </div>
+
+                <!-- MCQ -->
+                <div id="pnlAnswerMCQ" style="display:none;" class="vu-answer-body">
+                    <div id="mcqOptions"></div>
+                </div>
+
+                <!-- Subjective - Custom Rich Text Editor -->
+                <div id="pnlAnswerSubjective" style="display:none;">
+                    <!-- Toolbar matching the image -->
+                    <div class="rte-toolbar" id="rteToolbar">
+                        <!-- Undo / Redo -->
+                        <button class="rte-btn" title="Undo" onclick="rteCmd('undo')"><i class="fas fa-undo"></i></button>
+                        <button class="rte-btn" title="Redo" onclick="rteCmd('redo')"><i class="fas fa-redo"></i></button>
+                        <div class="rte-sep"></div>
+                        <!-- Bold Italic Underline -->
+                        <button class="rte-btn" title="Bold" onclick="rteCmd('bold')" id="rteB"><span style="font-weight:900;font-size:0.85rem;">B</span></button>
+                        <button class="rte-btn" title="Italic" onclick="rteCmd('italic')" id="rteI"><span style="font-style:italic;font-weight:700;font-size:0.85rem;">I</span></button>
+                        <button class="rte-btn" title="Underline" onclick="rteCmd('underline')" id="rteU"><span style="text-decoration:underline;font-weight:700;font-size:0.85rem;">U</span></button>
+                        <!-- Highlight / Strikethrough -->
+                        <button class="rte-btn" title="Highlight" onclick="rteCmd('hiliteColor','#FFFF00')" style="font-size:0.7rem;">&#9998;</button>
+                        <button class="rte-btn" title="Strikethrough" onclick="rteCmd('strikeThrough')" id="rteS"><span style="text-decoration:line-through;font-size:0.85rem;">S</span></button>
+                        <div class="rte-sep"></div>
+                        <!-- Lists -->
+                        <button class="rte-btn" title="Ordered List" onclick="rteCmd('insertOrderedList')"><i class="fas fa-list-ol"></i></button>
+                        <button class="rte-btn" title="Unordered List" onclick="rteCmd('insertUnorderedList')"><i class="fas fa-list-ul"></i></button>
+                        <!-- Indent -->
+                        <button class="rte-btn" title="Decrease Indent" onclick="rteCmd('outdent')"><i class="fas fa-outdent"></i></button>
+                        <button class="rte-btn" title="Increase Indent" onclick="rteCmd('indent')"><i class="fas fa-indent"></i></button>
+                        <div class="rte-sep"></div>
+                        <!-- Alignment -->
+                        <button class="rte-btn" title="Align Left" onclick="rteCmd('justifyLeft')"><i class="fas fa-align-left"></i></button>
+                        <button class="rte-btn" title="Align Center" onclick="rteCmd('justifyCenter')"><i class="fas fa-align-center"></i></button>
+                        <button class="rte-btn" title="Align Right" onclick="rteCmd('justifyRight')"><i class="fas fa-align-right"></i></button>
+                        <button class="rte-btn" title="Justify" onclick="rteCmd('justifyFull')"><i class="fas fa-align-justify"></i></button>
+                        <div class="rte-sep"></div>
+                        <!-- Insert Image / Table / HR -->
+                        <button class="rte-btn" title="Insert Image" onclick="rteInsertImage()"><i class="fas fa-image"></i></button>
+                        <button class="rte-btn" title="Insert Table" onclick="rteInsertTable()"><i class="fas fa-table"></i></button>
+                        <button class="rte-btn" title="Horizontal Rule" onclick="rteCmd('insertHorizontalRule')"><i class="fas fa-minus"></i></button>
+                        <div class="rte-sep"></div>
+                        <!-- Styles / Format / Font / Size selects -->
+                        <select class="rte-select" title="Styles" onchange="rteCmd('formatBlock',this.value);this.value=''">
+                            <option value="">Styles</option>
+                            <option value="p">Normal</option>
+                            <option value="h1">Heading 1</option>
+                            <option value="h2">Heading 2</option>
+                            <option value="h3">Heading 3</option>
+                            <option value="blockquote">Quote</option>
+                            <option value="pre">Code</option>
+                        </select>
+                        <select class="rte-select" title="Font" onchange="rteCmd('fontName',this.value);this.value=''">
+                            <option value="">Font</option>
+                            <option value="Segoe UI">Segoe UI</option>
+                            <option value="Arial">Arial</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Courier New">Courier New</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Tahoma">Tahoma</option>
+                        </select>
+                        <select class="rte-select" title="Size" style="max-width:56px;" onchange="rteCmd('fontSize',this.value);this.value=''">
+                            <option value="">Size</option>
+                            <option value="1">8pt</option>
+                            <option value="2">10pt</option>
+                            <option value="3">12pt</option>
+                            <option value="4">14pt</option>
+                            <option value="5">18pt</option>
+                            <option value="6">24pt</option>
+                            <option value="7">36pt</option>
+                        </select>
+                        <div class="rte-sep"></div>
+                        <!-- Font color / Background color -->
+                        <label class="rte-color-btn" title="Font Color">
+                            <span class="rte-color-letter">A</span>
+                            <div class="rte-color-bar" id="fcBar" style="background:#000;"></div>
+                            <input type="color" style="display:none;" id="fontColorPicker" oninput="rteCmd('foreColor',this.value); document.getElementById('fcBar').style.background=this.value;">
+                        </label>
+                        <label class="rte-color-btn" title="Background Color">
+                            <span class="rte-color-letter" style="background:#fff4b8;padding:0 1px;">A</span>
+                            <div class="rte-color-bar" id="bgBar" style="background:#ffff00;"></div>
+                            <input type="color" style="display:none;" id="bgColorPicker" value="#ffff00" oninput="rteCmd('hiliteColor',this.value); document.getElementById('bgBar').style.background=this.value;">
+                        </label>
+                        <!-- Fullscreen -->
+                        <button class="rte-btn" title="Fullscreen" onclick="rteToggleFullscreen()" style="margin-left:2px;"><i class="fas fa-expand"></i></button>
+                    </div>
+                    <!-- Editable content area -->
+                    <div class="rte-editor" id="rteEditor" contenteditable="true"
+                         data-placeholder="Type your answer here..."
+                         oninput="onRteChange()">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN - Summary -->
+        <div class="vu-right-col">
+            <div class="vu-panel vu-panel-summary" style="height:100%;">
+                <div class="vu-summary-header">Summary</div>
+                <div class="vu-summary-grid" id="summaryNums"></div>
+                <div class="vu-summary-stats">
+                    <div class="vu-pct-text" id="pctLabel">0%</div>
+                    <div class="vu-progress-bar">
+                        <div class="vu-progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="vu-stat-row">
+                        <span>Attempted</span>
+                        <span class="stat-val-teal" id="statAttempted">0</span>
+                    </div>
+                    <div class="vu-stat-row">
+                        <span>Flagged</span>
+                        <span class="stat-val-purple" id="statFlagged">0</span>
+                    </div>
+                    <div class="vu-stat-row">
+                        <span>Total</span>
+                        <span class="stat-val" id="statTotal">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTTOM BAR -->
+    <div class="vu-bottom-bar">
+        <div>
+            <button class="vu-btn btn-finish" onclick="openFinishModal()">
+                <i class="far fa-calendar-check"></i> Finish Exam
+            </button>
+        </div>
+        <div class="bottom-center-group">
+            <button id="btnFlag" class="vu-btn btn-flag" onclick="flagQuestion()">
+                <i class="far fa-flag"></i> Flag
+            </button>
+            <div class="btn-nav-grp">
+                <button id="btnFirst" class="btn-nav" onclick="goFirst()"><i class="fas fa-angle-double-left"></i> First</button>
+                <button id="btnLast" class="btn-nav" onclick="goLast()">Last <i class="fas fa-angle-double-right"></i></button>
+            </div>
+            <div class="btn-nav-grp">
+                <button id="btnPrevious" class="btn-nav" onclick="goPrevious()"><i class="fas fa-angle-left"></i> Previous</button>
+                <button id="btnNext" class="btn-nav" onclick="goNext()">Next <i class="fas fa-angle-right"></i></button>
+            </div>
+        </div>
+        <div>
+            <button id="btnSave" class="vu-btn btn-save" onclick="saveCurrentAnswer()" disabled>
+                <i class="far fa-save"></i> Save
+            </button>
+        </div>
+    </div>
+
+    <!-- FINISH MODAL -->
+    <div id="modalFinish" class="modal-overlay">
+        <div class="custom-modal">
+            <h4 class="text-danger">Finish Exam Confirmation</h4>
+            <p style="font-size:0.95rem; color:#374151;">Are you sure you want to finish? You will not be able to login again after finishing the exam.</p>
+            <div class="form-check my-4">
+                <input type="checkbox" class="form-check-input" id="chkFinish" onchange="toggleFinishBtn()">
+                <label class="form-check-label" for="chkFinish" style="font-size:0.9rem;">I have reviewed my answers, Finish the Test.</label>
+            </div>
+            <div class="text-right">
+                <button class="btn btn-secondary btn-sm" onclick="closeModal('modalFinish')">Cancel</button>
+                <button id="btnFinishExam" class="btn btn-danger btn-sm ml-2" onclick="finishExam()" disabled>Finish Exam</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const SUPABASE_URL = "https://nddzwzfiklulmyzteeoh.supabase.co";
+        const SUPABASE_KEY = "sb_publishable_UNo59RPkC8sL9fbArltEug_STep04lA";
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        const state = { session: null, user: {}, course: {}, questions: [], mcqOptions: {}, answers: {}, currentIndex: 0, timeRemaining: 0, totalTime: 0, timerInterval: null, saveInterval: null, isDirty: false };
+
+        /* ===== ANIMATED CLOCK HANDS ===== */
+        function updateClockHands() {
+            const now = new Date();
+            const s = now.getSeconds();
+            const m = now.getMinutes() + s / 60;
+            const h = (now.getHours() % 12) + m / 60;
+            const sDeg = s * 6;
+            const mDeg = m * 6;
+            const hDeg = h * 30;
+            const sh = document.getElementById('clockHour');
+            const sm = document.getElementById('clockMinute');
+            const ss = document.getElementById('clockSecond');
+            if (sh) sh.style.transform = `rotate(${hDeg}deg)`;
+            if (sm) sm.style.transform = `rotate(${mDeg}deg)`;
+            if (ss) ss.style.transform = `rotate(${sDeg}deg)`;
+            // remove CSS animation since we handle it via JS
+            if (sh) sh.style.animation = 'none';
+            if (sm) sm.style.animation = 'none';
+            if (ss) ss.style.animation = 'none';
+        }
+        setInterval(updateClockHands, 1000);
+        updateClockHands();
+
+        /* ===== RICH TEXT EDITOR ===== */
+        function rteCmd(cmd, val) {
+            document.getElementById('rteEditor').focus();
+            document.execCommand(cmd, false, val || null);
+            onRteChange();
+        }
+        function rteInsertImage() {
+            const url = prompt('Enter image URL:');
+            if (url) rteCmd('insertImage', url);
+        }
+        function rteInsertTable() {
+            const rows = parseInt(prompt('Rows:', '3')) || 3;
+            const cols = parseInt(prompt('Columns:', '3')) || 3;
+            let html = '<table border="1" style="border-collapse:collapse;width:100%">';
+            for (let r = 0; r < rows; r++) {
+                html += '<tr>';
+                for (let c = 0; c < cols; c++) html += '<td style="padding:4px 8px;">&nbsp;</td>';
+                html += '</tr>';
+            }
+            html += '</table><br>';
+            document.execCommand('insertHTML', false, html);
+            onRteChange();
+        }
+        function rteToggleFullscreen() {
+            const panel = document.getElementById('pnlAnswerSubjective');
+            if (!panel._fs) {
+                panel._fs = true;
+                panel.style.cssText = 'position:fixed;top:64px;left:0;right:0;bottom:60px;z-index:500;display:flex;background:white;';
+            } else {
+                panel._fs = false;
+                panel.style.cssText = 'display:flex;';
+            }
+        }
+        function onRteChange() {
+            const q = state.questions[state.currentIndex];
+            if (!q) return;
+            if (!state.answers[q.id]) state.answers[q.id] = {};
+            state.answers[q.id].answerText = document.getElementById('rteEditor').innerHTML;
+            state.answers[q.id].saved = false;
+            state.isDirty = true;
+            document.getElementById('btnSave').disabled = false;
+        }
+
+        document.addEventListener('DOMContentLoaded', initTest);
+
+        async function initTest() {
+            showLoader(true);
+            const sessionId = sessionStorage.getItem('vu_session_id');
+            if (!sessionId) { window.location.href = 'login.html'; return; }
+
+            state.user = {
+                id: sessionStorage.getItem('vu_user_id'),
+                name: sessionStorage.getItem('vu_user_name'),
+                username: sessionStorage.getItem('vu_username'),
+            };
+            state.course = {
+                id: sessionStorage.getItem('vu_course_id'),
+                code: sessionStorage.getItem('vu_course_code'),
+                title: sessionStorage.getItem('vu_course_title'),
+            };
+
+            document.getElementById('lblCourseCode').textContent = state.course.code;
+            document.getElementById('lblCourseTitle').textContent = state.course.title;
+            document.getElementById('lblStudentID').textContent = state.user.username;
+            document.getElementById('lblStudentName').textContent = state.user.name;
+            document.getElementById('lblSTime').textContent = formatTime12h(new Date());
+
+            try {
+                const { data: sessionData, error: sErr } = await supabaseClient.from('paper_test_sessions').select('*').eq('id', sessionId).single();
+                if (sErr) throw sErr;
+                state.session = sessionData;
+
+                if (state.session.status === 'completed') {
+                    showLoader(false);
+                    document.getElementById('completedScreen').style.display = 'flex';
+                    return;
+                }
+
+                state.currentIndex = state.session.current_question_index || 0;
+                state.timeRemaining = state.session.time_remaining_seconds;
+
+                const { data: courseData, error: cErr } = await supabaseClient.from('paper_courses').select('*').eq('id', state.course.id).single();
+                if (cErr) throw cErr;
+                Object.assign(state.course, courseData);
+
+                if (state.timeRemaining === null || state.timeRemaining === undefined) {
+                    state.timeRemaining = (courseData.total_time_minutes || 120) * 60;
+                } else if (state.timeRemaining <= 0) {
+                    alert("Your allocated time for this exam has already expired.");
+                    finishExamDirect(); return;
+                }
+                state.totalTime = (courseData.total_time_minutes || 120) * 60;
+
+                let q_query = supabaseClient.from('paper_questions').select('*').eq('course_id', state.course.id).order('question_type', { ascending: false }).order('order_no', { ascending: true });
+                const { data: qData, error: qErr } = await q_query;
+                if (qErr) throw qErr;
+
+                state.questions = (qData || []).sort((a, b) => {
+                    if (a.question_type === 'mcq' && b.question_type !== 'mcq') return -1;
+                    if (a.question_type !== 'mcq' && b.question_type === 'mcq') return 1;
+                    return (a.order_no || 0) - (b.order_no || 0);
+                });
+
+                const mcqIds = state.questions.filter(q => q.question_type === 'mcq').map(q => q.id);
+                if (mcqIds.length > 0) {
+                    const { data: opts, error: oErr } = await supabaseClient.from('paper_mcq_options').select('*').in('question_id', mcqIds).order('option_label', { ascending: true });
+                    if (oErr) throw oErr;
+                    (opts || []).forEach(opt => {
+                        if (!state.mcqOptions[opt.question_id]) state.mcqOptions[opt.question_id] = [];
+                        state.mcqOptions[opt.question_id].push(opt);
+                    });
+                }
+
+                const { data: ansData, error: aErr } = await supabaseClient.from('paper_user_answers').select('*').eq('session_id', sessionId);
+                if (aErr) throw aErr;
+                (ansData || []).forEach(ans => {
+                    state.answers[ans.question_id] = { selectedOptionId: ans.selected_option_id, answerText: ans.answer_text, isFlagged: ans.is_flagged || false, saved: true };
+                });
+
+                buildSummary();
+                renderQuestion(state.currentIndex);
+                startTimer();
+                state.saveInterval = setInterval(saveTimerState, 10000);
+                window.addEventListener('beforeunload', () => { saveTimerState(); });
+
+            } catch (err) {
+                console.error('Test init error:', err);
+            } finally {
+                showLoader(false);
+            }
+        }
+
+        function startTimer() {
+            updateTimerDisplay();
+            state.timerInterval = setInterval(() => {
+                state.timeRemaining--;
+                if (state.timeRemaining <= 0) {
+                    state.timeRemaining = 0;
+                    clearInterval(state.timerInterval);
+                    alert('Time is up! Exam is finishing automatically.');
+                    finishExamDirect();
+                } else { updateTimerDisplay(); }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const mins = Math.floor(state.timeRemaining / 60);
+            document.getElementById('timerMins').textContent = mins;
+            const circle = document.querySelector('.vu-timer-circle');
+            if (state.timeRemaining < 600) {
+                circle.style.borderColor = 'var(--vu-red)';
+                circle.style.animationName = 'none';
+            } else if (state.timeRemaining < 1800) {
+                circle.style.borderColor = 'var(--vu-yellow)';
+                circle.style.animationName = 'none';
+            } else {
+                circle.style.borderColor = '';
+                circle.style.animationName = '';
+            }
+        }
+
+        async function saveTimerState() {
+            if (!state.session) return;
+            try { await supabaseClient.from('paper_test_sessions').update({ time_remaining_seconds: state.timeRemaining, current_question_index: state.currentIndex }).eq('id', state.session.id); } catch(e) {}
+        }
+
+        function renderQuestion(index) {
+            if (index < 0 || index >= state.questions.length) return;
+            state.currentIndex = index;
+            state.isDirty = false;
+
+            const q = state.questions[index];
+            const total = state.questions.length;
+
+            document.getElementById('lblQuestionNo').textContent = (index + 1) + ' of ' + total;
+            document.getElementById('lblMarks').textContent = q.marks || 1;
+            document.getElementById('lblBTime').textContent = q.time_minutes || 1;
+            document.getElementById('qText').innerHTML = q.question_text || '';
+
+            const existingAns = state.answers[q.id] || {};
+            const leftCol = document.getElementById('leftCol');
+
+            if (q.question_type === 'mcq') {
+                leftCol.className = 'vu-left-col mode-mcq';
+                document.getElementById('pnlAnswerMCQ').style.display = 'block';
+                document.getElementById('pnlAnswerSubjective').style.display = 'none';
+                renderMCQOptions(q, existingAns);
+            } else {
+                leftCol.className = 'vu-left-col mode-subjective';
+                document.getElementById('pnlAnswerMCQ').style.display = 'none';
+                document.getElementById('pnlAnswerSubjective').style.display = 'flex';
+                const editor = document.getElementById('rteEditor');
+                editor.innerHTML = existingAns.answerText || '';
+                setTimeout(() => { state.isDirty = false; document.getElementById('btnSave').disabled = true; }, 30);
+            }
+
+            document.getElementById('btnSave').disabled = true;
+            document.getElementById('btnFirst').disabled = (index === 0);
+            document.getElementById('btnPrevious').disabled = (index === 0);
+            document.getElementById('btnNext').disabled = (index >= total - 1);
+            document.getElementById('btnLast').disabled = (index >= total - 1);
+
+            updateSummaryHighlight(index);
+            clearTimeout(window._saveIdxTimeout);
+            window._saveIdxTimeout = setTimeout(() => { saveTimerState(); }, 500);
+        }
+
+        function renderMCQOptions(q, existingAns) {
+            const container = document.getElementById('mcqOptions');
+            const opts = state.mcqOptions[q.id] || [];
+            container.innerHTML = '';
+            opts.forEach((opt) => {
+                const isSelected = existingAns.selectedOptionId === opt.id;
+                const div = document.createElement('label');
+                div.className = 'vu-option-item' + (isSelected ? ' selected' : '');
+                div.setAttribute('data-opt-id', opt.id);
+
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = 'mcqOpt_' + q.id;
+                radio.value = opt.id;
+                radio.checked = isSelected;
+
+                const label = document.createElement('span');
+                label.className = 'vu-option-text';
+                label.innerHTML = (opt.option_label ? '<strong>' + opt.option_label + '.</strong>&nbsp;&nbsp;' : '') + opt.option_text;
+
+                radio.addEventListener('change', () => onMCQSelect(q.id, opt.id));
+                div.addEventListener('click', () => { radio.checked = true; onMCQSelect(q.id, opt.id); });
+                div.appendChild(radio);
+                div.appendChild(label);
+                container.appendChild(div);
+            });
+        }
+
+        function onMCQSelect(questionId, optionId) {
+            document.querySelectorAll('.vu-option-item').forEach(el => { el.classList.toggle('selected', el.getAttribute('data-opt-id') == optionId); });
+            if (!state.answers[questionId]) state.answers[questionId] = {};
+            state.answers[questionId].selectedOptionId = optionId;
+            state.answers[questionId].saved = false;
+            state.isDirty = true;
+            document.getElementById('btnSave').disabled = false;
+        }
+
+        async function saveCurrentAnswer() {
+            const q = state.questions[state.currentIndex];
+            const ans = state.answers[q.id];
+
+            // For subjective, grab latest HTML from editor
+            if (q.question_type !== 'mcq') {
+                if (!state.answers[q.id]) state.answers[q.id] = {};
+                state.answers[q.id].answerText = document.getElementById('rteEditor').innerHTML;
+            }
+
+            if (!state.answers[q.id]) return;
+            const finalAns = state.answers[q.id];
+
+            const btn = document.getElementById('btnSave');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+
+            try {
+                const payload = { session_id: state.session.id, question_id: q.id, selected_option_id: finalAns.selectedOptionId || null, answer_text: finalAns.answerText || null, is_flagged: finalAns.isFlagged || false };
+                await supabaseClient.from('paper_user_answers').upsert(payload, { onConflict: 'session_id,question_id' });
+                state.answers[q.id].saved = true;
+                state.isDirty = false;
+                btn.innerHTML = '<i class="far fa-save"></i> Save';
+                buildSummary();
+                updateSummaryHighlight(state.currentIndex);
+            } catch(err) {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="far fa-save"></i> Save';
+            }
+        }
+
+        async function flagQuestion() {
+            const q = state.questions[state.currentIndex];
+            if (!state.answers[q.id]) state.answers[q.id] = {};
+            state.answers[q.id].isFlagged = !state.answers[q.id].isFlagged;
+            if (state.answers[q.id].saved || state.answers[q.id].selectedOptionId || state.answers[q.id].answerText) {
+                await supabaseClient.from('paper_user_answers').upsert({ session_id: state.session.id, question_id: q.id, selected_option_id: state.answers[q.id].selectedOptionId || null, answer_text: state.answers[q.id].answerText || null, is_flagged: state.answers[q.id].isFlagged }, { onConflict: 'session_id,question_id' });
+            }
+            buildSummary();
+            updateSummaryHighlight(state.currentIndex);
+        }
+
+        async function goTo(index) {
+            if (state.isDirty) { if(confirm('You have unsaved changes. Save before navigating?')) await saveCurrentAnswer(); }
+            renderQuestion(index);
+        }
+        function goFirst() { goTo(0); }
+        function goLast() { goTo(state.questions.length - 1); }
+        function goPrevious() { if (state.currentIndex > 0) goTo(state.currentIndex - 1); }
+        function goNext() { if (state.currentIndex < state.questions.length - 1) goTo(state.currentIndex + 1); }
+
+        function buildSummary() {
+            const container = document.getElementById('summaryNums');
+            container.innerHTML = '';
+            let attempted = 0, flagged = 0;
+            state.questions.forEach((q, i) => {
+                const ans = state.answers[q.id];
+                const hasAns = ans && (ans.selectedOptionId || (ans.answerText && ans.answerText.replace(/<[^>]*>/g,'').trim() !== ''));
+                const isFlagged = ans && ans.isFlagged;
+                if (hasAns) attempted++;
+                if (isFlagged) flagged++;
+                const btn = document.createElement('button');
+                btn.className = 'vu-q-btn' + (i === state.currentIndex ? ' current' : '') + (hasAns ? ' answered' : '') + (isFlagged ? ' flagged' : '');
+                btn.textContent = String(i + 1).padStart(2, '0');
+                btn.onclick = () => goTo(i);
+                container.appendChild(btn);
+            });
+            const total = state.questions.length;
+            const pct = total > 0 ? Math.round((attempted / total) * 100) : 0;
+            document.getElementById('statAttempted').textContent = attempted;
+            document.getElementById('statFlagged').textContent = flagged;
+            document.getElementById('statTotal').textContent = total;
+            document.getElementById('pctLabel').textContent = pct + '%';
+            document.getElementById('progressFill').style.width = pct + '%';
+        }
+
+        function updateSummaryHighlight(index) {
+            document.querySelectorAll('.vu-q-btn').forEach((btn, i) => { btn.classList.toggle('current', i === index); });
+        }
+
+        function openFinishModal() {
+            document.getElementById('chkFinish').checked = false;
+            document.getElementById('btnFinishExam').disabled = true;
+            document.getElementById('modalFinish').classList.add('show');
+        }
+        function toggleFinishBtn() { document.getElementById('btnFinishExam').disabled = !document.getElementById('chkFinish').checked; }
+        function closeModal(id) { document.getElementById(id).classList.remove('show'); }
+
+        async function finishExam() {
+            closeModal('modalFinish');
+            if (state.isDirty) await saveCurrentAnswer();
+            await finishExamDirect();
+        }
+
+        async function finishExamDirect() {
+            showLoader(true);
+            clearInterval(state.timerInterval);
+            clearInterval(state.saveInterval);
+            try {
+                await supabaseClient.from('paper_test_sessions').update({ status: 'completed', time_remaining_seconds: state.timeRemaining, current_question_index: state.currentIndex }).eq('id', state.session.id);
+                await supabaseClient.from('paper_results').insert([{ session_id: state.session.id, user_id: state.user.id, is_announced: false }]);
+                await supabaseClient.from('paper_students').update({ is_completed: true }).eq('username', state.user.username);
+                showLoader(false);
+                document.getElementById('completedScreen').style.display = 'flex';
+            } catch(err) { showLoader(false); console.error(err); }
+        }
+
+        function showLoader(show) { document.getElementById('ajaxWait').style.display = show ? 'flex' : 'none'; }
+        function formatTime12h(date) { let h = date.getHours(), m = date.getMinutes(); const ampm = h >= 12 ? 'PM' : 'AM'; h = h % 12 || 12; return h + ':' + String(m).padStart(2, '0') + ' ' + ampm; }
+    </script>
+</body>
+</html>

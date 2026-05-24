@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Test - VU Students Guide</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body { 
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fc; 
+            padding-top: 3rem; 
+            padding-bottom: 3rem;
+            color: #2c2e3e;
+        }
+        
+        .m-portlet { 
+            background: #fff; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+            max-width: 600px; 
+            margin: auto; 
+            border-radius: 12px; 
+            overflow: hidden; 
+            border: none;
+        }
+        
+        .m-portlet__head { 
+            background: linear-gradient(135deg, #2f74ad 0%, #151f2f 100%); 
+            padding: 30px 20px; 
+            color: white; 
+            text-align: center; 
+        }
+        
+        .m-portlet__head h3 {
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .m-portlet__body { 
+            padding: 40px; 
+        }
+        
+        .fee-notice { 
+            background-color: #fff8e1; 
+            color: #b78103; 
+            padding: 15px 20px; 
+            border-radius: 8px; 
+            border-left: 5px solid #f6c23e; 
+            margin-bottom: 25px; 
+            font-weight: 500; 
+            font-size: 1.05rem; 
+            display: flex;
+            align-items: center;
+        }
+
+        .fee-notice i {
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+
+        .form-control {
+            border-radius: 8px;
+            padding: 12px 15px;
+            height: auto;
+            border: 1px solid #ebedf2;
+            background-color: #f8f9fc;
+        }
+        
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #2f74ad;
+            background-color: #fff;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #494b74;
+        }
+
+        .btn-success {
+            background-color: #34bfa3;
+            border-color: #34bfa3;
+            border-radius: 50px;
+            font-weight: 600;
+            padding: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(52,191,163,0.3);
+        }
+
+        .btn-success:hover {
+            background-color: #2ca58d;
+            border-color: #2ca58d;
+            transform: translateY(-2px);
+        }
+
+        .success-msg { 
+            background-color: #d4edda; 
+            color: #155724; 
+            padding: 20px; 
+            border-radius: 8px; 
+            display: none; 
+            margin-top: 10px; 
+            border-left: 5px solid #28a745; 
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .success-msg i {
+            font-size: 3rem;
+            color: #28a745;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #2f74ad;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .back-link:hover {
+            color: #151f2f;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="m-portlet">
+            <div class="m-portlet__head">
+                <h3><i class="fas fa-file-signature"></i> Book Your Test</h3>
+                <p class="mb-0" style="opacity: 0.8;">VU Students Guide - Examination System</p>
+            </div>
+            <div class="m-portlet__body">
+                
+                <div class="fee-notice">
+                    <i class="fas fa-info-circle"></i>
+                    <div>
+                        Is test ko book karny k charges <strong>200 Rupees</strong> hain. Form submit karny k bad apko payment details WhatsApp par share ki jayengi.
+                    </div>
+                </div>
+
+                <div id="bookingForm">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Student Name</label>
+                            <input id="txtName" type="text" class="form-control" placeholder="Enter full name" required>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>WhatsApp Number</label>
+                            <input id="txtWhatsapp" type="tel" class="form-control" placeholder="03XXXXXXXXX" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Semester</label>
+                            <input id="txtSemester" type="text" class="form-control" placeholder="e.g., 3rd Semester" required>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Course Code</label>
+                            <input id="txtCourse" type="text" class="form-control" placeholder="e.g., CS101" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Exam Type</label>
+                            <select id="selExamType" class="form-control" required>
+                                <option value="" disabled selected>Select Term...</option>
+                                <option value="Mid Term">Mid Term</option>
+                                <option value="Final Term">Final Term</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Test Date (Preferred)</label>
+                            <input id="txtDate" type="date" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <button id="btnSubmit" class="btn btn-success btn-block mt-4" onclick="submitBooking()">
+                        <i class="fas fa-paper-plane mr-2"></i> Submit Request
+                    </button>
+                </div>
+
+                <div id="successMessage" class="success-msg">
+                    <i class="fas fa-check-circle"></i>
+                    Jaldi hi apsy WhatsApp par contact kiya jay ga or apko test ki details, account info or time bta diya jay ga.
+                </div>
+                
+                <div class="text-center">
+                    <a href="index.html" class="back-link"><i class="fas fa-arrow-left mr-1"></i> Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const SUPABASE_URL = "https://nddzwzfiklulmyzteeoh.supabase.co";
+        const SUPABASE_KEY = "sb_publishable_UNo59RPkC8sL9fbArltEug_STep04lA";
+        
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        // Set minimum date to today so students can't pick past dates
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById("txtDate").setAttribute('min', today);
+
+        async function submitBooking() {
+            const name = document.getElementById('txtName').value.trim();
+            const semester = document.getElementById('txtSemester').value.trim();
+            const course = document.getElementById('txtCourse').value.trim();
+            const whatsapp = document.getElementById('txtWhatsapp').value.trim();
+            const examType = document.getElementById('selExamType').value;
+            const testDate = document.getElementById('txtDate').value;
+
+            if (!name || !semester || !course || !whatsapp || !examType || !testDate) {
+                alert('Please fill all the details before submitting.');
+                return;
+            }
+
+            const btn = document.getElementById('btnSubmit');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Submitting...';
+            btn.disabled = true;
+
+            const { error } = await supabaseClient
+                .from('paper_test_bookings')
+                .insert([{ 
+                    student_name: name, 
+                    semester: semester, 
+                    course: course, 
+                    whatsapp_number: whatsapp,
+                    exam_type: examType,
+                    test_date: testDate
+                }]);
+
+            if (error) {
+                console.error(error);
+                alert('Network issue ya server error ki waja sy booking fail ho gai. Please try again.');
+                btn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i> Submit Request';
+                btn.disabled = false;
+            } else {
+                document.getElementById('bookingForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

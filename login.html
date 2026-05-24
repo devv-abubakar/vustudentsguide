@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VU Examination System - Login</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body { 
+            background-color: #f8f9fc; 
+            padding-top: 8rem; 
+            font-family: 'Poppins', sans-serif; 
+        }
+        .m-portlet { 
+            background: #fff; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+            max-width: 550px; 
+            margin: auto; 
+            border-radius: 12px;
+            overflow: hidden;
+            border: none;
+        }
+        .m-portlet__head { 
+            background: linear-gradient(135deg, #2f74ad 0%, #151f2f 100%); 
+            padding: 25px; 
+            color: white; 
+            text-align: center; 
+        }
+        .m-portlet__head h3 {
+            font-weight: 700;
+            margin-bottom: 0;
+        }
+        .m-portlet__body { 
+            padding: 35px; 
+        }
+        .form-control {
+            border-radius: 8px;
+            padding: 12px 15px;
+            height: auto;
+            border: 1px solid #ebedf2;
+            background-color: #f8f9fc;
+        }
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #2f74ad;
+            background-color: #fff;
+        }
+        .info-notice {
+            background-color: #e0f0ff;
+            color: #154c79;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #2f74ad;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .info-notice i {
+            margin-right: 8px;
+            color: #2f74ad;
+        }
+        .btn-primary {
+            background-color: #2f74ad;
+            border-color: #2f74ad;
+            border-radius: 50px;
+            padding: 10px 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #151f2f;
+            border-color: #151f2f;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="m-portlet">
+            <div class="m-portlet__head">
+                <h3><i class="fas fa-lock mr-2"></i> Exam Login</h3>
+            </div>
+            <div class="m-portlet__body">
+                
+                <div class="info-notice">
+                    <i class="fas fa-info-circle"></i>
+                    <strong>Important:</strong> Idhar apni real VU Student ID se login na karein. Test book karny k baad apko WhatsApp par <strong>Test Username aur Password</strong> provide kiya jaye ga. Sirf usi se login karein.
+                </div>
+
+                <div id="divError" class="alert alert-danger" style="display:none; border-radius: 8px;"></div>
+                
+                <div class="form-group mb-4">
+                    <label style="font-weight: 600; color: #494b74;">Test Username</label>
+                    <input id="txtUsername" type="text" class="form-control" placeholder="Enter provided username (e.g., BC230411767)">
+                </div>
+                
+                <div class="form-group mb-4">
+                    <label style="font-weight: 600; color: #494b74;">Test Password</label>
+                    <input id="txtPassword" type="password" class="form-control" placeholder="Enter provided password">
+                </div>
+                
+                <div class="d-flex justify-content-between align-items-center mt-4">
+                    <a href="index.html" class="text-muted" style="font-weight: 500; text-decoration: none;">
+                        <i class="fas fa-arrow-left mr-1"></i> Back
+                    </a>
+                    <button id="btnLogin" class="btn btn-primary" onclick="attemptLogin()">
+                        Login <i class="fas fa-sign-in-alt ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const SUPABASE_URL = "https://nddzwzfiklulmyzteeoh.supabase.co";
+        const SUPABASE_KEY = "sb_publishable_UNo59RPkC8sL9fbArltEug_STep04lA";
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        async function attemptLogin() {
+            const username = document.getElementById('txtUsername').value.trim();
+            const password = document.getElementById('txtPassword').value.trim();
+            const errorDiv = document.getElementById('divError');
+            const portletBody = document.querySelector('.m-portlet__body'); 
+
+            if (!username || !password) {
+                errorDiv.style.display = 'block';
+                errorDiv.innerText = 'Please enter both Username and Password.';
+                return;
+            }
+
+            const btn = document.getElementById('btnLogin');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i> Verifying...';
+            btn.disabled = true;
+
+            // 1. Verify Credentials
+            const { data: student, error } = await supabaseClient
+                .from('paper_students')
+                .select('*')
+                .eq('username', username)
+                .eq('password', password)
+                .single();
+
+            if (error || !student) {
+                errorDiv.style.display = 'block';
+                errorDiv.innerText = 'Invalid Username or Password.';
+                btn.innerHTML = 'Login <i class="fas fa-sign-in-alt ml-1"></i>';
+                btn.disabled = false;
+                return;
+            }
+
+            // --- FINISHED EXAM CHECK 1 (From Students Table) ---
+            if (student.is_completed) {
+                showCompletedScreen(portletBody);
+                return;
+            }
+
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i> Loading Session...';
+
+            // 2. CHECK EXISTING SESSION
+            const { data: existingSession, error: checkErr } = await supabaseClient
+                .from('paper_test_sessions')
+                .select('*')
+                .eq('user_id', student.username)
+                .eq('course_id', 1) // Assuming CS101 (ID: 1)
+                .single();
+
+            let sessionId;
+
+            if (existingSession) {
+                // --- FINISHED EXAM CHECK 2 (From Sessions Table) ---
+                if (existingSession.status === 'completed') {
+                    showCompletedScreen(portletBody);
+                    return;
+                }
+                // Agar incomplete ha to purana session resume hoga
+                sessionId = existingSession.id;
+            } else {
+                // Naya test shuru kar rahay hain, naya session create karein
+                const { data: newSession, error: insertErr } = await supabaseClient
+                    .from('paper_test_sessions')
+                    .insert([{ 
+                        user_id: student.username, 
+                        course_id: 1, 
+                        status: 'active',
+                        time_remaining_seconds: student.total_time_minutes * 60,
+                        current_question_index: 0
+                    }])
+                    .select()
+                    .single();
+
+                if (insertErr) {
+                    errorDiv.style.display = 'block';
+                    errorDiv.innerText = 'Session create karny mein masla aagya.';
+                    btn.innerHTML = 'Login <i class="fas fa-sign-in-alt ml-1"></i>';
+                    btn.disabled = false;
+                    return;
+                }
+                sessionId = newSession.id;
+            }
+
+            // 3. Set Session Storage
+            sessionStorage.setItem('vu_session_id', sessionId);
+            sessionStorage.setItem('vu_user_id', student.username);
+            sessionStorage.setItem('vu_user_name', student.name);
+            sessionStorage.setItem('vu_username', student.username);
+            sessionStorage.setItem('vu_course_id', 1);
+            sessionStorage.setItem('vu_course_code', 'CS101');
+            sessionStorage.setItem('vu_course_title', 'Introduction to Computing');
+            
+            // Redirect to test page
+            window.location.href = 'test.html';
+        }
+
+        // Helper function to show simple completed text
+        function showCompletedScreen(container) {
+            container.innerHTML = `
+                <div style="text-align: center; padding: 30px 10px;">
+                    <i class="fas fa-check-circle" style="font-size: 4rem; color: #34bfa3; margin-bottom: 20px;"></i>
+                    <h3 style="color: #2c2e3e; font-weight: 700; margin-bottom: 15px;">Test Already Completed</h3>
+                    <p style="color: #6c757d; font-size: 1.1rem; margin-bottom: 30px;">Ap yeh test pehlay hi successfully submit kar chukay hain. Apka result update hony k baad announce kiya jaye ga.</p>
+                    <a href="index.html" class="btn btn-primary" style="padding: 12px 30px;"><i class="fas fa-home mr-2"></i> Back to Home</a>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
