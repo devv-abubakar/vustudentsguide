@@ -3,150 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VU Examination System - Paper</title>
+    <title>VU Examination System - Login</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
-        body { background-color: #e9eaec; font-family: 'Roboto', sans-serif; overflow: hidden; }
-        :root { --vu-dark: #2c2e3e; --vu-purple: #8950fc; --vu-purple-dark: #733ce6; --vu-red: #f4516c; --vu-yellow: #ffb822; --vu-teal: #34bfa3; }
-        .vu-top-bar { background-color: var(--vu-dark); color: white; padding: 10px 20px; height: 60px; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1000; }
-        .vu-course-title { font-size: 1.1rem; font-weight: 500; }
-        .vu-user-info { text-align: right; font-size: 0.85rem; display: flex; align-items: center; }
-        .vu-profile-icon { font-size: 2.5rem; color: #fff; margin-left: 15px; background: #999; border-radius: 50%; padding: 5px; }
-        .vu-timer-wrapper { position: absolute; left: 50%; top: 5px; transform: translateX(-50%); z-index: 1001; }
-        .vu-timer-circle { background-color: var(--vu-dark); border: 4px solid #57d8e6; border-radius: 50%; width: 85px; height: 85px; display: flex; justify-content: center; align-items: center; color: white; font-size: 1.3rem; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
-        .vu-main-container { padding: 10px; height: calc(100vh - 120px); }
-        .vu-purple-header { background: linear-gradient(135deg, var(--vu-purple) 0%, var(--vu-purple-dark) 100%); color: white; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; font-size: 1rem; font-weight: 500; border-top-left-radius: 4px; border-top-right-radius: 4px; }
-        .vu-panel { background: white; margin-bottom: 10px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-        .vu-q-text { padding: 20px; font-size: 1.1rem; min-height: 150px; }
-        .vu-options-list { padding: 0; margin: 0; }
-        .vu-option-item { padding: 15px; border-bottom: 1px solid #e9ecef; display: flex; align-items: center; cursor: pointer; transition: background 0.2s; }
-        .vu-option-item:last-child { border-bottom: none; }
-        .vu-option-item:hover { background-color: #f4f5f8; }
-        .vu-option-item.selected { background-color: #f0f3ff; border-left: 4px solid var(--vu-purple); }
-        .vu-option-item input[type="radio"] { transform: scale(1.3); margin-right: 15px; cursor: pointer; }
-        .vu-summary-panel { height: 100%; display: flex; flex-direction: column; }
-        .vu-grid-wrapper { padding: 10px; flex-grow: 1; overflow-y: auto; text-align: center; }
-        .vu-q-btn { width: 32px; height: 32px; border-radius: 50%; border: 1px solid #e2e5ec; background: white; margin: 4px; font-size: 0.8rem; font-weight: bold; cursor: pointer; display: inline-flex; justify-content: center; align-items: center; color: #555; }
-        .vu-q-btn.answered { background: var(--vu-teal); color: white; border-color: var(--vu-teal); }
-        .vu-q-btn.flagged { background: var(--vu-yellow); color: white; border-color: var(--vu-yellow); }
-        .vu-q-btn.current { border: 2px solid var(--vu-purple); }
-        .vu-summary-stats { padding: 15px; border-top: 1px solid #e9ecef; }
-        .vu-stat-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 500; font-size: 0.95rem; }
-        .vu-progress-bar { height: 6px; background-color: #e9ecef; border-radius: 3px; margin: 10px 0; }
-        .vu-progress-fill { height: 100%; background-color: var(--vu-teal); border-radius: 3px; width: 0%; }
-        .vu-pct-text { font-size: 1.5rem; font-weight: bold; }
-        .vu-bottom-bar { background-color: var(--vu-dark); padding: 10px 20px; height: 60px; display: flex; justify-content: space-between; align-items: center; position: fixed; bottom: 0; width: 100%; z-index: 1000; }
-        .vu-btn { padding: 6px 15px; border-radius: 4px; font-weight: 500; border: none; cursor: pointer; color: white; display: flex; align-items: center; justify-content: center; min-width: 90px; }
-        .vu-btn i { margin: 0 5px; }
-        .btn-finish { background-color: var(--vu-red); }
-        .btn-flag { background-color: var(--vu-purple); }
-        .btn-nav-grp { display: flex; gap: 2px; }
-        .btn-nav { background-color: var(--vu-yellow); color: #222; border-radius: 0; min-width: 80px; }
-        .btn-nav:first-child { border-top-left-radius: 4px; border-bottom-left-radius: 4px; }
-        .btn-nav:last-child { border-top-right-radius: 4px; border-bottom-right-radius: 4px; }
-        .btn-save { background-color: var(--vu-teal); }
-        #ajaxWait, #completedScreen { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 2000; justify-content: center; align-items: center; flex-direction: column; }
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1500; justify-content: center; align-items: center; }
-        .modal-overlay.show { display: flex; }
-        .custom-modal { background: white; padding: 25px; border-radius: 5px; width: 450px; max-width: 90%; }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body { 
+            background-color: #f8f9fc; 
+            padding-top: 8rem; 
+            font-family: 'Poppins', sans-serif; 
+        }
+        
+        .m-portlet { 
+            background: #fff; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+            max-width: 550px; 
+            margin: auto; 
+            border-radius: 12px;
+            overflow: hidden;
+            border: none;
+        }
+        
+        .m-portlet__head { 
+            background: linear-gradient(135deg, #2f74ad 0%, #151f2f 100%); 
+            padding: 25px; 
+            color: white; 
+            text-align: center; 
+        }
+        
+        .m-portlet__head h3 {
+            font-weight: 700;
+            margin-bottom: 0;
+            font-size: 1.5rem;
+        }
+        
+        .m-portlet__body { 
+            padding: 35px; 
+        }
+        
+        .form-control {
+            border-radius: 8px;
+            padding: 12px 15px;
+            height: auto;
+            border: 1px solid #ebedf2;
+            background-color: #f8f9fc;
+            font-size: 1rem;
+        }
+        
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #2f74ad;
+            background-color: #fff;
+        }
+        
+        .info-notice {
+            background-color: #e0f0ff;
+            color: #154c79;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #2f74ad;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .btn-primary {
+            background-color: #2f74ad;
+            border-color: #2f74ad;
+            border-radius: 50px;
+            padding: 10px 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 1.05rem;
+        }
+        
+        .btn-primary:hover {
+            background-color: #151f2f;
+            border-color: #151f2f;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-group label {
+            font-weight: 600; 
+            color: #494b74;
+        }
+        
+        .alert-danger {
+            border-radius: 8px;
+            font-weight: 500;
+        }
     </style>
 </head>
 <body>
-
-    <div id="ajaxWait">
-        <i class="fas fa-spinner fa-spin fa-3x mb-3" style="color: var(--vu-purple);"></i>
-        <h4>Please wait...</h4>
-    </div>
-
-    <div id="completedScreen">
-        <i class="fas fa-check-circle fa-5x mb-4" style="color: var(--vu-teal);"></i>
-        <h2 style="color: var(--vu-dark);">Test Already Completed</h2>
-        <p class="text-muted">You have successfully submitted your exam. Your result will be announced soon.</p>
-        <a href="index.html" class="btn btn-primary mt-3 px-4 py-2" style="background-color: var(--vu-purple); border:none;">Back to Home</a>
-    </div>
-
-    <div class="vu-top-bar">
-        <div class="vu-course-title">
-            <span id="lblCourseCode">...</span> (<span id="lblCourseTitle">...</span>)
-        </div>
-        <div class="vu-timer-wrapper">
-            <div class="vu-timer-circle"><i class="fas fa-clock"></i> <span id="timerMins">--</span></div>
-        </div>
-        <div class="vu-user-info">
-            <div>
-                <strong>Login Time <span id="lblSTime"></span></strong><br>
-                <span id="lblStudentID"></span><br>
-                <span id="lblStudentName"></span>
+    <div class="container">
+        <div class="m-portlet">
+            <div class="m-portlet__head">
+                <h3><i class="fas fa-lock mr-2"></i> Exam Login</h3>
             </div>
-            <i class="fas fa-user-circle vu-profile-icon"></i>
-        </div>
-    </div>
-
-    <div class="container-fluid vu-main-container">
-        <div class="row h-100">
-            <div class="col-md-9 h-100" style="padding-right: 5px;">
-                <div class="vu-panel" style="height: calc(50% - 5px); overflow-y: auto;">
-                    <div class="vu-purple-header">
-                        <span>Question No : <span id="lblQuestionNo">0 of 0</span></span>
-                        <span>Marks: <span id="lblMarks">0</span> (Time <span id="lblBTime">0</span> Min) <i class="fas fa-exclamation-circle text-warning ml-2"></i></span>
-                    </div>
-                    <div class="vu-q-text" id="qText">Loading question...</div>
+            <div class="m-portlet__body">
+                
+                <div class="info-notice">
+                    <i class="fas fa-info-circle mr-1"></i>
+                    <strong>Important:</strong> Idhar apni real VU Student ID se login na karein. Test book karny k baad apko jo <strong>Test Username aur Password</strong> mila ha, sirf usi se login karein.
                 </div>
-                <div class="vu-panel" style="height: calc(50% - 5px); overflow-y: auto;">
-                    <div class="vu-purple-header"><span>Answer</span></div>
-                    <div id="pnlAnswerMCQ" style="display: none;">
-                        <div class="vu-options-list" id="mcqOptions"></div>
-                    </div>
-                    <div id="pnlAnswerSubjective" style="display: none; padding: 15px;">
-                        <textarea id="subjectiveAnswer" class="form-control" rows="6" oninput="onSubjectiveChange()" placeholder="Type your answer here..."></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 h-100" style="padding-left: 5px;">
-                <div class="vu-panel vu-summary-panel">
-                    <div class="vu-purple-header"><span>Summary</span></div>
-                    <div class="vu-grid-wrapper" id="summaryNums"></div>
-                    <div class="vu-summary-stats">
-                        <div class="vu-pct-text" id="pctLabel">0%</div>
-                        <div class="vu-progress-bar"><div class="vu-progress-fill" id="progressFill"></div></div>
-                        <div class="vu-stat-row"><span>Attempted</span><span id="statAttempted" style="color: var(--vu-teal);">0</span></div>
-                        <div class="vu-stat-row"><span>Flagged</span><span id="statFlagged" style="color: var(--vu-purple);">0</span></div>
-                        <div class="vu-stat-row"><span>Total</span><span id="statTotal">0</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="vu-bottom-bar">
-        <div><button class="vu-btn btn-finish" onclick="openFinishModal()"><i class="far fa-calendar-check"></i> Finish Exam</button></div>
-        <div style="display: flex; gap: 15px;">
-            <button id="btnFlag" class="vu-btn btn-flag" onclick="flagQuestion()"><i class="far fa-flag"></i> Flag</button>
-            <div class="btn-nav-grp">
-                <button id="btnFirst" class="vu-btn btn-nav" onclick="goFirst()"><i class="fas fa-angle-double-left"></i> First</button>
-                <button id="btnLast" class="vu-btn btn-nav" onclick="goLast()">Last <i class="fas fa-angle-double-right"></i></button>
-            </div>
-            <div class="btn-nav-grp">
-                <button id="btnPrevious" class="vu-btn btn-nav" onclick="goPrevious()"><i class="fas fa-angle-left"></i> Previous</button>
-                <button id="btnNext" class="vu-btn btn-nav" onclick="goNext()">Next <i class="fas fa-angle-right"></i></button>
-            </div>
-        </div>
-        <div><button id="btnSave" class="vu-btn btn-save" onclick="saveCurrentAnswer()" disabled><i class="far fa-save"></i> Save</button></div>
-    </div>
-
-    <div id="modalFinish" class="modal-overlay">
-        <div class="custom-modal">
-            <h4 class="text-danger mb-3 border-bottom pb-2">Finish Exam Confirmation</h4>
-            <p>Are you sure you want to finish? You will not be able to login again after finishing the exam.</p>
-            <div class="form-check my-4">
-                <input type="checkbox" class="form-check-input" id="chkFinish" onchange="toggleFinishBtn()">
-                <label class="form-check-label" for="chkFinish">I have reviewed my answers, Finish the Test.</label>
-            </div>
-            <div class="text-right">
-                <button class="btn btn-secondary" onclick="closeModal('modalFinish')">Cancel</button>
-                <button id="btnFinishExam" class="btn btn-danger ml-2" onclick="finishExam()" disabled>Finish Exam</button>
+                <div id="divError" class="alert alert-danger" style="display:none;"></div>
+                
+                <div class="form-group mb-4">
+                    <label>Test Username</label>
+                    <input id="txtUsername" type="text" class="form-control" placeholder="Enter provided username (e.g., BC240200001)">
+                </div>
+                
+                <div class="form-group mb-4">
+                    <label>Test Password</label>
+                    <input id="txtPassword" type="password" class="form-control" placeholder="Enter provided password">
+                </div>
+                
+                <div class="d-flex justify-content-between align-items-center mt-4">
+                    <a href="index.html" class="text-muted" style="font-weight: 500; text-decoration: none; transition: color 0.3s;">
+                        <i class="fas fa-arrow-left mr-1"></i> Back to Home
+                    </a>
+                    <button id="btnLogin" class="btn btn-primary" onclick="attemptLogin()">
+                        Login <i class="fas fa-sign-in-alt ml-1"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -156,264 +139,146 @@
         const SUPABASE_KEY = "sb_publishable_UNo59RPkC8sL9fbArltEug_STep04lA";
         const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        const state = { session: null, questions: [], mcqOptions: {}, answers: {}, currentIndex: 0, timeRemaining: 0, timerInterval: null, saveInterval: null, isDirty: false };
-
-        document.addEventListener('DOMContentLoaded', initTest);
-
-        async function initTest() {
-            showLoader(true);
-            const sessionId = sessionStorage.getItem('vu_session_id');
-            if (!sessionId) { window.location.href = 'login.html'; return; }
-
-            document.getElementById('lblCourseCode').textContent = sessionStorage.getItem('vu_course_code');
-            document.getElementById('lblCourseTitle').textContent = sessionStorage.getItem('vu_course_title');
-            document.getElementById('lblStudentID').textContent = sessionStorage.getItem('vu_username');
-            document.getElementById('lblStudentName').textContent = sessionStorage.getItem('vu_user_name');
-            document.getElementById('lblSTime').textContent = formatTime12h(new Date());
-
-            try {
-                const { data: sessionData, error: sErr } = await supabaseClient.from('paper_test_sessions').select('*').eq('id', sessionId).single();
-                if (sErr || !sessionData) throw sErr;
-                state.session = sessionData;
-
-                if (state.session.status === 'completed') {
-                    showLoader(false); document.getElementById('completedScreen').style.display = 'flex'; return;
-                }
-
-                state.currentIndex = state.session.current_question_index || 0;
-                state.timeRemaining = state.session.time_remaining_seconds;
-                if (state.timeRemaining <= 0 && state.timeRemaining !== null) {
-                    alert("Your allocated time for this exam has already expired."); finishExamDirect(); return;
-                }
-
-                // NEW: Fetch ONLY assigned locked questions for this specific session
-                const { data: assignedData, error: qErr } = await supabaseClient
-                    .from('paper_assigned_questions')
-                    .select('order_no, paper_questions(id, question_type, question_text, marks, time_minutes)')
-                    .eq('session_id', sessionId)
-                    .order('order_no', { ascending: true });
-                
-                if (qErr) throw qErr;
-                
-                if(!assignedData || assignedData.length === 0) {
-                    alert("Paper assignment failed. Please contact admin."); showLoader(false); return;
-                }
-
-                state.questions = assignedData.map(item => item.paper_questions);
-                const mcqIds = state.questions.filter(q => q.question_type === 'mcq').map(q => q.id);
-
-                if (mcqIds.length > 0) {
-                    const { data: opts, error: oErr } = await supabaseClient.from('paper_mcq_options').select('*').in('question_id', mcqIds).order('option_label', { ascending: true });
-                    if (oErr) throw oErr;
-                    (opts || []).forEach(opt => {
-                        if (!state.mcqOptions[opt.question_id]) state.mcqOptions[opt.question_id] = [];
-                        state.mcqOptions[opt.question_id].push(opt);
-                    });
-                }
-
-                const { data: ansData, error: aErr } = await supabaseClient.from('paper_user_answers').select('*').eq('session_id', sessionId);
-                if (aErr) throw aErr;
-
-                (ansData || []).forEach(ans => {
-                    state.answers[ans.question_id] = { selectedOptionId: ans.selected_option_id, answerText: ans.answer_text, isFlagged: ans.is_flagged || false, saved: true };
-                });
-
-                buildSummary();
-                renderQuestion(state.currentIndex);
-                startTimer();
-                
-                state.saveInterval = setInterval(saveTimerState, 10000);
-                window.addEventListener('beforeunload', () => { saveTimerState(); });
-
-            } catch (err) {
-                console.error('Test init error:', err);
-                alert("Database load error. Please refresh the page.");
-            } finally {
-                showLoader(false);
+        // Array shuffler (Fisher-Yates) for random questions
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
             }
+            return array;
         }
 
-        function startTimer() {
-            updateTimerDisplay();
-            state.timerInterval = setInterval(() => {
-                state.timeRemaining--;
-                if (state.timeRemaining <= 0) {
-                    state.timeRemaining = 0; clearInterval(state.timerInterval);
-                    alert('Time is up! Exam is finishing automatically.'); finishExamDirect();
-                } else { updateTimerDisplay(); }
-            }, 1000);
-        }
+        async function attemptLogin() {
+            const username = document.getElementById('txtUsername').value.trim();
+            const password = document.getElementById('txtPassword').value.trim();
+            const errorDiv = document.getElementById('divError');
 
-        function updateTimerDisplay() {
-            const mins = Math.floor(state.timeRemaining / 60);
-            document.getElementById('timerMins').textContent = mins;
-            const circle = document.querySelector('.vu-timer-circle');
-            if (state.timeRemaining < 600) circle.style.borderColor = 'var(--vu-red)';
-            else if (state.timeRemaining < 1800) circle.style.borderColor = 'var(--vu-yellow)';
-            else circle.style.borderColor = '#57d8e6';
-        }
+            // 1. Basic Input Validation
+            if (!username || !password) {
+                errorDiv.style.display = 'block';
+                errorDiv.innerText = 'Please enter both Username and Password.';
+                return;
+            }
 
-        async function saveTimerState() {
-            if (!state.session) return;
-            try { await supabaseClient.from('paper_test_sessions').update({ time_remaining_seconds: state.timeRemaining, current_question_index: state.currentIndex }).eq('id', state.session.id); } catch(e) {}
-        }
+            errorDiv.style.display = 'none';
+            const btn = document.getElementById('btnLogin');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i> Verifying...';
+            btn.disabled = true;
 
-        function renderQuestion(index) {
-            if (index < 0 || index >= state.questions.length) return;
-            state.currentIndex = index; state.isDirty = false;
+            // 2. Fetch Student Data (Joined with Course Data)
+            const { data: student, error } = await supabaseClient
+                .from('paper_students')
+                .select('*, paper_courses(id, code, title)')
+                .eq('username', username)
+                .eq('password', password)
+                .single();
 
-            const q = state.questions[index];
-            const total = state.questions.length;
+            // 3. Credentials Check
+            if (error || !student) {
+                errorDiv.style.display = 'block';
+                errorDiv.innerText = 'Invalid Username or Password.';
+                btn.innerHTML = 'Login <i class="fas fa-sign-in-alt ml-1"></i>';
+                btn.disabled = false;
+                return;
+            }
 
-            document.getElementById('lblQuestionNo').textContent = (index + 1) + ' of ' + total;
-            document.getElementById('lblMarks').textContent = q.marks || 1;
-            document.getElementById('lblBTime').textContent = q.time_minutes || 1;
-            document.getElementById('qText').innerHTML = q.question_text || '';
+            // 4. Completed Check from Students Table
+            if (student.is_completed) {
+                errorDiv.style.display = 'block';
+                errorDiv.innerHTML = '<i class="fas fa-exclamation-triangle mr-1"></i> <strong>Test Already Completed!</strong> Aap yeh test pehlay hi submit kar chukay hain.';
+                btn.innerHTML = 'Login <i class="fas fa-sign-in-alt ml-1"></i>';
+                btn.disabled = false;
+                return;
+            }
 
-            const existingAns = state.answers[q.id] || {};
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i> Preparing Exam...';
 
-            if (q.question_type === 'mcq') {
-                document.getElementById('pnlAnswerMCQ').style.display = 'block';
-                document.getElementById('pnlAnswerSubjective').style.display = 'none';
-                renderMCQOptions(q, existingAns);
+            // 5. Check for Existing Active Session
+            const { data: existingSession, error: checkErr } = await supabaseClient
+                .from('paper_test_sessions')
+                .select('*')
+                .eq('user_id', student.username)
+                .eq('course_id', student.course_id)
+                .single();
+
+            let sessionId;
+
+            if (existingSession) {
+                // Check if session was marked completed
+                if (existingSession.status === 'completed') {
+                    errorDiv.style.display = 'block';
+                    errorDiv.innerHTML = '<i class="fas fa-exclamation-triangle mr-1"></i> <strong>Test Already Completed!</strong> Aap yeh test pehlay hi submit kar chukay hain.';
+                    btn.innerHTML = 'Login <i class="fas fa-sign-in-alt ml-1"></i>';
+                    btn.disabled = false;
+                    return;
+                }
+                // Resume existing session
+                sessionId = existingSession.id;
             } else {
-                document.getElementById('pnlAnswerMCQ').style.display = 'none';
-                document.getElementById('pnlAnswerSubjective').style.display = 'block';
-                document.getElementById('subjectiveAnswer').value = existingAns.answerText || '';
+                // 6. Create NEW Session
+                const { data: newSession, error: insertErr } = await supabaseClient
+                    .from('paper_test_sessions')
+                    .insert([{ 
+                        user_id: student.username, 
+                        course_id: student.course_id, 
+                        status: 'active',
+                        time_remaining_seconds: student.total_time_minutes * 60,
+                        current_question_index: 0
+                    }]).select().single();
+
+                if (insertErr) {
+                    errorDiv.style.display = 'block';
+                    errorDiv.innerText = 'Server error: Session creation failed. Please try again.';
+                    btn.innerHTML = 'Login <i class="fas fa-sign-in-alt ml-1"></i>';
+                    btn.disabled = false;
+                    return;
+                }
+                sessionId = newSession.id;
+
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i> Generating Paper...';
+
+                // 7. THE MAGIC: Random Question Extraction & Locking
+                const { data: allQs, error: fetchQsErr } = await supabaseClient
+                    .from('paper_questions')
+                    .select('id, question_type')
+                    .eq('course_id', student.course_id)
+                    .eq('exam_type', student.exam_type);
+                
+                if (allQs && allQs.length > 0) {
+                    // Filter by type, shuffle randomly, and pick exact count specified for this student
+                    let mcqs = shuffleArray(allQs.filter(q => q.question_type === 'mcq')).slice(0, student.mcq_count);
+                    let shorts = shuffleArray(allQs.filter(q => q.question_type === 'short')).slice(0, student.short_count);
+                    let longs = shuffleArray(allQs.filter(q => q.question_type === 'long')).slice(0, student.long_count);
+                    
+                    // Combine them (MCQs first, then Short, then Long)
+                    let selectedQs = [...mcqs, ...shorts, ...longs];
+                    
+                    // Format for insertion
+                    let assignmentData = selectedQs.map((q, index) => ({
+                        session_id: sessionId,
+                        question_id: q.id,
+                        order_no: index + 1
+                    }));
+
+                    // Lock questions in database for this session
+                    if (assignmentData.length > 0) {
+                        await supabaseClient.from('paper_assigned_questions').insert(assignmentData);
+                    }
+                }
             }
 
-            document.getElementById('btnSave').disabled = true;
-            document.getElementById('btnFirst').disabled = (index === 0);
-            document.getElementById('btnPrevious').disabled = (index === 0);
-            document.getElementById('btnNext').disabled = (index >= total - 1);
-            document.getElementById('btnLast').disabled = (index >= total - 1);
-
-            updateSummaryHighlight(index);
-            clearTimeout(window._saveIdxTimeout);
-            window._saveIdxTimeout = setTimeout(() => { saveTimerState(); }, 500);
+            // 8. Set Session Storage Variables for test.html engine
+            sessionStorage.setItem('vu_session_id', sessionId);
+            sessionStorage.setItem('vu_user_id', student.username);
+            sessionStorage.setItem('vu_user_name', student.name);
+            sessionStorage.setItem('vu_username', student.username);
+            sessionStorage.setItem('vu_course_id', student.course_id);
+            sessionStorage.setItem('vu_course_code', student.paper_courses.code);
+            sessionStorage.setItem('vu_course_title', student.paper_courses.title);
+            
+            // 9. Final Redirect
+            window.location.href = 'test.html';
         }
-
-        function renderMCQOptions(q, existingAns) {
-            const container = document.getElementById('mcqOptions');
-            const opts = state.mcqOptions[q.id] || [];
-            container.innerHTML = '';
-            opts.forEach((opt) => {
-                const isSelected = existingAns.selectedOptionId === opt.id;
-                const div = document.createElement('label');
-                div.className = 'vu-option-item' + (isSelected ? ' selected' : '');
-                div.setAttribute('data-opt-id', opt.id);
-
-                const radio = document.createElement('input');
-                radio.type = 'radio'; radio.name = 'mcqOpt_' + q.id; radio.value = opt.id; radio.checked = isSelected;
-
-                const label = document.createElement('span');
-                label.innerHTML = (opt.option_label ? '<strong>' + opt.option_label + '.</strong> &nbsp;' : '') + opt.option_text;
-
-                radio.addEventListener('change', () => onMCQSelect(q.id, opt.id));
-                div.addEventListener('click', () => { radio.checked = true; onMCQSelect(q.id, opt.id); });
-
-                div.appendChild(radio); div.appendChild(label); container.appendChild(div);
-            });
-        }
-
-        function onMCQSelect(questionId, optionId) {
-            document.querySelectorAll('.vu-option-item').forEach(el => { el.classList.toggle('selected', el.getAttribute('data-opt-id') == optionId); });
-            if (!state.answers[questionId]) state.answers[questionId] = {};
-            state.answers[questionId].selectedOptionId = optionId; state.answers[questionId].saved = false; state.isDirty = true;
-            document.getElementById('btnSave').disabled = false;
-        }
-
-        function onSubjectiveChange() {
-            const q = state.questions[state.currentIndex];
-            if (!state.answers[q.id]) state.answers[q.id] = {};
-            state.answers[q.id].answerText = document.getElementById('subjectiveAnswer').value; state.answers[q.id].saved = false; state.isDirty = true;
-            document.getElementById('btnSave').disabled = false;
-        }
-
-        async function saveCurrentAnswer() {
-            const q = state.questions[state.currentIndex];
-            const ans = state.answers[q.id];
-            if (!ans) return;
-
-            const btn = document.getElementById('btnSave');
-            btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-
-            try {
-                const payload = { session_id: state.session.id, question_id: q.id, selected_option_id: ans.selectedOptionId || null, answer_text: ans.answerText || null, is_flagged: ans.isFlagged || false };
-                await supabaseClient.from('paper_user_answers').upsert(payload, { onConflict: 'session_id,question_id' });
-                state.answers[q.id].saved = true; state.isDirty = false;
-                btn.innerHTML = '<i class="far fa-save"></i> Save';
-                buildSummary(); updateSummaryHighlight(state.currentIndex);
-            } catch(err) {
-                btn.disabled = false; btn.innerHTML = '<i class="far fa-save"></i> Save';
-            }
-        }
-
-        async function flagQuestion() {
-            const q = state.questions[state.currentIndex];
-            if (!state.answers[q.id]) state.answers[q.id] = {};
-            state.answers[q.id].isFlagged = !state.answers[q.id].isFlagged;
-
-            if (state.answers[q.id].saved || state.answers[q.id].selectedOptionId || state.answers[q.id].answerText) {
-                await supabaseClient.from('paper_user_answers').upsert({ session_id: state.session.id, question_id: q.id, selected_option_id: state.answers[q.id].selectedOptionId || null, answer_text: state.answers[q.id].answerText || null, is_flagged: state.answers[q.id].isFlagged }, { onConflict: 'session_id,question_id' });
-            }
-            buildSummary(); updateSummaryHighlight(state.currentIndex);
-        }
-
-        async function goTo(index) {
-            if (state.isDirty) { if(confirm('You have unsaved changes. Save before navigating?')) await saveCurrentAnswer(); }
-            renderQuestion(index);
-        }
-        function goFirst() { goTo(0); }
-        function goLast() { goTo(state.questions.length - 1); }
-        function goPrevious() { if (state.currentIndex > 0) goTo(state.currentIndex - 1); }
-        function goNext() { if (state.currentIndex < state.questions.length - 1) goTo(state.currentIndex + 1); }
-
-        function buildSummary() {
-            const container = document.getElementById('summaryNums');
-            container.innerHTML = '';
-            let attempted = 0, flagged = 0;
-
-            state.questions.forEach((q, i) => {
-                const ans = state.answers[q.id];
-                const hasAns = ans && (ans.selectedOptionId || ans.answerText);
-                const isFlagged = ans && ans.isFlagged;
-                if (hasAns) attempted++; if (isFlagged) flagged++;
-
-                const btn = document.createElement('button');
-                btn.className = 'vu-q-btn' + (i === state.currentIndex ? ' current' : '') + (hasAns ? ' answered' : '') + (isFlagged ? ' flagged' : '');
-                btn.textContent = String(i + 1).padStart(2, '0'); btn.onclick = () => goTo(i);
-                container.appendChild(btn);
-            });
-
-            const total = state.questions.length;
-            const pct = total > 0 ? Math.round((attempted / total) * 100) : 0;
-            document.getElementById('statAttempted').textContent = attempted;
-            document.getElementById('statFlagged').textContent = flagged;
-            document.getElementById('statTotal').textContent = total;
-            document.getElementById('pctLabel').textContent = pct + '%';
-            document.getElementById('progressFill').style.width = pct + '%';
-        }
-
-        function updateSummaryHighlight(index) { document.querySelectorAll('.vu-q-btn').forEach((btn, i) => { btn.classList.toggle('current', i === index); }); }
-        function openFinishModal() { document.getElementById('chkFinish').checked = false; document.getElementById('btnFinishExam').disabled = true; document.getElementById('modalFinish').classList.add('show'); }
-        function toggleFinishBtn() { document.getElementById('btnFinishExam').disabled = !document.getElementById('chkFinish').checked; }
-        function closeModal(id) { document.getElementById(id).classList.remove('show'); }
-        
-        async function finishExam() { closeModal('modalFinish'); if (state.isDirty) await saveCurrentAnswer(); await finishExamDirect(); }
-        
-        async function finishExamDirect() {
-            showLoader(true); clearInterval(state.timerInterval); clearInterval(state.saveInterval);
-            try {
-                await supabaseClient.from('paper_test_sessions').update({ status: 'completed', time_remaining_seconds: state.timeRemaining, current_question_index: state.currentIndex }).eq('id', state.session.id);
-                await supabaseClient.from('paper_results').insert([{ session_id: state.session.id, user_id: sessionStorage.getItem('vu_user_id'), is_announced: false }]);
-                await supabaseClient.from('paper_students').update({ is_completed: true }).eq('username', sessionStorage.getItem('vu_user_id'));
-                showLoader(false); document.getElementById('completedScreen').style.display = 'flex';
-            } catch(err) { showLoader(false); console.error(err); }
-        }
-
-        function showLoader(show) { document.getElementById('ajaxWait').style.display = show ? 'flex' : 'none'; }
-        function formatTime12h(date) { let h = date.getHours(), m = date.getMinutes(); const ampm = h >= 12 ? 'PM' : 'AM'; h = h % 12 || 12; return h + ':' + String(m).padStart(2, '0') + ' ' + ampm; }
     </script>
 </body>
 </html>
