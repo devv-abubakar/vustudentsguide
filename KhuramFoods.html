@@ -23,7 +23,7 @@
     .nav-btn.active .nav-label { color: #f43f5e; font-weight: 600; }
 
     /* Card shimmer on tap */
-    .tap-card { transition: transform 0.15s ease, box-shadow 0.15s ease; }
+    .tap-card { transition: transform 0.15s ease, box-shadow 0.15s ease; cursor: pointer; }
     .tap-card:active { transform: scale(0.98); box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
 
     /* Toast */
@@ -37,9 +37,6 @@
     ::-webkit-scrollbar { width: 3px; }
     ::-webkit-scrollbar-thumb { background: #e0d9d0; border-radius: 10px; }
 
-    /* Ledger table */
-    .ledger-row:nth-child(odd) { background: #fafaf8; }
-
     /* Fab pulse */
     .fab { box-shadow: 0 4px 24px rgba(244,63,94,0.4); transition: all 0.2s ease; }
     .fab:active { transform: scale(0.93); }
@@ -48,7 +45,7 @@
     .tab-btn.active { background: #f43f5e; color: white; }
 
     /* Input focus ring */
-    input:focus, select:focus { outline: none; box-shadow: 0 0 0 2px rgba(244,63,94,0.25); border-color: #f43f5e; }
+    input:focus, select:focus, textarea:focus { outline: none; box-shadow: 0 0 0 2px rgba(244,63,94,0.25); border-color: #f43f5e; }
 
     /* Header pattern */
     .header-bg {
@@ -81,11 +78,6 @@
     .spinner { animation: spin 0.8s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* Back header */
-    .back-header {
-      background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
-    }
-
     /* Balance chip */
     .balance-chip { font-family: 'Sora', sans-serif; letter-spacing: -0.5px; }
 
@@ -97,18 +89,16 @@
     .empty-state { text-align: center; padding: 48px 24px; color: #9ca3af; }
 
     @media (min-width: 480px) {
-      .app-container { max-width: 420px; margin: 0 auto; }
+      .app-container { max-width: 420px; margin: 0 auto; border-left: 1px solid #eee; border-right: 1px solid #eee; background: #fff; }
+      body { background: #e5e5e0; }
     }
   </style>
 </head>
 <body class="min-h-screen">
 
-<!-- ───────────── APP ───────────── -->
 <div class="app-container relative min-h-screen flex flex-col" id="app" style="display:none!important">
 
-  <!-- TOP HEADER -->
   <header class="header-bg text-white px-4 py-3 flex items-center justify-between z-30 sticky top-0" style="min-height:56px">
-    <!-- Back button (shown in sub-views) -->
     <button id="backBtn" class="hidden mr-2 w-8 h-8 flex items-center justify-center rounded-full bg-white/20 active:bg-white/30" onclick="goBack()">
       <i class="fa fa-arrow-left text-sm"></i>
     </button>
@@ -121,49 +111,45 @@
     </button>
   </header>
 
-  <!-- MAIN CONTENT AREA -->
   <main class="flex-1 overflow-y-auto pb-24" id="mainContent">
 
-    <!-- ── DASHBOARD VIEW ── -->
     <div class="view active" id="view-dashboard">
       <div class="px-4 pt-4 pb-2">
         <p class="text-xs text-gray-500 font-medium uppercase tracking-wider mb-1">Daily Summary</p>
         <div class="flex items-center gap-2 mb-4">
           <div class="search-wrap flex-1">
             <i class="fa fa-calendar text-xs"></i>
-            <input type="date" id="dashDate" class="w-full border border-gray-200 rounded-xl bg-white text-sm py-2.5 px-4 pl-9 font-medium text-gray-700"
-              onchange="loadDashboard()" />
+            <input type="date" id="dashDate" class="w-full border border-gray-200 rounded-xl bg-white text-sm py-2.5 px-4 pl-9 font-medium text-gray-700" onchange="loadDashboard()" />
           </div>
         </div>
         <div class="grid grid-cols-2 gap-3 mb-5">
-          <div class="stat-debit text-white rounded-2xl p-4 tap-card">
+          <div class="stat-debit text-white rounded-2xl p-4 tap-card" onclick="filterDashList('debit')">
             <p class="text-xs font-medium opacity-80 mb-1 uppercase tracking-wide">Sent / Sold</p>
             <p class="text-2xl font-heading font-bold" id="dashDebit">...</p>
-            <p class="text-xs opacity-70 mt-1">Total Debit</p>
+            <p class="text-xs opacity-70 mt-1">Tap to view</p>
           </div>
-          <div class="stat-credit text-white rounded-2xl p-4 tap-card">
+          <div class="stat-credit text-white rounded-2xl p-4 tap-card" onclick="filterDashList('credit')">
             <p class="text-xs font-medium opacity-80 mb-1 uppercase tracking-wide">Received</p>
             <p class="text-2xl font-heading font-bold" id="dashCredit">...</p>
-            <p class="text-xs opacity-70 mt-1">Total Credit</p>
+            <p class="text-xs opacity-70 mt-1">Tap to view</p>
           </div>
         </div>
 
-        <!-- Recent transactions today -->
-        <p class="text-xs text-gray-500 font-medium uppercase tracking-wider mb-2">Today's Transactions</p>
+        <div class="flex justify-between items-center mb-2">
+          <p class="text-xs text-gray-500 font-medium uppercase tracking-wider" id="dashListTitle">All Transactions</p>
+          <button onclick="filterDashList('all')" class="text-xs text-rose-500 font-bold hidden" id="dashClearFilter">Clear Filter</button>
+        </div>
         <div id="dashTxList" class="space-y-2">
           <div class="empty-state"><i class="fa fa-circle-notch spinner text-gray-300 text-2xl"></i></div>
         </div>
       </div>
     </div>
 
-    <!-- ── PAYABLES VIEW ── -->
     <div class="view" id="view-payables">
       <div class="px-4 pt-4">
         <div class="search-wrap mb-4">
           <i class="fa fa-search text-xs"></i>
-          <input type="text" placeholder="Search clients..." id="searchPayable"
-            class="w-full border border-gray-200 rounded-xl bg-white text-sm py-2.5 px-4 pl-9"
-            oninput="filterClients('payable')" />
+          <input type="text" placeholder="Search Payables..." id="searchPayable" class="w-full border border-gray-200 rounded-xl bg-white text-sm py-2.5 px-4 pl-9" oninput="filterClients('payable')" />
         </div>
         <div id="listPayable" class="space-y-2">
           <div class="empty-state"><i class="fa fa-circle-notch spinner text-gray-300 text-2xl"></i></div>
@@ -171,14 +157,11 @@
       </div>
     </div>
 
-    <!-- ── RECEIVABLES VIEW ── -->
     <div class="view" id="view-receivables">
       <div class="px-4 pt-4">
         <div class="search-wrap mb-4">
           <i class="fa fa-search text-xs"></i>
-          <input type="text" placeholder="Search clients..." id="searchReceivable"
-            class="w-full border border-gray-200 rounded-xl bg-white text-sm py-2.5 px-4 pl-9"
-            oninput="filterClients('receivable')" />
+          <input type="text" placeholder="Search Receivables..." id="searchReceivable" class="w-full border border-gray-200 rounded-xl bg-white text-sm py-2.5 px-4 pl-9" oninput="filterClients('receivable')" />
         </div>
         <div id="listReceivable" class="space-y-2">
           <div class="empty-state"><i class="fa fa-circle-notch spinner text-gray-300 text-2xl"></i></div>
@@ -186,10 +169,8 @@
       </div>
     </div>
 
-    <!-- ── LEDGER VIEW ── -->
     <div class="view" id="view-ledger">
       <div class="px-4 pt-4">
-        <!-- Client Summary Card -->
         <div id="ledgerClientCard" class="bg-white rounded-2xl p-4 mb-4 shadow-sm border border-gray-100">
           <div class="flex items-center gap-3">
             <div class="w-11 h-11 rounded-xl bg-rose-50 flex items-center justify-center">
@@ -205,24 +186,15 @@
             </div>
           </div>
         </div>
-
-        <!-- Transactions list -->
         <p class="text-xs text-gray-500 font-medium uppercase tracking-wider mb-2">Transactions</p>
         <div id="ledgerTxList" class="space-y-2 pb-4">
           <div class="empty-state"><i class="fa fa-circle-notch spinner text-gray-300 text-2xl"></i></div>
         </div>
       </div>
-
-      <!-- FAB: Add Transaction -->
-      <button onclick="openAddTxModal()" class="fab fixed bottom-24 right-4 w-14 h-14 bg-rose-500 text-white rounded-2xl flex items-center justify-center z-40">
-        <i class="fa fa-plus text-xl"></i>
-      </button>
     </div>
 
-    <!-- ── ADMIN VIEW ── -->
     <div class="view" id="view-admin">
       <div class="px-4 pt-4">
-        <!-- Tabs -->
         <div class="flex gap-2 mb-4 bg-gray-100 p-1 rounded-xl">
           <button class="tab-btn flex-1 text-sm py-2 rounded-lg font-medium transition-all active" data-tab="clients" onclick="switchAdminTab('clients')">
             <i class="fa fa-users mr-1"></i> Clients
@@ -232,33 +204,29 @@
           </button>
         </div>
 
-        <!-- Clients Tab -->
         <div id="admin-clients" class="admin-tab">
           <button onclick="openAddClientModal()" class="w-full mb-3 py-2.5 bg-rose-500 text-white rounded-xl font-semibold text-sm flex items-center justify-center gap-2 active:bg-rose-600">
             <i class="fa fa-plus"></i> Add New Client
           </button>
-          <div id="adminClientList" class="space-y-2">
-            <div class="empty-state"><i class="fa fa-circle-notch spinner text-gray-300 text-2xl"></i></div>
-          </div>
+          <div id="adminClientList" class="space-y-2"></div>
         </div>
 
-        <!-- Rates Tab -->
         <div id="admin-rates" class="admin-tab hidden">
           <button onclick="openAddRateModal()" class="w-full mb-3 py-2.5 bg-rose-500 text-white rounded-xl font-semibold text-sm flex items-center justify-center gap-2 active:bg-rose-600">
             <i class="fa fa-plus"></i> Add New Rate
           </button>
-          <div id="adminRateList" class="space-y-2">
-            <div class="empty-state"><i class="fa fa-circle-notch spinner text-gray-300 text-2xl"></i></div>
-          </div>
+          <div id="adminRateList" class="space-y-2"></div>
         </div>
       </div>
     </div>
-
   </main>
 
-  <!-- BOTTOM NAV -->
-  <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 z-30 shadow-[0_-4px_24px_rgba(0,0,0,0.06)]">
-    <div class="app-container flex">
+  <button onclick="openGlobalAddTxModal()" class="fab fixed bottom-24 right-4 w-14 h-14 bg-rose-500 text-white rounded-2xl flex items-center justify-center z-40">
+    <i class="fa fa-plus text-xl"></i>
+  </button>
+
+  <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 z-30 shadow-[0_-4px_24px_rgba(0,0,0,0.06)] app-container">
+    <div class="flex">
       <button class="nav-btn active flex-1 flex flex-col items-center py-3 gap-0.5" data-view="dashboard" onclick="switchView('dashboard')">
         <i class="nav-icon fa fa-chart-bar text-gray-400 text-lg transition-all"></i>
         <span class="nav-label text-xs text-gray-400">Dashboard</span>
@@ -279,44 +247,32 @@
   </nav>
 </div>
 
-<!-- ───────────── LOGIN SCREEN ───────────── -->
-<div id="loginScreen" class="min-h-screen flex flex-col items-center justify-center px-6 bg-gradient-to-br from-rose-600 via-rose-500 to-pink-500">
+<div id="loginScreen" class="min-h-screen flex flex-col items-center justify-center px-6 bg-gradient-to-br from-rose-600 via-rose-500 to-pink-500 app-container">
   <div class="w-full max-w-sm">
-    <!-- Logo -->
     <div class="text-center mb-8">
-      <div class="w-20 h-20 bg-white/20 rounded-3xl flex items-center justify-center mx-auto mb-4 text-4xl shadow-lg">
-        🌶
-      </div>
+      <div class="w-20 h-20 bg-white/20 rounded-3xl flex items-center justify-center mx-auto mb-4 text-4xl shadow-lg">🌶</div>
       <h1 class="text-3xl font-heading font-bold text-white">Khuram Foods</h1>
       <p class="text-rose-200 text-sm mt-1 font-medium">Business Management Portal</p>
     </div>
-
-    <!-- Login Card -->
     <div class="bg-white rounded-3xl p-6 shadow-2xl">
       <h2 class="font-heading font-bold text-gray-800 text-lg mb-5 text-center">Sign In</h2>
-
       <div class="space-y-3">
         <div>
           <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1.5">Username</label>
           <div class="relative">
             <i class="fa fa-user absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
-            <input type="text" id="loginUser" placeholder="Enter username"
-              class="w-full border border-gray-200 rounded-xl py-3 pl-10 pr-4 text-sm bg-gray-50 text-gray-800"
-              onkeydown="if(event.key==='Enter')doLogin()" />
+            <input type="text" id="loginUser" placeholder="Enter username" class="w-full border border-gray-200 rounded-xl py-3 pl-10 pr-4 text-sm bg-gray-50" onkeydown="if(event.key==='Enter')doLogin()" />
           </div>
         </div>
         <div>
           <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1.5">Password</label>
           <div class="relative">
             <i class="fa fa-lock absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
-            <input type="password" id="loginPass" placeholder="Enter password"
-              class="w-full border border-gray-200 rounded-xl py-3 pl-10 pr-4 text-sm bg-gray-50 text-gray-800"
-              onkeydown="if(event.key==='Enter')doLogin()" />
+            <input type="password" id="loginPass" placeholder="Enter password" class="w-full border border-gray-200 rounded-xl py-3 pl-10 pr-4 text-sm bg-gray-50" onkeydown="if(event.key==='Enter')doLogin()" />
           </div>
         </div>
         <div id="loginError" class="hidden text-rose-500 text-xs text-center font-medium bg-rose-50 rounded-lg py-2"></div>
-        <button onclick="doLogin()" id="loginBtn"
-          class="w-full bg-rose-500 text-white py-3.5 rounded-xl font-heading font-semibold text-sm mt-1 active:bg-rose-600 flex items-center justify-center gap-2">
+        <button onclick="doLogin()" id="loginBtn" class="w-full bg-rose-500 text-white py-3.5 rounded-xl font-heading font-semibold text-sm mt-1 active:bg-rose-600 flex items-center justify-center gap-2">
           <i class="fa fa-sign-in-alt"></i> Sign In
         </button>
       </div>
@@ -324,23 +280,23 @@
   </div>
 </div>
 
-<!-- ───────────── TOAST ───────────── -->
 <div id="toast" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-full text-white text-sm font-medium shadow-lg flex items-center gap-2 whitespace-nowrap"></div>
 
-<!-- ───────────── MODAL ───────────── -->
-<div id="modalBackdrop" class="modal-backdrop fixed inset-0 bg-black/40 z-50 hidden flex items-end justify-center">
-  <div id="modalBox" class="bg-white w-full max-w-sm rounded-t-3xl p-6 pb-8 shadow-2xl">
-    <div class="w-10 h-1 bg-gray-200 rounded-full mx-auto mb-5"></div>
-    <h3 class="font-heading font-bold text-lg text-gray-800 mb-4" id="modalTitle">Modal</h3>
+<div id="modalBackdrop" class="modal-backdrop fixed inset-0 bg-black/40 z-50 hidden flex items-end justify-center sm:items-center">
+  <div id="modalBox" class="bg-white w-full max-w-md rounded-t-3xl sm:rounded-2xl p-6 pb-8 shadow-2xl max-h-[90vh] overflow-y-auto">
+    <div class="w-10 h-1 bg-gray-200 rounded-full mx-auto mb-5 sm:hidden"></div>
+    <div class="flex justify-between items-center mb-4 border-b pb-3">
+      <h3 class="font-heading font-bold text-lg text-gray-800" id="modalTitle">Modal</h3>
+      <button onclick="closeModal()" class="w-8 h-8 bg-gray-100 rounded-full text-gray-500"><i class="fa fa-times"></i></button>
+    </div>
     <div id="modalBody"></div>
-    <div class="flex gap-3 mt-5">
+    <div class="flex gap-3 mt-5 pt-3">
       <button onclick="closeModal()" class="flex-1 py-3 border border-gray-200 rounded-xl text-sm font-semibold text-gray-600 active:bg-gray-50">Cancel</button>
       <button id="modalConfirmBtn" class="flex-1 py-3 bg-rose-500 text-white rounded-xl text-sm font-semibold active:bg-rose-600">Save</button>
     </div>
   </div>
 </div>
 
-<!-- ───────────── CONFIRM DIALOG ───────────── -->
 <div id="confirmBackdrop" class="modal-backdrop fixed inset-0 bg-black/40 z-50 hidden flex items-center justify-center px-6">
   <div class="bg-white w-full max-w-xs rounded-2xl p-5 shadow-2xl">
     <div class="w-12 h-12 bg-rose-50 rounded-xl flex items-center justify-center mx-auto mb-3">
@@ -355,7 +311,6 @@
   </div>
 </div>
 
-<!-- ───────────── SCRIPT ───────────── -->
 <script>
 // ── CONFIG ──────────────────────────────────────────────────
 const SUPABASE_URL = 'https://ptwgiadzpzawjftfxwwf.supabase.co';
@@ -367,8 +322,10 @@ let currentView = 'dashboard';
 let currentClientId = null;
 let currentClientType = null;
 let allClients = { payable: [], receivable: [] };
+let allRates = [];
 let prevView = null;
 let confirmCallback = null;
+let dashboardRawData = [];
 
 // ── INIT ─────────────────────────────────────────────────────
 window.onload = () => {
@@ -382,8 +339,7 @@ async function doLogin() {
   const u = document.getElementById('loginUser').value.trim();
   const p = document.getElementById('loginPass').value.trim();
   const btn = document.getElementById('loginBtn');
-  const err = document.getElementById('loginError');
-
+  
   if (!u || !p) { showLoginErr('Please enter username and password.'); return; }
 
   btn.innerHTML = '<i class="fa fa-circle-notch spinner"></i> Signing in...';
@@ -408,15 +364,13 @@ function showLoginErr(msg) {
 
 function logout() {
   sessionStorage.removeItem('kf_user');
-  showLogin();
+  window.location.reload(); // Hard reload to clear all states
 }
 
 function showLogin() {
   document.getElementById('loginScreen').style.display = 'flex';
   document.getElementById('app').style.display = 'none';
   document.getElementById('loginError').classList.add('hidden');
-  document.getElementById('loginUser').value = '';
-  document.getElementById('loginPass').value = '';
 }
 
 function showApp() {
@@ -426,65 +380,48 @@ function showApp() {
 }
 
 async function initApp() {
-  // Set default date
   document.getElementById('dashDate').value = today();
-  await loadAllClients();
+  await Promise.all([loadAllClients(), fetchRates()]);
   loadDashboard();
 }
 
+async function fetchRates() {
+  const { data } = await sb.from('khuram_rates').select('*').order('product_name');
+  allRates = data || [];
+}
+
 // ── NAVIGATION ───────────────────────────────────────────────
-function switchView(view, skipHistory = false) {
+function switchView(view) {
   if (view !== 'ledger') prevView = currentView !== 'ledger' ? currentView : prevView;
 
-  // Deactivate all views & nav buttons
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
 
-  // Activate target view
   document.getElementById(`view-${view}`).classList.add('active');
   currentView = view;
 
-  // Nav button highlight (not for ledger)
   if (view !== 'ledger') {
     const btn = document.querySelector(`.nav-btn[data-view="${view}"]`);
     if (btn) btn.classList.add('active');
   }
 
-  // Header adjustments
   const isLedger = view === 'ledger';
   document.getElementById('backBtn').classList.toggle('hidden', !isLedger);
   document.getElementById('headerLogo').classList.toggle('hidden', isLedger);
   document.getElementById('headerTitle').classList.toggle('hidden', !isLedger);
-
-  // Scroll to top
   document.getElementById('mainContent').scrollTop = 0;
 
-  // Load data per view
   if (view === 'dashboard') loadDashboard();
   if (view === 'payables') renderClientList('payable');
   if (view === 'receivables') renderClientList('receivable');
   if (view === 'admin') { loadAdminClients(); loadAdminRates(); }
 }
 
-function goBack() {
-  switchView(prevView || 'dashboard');
-}
-
-// ── DATE HELPER ──────────────────────────────────────────────
-function today() {
-  return new Date().toISOString().split('T')[0];
-}
-
-function fmtDate(d) {
-  if (!d) return '-';
-  const dt = new Date(d);
-  return dt.toLocaleDateString('en-PK', { day: '2-digit', month: 'short', year: '2-digit' });
-}
-
-function fmtPKR(n) {
-  if (n === null || n === undefined) return '–';
-  return 'Rs ' + Number(n).toLocaleString('en-PK', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
+function goBack() { switchView(prevView || 'dashboard'); }
+function today() { return new Date().toISOString().split('T')[0]; }
+function fmtDate(d) { return d ? new Date(d).toLocaleDateString('en-PK', { day: '2-digit', month: 'short', year: '2-digit' }) : '-'; }
+function fmtPKR(n) { return n != null ? 'Rs ' + Number(n).toLocaleString('en-PK', { minimumFractionDigits: 0, maximumFractionDigits: 0 }) : '–'; }
+function escHtml(str) { return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;'); }
 
 // ── DASHBOARD ────────────────────────────────────────────────
 async function loadDashboard() {
@@ -494,36 +431,59 @@ async function loadDashboard() {
   document.getElementById('dashTxList').innerHTML = '<div class="empty-state"><i class="fa fa-circle-notch spinner text-gray-300 text-2xl"></i></div>';
 
   const { data, error } = await sb.from('khuram_ledgers').select('*, khuram_clients(name)').eq('date', d).order('id', { ascending: false });
-
   if (error) { toast('Error loading dashboard', 'error'); return; }
 
+  dashboardRawData = data;
   const totalDebit = data.reduce((s, r) => s + (r.debit || 0), 0);
   const totalCredit = data.reduce((s, r) => s + (r.credit || 0), 0);
 
   document.getElementById('dashDebit').textContent = fmtPKR(totalDebit);
   document.getElementById('dashCredit').textContent = fmtPKR(totalCredit);
+  
+  filterDashList('all'); // Show all by default
+}
 
+function filterDashList(filterType) {
   const container = document.getElementById('dashTxList');
-  if (!data.length) {
-    container.innerHTML = `<div class="empty-state">
-      <i class="fa fa-inbox text-gray-200 text-4xl mb-2 block"></i>
-      <p class="text-gray-400 text-sm">No transactions on this date</p>
-    </div>`;
+  let list = dashboardRawData;
+
+  document.getElementById('dashClearFilter').classList.add('hidden');
+  document.getElementById('dashListTitle').innerText = "All Transactions";
+
+  if(filterType === 'debit') {
+    list = dashboardRawData.filter(r => r.debit > 0);
+    document.getElementById('dashListTitle').innerText = "Sent / Sold (Debit)";
+    document.getElementById('dashClearFilter').classList.remove('hidden');
+  } else if (filterType === 'credit') {
+    list = dashboardRawData.filter(r => r.credit > 0);
+    document.getElementById('dashListTitle').innerText = "Received (Credit)";
+    document.getElementById('dashClearFilter').classList.remove('hidden');
+  }
+
+  if (!list.length) {
+    container.innerHTML = `<div class="empty-state"><i class="fa fa-inbox text-gray-200 text-4xl mb-2 block"></i><p class="text-gray-400 text-sm">No transactions</p></div>`;
     return;
   }
 
-  container.innerHTML = data.map(r => `
-    <div class="bg-white rounded-xl p-3 flex items-center gap-3 shadow-sm border border-gray-100 tap-card">
-      <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${r.debit ? 'bg-rose-50' : 'bg-green-50'}">
-        <i class="fa ${r.debit ? 'fa-arrow-up text-rose-500' : 'fa-arrow-down text-green-500'} text-sm"></i>
+  container.innerHTML = list.map(r => `
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+      <div class="flex items-center gap-3 p-3">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${r.debit ? 'bg-rose-50' : 'bg-green-50'}">
+          <i class="fa ${r.debit ? 'fa-arrow-up text-rose-500' : 'fa-arrow-down text-green-500'} text-sm"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="font-semibold text-gray-800 text-sm truncate">${r.khuram_clients?.name || 'Unknown'}</p>
+          <p class="text-xs text-gray-400 truncate">${r.particulars || r.type || '-'}</p>
+        </div>
+        <div class="text-right">
+          <p class="font-heading font-bold text-sm ${r.debit ? 'text-rose-500' : 'text-green-600'}">${fmtPKR(r.debit || r.credit)}</p>
+          <p class="text-xs text-gray-400">${r.v_no ? 'V#'+r.v_no : ''}</p>
+        </div>
       </div>
-      <div class="flex-1 min-w-0">
-        <p class="font-semibold text-gray-800 text-sm truncate">${r.khuram_clients?.name || 'Unknown'}</p>
-        <p class="text-xs text-gray-400 truncate">${r.particulars || r.type || '-'}</p>
-      </div>
-      <div class="text-right">
-        <p class="font-heading font-bold text-sm ${r.debit ? 'text-rose-500' : 'text-green-600'}">${fmtPKR(r.debit || r.credit)}</p>
-        <p class="text-xs text-gray-400">${r.v_no ? 'V#'+r.v_no : ''}</p>
+      <div class="flex border-t border-gray-50">
+        <button onclick="openEditTxModal(${r.id})" class="flex-1 py-2 text-xs text-blue-500 font-semibold flex items-center justify-center gap-1 active:bg-blue-50"><i class="fa fa-pen"></i> Edit</button>
+        <div class="w-px bg-gray-50"></div>
+        <button onclick="deleteTx(${r.id}, 'dashboard')" class="flex-1 py-2 text-xs text-rose-500 font-semibold flex items-center justify-center gap-1 active:bg-rose-50"><i class="fa fa-trash"></i> Delete</button>
       </div>
     </div>
   `).join('');
@@ -543,18 +503,14 @@ function renderClientList(type) {
   const container = document.getElementById(type === 'payable' ? 'listPayable' : 'listReceivable');
 
   if (!filtered.length) {
-    container.innerHTML = `<div class="empty-state">
-      <i class="fa fa-user-slash text-gray-200 text-4xl mb-2 block"></i>
-      <p class="text-gray-400 text-sm">No clients found</p>
-    </div>`;
+    container.innerHTML = `<div class="empty-state"><i class="fa fa-user-slash text-gray-200 text-4xl mb-2 block"></i><p class="text-gray-400 text-sm">No clients found</p></div>`;
     return;
   }
 
   container.innerHTML = filtered.map(c => `
-    <div class="bg-white rounded-2xl p-4 flex items-center gap-3 shadow-sm border border-gray-100 tap-card cursor-pointer"
-      onclick="openLedger(${c.id}, '${escHtml(c.name)}', '${escHtml(c.phone || '')}', '${type}')">
-      <div class="w-11 h-11 rounded-xl ${type === 'payable' ? 'bg-rose-50' : 'bg-blue-50'} flex items-center justify-center flex-shrink-0">
-        <i class="fa fa-user ${type === 'payable' ? 'text-rose-400' : 'text-blue-400'}"></i>
+    <div class="bg-white rounded-2xl p-4 flex items-center gap-3 shadow-sm border border-gray-100 tap-card" onclick="openLedger(${c.id}, '${escHtml(c.name)}', '${escHtml(c.phone || '')}', '${type}')">
+      <div class="w-11 h-11 rounded-xl ${type === 'payable' ? 'bg-rose-50 text-rose-500' : 'bg-blue-50 text-blue-500'} flex items-center justify-center flex-shrink-0">
+        <i class="fa fa-user"></i>
       </div>
       <div class="flex-1 min-w-0">
         <p class="font-semibold text-gray-800 truncate">${c.name}</p>
@@ -565,14 +521,11 @@ function renderClientList(type) {
   `).join('');
 }
 
-function filterClients(type) {
-  renderClientList(type);
-}
+function filterClients(type) { renderClientList(type); }
 
 // ── LEDGER ───────────────────────────────────────────────────
 async function openLedger(clientId, clientName, clientPhone, type) {
-  currentClientId = clientId;
-  currentClientType = type;
+  currentClientId = clientId; currentClientType = type;
   document.getElementById('ledgerClientName').textContent = clientName;
   document.getElementById('ledgerClientPhone').textContent = clientPhone || 'No phone';
   document.getElementById('headerTitle').textContent = clientName;
@@ -584,30 +537,19 @@ async function openLedger(clientId, clientName, clientPhone, type) {
 
 async function loadLedger() {
   const { data, error } = await sb.from('khuram_ledgers').select('*').eq('client_id', currentClientId).order('date').order('id');
+  if (error) return;
 
-  if (error) { toast('Error loading ledger', 'error'); return; }
-
-  // Recalculate running balance
   let running = 0;
-  const rows = data.map(r => {
-    running += (r.debit || 0) - (r.credit || 0);
-    return { ...r, running };
-  });
+  const rows = data.map(r => { running += (r.debit || 0) - (r.credit || 0); return { ...r, running }; });
 
-  // Show latest balance
   const lastBalance = rows.length ? rows[rows.length - 1].running : 0;
   const balEl = document.getElementById('ledgerBalance');
   balEl.textContent = fmtPKR(Math.abs(lastBalance));
   balEl.className = `font-heading font-bold text-lg balance-chip ${lastBalance > 0 ? 'text-rose-500' : lastBalance < 0 ? 'text-green-600' : 'text-gray-600'}`;
+  balEl.textContent += lastBalance > 0 ? ' DR' : (lastBalance < 0 ? ' CR' : '');
 
   const container = document.getElementById('ledgerTxList');
-  if (!rows.length) {
-    container.innerHTML = `<div class="empty-state">
-      <i class="fa fa-file-invoice text-gray-200 text-4xl mb-2 block"></i>
-      <p class="text-gray-400 text-sm">No transactions yet</p>
-    </div>`;
-    return;
-  }
+  if (!rows.length) { container.innerHTML = `<div class="empty-state"><i class="fa fa-file-invoice text-gray-200 text-4xl mb-2 block"></i><p class="text-gray-400 text-sm">No transactions yet</p></div>`; return; }
 
   container.innerHTML = rows.reverse().map(r => `
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
@@ -629,66 +571,109 @@ async function loadLedger() {
         </div>
       </div>
       <div class="flex border-t border-gray-50">
-        <button onclick="openEditTxModal(${r.id})" class="flex-1 py-2 text-xs text-blue-500 font-semibold flex items-center justify-center gap-1 active:bg-blue-50">
-          <i class="fa fa-pen"></i> Edit
-        </button>
+        <button onclick="openEditTxModal(${r.id})" class="flex-1 py-2 text-xs text-blue-500 font-semibold flex items-center justify-center gap-1 active:bg-blue-50"><i class="fa fa-pen"></i> Edit</button>
         <div class="w-px bg-gray-50"></div>
-        <button onclick="deleteTx(${r.id})" class="flex-1 py-2 text-xs text-rose-500 font-semibold flex items-center justify-center gap-1 active:bg-rose-50">
-          <i class="fa fa-trash"></i> Delete
-        </button>
+        <button onclick="deleteTx(${r.id}, 'ledger')" class="flex-1 py-2 text-xs text-rose-500 font-semibold flex items-center justify-center gap-1 active:bg-rose-50"><i class="fa fa-trash"></i> Delete</button>
       </div>
     </div>
   `).join('');
 }
 
-// ── ADD TX MODAL ──────────────────────────────────────────────
-function openAddTxModal() {
+// ── ADVANCED ADD TRANSACTION MODAL (Global) ───────────────────
+function openGlobalAddTxModal() {
+  let clientOpts = `<option value="">-- Select Client --</option>`;
+  clientOpts += `<optgroup label="Receivables">` + allClients.receivable.map(c => `<option value="${c.id}" ${currentClientId==c.id?'selected':''}>${c.name}</option>`).join('') + `</optgroup>`;
+  clientOpts += `<optgroup label="Payables">` + allClients.payable.map(c => `<option value="${c.id}" ${currentClientId==c.id?'selected':''}>${c.name}</option>`).join('') + `</optgroup>`;
+
+  let rateOpts = `<option value="">-- Select Item/Bora --</option>`;
+  allRates.forEach(r => { rateOpts += `<option value="${r.rate_per_bundle}" data-name="${r.product_name}">${r.product_name} (Rs ${r.rate_per_bundle})</option>`; });
+
   showModal('Add Transaction', `
     <div class="space-y-3">
       <div>
-        <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Date</label>
-        <input type="date" id="mDate" value="${today()}" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" />
+        <label class="text-xs font-semibold text-gray-500 uppercase block mb-1">Client</label>
+        <select id="mClientId" class="w-full border border-gray-200 rounded-xl py-2 px-3 text-sm bg-gray-50">${clientOpts}</select>
       </div>
-      <div>
-        <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Type</label>
-        <select id="mType" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50">
-          <option value="debit">Debit (Sent/Sold)</option>
-          <option value="credit">Credit (Received)</option>
-        </select>
+      <div class="flex gap-2 bg-gray-100 p-1 rounded-xl mb-2">
+        <button id="btnModeCash" onclick="setTxMode('cash')" class="flex-1 text-xs py-2 rounded-lg font-medium bg-rose-500 text-white shadow-sm">💰 Cash / Bank</button>
+        <button id="btnModeProd" onclick="setTxMode('product')" class="flex-1 text-xs py-2 rounded-lg font-medium text-gray-600">📦 Add Item / Bory</button>
       </div>
-      <div>
-        <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Particulars</label>
-        <input type="text" id="mParticulars" placeholder="e.g. Chips supply" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" />
-      </div>
-      <div class="grid grid-cols-2 gap-3">
+
+      <div id="formCash" class="space-y-3">
         <div>
-          <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Amount (Rs)</label>
-          <input type="number" id="mAmount" placeholder="0" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" />
+          <label class="text-xs font-semibold text-gray-500 uppercase block mb-1">Payment Type</label>
+          <select id="mTypeCash" class="w-full border border-gray-200 rounded-xl py-2 px-3 text-sm bg-gray-50">
+            <option value="credit">We Received Amount (Credit)</option>
+            <option value="debit">We Paid Amount (Debit)</option>
+          </select>
         </div>
         <div>
-          <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">V. No.</label>
-          <input type="text" id="mVno" placeholder="Optional" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" />
+          <label class="text-xs font-semibold text-gray-500 uppercase block mb-1">Amount (Rs)</label>
+          <input type="number" id="mAmountCash" placeholder="0" class="w-full border border-gray-200 rounded-xl py-2 px-3 text-sm bg-gray-50" />
         </div>
+        <div>
+          <label class="text-xs font-semibold text-gray-500 uppercase block mb-1">Remarks / Details</label>
+          <input type="text" id="mRemarksCash" placeholder="e.g. Cash by hand, Online, etc." class="w-full border border-gray-200 rounded-xl py-2 px-3 text-sm bg-gray-50" />
+        </div>
+      </div>
+
+      <div id="formProduct" class="hidden space-y-3">
+        <div>
+          <label class="text-xs font-semibold text-gray-500 uppercase block mb-1">Item / Bora</label>
+          <select id="mProductSel" class="w-full border border-gray-200 rounded-xl py-2 px-3 text-sm bg-gray-50" onchange="calcProduct()">
+            ${rateOpts}
+          </select>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-xs font-semibold text-gray-500 uppercase block mb-1">Qty</label>
+            <input type="number" id="mQty" value="1" min="1" class="w-full border border-gray-200 rounded-xl py-2 px-3 text-sm bg-gray-50" oninput="calcProduct()"/>
+          </div>
+          <div>
+            <label class="text-xs font-semibold text-gray-500 uppercase block mb-1">Total (Rs)</label>
+            <input type="number" id="mAmountProd" readonly class="w-full border border-gray-200 rounded-xl py-2 px-3 text-sm bg-gray-200 font-bold" />
+          </div>
+        </div>
+        <div>
+          <label class="text-xs font-semibold text-gray-500 uppercase block mb-1">Remarks</label>
+          <input type="text" id="mRemarksProd" placeholder="Optional" class="w-full border border-gray-200 rounded-xl py-2 px-3 text-sm bg-gray-50" />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3 pt-2">
+        <div><label class="text-xs font-semibold text-gray-500 uppercase block mb-1">Date</label><input type="date" id="mDate" value="${today()}" class="w-full border border-gray-200 rounded-xl py-2 px-3 text-sm bg-gray-50" /></div>
+        <div><label class="text-xs font-semibold text-gray-500 uppercase block mb-1">V. No.</label><input type="text" id="mVno" placeholder="Optional" class="w-full border border-gray-200 rounded-xl py-2 px-3 text-sm bg-gray-50" /></div>
       </div>
     </div>
   `, async () => {
-    const date = document.getElementById('mDate').value;
-    const type = document.getElementById('mType').value;
-    const particulars = document.getElementById('mParticulars').value.trim();
-    const amount = parseFloat(document.getElementById('mAmount').value);
-    const v_no = document.getElementById('mVno').value.trim();
+    const cid = document.getElementById('mClientId').value;
+    if (!cid) { toast('Please select a client', 'error'); return; }
 
-    if (!date || isNaN(amount) || amount <= 0) { toast('Please fill required fields', 'error'); return; }
+    const isCash = !document.getElementById('formCash').classList.contains('hidden');
+    const date = document.getElementById('mDate').value;
+    const v_no = document.getElementById('mVno').value.trim();
+    let type, particulars, amount;
+
+    if (isCash) {
+      type = document.getElementById('mTypeCash').value; // debit or credit
+      amount = parseFloat(document.getElementById('mAmountCash').value);
+      particulars = document.getElementById('mRemarksCash').value.trim() || 'Cash Transaction';
+    } else {
+      type = 'debit'; // Sales are debit to client
+      amount = parseFloat(document.getElementById('mAmountProd').value);
+      const sel = document.getElementById('mProductSel');
+      const prodName = sel.options[sel.selectedIndex]?.getAttribute('data-name') || '';
+      const qty = document.getElementById('mQty').value;
+      const rem = document.getElementById('mRemarksProd').value.trim();
+      if (!prodName) { toast('Please select an item', 'error'); return; }
+      particulars = `${qty} BUNDLE ${prodName} ${rem ? ' - '+rem : ''}`;
+    }
+
+    if (!date || isNaN(amount) || amount <= 0) { toast('Invalid Amount or Date', 'error'); return; }
 
     const entry = {
-      client_id: currentClientId,
-      date,
-      type,
-      particulars,
-      v_no: v_no || null,
-      debit: type === 'debit' ? amount : 0,
-      credit: type === 'credit' ? amount : 0,
-      balance: 0
+      client_id: cid, date, type: isCash ? (type=='credit'?'CRV':'CPV') : 'GSV', particulars, v_no: v_no || null,
+      debit: type === 'debit' ? amount : 0, credit: type === 'credit' ? amount : 0, balance: 0
     };
 
     const { error } = await sb.from('khuram_ledgers').insert(entry);
@@ -696,41 +681,47 @@ function openAddTxModal() {
 
     closeModal();
     toast('Transaction added!', 'success');
-    loadLedger();
+    if (currentView === 'ledger' && currentClientId == cid) loadLedger();
+    if (currentView === 'dashboard') loadDashboard();
   });
+}
+
+function setTxMode(mode) {
+  const isCash = mode === 'cash';
+  document.getElementById('formCash').classList.toggle('hidden', !isCash);
+  document.getElementById('formProduct').classList.toggle('hidden', isCash);
+  
+  document.getElementById('btnModeCash').className = isCash ? 'flex-1 text-xs py-2 rounded-lg font-medium bg-rose-500 text-white shadow-sm' : 'flex-1 text-xs py-2 rounded-lg font-medium text-gray-600';
+  document.getElementById('btnModeProd').className = !isCash ? 'flex-1 text-xs py-2 rounded-lg font-medium bg-rose-500 text-white shadow-sm' : 'flex-1 text-xs py-2 rounded-lg font-medium text-gray-600';
+}
+
+function calcProduct() {
+  const rate = parseFloat(document.getElementById('mProductSel').value) || 0;
+  const qty = parseFloat(document.getElementById('mQty').value) || 0;
+  document.getElementById('mAmountProd').value = rate * qty;
 }
 
 // ── EDIT TX MODAL ─────────────────────────────────────────────
 async function openEditTxModal(txId) {
   const { data, error } = await sb.from('khuram_ledgers').select('*').eq('id', txId).single();
-  if (error || !data) { toast('Could not load transaction', 'error'); return; }
+  if (error || !data) return;
 
   showModal('Edit Transaction', `
     <div class="space-y-3">
+      <div><label class="text-xs font-semibold text-gray-500 uppercase block mb-1">Date</label><input type="date" id="mDate" value="${data.date || today()}" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" /></div>
       <div>
-        <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Date</label>
-        <input type="date" id="mDate" value="${data.date || today()}" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" />
-      </div>
-      <div>
-        <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Type</label>
+        <label class="text-xs font-semibold text-gray-500 uppercase block mb-1">Type</label>
         <select id="mType" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50">
-          <option value="debit" ${(data.debit > 0) ? 'selected' : ''}>Debit (Sent/Sold)</option>
-          <option value="credit" ${(data.credit > 0) ? 'selected' : ''}>Credit (Received)</option>
+          <option value="debit" ${(data.debit > 0) ? 'selected' : ''}>Debit (Amount Paid/Sold)</option>
+          <option value="credit" ${(data.credit > 0) ? 'selected' : ''}>Credit (Amount Received)</option>
         </select>
       </div>
-      <div>
-        <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Particulars</label>
-        <input type="text" id="mParticulars" value="${escHtml(data.particulars || '')}" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" />
+      <div><label class="text-xs font-semibold text-gray-500 uppercase block mb-1">Particulars / Details</label>
+        <textarea id="mParticulars" rows="2" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50">${escHtml(data.particulars || '')}</textarea>
       </div>
       <div class="grid grid-cols-2 gap-3">
-        <div>
-          <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Amount (Rs)</label>
-          <input type="number" id="mAmount" value="${data.debit || data.credit || 0}" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" />
-        </div>
-        <div>
-          <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">V. No.</label>
-          <input type="text" id="mVno" value="${escHtml(data.v_no || '')}" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" />
-        </div>
+        <div><label class="text-xs font-semibold text-gray-500 uppercase block mb-1">Amount (Rs)</label><input type="number" id="mAmount" value="${data.debit || data.credit || 0}" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" /></div>
+        <div><label class="text-xs font-semibold text-gray-500 uppercase block mb-1">V. No.</label><input type="text" id="mVno" value="${escHtml(data.v_no || '')}" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" /></div>
       </div>
     </div>
   `, async () => {
@@ -740,28 +731,24 @@ async function openEditTxModal(txId) {
     const amount = parseFloat(document.getElementById('mAmount').value);
     const v_no = document.getElementById('mVno').value.trim();
 
-    if (!date || isNaN(amount) || amount <= 0) { toast('Please fill required fields', 'error'); return; }
+    if (!date || isNaN(amount) || amount <= 0) { toast('Invalid fields', 'error'); return; }
 
     const { error } = await sb.from('khuram_ledgers').update({
-      date, type, particulars,
-      v_no: v_no || null,
-      debit: type === 'debit' ? amount : 0,
-      credit: type === 'credit' ? amount : 0,
+      date, type: (data.type||'GSV'), particulars, v_no: v_no || null,
+      debit: type === 'debit' ? amount : 0, credit: type === 'credit' ? amount : 0,
     }).eq('id', txId);
 
-    if (error) { toast('Failed to update', 'error'); return; }
-    closeModal();
-    toast('Transaction updated!', 'success');
-    loadLedger();
+    if (error) return;
+    closeModal(); toast('Updated!', 'success');
+    if(currentView === 'ledger') loadLedger(); else loadDashboard();
   });
 }
 
-async function deleteTx(txId) {
+async function deleteTx(txId, source) {
   showConfirm(async () => {
-    const { error } = await sb.from('khuram_ledgers').delete().eq('id', txId);
-    if (error) { toast('Delete failed', 'error'); return; }
+    await sb.from('khuram_ledgers').delete().eq('id', txId);
     toast('Deleted!', 'success');
-    loadLedger();
+    if(source === 'ledger') loadLedger(); else loadDashboard();
   });
 }
 
@@ -775,19 +762,12 @@ function switchAdminTab(tab) {
 
 // ── ADMIN CLIENTS ────────────────────────────────────────────
 async function loadAdminClients() {
-  const { data, error } = await sb.from('khuram_clients').select('*').order('name');
-  if (error) return;
-  allClients.payable = data.filter(c => c.type === 'payable');
-  allClients.receivable = data.filter(c => c.type === 'receivable');
-  renderAdminClients(data);
+  renderAdminClients([...allClients.payable, ...allClients.receivable]);
 }
 
 function renderAdminClients(data) {
   const container = document.getElementById('adminClientList');
-  if (!data.length) {
-    container.innerHTML = `<div class="empty-state"><p class="text-gray-400 text-sm">No clients yet</p></div>`;
-    return;
-  }
+  if (!data.length) { container.innerHTML = `<div class="empty-state"><p class="text-gray-400 text-sm">No clients yet</p></div>`; return; }
   container.innerHTML = data.map(c => `
     <div class="bg-white rounded-xl p-3 flex items-center gap-3 shadow-sm border border-gray-100">
       <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 ${c.type === 'payable' ? 'bg-rose-50' : 'bg-blue-50'}">
@@ -797,227 +777,127 @@ function renderAdminClients(data) {
         <p class="font-semibold text-gray-800 text-sm truncate">${c.name}</p>
         <div class="flex items-center gap-2 mt-0.5">
           <span class="text-xs px-2 py-0.5 rounded-full font-medium ${c.type === 'payable' ? 'bg-rose-50 text-rose-500' : 'bg-blue-50 text-blue-600'}">${c.type}</span>
-          <span class="text-xs text-gray-400">${c.phone || ''}</span>
         </div>
       </div>
       <div class="flex gap-1.5">
-        <button onclick="openEditClientModal(${c.id})" class="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center active:bg-blue-100">
-          <i class="fa fa-pen text-blue-500 text-xs"></i>
-        </button>
-        <button onclick="deleteClient(${c.id})" class="w-8 h-8 rounded-lg bg-rose-50 flex items-center justify-center active:bg-rose-100">
-          <i class="fa fa-trash text-rose-500 text-xs"></i>
-        </button>
+        <button onclick="openEditClientModal(${c.id})" class="w-8 h-8 rounded-lg bg-blue-50 text-blue-500 active:bg-blue-100"><i class="fa fa-pen text-xs"></i></button>
+        <button onclick="deleteClient(${c.id})" class="w-8 h-8 rounded-lg bg-rose-50 text-rose-500 active:bg-rose-100"><i class="fa fa-trash text-xs"></i></button>
       </div>
     </div>
   `).join('');
 }
 
-function clientModalBody(c = {}) {
-  return `
-    <div class="space-y-3">
-      <div>
-        <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Client Name</label>
-        <input type="text" id="mClientName" value="${escHtml(c.name || '')}" placeholder="e.g. Ali Traders" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" />
-      </div>
-      <div>
-        <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Type</label>
-        <select id="mClientType" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50">
-          <option value="payable" ${c.type === 'payable' ? 'selected' : ''}>Payable</option>
-          <option value="receivable" ${c.type === 'receivable' ? 'selected' : ''}>Receivable</option>
-        </select>
-      </div>
-      <div>
-        <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Phone (Optional)</label>
-        <input type="tel" id="mClientPhone" value="${escHtml(c.phone || '')}" placeholder="03XX XXXXXXX" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" />
-      </div>
-    </div>
-  `;
-}
-
 function openAddClientModal() {
-  showModal('Add Client', clientModalBody(), async () => {
-    const name = document.getElementById('mClientName').value.trim();
-    const type = document.getElementById('mClientType').value;
-    const phone = document.getElementById('mClientPhone').value.trim();
-    if (!name) { toast('Name is required', 'error'); return; }
-    const { error } = await sb.from('khuram_clients').insert({ name, type, phone: phone || null });
-    if (error) { toast('Failed to add client', 'error'); return; }
-    closeModal();
-    toast('Client added!', 'success');
-    loadAdminClients();
+  showModal('Add Client', `
+    <div class="space-y-3">
+      <div><label class="text-xs font-semibold text-gray-500 uppercase block mb-1">Name</label><input type="text" id="mClientName" class="w-full border border-gray-200 rounded-xl py-2 px-3 text-sm bg-gray-50" /></div>
+      <div><label class="text-xs font-semibold text-gray-500 uppercase block mb-1">Type</label><select id="mClientType" class="w-full border border-gray-200 rounded-xl py-2 px-3 text-sm bg-gray-50"><option value="receivable">Receivable</option><option value="payable">Payable</option></select></div>
+      <div><label class="text-xs font-semibold text-gray-500 uppercase block mb-1">Phone</label><input type="tel" id="mClientPhone" class="w-full border border-gray-200 rounded-xl py-2 px-3 text-sm bg-gray-50" /></div>
+    </div>
+  `, async () => {
+    const name = document.getElementById('mClientName').value.trim(), type = document.getElementById('mClientType').value, phone = document.getElementById('mClientPhone').value.trim();
+    if (!name) return toast('Name required', 'error');
+    await sb.from('khuram_clients').insert({ name, type, phone: phone || null });
+    closeModal(); await loadAllClients(); loadAdminClients(); toast('Added!', 'success');
   });
 }
 
 async function openEditClientModal(clientId) {
   const { data } = await sb.from('khuram_clients').select('*').eq('id', clientId).single();
   if (!data) return;
-  showModal('Edit Client', clientModalBody(data), async () => {
-    const name = document.getElementById('mClientName').value.trim();
-    const type = document.getElementById('mClientType').value;
-    const phone = document.getElementById('mClientPhone').value.trim();
-    if (!name) { toast('Name is required', 'error'); return; }
-    const { error } = await sb.from('khuram_clients').update({ name, type, phone: phone || null }).eq('id', clientId);
-    if (error) { toast('Failed to update', 'error'); return; }
-    closeModal();
-    toast('Client updated!', 'success');
-    loadAdminClients();
+  showModal('Edit Client', `
+    <div class="space-y-3">
+      <div><label class="text-xs font-semibold text-gray-500 uppercase block mb-1">Name</label><input type="text" id="mClientName" value="${escHtml(data.name)}" class="w-full border border-gray-200 rounded-xl py-2 px-3 text-sm bg-gray-50" /></div>
+      <div><label class="text-xs font-semibold text-gray-500 uppercase block mb-1">Type</label><select id="mClientType" class="w-full border border-gray-200 rounded-xl py-2 px-3 text-sm bg-gray-50"><option value="receivable" ${data.type=='receivable'?'selected':''}>Receivable</option><option value="payable" ${data.type=='payable'?'selected':''}>Payable</option></select></div>
+    </div>
+  `, async () => {
+    const name = document.getElementById('mClientName').value.trim(), type = document.getElementById('mClientType').value;
+    if (!name) return toast('Name required', 'error');
+    await sb.from('khuram_clients').update({ name, type }).eq('id', clientId);
+    closeModal(); await loadAllClients(); loadAdminClients(); toast('Updated!', 'success');
   });
 }
 
 async function deleteClient(clientId) {
   showConfirm(async () => {
-    const { error } = await sb.from('khuram_clients').delete().eq('id', clientId);
-    if (error) { toast('Delete failed', 'error'); return; }
-    toast('Client deleted!', 'success');
-    loadAdminClients();
+    await sb.from('khuram_clients').delete().eq('id', clientId);
+    await loadAllClients(); loadAdminClients(); toast('Deleted!', 'success');
   });
 }
 
 // ── ADMIN RATES ───────────────────────────────────────────────
 async function loadAdminRates() {
-  const { data } = await sb.from('khuram_rates').select('*').order('product_name');
-  if (!data) return;
-  renderAdminRates(data);
-}
-
-function renderAdminRates(data) {
+  await fetchRates();
   const container = document.getElementById('adminRateList');
-  if (!data.length) {
-    container.innerHTML = `<div class="empty-state"><p class="text-gray-400 text-sm">No rates yet</p></div>`;
-    return;
-  }
-  container.innerHTML = data.map(r => `
+  if (!allRates.length) { container.innerHTML = `<div class="empty-state"><p class="text-gray-400 text-sm">No rates yet</p></div>`; return; }
+  container.innerHTML = allRates.map(r => `
     <div class="bg-white rounded-xl p-3 flex items-center gap-3 shadow-sm border border-gray-100">
-      <div class="w-9 h-9 rounded-lg bg-orange-50 flex items-center justify-center flex-shrink-0">
-        <i class="fa fa-box text-orange-400 text-sm"></i>
-      </div>
+      <div class="w-9 h-9 rounded-lg bg-orange-50 flex items-center justify-center flex-shrink-0"><i class="fa fa-box text-orange-400 text-sm"></i></div>
       <div class="flex-1 min-w-0">
         <p class="font-semibold text-gray-800 text-sm truncate">${r.product_name}</p>
         <p class="text-xs text-gray-500 font-medium">${fmtPKR(r.rate_per_bundle)} / bundle</p>
       </div>
       <div class="flex gap-1.5">
-        <button onclick="openEditRateModal(${r.id})" class="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center active:bg-blue-100">
-          <i class="fa fa-pen text-blue-500 text-xs"></i>
-        </button>
-        <button onclick="deleteRate(${r.id})" class="w-8 h-8 rounded-lg bg-rose-50 flex items-center justify-center active:bg-rose-100">
-          <i class="fa fa-trash text-rose-500 text-xs"></i>
-        </button>
+        <button onclick="openEditRateModal(${r.id}, '${escHtml(r.product_name)}', ${r.rate_per_bundle})" class="w-8 h-8 rounded-lg bg-blue-50 text-blue-500 active:bg-blue-100"><i class="fa fa-pen text-xs"></i></button>
+        <button onclick="deleteRate(${r.id})" class="w-8 h-8 rounded-lg bg-rose-50 text-rose-500 active:bg-rose-100"><i class="fa fa-trash text-xs"></i></button>
       </div>
     </div>
   `).join('');
 }
 
-function rateModalBody(r = {}) {
-  return `
-    <div class="space-y-3">
-      <div>
-        <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Product Name</label>
-        <input type="text" id="mProductName" value="${escHtml(r.product_name || '')}" placeholder="e.g. Nimko Bundle" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" />
-      </div>
-      <div>
-        <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Rate per Bundle (Rs)</label>
-        <input type="number" id="mRate" value="${r.rate_per_bundle || ''}" placeholder="0" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" />
-      </div>
-    </div>
-  `;
-}
-
 function openAddRateModal() {
-  showModal('Add Rate', rateModalBody(), async () => {
-    const product_name = document.getElementById('mProductName').value.trim();
-    const rate_per_bundle = parseFloat(document.getElementById('mRate').value);
-    if (!product_name || isNaN(rate_per_bundle)) { toast('Fill all fields', 'error'); return; }
-    const { error } = await sb.from('khuram_rates').insert({ product_name, rate_per_bundle });
-    if (error) { toast('Failed to add rate', 'error'); return; }
-    closeModal();
-    toast('Rate added!', 'success');
-    loadAdminRates();
+  showModal('Add Rate', `
+    <div class="space-y-3">
+      <div><label class="text-xs font-semibold text-gray-500 uppercase block mb-1">Product/Bora Name</label><input type="text" id="mProductName" class="w-full border border-gray-200 rounded-xl py-2 px-3 text-sm bg-gray-50" /></div>
+      <div><label class="text-xs font-semibold text-gray-500 uppercase block mb-1">Rate per Bundle (Rs)</label><input type="number" id="mRate" class="w-full border border-gray-200 rounded-xl py-2 px-3 text-sm bg-gray-50" /></div>
+    </div>
+  `, async () => {
+    const pn = document.getElementById('mProductName').value.trim(), rt = parseFloat(document.getElementById('mRate').value);
+    if (!pn || isNaN(rt)) return toast('Fill all fields', 'error');
+    await sb.from('khuram_rates').insert({ product_name: pn, rate_per_bundle: rt });
+    closeModal(); loadAdminRates(); toast('Added!', 'success');
   });
 }
 
-async function openEditRateModal(rateId) {
-  const { data } = await sb.from('khuram_rates').select('*').eq('id', rateId).single();
-  if (!data) return;
-  showModal('Edit Rate', rateModalBody(data), async () => {
-    const product_name = document.getElementById('mProductName').value.trim();
-    const rate_per_bundle = parseFloat(document.getElementById('mRate').value);
-    if (!product_name || isNaN(rate_per_bundle)) { toast('Fill all fields', 'error'); return; }
-    const { error } = await sb.from('khuram_rates').update({ product_name, rate_per_bundle }).eq('id', rateId);
-    if (error) { toast('Failed to update', 'error'); return; }
-    closeModal();
-    toast('Rate updated!', 'success');
-    loadAdminRates();
+async function openEditRateModal(id, name, rate) {
+  showModal('Edit Rate', `
+    <div class="space-y-3">
+      <div><label class="text-xs font-semibold text-gray-500 uppercase block mb-1">Name</label><input type="text" id="mProductName" value="${name}" class="w-full border border-gray-200 rounded-xl py-2 px-3 text-sm bg-gray-50" /></div>
+      <div><label class="text-xs font-semibold text-gray-500 uppercase block mb-1">Rate</label><input type="number" id="mRate" value="${rate}" class="w-full border border-gray-200 rounded-xl py-2 px-3 text-sm bg-gray-50" /></div>
+    </div>
+  `, async () => {
+    const pn = document.getElementById('mProductName').value.trim(), rt = parseFloat(document.getElementById('mRate').value);
+    if (!pn || isNaN(rt)) return toast('Fill all fields', 'error');
+    await sb.from('khuram_rates').update({ product_name: pn, rate_per_bundle: rt }).eq('id', id);
+    closeModal(); loadAdminRates(); toast('Updated!', 'success');
   });
 }
 
 async function deleteRate(rateId) {
   showConfirm(async () => {
-    const { error } = await sb.from('khuram_rates').delete().eq('id', rateId);
-    if (error) { toast('Delete failed', 'error'); return; }
-    toast('Rate deleted!', 'success');
-    loadAdminRates();
+    await sb.from('khuram_rates').delete().eq('id', rateId);
+    toast('Deleted!', 'success'); loadAdminRates();
   });
 }
 
-// ── MODAL HELPERS ────────────────────────────────────────────
+// ── MODALS / UTILS ────────────────────────────────────────────
 function showModal(title, body, onConfirm) {
-  document.getElementById('modalTitle').textContent = title;
-  document.getElementById('modalBody').innerHTML = body;
-  document.getElementById('modalConfirmBtn').onclick = onConfirm;
-  document.getElementById('modalBackdrop').classList.remove('hidden');
-  document.getElementById('modalBackdrop').classList.add('flex');
-  // Focus first input
-  setTimeout(() => {
-    const inp = document.querySelector('#modalBody input, #modalBody select');
-    if (inp) inp.focus();
-  }, 100);
+  document.getElementById('modalTitle').textContent = title; document.getElementById('modalBody').innerHTML = body; document.getElementById('modalConfirmBtn').onclick = onConfirm;
+  document.getElementById('modalBackdrop').classList.remove('hidden'); document.getElementById('modalBackdrop').classList.add('flex');
 }
+function closeModal() { document.getElementById('modalBackdrop').classList.add('hidden'); document.getElementById('modalBackdrop').classList.remove('flex'); }
+document.getElementById('modalBackdrop').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
 
-function closeModal() {
-  document.getElementById('modalBackdrop').classList.add('hidden');
-  document.getElementById('modalBackdrop').classList.remove('flex');
-}
+function showConfirm(cb) { confirmCallback = cb; document.getElementById('confirmBackdrop').classList.remove('hidden'); document.getElementById('confirmBackdrop').classList.add('flex'); document.getElementById('confirmYesBtn').onclick = async () => { closeConfirm(); if (confirmCallback) await confirmCallback(); confirmCallback = null; }; }
+function closeConfirm() { document.getElementById('confirmBackdrop').classList.add('hidden'); document.getElementById('confirmBackdrop').classList.remove('flex'); }
+document.getElementById('confirmBackdrop').addEventListener('click', function(e) { if (e.target === this) closeConfirm(); });
 
-// Click outside to close
-document.getElementById('modalBackdrop').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
-
-// ── CONFIRM HELPERS ──────────────────────────────────────────
-function showConfirm(cb) {
-  confirmCallback = cb;
-  document.getElementById('confirmBackdrop').classList.remove('hidden');
-  document.getElementById('confirmBackdrop').classList.add('flex');
-  document.getElementById('confirmYesBtn').onclick = async () => {
-    closeConfirm();
-    if (confirmCallback) await confirmCallback();
-    confirmCallback = null;
-  };
-}
-
-function closeConfirm() {
-  document.getElementById('confirmBackdrop').classList.add('hidden');
-  document.getElementById('confirmBackdrop').classList.remove('flex');
-}
-
-document.getElementById('confirmBackdrop').addEventListener('click', function(e) {
-  if (e.target === this) closeConfirm();
-});
-
-// ── TOAST ────────────────────────────────────────────────────
 let toastTimer;
 function toast(msg, type = 'success') {
   const el = document.getElementById('toast');
   el.className = `fixed bottom-24 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-full text-white text-sm font-medium shadow-lg flex items-center gap-2 whitespace-nowrap ${type === 'success' ? 'bg-gray-800' : 'bg-rose-500'}`;
   el.innerHTML = `<i class="fa ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i> ${msg}`;
-  el.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => el.classList.remove('show'), 2500);
-}
-
-// ── UTILS ────────────────────────────────────────────────────
-function escHtml(str) {
-  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+  el.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('show'), 2500);
 }
 </script>
 </body>
