@@ -136,7 +136,7 @@
         </div>
 
         <div class="flex justify-between items-center mb-3 border-b border-gray-200 pb-2">
-          <p class="text-sm text-gray-800 font-heading font-bold uppercase tracking-wider" id="dashListTitle">All Transactions</p>
+          <p class="text-sm text-gray-800 font-heading font-bold uppercase tracking-wider" id="dashListTitle">All Cash Transactions</p>
           <button onclick="filterDashList('all')" class="text-xs text-white bg-rose-500 px-3 py-1 rounded-full font-bold hidden shadow-sm" id="dashClearFilter">Clear Filter</button>
         </div>
         <div id="dashTxList" class="space-y-4">
@@ -248,6 +248,7 @@
   </nav>
 </div>
 
+<!-- ───────────── LOGIN SCREEN ───────────── -->
 <div id="loginScreen" class="min-h-screen flex flex-col items-center justify-center px-6 bg-gradient-to-br from-rose-600 via-rose-500 to-pink-500 app-container">
   <div class="w-full max-w-sm">
     <div class="text-center mb-8">
@@ -323,6 +324,7 @@ let currentView = 'dashboard';
 let currentClientId = null;
 let currentClientType = null;
 let allClients = { payable: [], receivable: [] };
+window.clientTypeMap = {}; 
 let allRates = [];
 let prevView = null;
 let confirmCallback = null;
@@ -436,15 +438,13 @@ async function loadDashboard() {
 
   dashboardRawData = data;
   
-  // PERFECT LOGIC: 
-  // Sent to Payables = We paid them money (Debit to Payable account)
+  // Dashboard strict logic: Only CPV (Cash Paid) and CRV (Cash Received)
   const totalSentToPayables = data.reduce((sum, r) => {
-    return (r.khuram_clients?.type === 'payable' && r.debit > 0) ? sum + r.debit : sum;
+    return (r.khuram_clients?.type === 'payable' && r.debit > 0 && r.type === 'CPV') ? sum + r.debit : sum;
   }, 0);
 
-  // Received Cash = We received money from them (Credit to Receivable account)
   const totalReceivedCash = data.reduce((sum, r) => {
-    return (r.khuram_clients?.type === 'receivable' && r.credit > 0) ? sum + r.credit : sum;
+    return (r.khuram_clients?.type === 'receivable' && r.credit > 0 && r.type === 'CRV') ? sum + r.credit : sum;
   }, 0);
 
   document.getElementById('dashDebit').textContent = fmtPKR(totalSentToPayables);
@@ -453,10 +453,9 @@ async function loadDashboard() {
   filterDashList('all'); 
 }
 
-// ── RENDER TRANSACTION CARDS (Shared UI for Dash & Ledger) ───
+// ── RENDER TRANSACTION CARDS ───
 function generateTxCardHtml(r, showClientName = false, showBalance = false) {
   const isCredit = r.credit > 0;
-  const amount = isCredit ? r.credit : r.debit;
   const isCashType = r.type === 'CRV' || r.type === 'CPV';
   
   return `
@@ -482,13 +481,13 @@ function generateTxCardHtml(r, showClientName = false, showBalance = false) {
             ${showBalance ? `<p class="text-[11px] font-bold text-gray-400 mt-1 uppercase tracking-wide">Bal: ${fmtPKR(Math.abs(r.running))}</p>` : `<p class="text-[10px] font-bold text-gray-400 mt-1 uppercase">${fmtDate(r.date)}</p>`}
           </div>
         </div>
-        <div class="bg-gray-50 rounded-xl p-3.5 border border-gray-200/60">
+        <div class="bg-gray-50 rounded-xl p-3.5 border border-gray-200/60 mx-1 mb-1">
           <p class="text-[13px] text-gray-700 font-medium leading-relaxed whitespace-pre-line break-words">${escHtml(r.particulars) || 'No details provided.'}</p>
         </div>
       </div>
       <div class="flex bg-white divide-x divide-gray-100">
-        <button onclick="openEditTxModal(${r.id})" class="flex-1 py-3 text-xs text-blue-600 font-bold flex items-center justify-center gap-2 active:bg-blue-50 transition-colors"><i class="fa fa-pen"></i> Edit Entry</button>
-        <button onclick="deleteTx(${r.id}, '${showBalance ? 'ledger' : 'dashboard'}')" class="flex-1 py-3 text-xs text-rose-500 font-bold flex items-center justify-center gap-2 active:bg-rose-50 transition-colors"><i class="fa fa-trash"></i> Delete</button>
+        <button onclick="openEditTxModal(${r.id})" class="flex-1 py-3.5 text-xs text-blue-600 font-bold flex items-center justify-center gap-2 active:bg-blue-50 transition-colors"><i class="fa fa-pen"></i> Edit Entry</button>
+        <button onclick="deleteTx(${r.id}, '${showBalance ? 'ledger' : 'dashboard'}')" class="flex-1 py-3.5 text-xs text-rose-500 font-bold flex items-center justify-center gap-2 active:bg-rose-50 transition-colors"><i class="fa fa-trash"></i> Delete</button>
       </div>
     </div>
   `;
@@ -496,23 +495,26 @@ function generateTxCardHtml(r, showClientName = false, showBalance = false) {
 
 function filterDashList(filterType) {
   const container = document.getElementById('dashTxList');
-  let list = dashboardRawData;
+  
+  // Dashboard strict logic: Show ONLY cash transactions (CRV and CPV)
+  let baseList = dashboardRawData.filter(r => r.type === 'CRV' || r.type === 'CPV');
+  let list = baseList;
 
   document.getElementById('dashClearFilter').classList.add('hidden');
-  document.getElementById('dashListTitle').innerText = "All Transactions";
+  document.getElementById('dashListTitle').innerText = "All Cash Transactions";
 
   if(filterType === 'debit') {
-    list = dashboardRawData.filter(r => r.khuram_clients?.type === 'payable' && r.debit > 0);
+    list = baseList.filter(r => r.khuram_clients?.type === 'payable' && r.debit > 0);
     document.getElementById('dashListTitle').innerText = "Sent To Payables (Cash Paid)";
     document.getElementById('dashClearFilter').classList.remove('hidden');
   } else if (filterType === 'credit') {
-    list = dashboardRawData.filter(r => r.khuram_clients?.type === 'receivable' && r.credit > 0);
+    list = baseList.filter(r => r.khuram_clients?.type === 'receivable' && r.credit > 0);
     document.getElementById('dashListTitle').innerText = "Received Cash (From Receivables)";
     document.getElementById('dashClearFilter').classList.remove('hidden');
   }
 
   if (!list.length) {
-    container.innerHTML = `<div class="empty-state"><i class="fa fa-inbox text-gray-200 text-5xl mb-3 block"></i><p class="text-gray-500 text-sm font-bold">No transactions found</p></div>`;
+    container.innerHTML = `<div class="empty-state"><i class="fa fa-inbox text-gray-200 text-5xl mb-3 block"></i><p class="text-gray-500 text-sm font-bold">No cash transactions found</p></div>`;
     return;
   }
 
@@ -525,6 +527,9 @@ async function loadAllClients() {
   if (!data) return;
   allClients.payable = data.filter(c => c.type === 'payable');
   allClients.receivable = data.filter(c => c.type === 'receivable');
+  
+  window.clientTypeMap = {};
+  data.forEach(c => { window.clientTypeMap[c.id] = c.type; });
 }
 
 function renderClientList(type) {
@@ -586,101 +591,105 @@ async function loadLedger() {
   container.innerHTML = rows.reverse().map(r => generateTxCardHtml(r, false, true)).join('');
 }
 
-// ── ADVANCED ADD TRANSACTION MODAL (Global) ───────────────────
+// ── SMART ADD TRANSACTION MODAL ───────────────────
 function openGlobalAddTxModal() {
-  let clientOpts = `<option value="">-- Select Client --</option>`;
-  clientOpts += `<optgroup label="Receivables">` + allClients.receivable.map(c => `<option value="${c.id}" ${currentClientId==c.id?'selected':''}>${c.name}</option>`).join('') + `</optgroup>`;
-  clientOpts += `<optgroup label="Payables">` + allClients.payable.map(c => `<option value="${c.id}" ${currentClientId==c.id?'selected':''}>${c.name}</option>`).join('') + `</optgroup>`;
+  let clientOpts = `<option value="">-- Select Client First --</option>`;
+  clientOpts += `<optgroup label="Receivables (We Receive Cash from them)">` + allClients.receivable.map(c => `<option value="${c.id}" ${currentClientId==c.id?'selected':''}>${c.name}</option>`).join('') + `</optgroup>`;
+  clientOpts += `<optgroup label="Payables (We Pay Cash to them)">` + allClients.payable.map(c => `<option value="${c.id}" ${currentClientId==c.id?'selected':''}>${c.name}</option>`).join('') + `</optgroup>`;
 
   let rateOpts = `<option value="">-- Select Item/Bora --</option>`;
   allRates.forEach(r => { rateOpts += `<option value="${r.rate_per_bundle}" data-name="${r.product_name}">${r.product_name} (Rs ${r.rate_per_bundle})</option>`; });
 
   showModal('Add Transaction', `
     <div class="space-y-4">
+      <!-- 1. Client Selection -->
       <div>
-        <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Client</label>
-        <select id="mClientId" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800">${clientOpts}</select>
+        <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">1. Select Client</label>
+        <select id="mClientId" onchange="handleClientChange()" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800">${clientOpts}</select>
       </div>
-      <div class="flex gap-2 bg-gray-100 p-1.5 rounded-xl mb-2 border border-gray-200">
-        <button id="btnModeCash" onclick="setTxMode('cash')" class="flex-1 text-sm py-2.5 rounded-lg font-bold bg-rose-500 text-white shadow-sm transition-all">💰 Cash</button>
-        <button id="btnModeProd" onclick="setTxMode('product')" class="flex-1 text-sm py-2.5 rounded-lg font-bold text-gray-500 transition-all">📦 Bory/Item</button>
-      </div>
-
-      <div id="formCash" class="space-y-4">
-        <div>
-          <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Payment Type</label>
-          <select id="mTypeCash" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800">
-            <option value="credit">We Received Cash (Credit)</option>
-            <option value="debit">We Paid Cash (Debit)</option>
-          </select>
-        </div>
-        <div>
-          <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Amount (Rs)</label>
-          <input type="number" id="mAmountCash" placeholder="0" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-lg bg-gray-50 font-black text-rose-500" />
-        </div>
-        <div>
-          <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Remarks / Details</label>
-          <textarea id="mRemarksCash" rows="2" placeholder="e.g. Cash by hand, Online, Bank Trf, etc." class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-semibold leading-relaxed"></textarea>
-        </div>
+      
+      <!-- 2. Action Selection (Dynamic) -->
+      <div id="txActionWrapper" class="hidden">
+        <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">2. Transaction Type</label>
+        <select id="mTxAction" onchange="handleActionChange()" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-blue-600">
+           <!-- Populated via JS -->
+        </select>
       </div>
 
-      <div id="formProduct" class="hidden space-y-4">
+      <!-- Item Form (Bundles / Stock) -->
+      <div id="formItem" class="hidden space-y-4 bg-orange-50/50 p-3 rounded-xl border border-orange-100">
         <div>
           <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Select Item / Bora</label>
-          <select id="mProductSel" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800" onchange="calcProduct()">
+          <select id="mProductSel" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-white font-bold text-gray-800" onchange="calcProduct()">
             ${rateOpts}
           </select>
         </div>
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Quantity</label>
-            <input type="number" id="mQty" value="1" min="1" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-lg bg-gray-50 font-black text-gray-800" oninput="calcProduct()"/>
+            <input type="number" id="mQty" value="1" min="1" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-lg bg-white font-black text-gray-800" oninput="calcProduct()"/>
           </div>
           <div>
             <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Total (Rs)</label>
-            <input type="number" id="mAmountProd" readonly class="w-full border-2 border-gray-300 rounded-xl py-3 px-3 text-lg bg-gray-200 font-black text-rose-600" />
+            <input type="number" id="mAmountProd" readonly class="w-full border-2 border-orange-200 rounded-xl py-3 px-3 text-lg bg-orange-100 font-black text-rose-600" />
           </div>
-        </div>
-        <div>
-          <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Extra Remarks</label>
-          <textarea id="mRemarksProd" rows="2" placeholder="Optional details..." class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-semibold leading-relaxed"></textarea>
         </div>
       </div>
 
-      <div class="grid grid-cols-2 gap-3 pt-4 border-t border-gray-200">
-        <div><label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Date</label><input type="date" id="mDate" value="${today()}" class="w-full border-2 border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50 font-bold text-gray-800" /></div>
-        <div><label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Voucher No.</label><input type="text" id="mVno" placeholder="Optional" class="w-full border-2 border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50 font-bold text-gray-800" /></div>
+      <!-- Cash Form -->
+      <div id="formCash" class="hidden space-y-4 bg-green-50/50 p-3 rounded-xl border border-green-100">
+        <div>
+          <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Cash Amount (Rs)</label>
+          <input type="number" id="mAmountCash" placeholder="0" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-lg bg-white font-black text-green-600" />
+        </div>
+      </div>
+
+      <!-- Common Details Form -->
+      <div id="formDetails" class="hidden space-y-4">
+        <div>
+          <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Remarks / Details</label>
+          <textarea id="mRemarks" rows="2" placeholder="Any details..." class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-semibold leading-relaxed"></textarea>
+        </div>
       </div>
     </div>
   `, async () => {
     const cid = document.getElementById('mClientId').value;
-    if (!cid) { toast('Please select a client', 'error'); return; }
+    const action = document.getElementById('mTxAction').value;
+    
+    // Always use today's date for new transactions. 
+    const date = today(); 
+    const v_no = null;
 
-    const isCash = !document.getElementById('formCash').classList.contains('hidden');
-    const date = document.getElementById('mDate').value;
-    const v_no = document.getElementById('mVno').value.trim();
-    let type, particulars, amount;
+    if (!cid || !action) { toast('Select Client and Action', 'error'); return; }
 
-    if (isCash) {
-      type = document.getElementById('mTypeCash').value; 
-      amount = parseFloat(document.getElementById('mAmountCash').value);
-      particulars = document.getElementById('mRemarksCash').value.trim() || 'Cash Transaction';
-    } else {
-      type = 'debit'; 
+    let amount = 0, typeStr = '', particulars = '', isDebit = true;
+
+    if (['sell', 'buy', 'return_in', 'return_out'].includes(action)) {
       amount = parseFloat(document.getElementById('mAmountProd').value);
       const sel = document.getElementById('mProductSel');
       const prodName = sel.options[sel.selectedIndex]?.getAttribute('data-name') || '';
       const qty = document.getElementById('mQty').value;
-      const rem = document.getElementById('mRemarksProd').value.trim();
+      const rem = document.getElementById('mRemarks').value.trim();
+      
       if (!prodName) { toast('Please select an item', 'error'); return; }
-      particulars = `${qty} BUNDLE ${prodName}${rem ? '\nNotes: '+rem : ''}`;
+
+      if(action === 'sell') { typeStr = 'GSV'; isDebit = true; particulars = `${qty} BUNDLE ${prodName}${rem ? '\nNotes: '+rem : ''}`; }
+      if(action === 'buy') { typeStr = 'FPV'; isDebit = false; particulars = `${qty} BAGS/BORY ${prodName}${rem ? '\nNotes: '+rem : ''}`; }
+      if(action === 'return_in') { typeStr = 'RSV'; isDebit = false; particulars = `${qty} RETURNED (By Client) ${prodName}${rem ? '\nNotes: '+rem : ''}`; }
+      if(action === 'return_out') { typeStr = 'RSV'; isDebit = true; particulars = `${qty} RETURNED (To Supplier) ${prodName}${rem ? '\nNotes: '+rem : ''}`; }
+    } else {
+      amount = parseFloat(document.getElementById('mAmountCash').value);
+      const rem = document.getElementById('mRemarks').value.trim() || 'Cash Transaction';
+
+      if(action === 'receive_cash') { typeStr = 'CRV'; isDebit = false; particulars = rem; }
+      if(action === 'pay_cash') { typeStr = 'CPV'; isDebit = true; particulars = rem; }
     }
 
-    if (!date || isNaN(amount) || amount <= 0) { toast('Invalid Amount or Date', 'error'); return; }
+    if (isNaN(amount) || amount <= 0) { toast('Invalid Amount entered', 'error'); return; }
 
     const entry = {
-      client_id: cid, date, type: isCash ? (type=='credit'?'CRV':'CPV') : 'GSV', particulars, v_no: v_no || null,
-      debit: type === 'debit' ? amount : 0, credit: type === 'credit' ? amount : 0, balance: 0
+      client_id: cid, date, type: typeStr, particulars, v_no,
+      debit: isDebit ? amount : 0, credit: !isDebit ? amount : 0, balance: 0
     };
 
     const { error } = await sb.from('khuram_ledgers').insert(entry);
@@ -691,22 +700,75 @@ function openGlobalAddTxModal() {
     if (currentView === 'ledger' && currentClientId == cid) loadLedger();
     if (currentView === 'dashboard') loadDashboard();
   });
-}
-
-function setTxMode(mode) {
-  const isCash = mode === 'cash';
-  document.getElementById('formCash').classList.toggle('hidden', !isCash);
-  document.getElementById('formProduct').classList.toggle('hidden', isCash);
   
-  document.getElementById('btnModeCash').className = isCash ? 'flex-1 text-sm py-2.5 rounded-lg font-bold bg-rose-500 text-white shadow-sm transition-all' : 'flex-1 text-sm py-2.5 rounded-lg font-bold text-gray-500 transition-all';
-  document.getElementById('btnModeProd').className = !isCash ? 'flex-1 text-sm py-2.5 rounded-lg font-bold bg-rose-500 text-white shadow-sm transition-all' : 'flex-1 text-sm py-2.5 rounded-lg font-bold text-gray-500 transition-all';
+  if(currentClientId) {
+     setTimeout(handleClientChange, 50);
+  }
 }
 
-function calcProduct() {
+window.handleClientChange = function() {
+  const cid = document.getElementById('mClientId').value;
+  const actionWrapper = document.getElementById('txActionWrapper');
+  const actionSel = document.getElementById('mTxAction');
+
+  if (!cid) {
+    actionWrapper.classList.add('hidden');
+    document.getElementById('formItem').classList.add('hidden');
+    document.getElementById('formCash').classList.add('hidden');
+    document.getElementById('formDetails').classList.add('hidden');
+    return;
+  }
+
+  const cType = window.clientTypeMap[cid];
+  actionWrapper.classList.remove('hidden');
+
+  if (cType === 'receivable') {
+    actionSel.innerHTML = `
+      <option value="">-- Select Action --</option>
+      <option value="sell">📦 Sent / Sold Bundles to Client</option>
+      <option value="receive_cash">💰 Received Cash from Client</option>
+      <option value="return_in">↩️ Bundles Returned by Client</option>
+    `;
+  } else {
+    actionSel.innerHTML = `
+      <option value="">-- Select Action --</option>
+      <option value="buy">📦 Received Raw Material / Stock</option>
+      <option value="pay_cash">💰 Paid Cash to Supplier</option>
+      <option value="return_out">↩️ Returned Stock to Supplier</option>
+    `;
+  }
+  handleActionChange();
+};
+
+window.handleActionChange = function() {
+  const action = document.getElementById('mTxAction').value;
+  const formItem = document.getElementById('formItem');
+  const formCash = document.getElementById('formCash');
+  const formDetails = document.getElementById('formDetails');
+
+  if (!action) {
+    formItem.classList.add('hidden');
+    formCash.classList.add('hidden');
+    formDetails.classList.add('hidden');
+    return;
+  }
+
+  formDetails.classList.remove('hidden');
+
+  if (['sell', 'buy', 'return_in', 'return_out'].includes(action)) {
+    formItem.classList.remove('hidden');
+    formCash.classList.add('hidden');
+  } else {
+    formItem.classList.add('hidden');
+    formCash.classList.remove('hidden');
+  }
+};
+
+window.calcProduct = function() {
   const rate = parseFloat(document.getElementById('mProductSel').value) || 0;
   const qty = parseFloat(document.getElementById('mQty').value) || 0;
   document.getElementById('mAmountProd').value = rate * qty;
-}
+};
 
 // ── EDIT TX MODAL ─────────────────────────────────────────────
 async function openEditTxModal(txId) {
