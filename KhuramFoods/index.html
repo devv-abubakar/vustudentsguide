@@ -3,17 +3,104 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>Khuram Foods - Portal</title>
+  <title>Khuram Foods</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    * { -webkit-tap-highlight-color: transparent; }
+    body { font-family: 'DM Sans', sans-serif; background: #f5f5f0; overscroll-behavior: none; }
+    h1,h2,h3,.font-heading { font-family: 'Sora', sans-serif; }
+
+    /* Smooth transitions & Views */
+    .view { display: none; }
+    .view.active { display: block; }
+
+    /* Bottom nav active */
+    .nav-btn { transition: all 0.2s ease; }
+    .nav-btn.active .nav-icon { color: #f43f5e; transform: translateY(-2px); }
+    .nav-btn.active .nav-label { color: #f43f5e; font-weight: 700; }
+
+    /* Card shimmer on tap */
+    .tap-card { transition: transform 0.15s ease, box-shadow 0.15s ease; cursor: pointer; }
+    .tap-card:active { transform: scale(0.98); box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+
+    /* Toast */
+    #toast { transition: all 0.3s ease; transform: translateY(100px); opacity: 0; }
+    #toast.show { transform: translateY(0); opacity: 1; }
+
+    /* Modal backdrop */
+    .modal-backdrop { backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-thumb { background: #e0d9d0; border-radius: 10px; }
+
+    /* Fab pulse */
+    .fab { box-shadow: 0 4px 24px rgba(244,63,94,0.4); transition: all 0.2s ease; }
+    .fab:active { transform: scale(0.93); }
+
+    /* Tab active */
+    .tab-btn.active { background: #f43f5e; color: white; }
+
+    /* Input focus ring */
+    input:focus, select:focus, textarea:focus { outline: none; box-shadow: 0 0 0 2px rgba(244,63,94,0.25); border-color: #f43f5e; }
+
+    /* Header pattern */
+    .header-bg {
+      background: #f43f5e;
+      position: relative;
+      overflow: hidden;
+    }
+    .header-bg::after {
+      content: '';
+      position: absolute;
+      right: -20px; top: -20px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+    }
+    .header-bg::before {
+      content: '';
+      position: absolute;
+      right: 30px; top: 10px;
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* Stat card gradient */
+    .stat-debit { background: linear-gradient(135deg, #f43f5e 0%, #fb7185 100%); }
+    .stat-credit { background: linear-gradient(135deg, #1a6b4a 0%, #27ae60 100%); }
+
+    /* Loading spinner */
+    .spinner { animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Balance chip */
+    .balance-chip { font-family: 'Sora', sans-serif; letter-spacing: -0.5px; }
+
+    /* Search input */
+    .search-wrap { position: relative; }
+    .search-wrap i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #9ca3af; pointer-events: none; }
+    .search-wrap input { padding-left: 40px; }
+
+    .empty-state { text-align: center; padding: 48px 24px; color: #9ca3af; }
+
+    /* Mobile App Container Logic */
+    @media (min-width: 480px) {
+      .app-container { max-width: 420px; margin: 0 auto; border-left: 1px solid #eee; border-right: 1px solid #eee; background: #fff; box-shadow: 0 0 20px rgba(0,0,0,0.05); }
+      body { background: #e5e5e0; }
+    }
+  </style>
 </head>
 <body class="min-h-screen">
 
-<div class="app-container relative min-h-screen flex flex-col" id="app" style="display:none!important">
+<!-- ───────────── APP CONTAINER ───────────── -->
+<div class="app-container relative min-h-screen flex flex-col bg-white" id="app" style="display:none!important">
 
+  <!-- HEADER -->
   <header class="header-bg text-white px-4 py-3 flex items-center justify-between z-30 sticky top-0" style="min-height:56px">
     <button id="backBtn" class="hidden mr-2 w-8 h-8 flex items-center justify-center rounded-full bg-white/20 active:bg-white/30" onclick="goBack()">
       <i class="fa fa-arrow-left text-sm"></i>
@@ -22,17 +109,20 @@
       <span id="headerLogo" class="text-xl font-heading font-bold tracking-tight">🌶 Khuram Foods</span>
       <span id="headerTitle" class="text-base font-semibold truncate hidden"></span>
     </div>
-    <button onclick="logout()" class="flex items-center gap-1.5 text-sm bg-white/20 px-3 py-1.5 rounded-full font-medium active:bg-white/30">
+    <button id="logoutBtn" onclick="logout()" class="flex items-center gap-1.5 text-sm bg-white/20 px-3 py-1.5 rounded-full font-medium active:bg-white/30">
       <i class="fa fa-sign-out-alt text-xs"></i> Logout
     </button>
   </header>
 
+  <!-- MAIN CONTENT AREA -->
   <main class="flex-1 overflow-y-auto pb-24" id="mainContent">
 
+    <!-- 1. DASHBOARD VIEW -->
     <div class="view active" id="view-dashboard">
       <div class="px-4 pt-4 pb-2">
         <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mb-2">Cash Flow Summary</p>
         
+        <!-- Date Range Filter -->
         <div class="flex gap-3 mb-4 bg-white p-3 rounded-2xl shadow-sm border border-gray-100">
           <div class="flex-1">
             <label class="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-1 block">Start Date</label>
@@ -48,12 +138,12 @@
           <div class="stat-debit text-white rounded-2xl p-4 tap-card" onclick="filterDashList('debit')">
             <p class="text-[11px] font-bold opacity-90 mb-1 uppercase tracking-wider">Cash Paid</p>
             <p class="text-xl sm:text-2xl font-heading font-bold" id="dashDebit">...</p>
-            <p class="text-[10px] opacity-70 mt-1">To Payables</p>
+            <p class="text-[10px] opacity-70 mt-1"><i class="fa fa-hand-pointer mr-1"></i>To Payables</p>
           </div>
           <div class="stat-credit text-white rounded-2xl p-4 tap-card" onclick="filterDashList('credit')">
             <p class="text-[11px] font-bold opacity-90 mb-1 uppercase tracking-wider">Cash Received</p>
             <p class="text-xl sm:text-2xl font-heading font-bold" id="dashCredit">...</p>
-            <p class="text-[10px] opacity-70 mt-1">From Receivables</p>
+            <p class="text-[10px] opacity-70 mt-1"><i class="fa fa-hand-pointer mr-1"></i>From Receivables</p>
           </div>
         </div>
 
@@ -61,115 +151,101 @@
           <p class="text-sm text-gray-800 font-heading font-bold uppercase tracking-wider" id="dashListTitle">All Cash Transactions</p>
           <button onclick="filterDashList('all')" class="text-xs text-white bg-rose-500 px-3 py-1 rounded-full font-bold hidden shadow-sm" id="dashClearFilter">Clear Filter</button>
         </div>
-        <div id="dashTxList" class="space-y-4"></div>
+        <div id="dashTxList" class="space-y-4">
+          <div class="empty-state"><i class="fa fa-circle-notch spinner text-gray-300 text-2xl"></i></div>
+        </div>
       </div>
     </div>
 
+    <!-- 2. PAYABLES VIEW -->
     <div class="view" id="view-payables">
       <div class="px-4 pt-4">
-        <div class="flex gap-2 mb-4">
-          <div class="search-wrap flex-1">
-            <i class="fa fa-search text-xs"></i>
-            <input type="text" placeholder="Search Payables..." id="searchPayable" class="w-full border border-gray-200 rounded-xl bg-white text-sm py-3 px-4 pl-9 shadow-sm font-medium" oninput="filterClients('payable')" />
-          </div>
-          <button onclick="openAddClientModal('payable')" class="bg-rose-500 text-white px-4 rounded-xl shadow-sm"><i class="fa fa-plus"></i></button>
+        <div class="search-wrap mb-4">
+          <i class="fa fa-search text-xs"></i>
+          <input type="text" placeholder="Search Payables..." id="searchPayable" class="w-full border border-gray-200 rounded-xl bg-white text-sm py-3 px-4 pl-9 shadow-sm font-medium" oninput="filterClients('payable')" />
         </div>
-        <div id="listPayable" class="space-y-3"></div>
+        <div id="listPayable" class="space-y-3">
+          <div class="empty-state"><i class="fa fa-circle-notch spinner text-gray-300 text-2xl"></i></div>
+        </div>
       </div>
     </div>
 
+    <!-- 3. RECEIVABLES VIEW -->
     <div class="view" id="view-receivables">
       <div class="px-4 pt-4">
-        <div class="flex gap-2 mb-4">
-          <div class="search-wrap flex-1">
-            <i class="fa fa-search text-xs"></i>
-            <input type="text" placeholder="Search Receivables..." id="searchReceivable" class="w-full border border-gray-200 rounded-xl bg-white text-sm py-3 px-4 pl-9 shadow-sm font-medium" oninput="filterClients('receivable')" />
-          </div>
-          <button onclick="openAddClientModal('receivable')" class="bg-rose-500 text-white px-4 rounded-xl shadow-sm"><i class="fa fa-plus"></i></button>
+        <div class="search-wrap mb-4">
+          <i class="fa fa-search text-xs"></i>
+          <input type="text" placeholder="Search Receivables..." id="searchReceivable" class="w-full border border-gray-200 rounded-xl bg-white text-sm py-3 px-4 pl-9 shadow-sm font-medium" oninput="filterClients('receivable')" />
         </div>
-        <div id="listReceivable" class="space-y-3"></div>
+        <div id="listReceivable" class="space-y-3">
+          <div class="empty-state"><i class="fa fa-circle-notch spinner text-gray-300 text-2xl"></i></div>
+        </div>
       </div>
     </div>
 
+    <!-- 4. LEDGER VIEW -->
     <div class="view" id="view-ledger">
       <div class="px-4 pt-4">
         <div id="ledgerClientCard" class="bg-white rounded-2xl p-4 mb-5 shadow-md border border-gray-100">
           <div class="flex items-center gap-4">
-            <div class="w-14 h-14 rounded-full bg-rose-50 flex items-center justify-center border border-rose-100"><i class="fa fa-user text-rose-500 text-2xl"></i></div>
+            <div class="w-14 h-14 rounded-full bg-rose-50 flex items-center justify-center border border-rose-100">
+              <i class="fa fa-user text-rose-500 text-2xl"></i>
+            </div>
             <div class="flex-1 min-w-0">
               <p class="font-heading font-bold text-gray-800 text-xl truncate" id="ledgerClientName">-</p>
               <p class="text-sm font-medium text-gray-500 mt-0.5" id="ledgerClientPhone">-</p>
             </div>
           </div>
           <div class="mt-4 pt-3 border-t border-gray-100 flex justify-between items-center">
-            <p class="text-xs uppercase font-bold text-gray-400">Running Balance</p>
+            <p class="text-xs uppercase font-bold text-gray-400">Total Running Balance</p>
             <p class="font-heading font-bold text-xl balance-chip" id="ledgerBalance">-</p>
           </div>
         </div>
-        <p class="text-sm text-gray-800 font-heading font-bold uppercase tracking-wider mb-3 border-b border-gray-200 pb-2">Ledger Details</p>
-        <div id="ledgerTxList" class="space-y-4 pb-4"></div>
+        
+        <p class="text-sm text-gray-800 font-heading font-bold uppercase tracking-wider mb-3 border-b border-gray-200 pb-2">Transactions Ledger</p>
+        <div id="ledgerTxList" class="space-y-4 pb-4">
+          <div class="empty-state"><i class="fa fa-circle-notch spinner text-gray-300 text-2xl"></i></div>
+        </div>
       </div>
     </div>
 
+    <!-- 5. ADMIN VIEW -->
     <div class="view" id="view-admin">
-      <div class="px-4 pt-4 space-y-6">
-        
-        <div class="bg-white rounded-2xl p-5 shadow-md border border-gray-100">
-          <h3 class="font-heading font-bold text-gray-800 text-lg mb-4 border-b pb-2">1. Add Bora / Rate</h3>
-          <div class="space-y-3">
-            <div><label class="text-[11px] font-bold text-gray-500 uppercase block mb-1">Bora Name</label><input type="text" id="adminBoraName" placeholder="e.g. Nimko" class="w-full border-2 border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50 font-bold text-gray-800" /></div>
-            <div><label class="text-[11px] font-bold text-gray-500 uppercase block mb-1">Packets in Bora</label><input type="number" id="adminPackets" placeholder="e.g. 24" class="w-full border-2 border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50 font-bold text-gray-800" /></div>
-            <div><label class="text-[11px] font-bold text-gray-500 uppercase block mb-1">Rate per Bora (Rs)</label><input type="number" id="adminRate" placeholder="0" class="w-full border-2 border-gray-200 rounded-xl py-2.5 px-3 text-lg bg-gray-50 font-black text-rose-500" /></div>
-            <button onclick="submitNewRate()" class="w-full bg-rose-500 text-white py-3 rounded-xl font-bold shadow-sm active:bg-rose-600 mt-2">Save Rate</button>
-          </div>
+      <div class="px-4 pt-4">
+        <div class="flex gap-2 mb-5 bg-gray-100 p-1.5 rounded-xl border border-gray-200">
+          <button class="tab-btn flex-1 text-sm py-3 rounded-lg font-bold transition-all active" data-tab="clients" onclick="switchAdminTab('clients')">
+            <i class="fa fa-users mr-1"></i> Clients
+          </button>
+          <button class="tab-btn flex-1 text-sm py-3 rounded-lg font-bold transition-all" data-tab="rates" onclick="switchAdminTab('rates')">
+            <i class="fa fa-tags mr-1"></i> Rates
+          </button>
         </div>
 
-        <div class="bg-white rounded-2xl p-5 shadow-md border border-gray-100 mb-6">
-          <h3 class="font-heading font-bold text-gray-800 text-lg mb-4 border-b pb-2">2. Add Transaction</h3>
-          <div class="space-y-4">
-            
-            <div>
-              <label class="text-[11px] font-bold text-gray-500 uppercase block mb-1">Select Ledger Type</label>
-              <select id="adminLedgerType" onchange="handleAdminLedgerType()" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-white font-bold text-blue-600">
-                <option value="receivable" selected>Receivable</option>
-                <option value="payable">Payable</option>
-              </select>
-            </div>
-
-            <div>
-              <label class="text-[11px] font-bold text-gray-500 uppercase block mb-1">Select Action</label>
-              <select id="adminActionType" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-white font-bold text-rose-600">
-                </select>
-            </div>
-
-            <div>
-              <label class="text-[11px] font-bold text-gray-500 uppercase block mb-1">Search & Select Client</label>
-              <select id="adminClientSelect" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800">
-                </select>
-            </div>
-
-            <div>
-              <label class="text-[11px] font-bold text-gray-500 uppercase block mb-1">Date</label>
-              <input type="date" id="adminDate" class="w-full border-2 border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50 font-bold text-gray-800" />
-            </div>
-
-            <div>
-              <label class="text-[11px] font-bold text-gray-500 uppercase block mb-1">Remarks / Details</label>
-              <textarea id="adminRemarks" rows="2" placeholder="Bundle count or Cash note..." class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-semibold"></textarea>
-            </div>
-            <div>
-              <label class="text-[11px] font-bold text-gray-500 uppercase block mb-1">Total Amount (Rs)</label>
-              <input type="number" id="adminTotalAmount" placeholder="0" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-2xl bg-white font-black text-green-600 shadow-inner" />
-            </div>
-
-            <button onclick="submitAdminTransaction()" class="w-full bg-green-600 text-white py-4 rounded-xl font-bold shadow-md active:bg-green-700 mt-2 text-lg"><i class="fa fa-check-circle mr-2"></i> Submit Transaction</button>
-          </div>
+        <!-- Admin Clients Tab -->
+        <div id="admin-clients" class="admin-tab">
+          <button onclick="openAddClientModal()" class="w-full mb-4 py-3.5 bg-rose-500 text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-md active:bg-rose-600 transition-all">
+            <i class="fa fa-user-plus text-lg"></i> Add New Client
+          </button>
+          <div id="adminClientList" class="space-y-3"></div>
         </div>
 
+        <!-- Admin Rates Tab -->
+        <div id="admin-rates" class="admin-tab hidden">
+          <button onclick="openAddRateModal()" class="w-full mb-4 py-3.5 bg-rose-500 text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-md active:bg-rose-600 transition-all">
+            <i class="fa fa-plus-circle text-lg"></i> Add New Rate
+          </button>
+          <div id="adminRateList" class="space-y-3"></div>
+        </div>
       </div>
     </div>
   </main>
 
+  <!-- FAB: ADD TRANSACTION -->
+  <button onclick="openGlobalAddTxModal()" class="fab fixed bottom-24 right-5 w-16 h-16 bg-rose-500 text-white rounded-full flex items-center justify-center z-40 border-4 border-white">
+    <i class="fa fa-plus text-2xl"></i>
+  </button>
+
+  <!-- BOTTOM NAVIGATION -->
   <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-30 shadow-[0_-4px_24px_rgba(0,0,0,0.08)] app-container">
     <div class="flex">
       <button class="nav-btn active flex-1 flex flex-col items-center py-3.5 gap-1.5" data-view="dashboard" onclick="switchView('dashboard')">
@@ -192,6 +268,7 @@
   </nav>
 </div>
 
+<!-- ───────────── LOGIN SCREEN ───────────── -->
 <div id="loginScreen" class="min-h-screen flex flex-col items-center justify-center px-6 bg-gradient-to-br from-rose-600 via-rose-500 to-pink-500 app-container">
   <div class="w-full max-w-sm">
     <div class="text-center mb-8">
@@ -200,36 +277,740 @@
       <p class="text-rose-100 text-sm mt-2 font-medium tracking-wide">Secure Admin Portal</p>
     </div>
     <div class="bg-white rounded-[2rem] p-7 shadow-2xl">
+      <h2 class="font-heading font-bold text-gray-800 text-xl mb-6 text-center">Sign In</h2>
       <div class="space-y-4">
         <div>
           <label class="text-xs font-bold text-gray-500 uppercase tracking-wider block mb-2">Username</label>
-          <input type="text" id="loginUser" placeholder="Enter username" class="w-full border border-gray-200 rounded-xl py-3.5 px-4 text-sm bg-gray-50 font-bold text-gray-700" />
+          <div class="relative">
+            <i class="fa fa-user absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+            <input type="text" id="loginUser" placeholder="Enter username" class="w-full border border-gray-200 rounded-xl py-3.5 pl-11 pr-4 text-sm bg-gray-50 font-bold text-gray-700" onkeydown="if(event.key==='Enter')doLogin()" />
+          </div>
         </div>
         <div>
           <label class="text-xs font-bold text-gray-500 uppercase tracking-wider block mb-2">Password</label>
-          <input type="password" id="loginPass" placeholder="Enter password" class="w-full border border-gray-200 rounded-xl py-3.5 px-4 text-sm bg-gray-50 font-bold text-gray-700" onkeydown="if(event.key==='Enter')doLogin()"/>
+          <div class="relative">
+            <i class="fa fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+            <input type="password" id="loginPass" placeholder="Enter password" class="w-full border border-gray-200 rounded-xl py-3.5 pl-11 pr-4 text-sm bg-gray-50 font-bold text-gray-700" onkeydown="if(event.key==='Enter')doLogin()" />
+          </div>
         </div>
         <div id="loginError" class="hidden text-rose-500 text-xs text-center font-bold bg-rose-50 rounded-lg py-2.5 border border-rose-100"></div>
-        <button onclick="doLogin()" id="loginBtn" class="w-full bg-rose-500 text-white py-4 rounded-xl font-heading font-bold text-sm mt-2 shadow-md active:bg-rose-600">Access Portal</button>
+        <button onclick="doLogin()" id="loginBtn" class="w-full bg-rose-500 text-white py-4 rounded-xl font-heading font-bold text-sm mt-2 shadow-md active:bg-rose-600 flex items-center justify-center gap-2 transition-all">
+          <i class="fa fa-sign-in-alt"></i> Access Portal
+        </button>
       </div>
     </div>
   </div>
 </div>
 
+<!-- ───────────── TOAST & MODALS ───────────── -->
 <div id="toast" class="fixed bottom-28 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-full text-white text-sm font-bold shadow-2xl flex items-center gap-2 whitespace-nowrap border border-white/20"></div>
 
 <div id="modalBackdrop" class="modal-backdrop fixed inset-0 bg-black/50 z-50 hidden flex items-end justify-center sm:items-center">
   <div id="modalBox" class="bg-white w-full max-w-md rounded-t-[2rem] sm:rounded-3xl p-6 pb-8 shadow-2xl max-h-[90vh] overflow-y-auto">
     <div class="w-12 h-1.5 bg-gray-200 rounded-full mx-auto mb-6 sm:hidden"></div>
+    <div class="flex justify-between items-center mb-5 border-b border-gray-100 pb-4">
+      <h3 class="font-heading font-bold text-xl text-gray-800" id="modalTitle">Modal</h3>
+      <button onclick="closeModal()" class="w-8 h-8 bg-gray-100 rounded-full text-gray-500 flex items-center justify-center active:bg-gray-200 transition-colors"><i class="fa fa-times"></i></button>
+    </div>
     <div id="modalBody"></div>
+    <div class="flex gap-3 mt-6 pt-3 border-t border-gray-100" id="modalFooter">
+      <button onclick="closeModal()" class="flex-1 py-3.5 border-2 border-gray-200 rounded-xl text-sm font-bold text-gray-600 active:bg-gray-50 transition-colors">Cancel</button>
+      <button id="modalConfirmBtn" class="flex-1 py-3.5 bg-rose-500 text-white rounded-xl text-sm font-bold active:bg-rose-600 shadow-md transition-colors">Save Details</button>
+    </div>
   </div>
 </div>
 
-<script src="js/config.js"></script>
-<script src="js/app.js"></script>
-<script src="js/dashboard.js"></script>
-<script src="js/clients.js"></script>
-<script src="js/ledger.js"></script>
-<script src="js/admin.js"></script>
+<div id="confirmBackdrop" class="modal-backdrop fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center px-6">
+  <div class="bg-white w-full max-w-xs rounded-3xl p-6 shadow-2xl">
+    <div class="w-16 h-16 bg-rose-50 rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-rose-100">
+      <i class="fa fa-trash-alt text-rose-500 text-2xl"></i>
+    </div>
+    <h3 class="font-heading font-bold text-xl text-center text-gray-800 mb-2">Delete Entry?</h3>
+    <p class="text-gray-500 text-sm text-center mb-6 font-medium">This action cannot be undone. All related data will be lost.</p>
+    <div class="flex gap-3">
+      <button onclick="closeConfirm()" class="flex-1 py-3 border-2 border-gray-200 rounded-xl text-sm font-bold text-gray-600 active:bg-gray-50">Cancel</button>
+      <button id="confirmYesBtn" class="flex-1 py-3 bg-rose-500 text-white rounded-xl text-sm font-bold shadow-md active:bg-rose-600">Yes, Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- ───────────── JAVASCRIPT LOGIC ───────────── -->
+<script>
+// ── CONFIG ──────────────────────────────────────────────────
+const SUPABASE_URL = 'https://ptwgiadzpzawjftfxwwf.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_Qoy-USZ2VP94_n5x1BcjWQ_HV5deVBB';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// ── STATE ────────────────────────────────────────────────────
+let currentView = 'dashboard';
+let currentClientId = null;
+let currentClientType = null;
+let allClients = { payable: [], receivable: [] };
+window.clientTypeMap = {}; 
+let allRates = [];
+let prevView = null;
+let confirmCallback = null;
+let dashboardRawData = [];
+
+// ── INIT ─────────────────────────────────────────────────────
+window.onload = () => {
+  const user = sessionStorage.getItem('kf_user');
+  if (user) showApp();
+  else showLogin();
+};
+
+// ── AUTH ─────────────────────────────────────────────────────
+async function doLogin() {
+  const u = document.getElementById('loginUser').value.trim();
+  const p = document.getElementById('loginPass').value.trim();
+  const btn = document.getElementById('loginBtn');
+  
+  if (!u || !p) { showLoginErr('Please enter username and password.'); return; }
+
+  btn.innerHTML = '<i class="fa fa-circle-notch spinner"></i> Signing in...';
+  btn.disabled = true;
+
+  const { data, error } = await sb.from('khuram_users').select('*').eq('username', u).eq('password', p).single();
+
+  btn.innerHTML = '<i class="fa fa-sign-in-alt"></i> Access Portal';
+  btn.disabled = false;
+
+  if (error || !data) { showLoginErr('Invalid username or password.'); return; }
+
+  sessionStorage.setItem('kf_user', JSON.stringify(data));
+  showApp();
+}
+
+function showLoginErr(msg) {
+  const err = document.getElementById('loginError');
+  err.textContent = msg;
+  err.classList.remove('hidden');
+}
+
+function logout() {
+  sessionStorage.removeItem('kf_user');
+  window.location.reload(); 
+}
+
+function showLogin() {
+  document.getElementById('loginScreen').style.display = 'flex';
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('loginError').classList.add('hidden');
+}
+
+function showApp() {
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('app').style.removeProperty('display');
+  initApp();
+}
+
+async function initApp() {
+  // Set default dates
+  document.getElementById('dashStartDate').value = today();
+  document.getElementById('dashEndDate').value = today();
+  
+  await Promise.all([loadAllClients(), fetchRates()]);
+  loadDashboard();
+}
+
+async function fetchRates() {
+  const { data } = await sb.from('khuram_rates').select('*').order('product_name');
+  allRates = data || [];
+}
+
+// ── NAVIGATION ───────────────────────────────────────────────
+function switchView(view) {
+  if (view !== 'ledger') prevView = currentView !== 'ledger' ? currentView : prevView;
+
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+
+  document.getElementById(`view-${view}`).classList.add('active');
+  currentView = view;
+
+  if (view !== 'ledger') {
+    const btn = document.querySelector(`.nav-btn[data-view="${view}"]`);
+    if (btn) btn.classList.add('active');
+  }
+
+  const isLedger = view === 'ledger';
+  document.getElementById('backBtn').classList.toggle('hidden', !isLedger);
+  document.getElementById('headerLogo').classList.toggle('hidden', isLedger);
+  document.getElementById('headerTitle').classList.toggle('hidden', !isLedger);
+  document.getElementById('mainContent').scrollTop = 0;
+
+  if (view === 'dashboard') loadDashboard();
+  if (view === 'payables') renderClientList('payable');
+  if (view === 'receivables') renderClientList('receivable');
+  if (view === 'admin') { loadAdminClients(); loadAdminRates(); }
+}
+
+function goBack() { switchView(prevView || 'dashboard'); }
+function today() { return new Date().toISOString().split('T')[0]; }
+function fmtDate(d) { return d ? new Date(d).toLocaleDateString('en-PK', { day: '2-digit', month: 'short', year: 'numeric' }) : '-'; }
+function fmtPKR(n) { return n != null ? 'Rs ' + Number(n).toLocaleString('en-PK', { minimumFractionDigits: 0, maximumFractionDigits: 0 }) : '–'; }
+function escHtml(str) { return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;'); }
+
+// ── DASHBOARD ────────────────────────────────────────────────
+async function loadDashboard() {
+  const start = document.getElementById('dashStartDate').value || today();
+  const end = document.getElementById('dashEndDate').value || today();
+
+  document.getElementById('dashDebit').innerHTML = '<i class="fa fa-circle-notch spinner text-white/70 text-base"></i>';
+  document.getElementById('dashCredit').innerHTML = '<i class="fa fa-circle-notch spinner text-white/70 text-base"></i>';
+  document.getElementById('dashTxList').innerHTML = '<div class="empty-state"><i class="fa fa-circle-notch spinner text-gray-300 text-2xl"></i></div>';
+
+  const { data, error } = await sb.from('khuram_ledgers')
+    .select('*, khuram_clients(name, type)')
+    .gte('date', start)
+    .lte('date', end)
+    .order('date', { ascending: false })
+    .order('id', { ascending: false });
+    
+  if (error) { toast('Error loading dashboard', 'error'); return; }
+
+  dashboardRawData = data;
+  
+  // Dashboard strict logic: Show ONLY cash transactions (CRV and CPV)
+  const totalSentToPayables = data.reduce((sum, r) => {
+    return (r.khuram_clients?.type === 'payable' && r.debit > 0 && r.type === 'CPV') ? sum + r.debit : sum;
+  }, 0);
+
+  const totalReceivedCash = data.reduce((sum, r) => {
+    return (r.khuram_clients?.type === 'receivable' && r.credit > 0 && r.type === 'CRV') ? sum + r.credit : sum;
+  }, 0);
+
+  document.getElementById('dashDebit').textContent = fmtPKR(totalSentToPayables);
+  document.getElementById('dashCredit').textContent = fmtPKR(totalReceivedCash);
+  
+  filterDashList('all'); 
+}
+
+// ── RENDER TRANSACTION CARDS ───
+function generateTxCardHtml(r, showClientName = false, showBalance = false) {
+  const isCredit = r.credit > 0;
+  const isCashType = r.type === 'CRV' || r.type === 'CPV';
+  
+  return `
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden mb-4">
+      <div class="p-4 border-b border-gray-100">
+        <div class="flex justify-between items-center mb-3">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center ${r.debit ? 'bg-rose-100 text-rose-600' : 'bg-green-100 text-green-600'}">
+              <i class="fa ${isCashType ? 'fa-money-bill-wave' : 'fa-box-open'} text-lg"></i>
+            </div>
+            <div>
+              <p class="text-sm font-bold text-gray-800">${showClientName ? (r.khuram_clients?.name || 'Unknown') : fmtDate(r.date)}</p>
+              <div class="flex gap-2 mt-1">
+                <span class="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded font-bold">${r.type || '-'}</span>
+                ${r.v_no ? `<span class="text-[10px] bg-indigo-50 text-indigo-500 px-2 py-0.5 rounded font-bold">V#${r.v_no}</span>` : ''}
+                ${showClientName && r.khuram_clients?.type ? `<span class="text-[10px] bg-blue-50 text-blue-500 px-2 py-0.5 rounded font-bold uppercase">${r.khuram_clients?.type}</span>` : ''}
+              </div>
+            </div>
+          </div>
+          <div class="text-right">
+            ${r.debit ? `<p class="text-lg font-black text-rose-500">${fmtPKR(r.debit)}</p>` : ''}
+            ${r.credit ? `<p class="text-lg font-black text-green-600">${fmtPKR(r.credit)}</p>` : ''}
+            ${showBalance ? `<p class="text-[11px] font-bold text-gray-400 mt-1 uppercase tracking-wide">Bal: ${fmtPKR(Math.abs(r.running))}</p>` : `<p class="text-[10px] font-bold text-gray-400 mt-1 uppercase">${fmtDate(r.date)}</p>`}
+          </div>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-3.5 border border-gray-200/60 mx-1 mb-1">
+          <p class="text-[13px] text-gray-700 font-medium leading-relaxed whitespace-pre-line break-words">${escHtml(r.particulars) || 'No details provided.'}</p>
+        </div>
+      </div>
+      <div class="flex bg-white divide-x divide-gray-100">
+        <button onclick="openEditTxModal(${r.id})" class="flex-1 py-3.5 text-xs text-blue-600 font-bold flex items-center justify-center gap-2 active:bg-blue-50 transition-colors"><i class="fa fa-pen"></i> Edit Entry</button>
+        <button onclick="deleteTx(${r.id}, '${showBalance ? 'ledger' : 'dashboard'}')" class="flex-1 py-3.5 text-xs text-rose-500 font-bold flex items-center justify-center gap-2 active:bg-rose-50 transition-colors"><i class="fa fa-trash"></i> Delete</button>
+      </div>
+    </div>
+  `;
+}
+
+function filterDashList(filterType) {
+  const container = document.getElementById('dashTxList');
+  
+  // Dashboard strict logic: Show ONLY cash transactions (CRV and CPV)
+  let baseList = dashboardRawData.filter(r => r.type === 'CRV' || r.type === 'CPV');
+  let list = baseList;
+
+  document.getElementById('dashClearFilter').classList.add('hidden');
+  document.getElementById('dashListTitle').innerText = "All Cash Transactions";
+
+  if(filterType === 'debit') {
+    list = baseList.filter(r => r.khuram_clients?.type === 'payable' && r.debit > 0);
+    document.getElementById('dashListTitle').innerText = "Sent To Payables (Cash Paid)";
+    document.getElementById('dashClearFilter').classList.remove('hidden');
+  } else if (filterType === 'credit') {
+    list = baseList.filter(r => r.khuram_clients?.type === 'receivable' && r.credit > 0);
+    document.getElementById('dashListTitle').innerText = "Received Cash (From Receivables)";
+    document.getElementById('dashClearFilter').classList.remove('hidden');
+  }
+
+  if (!list.length) {
+    container.innerHTML = `<div class="empty-state"><i class="fa fa-inbox text-gray-200 text-5xl mb-3 block"></i><p class="text-gray-500 text-sm font-bold">No cash transactions found</p></div>`;
+    return;
+  }
+
+  container.innerHTML = list.map(r => generateTxCardHtml(r, true, false)).join('');
+}
+
+// ── CLIENTS ──────────────────────────────────────────────────
+async function loadAllClients() {
+  const { data } = await sb.from('khuram_clients').select('*').order('name');
+  if (!data) return;
+  allClients.payable = data.filter(c => c.type === 'payable');
+  allClients.receivable = data.filter(c => c.type === 'receivable');
+  
+  window.clientTypeMap = {};
+  data.forEach(c => { window.clientTypeMap[c.id] = c.type; });
+}
+
+function renderClientList(type) {
+  const query = document.getElementById(type === 'payable' ? 'searchPayable' : 'searchReceivable').value.toLowerCase();
+  const filtered = allClients[type].filter(c => c.name.toLowerCase().includes(query));
+  const container = document.getElementById(type === 'payable' ? 'listPayable' : 'listReceivable');
+
+  if (!filtered.length) {
+    container.innerHTML = `<div class="empty-state"><i class="fa fa-user-slash text-gray-200 text-5xl mb-3 block"></i><p class="text-gray-500 text-sm font-bold">No clients found</p></div>`;
+    return;
+  }
+
+  container.innerHTML = filtered.map(c => `
+    <div class="bg-white rounded-2xl p-4 flex items-center gap-4 shadow-sm border border-gray-200 tap-card mb-3" onclick="openLedger(${c.id}, '${escHtml(c.name)}', '${escHtml(c.phone || '')}', '${type}')">
+      <div class="w-12 h-12 rounded-full ${type === 'payable' ? 'bg-rose-100 text-rose-500' : 'bg-blue-100 text-blue-500'} flex items-center justify-center flex-shrink-0 text-xl font-bold">
+        ${c.name.charAt(0).toUpperCase()}
+      </div>
+      <div class="flex-1 min-w-0">
+        <p class="font-bold text-gray-800 text-base truncate">${c.name}</p>
+        <p class="text-[11px] font-bold text-gray-400 mt-1 tracking-wide uppercase">${c.phone || 'No phone number'}</p>
+      </div>
+      <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 border border-gray-200">
+        <i class="fa fa-chevron-right text-xs"></i>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterClients(type) { renderClientList(type); }
+
+// ── LEDGER ───────────────────────────────────────────────────
+async function openLedger(clientId, clientName, clientPhone, type) {
+  currentClientId = clientId; currentClientType = type;
+  document.getElementById('ledgerClientName').textContent = clientName;
+  document.getElementById('ledgerClientPhone').textContent = clientPhone || 'No phone number';
+  document.getElementById('headerTitle').textContent = clientName;
+  document.getElementById('ledgerBalance').textContent = '...';
+  document.getElementById('ledgerTxList').innerHTML = '<div class="empty-state"><i class="fa fa-circle-notch spinner text-gray-300 text-2xl"></i></div>';
+  switchView('ledger');
+  await loadLedger();
+}
+
+async function loadLedger() {
+  const { data, error } = await sb.from('khuram_ledgers').select('*').eq('client_id', currentClientId).order('date').order('id');
+  if (error) return;
+
+  let running = 0;
+  const rows = data.map(r => { running += (r.debit || 0) - (r.credit || 0); return { ...r, running }; });
+
+  const lastBalance = rows.length ? rows[rows.length - 1].running : 0;
+  const balEl = document.getElementById('ledgerBalance');
+  balEl.textContent = fmtPKR(Math.abs(lastBalance));
+  balEl.className = `font-heading font-black text-xl balance-chip ${lastBalance > 0 ? 'text-rose-600' : lastBalance < 0 ? 'text-green-600' : 'text-gray-800'}`;
+  balEl.textContent += lastBalance > 0 ? ' DR' : (lastBalance < 0 ? ' CR' : '');
+
+  const container = document.getElementById('ledgerTxList');
+  if (!rows.length) { container.innerHTML = `<div class="empty-state"><i class="fa fa-file-invoice text-gray-200 text-5xl mb-4 block"></i><p class="text-gray-500 text-sm font-bold">No transactions yet</p></div>`; return; }
+
+  container.innerHTML = rows.reverse().map(r => generateTxCardHtml(r, false, true)).join('');
+}
+
+// ── SMART ADD TRANSACTION MODAL ───────────────────
+window.currentTxMode = null; 
+
+function openGlobalAddTxModal() {
+  let clientOpts = `<option value="">-- Select Client First --</option>`;
+  clientOpts += `<optgroup label="Receivables (Customers)">` + allClients.receivable.map(c => `<option value="${c.id}" ${currentClientId==c.id?'selected':''}>${c.name}</option>`).join('') + `</optgroup>`;
+  clientOpts += `<optgroup label="Payables (Suppliers)">` + allClients.payable.map(c => `<option value="${c.id}" ${currentClientId==c.id?'selected':''}>${c.name}</option>`).join('') + `</optgroup>`;
+
+  let rateOpts = `<option value="">-- Select Item/Bora --</option>`;
+  allRates.forEach(r => { rateOpts += `<option value="${r.rate_per_bundle}" data-name="${r.product_name}">${r.product_name} (Rs ${r.rate_per_bundle})</option>`; });
+
+  document.getElementById('modalFooter').classList.remove('hidden');
+
+  showModal('Add New Entry', `
+    <div class="space-y-4">
+      <!-- 1. Client Selection -->
+      <div>
+        <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">1. Select Client</label>
+        <select id="mClientId" onchange="handleClientChange()" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800">${clientOpts}</select>
+      </div>
+      
+      <!-- 2. Action Selection (Dynamic) -->
+      <div id="txActionWrapper" class="hidden">
+        <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">2. Transaction Action</label>
+        <select id="mTxAction" onchange="handleActionChange()" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-blue-600">
+           <!-- Populated via JS -->
+        </select>
+      </div>
+
+      <!-- Item Form (Bundles / Stock) -->
+      <div id="formItem" class="hidden space-y-4 bg-orange-50/50 p-4 rounded-xl border border-orange-100">
+        <div>
+          <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Select Item / Bora</label>
+          <select id="mProductSel" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-white font-bold text-gray-800" onchange="calcProduct()">
+            ${rateOpts}
+          </select>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Quantity</label>
+            <input type="number" id="mQty" value="1" min="1" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-lg bg-white font-black text-gray-800" oninput="calcProduct()"/>
+          </div>
+          <div>
+            <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Total (Rs)</label>
+            <input type="number" id="mAmountProd" readonly class="w-full border-2 border-orange-200 rounded-xl py-3 px-3 text-lg bg-orange-100 font-black text-rose-600" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Cash Form -->
+      <div id="formCash" class="hidden space-y-4 bg-green-50/50 p-4 rounded-xl border border-green-100">
+        <div>
+          <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Cash Amount (Rs)</label>
+          <input type="number" id="mAmountCash" placeholder="0" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-lg bg-white font-black text-green-600" />
+        </div>
+      </div>
+
+      <!-- Common Details Form -->
+      <div id="formDetails" class="hidden space-y-4">
+        <div>
+          <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Remarks / Details</label>
+          <textarea id="mRemarks" rows="2" placeholder="Any details..." class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-semibold leading-relaxed"></textarea>
+        </div>
+        <div class="grid grid-cols-2 gap-3 pt-2 border-t border-gray-100">
+          <div><label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Date</label><input type="date" id="mDate" value="${today()}" class="w-full border-2 border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-white font-bold text-gray-800" /></div>
+          <div><label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Voucher No.</label><input type="text" id="mVno" placeholder="Optional" class="w-full border-2 border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-white font-bold text-gray-800" /></div>
+        </div>
+      </div>
+    </div>
+  `, async () => {
+    const cid = document.getElementById('mClientId').value;
+    const action = document.getElementById('mTxAction').value;
+    const date = document.getElementById('mDate').value;
+    const v_no = document.getElementById('mVno').value.trim();
+
+    if (!cid || !action) { toast('Select Client and Action', 'error'); return; }
+
+    let amount = 0, typeStr = '', particulars = '', isDebit = true;
+
+    if (['sell', 'buy', 'return_in', 'return_out'].includes(action)) {
+      amount = parseFloat(document.getElementById('mAmountProd').value);
+      const sel = document.getElementById('mProductSel');
+      const prodName = sel.options[sel.selectedIndex]?.getAttribute('data-name') || '';
+      const qty = document.getElementById('mQty').value;
+      const rem = document.getElementById('mRemarks').value.trim();
+      
+      if (!prodName) { toast('Please select an item', 'error'); return; }
+
+      if(action === 'sell') { typeStr = 'GSV'; isDebit = true; particulars = `${qty} BUNDLE ${prodName}${rem ? '\nNotes: '+rem : ''}`; }
+      if(action === 'buy') { typeStr = 'FPV'; isDebit = false; particulars = `${qty} BAGS/BORY ${prodName}${rem ? '\nNotes: '+rem : ''}`; }
+      if(action === 'return_in') { typeStr = 'RSV'; isDebit = false; particulars = `${qty} RETURNED (By Client) ${prodName}${rem ? '\nNotes: '+rem : ''}`; }
+      if(action === 'return_out') { typeStr = 'RSV'; isDebit = true; particulars = `${qty} RETURNED (To Supplier) ${prodName}${rem ? '\nNotes: '+rem : ''}`; }
+    } else {
+      amount = parseFloat(document.getElementById('mAmountCash').value);
+      const rem = document.getElementById('mRemarks').value.trim() || 'Cash Transaction';
+
+      if(action === 'receive_cash') { typeStr = 'CRV'; isDebit = false; particulars = rem; }
+      if(action === 'pay_cash') { typeStr = 'CPV'; isDebit = true; particulars = rem; }
+    }
+
+    if (!date || isNaN(amount) || amount <= 0) { toast('Invalid Amount or Date', 'error'); return; }
+
+    const entry = {
+      client_id: cid, date, type: typeStr, particulars, v_no: v_no || null,
+      debit: isDebit ? amount : 0, credit: !isDebit ? amount : 0, balance: 0
+    };
+
+    const { error } = await sb.from('khuram_ledgers').insert(entry);
+    if (error) { toast('Failed to add transaction', 'error'); return; }
+
+    closeModal();
+    toast('Transaction added!', 'success');
+    if (currentView === 'ledger' && currentClientId == cid) loadLedger();
+    if (currentView === 'dashboard') loadDashboard();
+  });
+  
+  if(currentClientId) { setTimeout(handleClientChange, 50); }
+}
+
+window.handleClientChange = function() {
+  const cid = document.getElementById('mClientId').value;
+  const actionWrapper = document.getElementById('txActionWrapper');
+  const actionSel = document.getElementById('mTxAction');
+
+  if (!cid) {
+    actionWrapper.classList.add('hidden');
+    document.getElementById('formItem').classList.add('hidden');
+    document.getElementById('formCash').classList.add('hidden');
+    document.getElementById('formDetails').classList.add('hidden');
+    return;
+  }
+
+  const cType = window.clientTypeMap[cid];
+  actionWrapper.classList.remove('hidden');
+
+  if (cType === 'receivable') {
+    actionSel.innerHTML = `
+      <option value="">-- Select Action --</option>
+      <option value="sell">📦 Bundles Diye (Add Bundle)</option>
+      <option value="receive_cash">💰 Cash Receive Kia (Payment Received)</option>
+      <option value="return_in">↩️ Bundle Wapis Aaye (Returned from Client)</option>
+    `;
+  } else {
+    actionSel.innerHTML = `
+      <option value="">-- Select Action --</option>
+      <option value="buy">📦 Saman Aaya (Material Purchase)</option>
+      <option value="pay_cash">💰 Cash Payment Ki (Amount Paid)</option>
+      <option value="return_out">↩️ Saman Wapis Bheja (Returned to Supplier)</option>
+    `;
+  }
+  handleActionChange();
+};
+
+window.handleActionChange = function() {
+  const action = document.getElementById('mTxAction').value;
+  const formItem = document.getElementById('formItem');
+  const formCash = document.getElementById('formCash');
+  const formDetails = document.getElementById('formDetails');
+
+  if (!action) {
+    formItem.classList.add('hidden');
+    formCash.classList.add('hidden');
+    formDetails.classList.add('hidden');
+    return;
+  }
+
+  formDetails.classList.remove('hidden');
+
+  if (['sell', 'buy', 'return_in', 'return_out'].includes(action)) {
+    formItem.classList.remove('hidden');
+    formCash.classList.add('hidden');
+  } else {
+    formItem.classList.add('hidden');
+    formCash.classList.remove('hidden');
+  }
+};
+
+window.calcProduct = function() {
+  const rate = parseFloat(document.getElementById('mProductSel').value) || 0;
+  const qty = parseFloat(document.getElementById('mQty').value) || 0;
+  document.getElementById('mAmountProd').value = rate * qty;
+};
+
+// ── EDIT TX MODAL ─────────────────────────────────────────────
+async function openEditTxModal(txId) {
+  const { data, error } = await sb.from('khuram_ledgers').select('*').eq('id', txId).single();
+  if (error || !data) return;
+  document.getElementById('modalFooter').classList.remove('hidden');
+
+  showModal('Edit Transaction', `
+    <div class="space-y-4">
+      <div><label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Date</label><input type="date" id="mDate" value="${data.date || today()}" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800" /></div>
+      <div>
+        <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Transaction Type</label>
+        <select id="mType" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800">
+          <option value="debit" ${(data.debit > 0) ? 'selected' : ''}>Debit (Amount Paid/Sold)</option>
+          <option value="credit" ${(data.credit > 0) ? 'selected' : ''}>Credit (Amount Received)</option>
+        </select>
+      </div>
+      <div><label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Remarks / Details</label>
+        <textarea id="mParticulars" rows="4" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-semibold leading-relaxed text-gray-800">${escHtml(data.particulars || '')}</textarea>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <div><label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Amount (Rs)</label><input type="number" id="mAmount" value="${data.debit || data.credit || 0}" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-lg bg-gray-50 font-black text-rose-500" /></div>
+        <div><label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Voucher No.</label><input type="text" id="mVno" value="${escHtml(data.v_no || '')}" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800" /></div>
+      </div>
+    </div>
+  `, async () => {
+    const date = document.getElementById('mDate').value;
+    const type = document.getElementById('mType').value;
+    const particulars = document.getElementById('mParticulars').value.trim();
+    const amount = parseFloat(document.getElementById('mAmount').value);
+    const v_no = document.getElementById('mVno').value.trim();
+
+    if (!date || isNaN(amount) || amount <= 0) { toast('Invalid fields', 'error'); return; }
+
+    const { error } = await sb.from('khuram_ledgers').update({
+      date, type: (data.type||'GSV'), particulars, v_no: v_no || null,
+      debit: type === 'debit' ? amount : 0, credit: type === 'credit' ? amount : 0,
+    }).eq('id', txId);
+
+    if (error) return;
+    closeModal(); toast('Updated Successfully!', 'success');
+    if(currentView === 'ledger') loadLedger(); else loadDashboard();
+  });
+}
+
+async function deleteTx(txId, source) {
+  showConfirm(async () => {
+    await sb.from('khuram_ledgers').delete().eq('id', txId);
+    toast('Transaction Deleted!', 'success');
+    if(source === 'ledger') loadLedger(); else loadDashboard();
+  });
+}
+
+// ── ADMIN ─────────────────────────────────────────────────────
+function switchAdminTab(tab) {
+  document.querySelectorAll('.admin-tab').forEach(t => t.classList.add('hidden'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(`admin-${tab}`).classList.remove('hidden');
+  document.querySelector(`.tab-btn[data-tab="${tab}"]`).classList.add('active');
+}
+
+// ── ADMIN CLIENTS ────────────────────────────────────────────
+async function loadAdminClients() {
+  renderAdminClients([...allClients.payable, ...allClients.receivable]);
+}
+
+function renderAdminClients(data) {
+  const container = document.getElementById('adminClientList');
+  if (!data.length) { container.innerHTML = `<div class="empty-state"><p class="text-gray-400 text-sm font-bold">No clients yet</p></div>`; return; }
+  container.innerHTML = data.map(c => `
+    <div class="bg-white rounded-2xl p-4 flex items-center gap-4 shadow-sm border border-gray-200 mb-3">
+      <div class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 ${c.type === 'payable' ? 'bg-rose-100 text-rose-500' : 'bg-blue-100 text-blue-500'} text-xl font-bold">
+        ${c.name.charAt(0).toUpperCase()}
+      </div>
+      <div class="flex-1 min-w-0">
+        <p class="font-bold text-gray-800 text-base truncate">${c.name}</p>
+        <div class="flex items-center gap-2 mt-1">
+          <span class="text-[10px] px-2 py-0.5 rounded uppercase font-black tracking-wider ${c.type === 'payable' ? 'bg-rose-50 text-rose-500' : 'bg-blue-50 text-blue-600'}">${c.type}</span>
+        </div>
+      </div>
+      <div class="flex gap-2">
+        <button onclick="openEditClientModal(${c.id})" class="w-10 h-10 rounded-full bg-blue-50 text-blue-500 active:bg-blue-100 flex items-center justify-center transition-colors"><i class="fa fa-pen"></i></button>
+        <button onclick="deleteClient(${c.id})" class="w-10 h-10 rounded-full bg-rose-50 text-rose-500 active:bg-rose-100 flex items-center justify-center transition-colors"><i class="fa fa-trash"></i></button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openAddClientModal() {
+  document.getElementById('modalFooter').classList.remove('hidden');
+  showModal('Add New Client', `
+    <div class="space-y-4">
+      <div><label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Client Name</label><input type="text" id="mClientName" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800" /></div>
+      <div><label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Type</label><select id="mClientType" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800"><option value="receivable">Receivable</option><option value="payable">Payable</option></select></div>
+      <div><label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Phone Number</label><input type="tel" id="mClientPhone" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800" /></div>
+    </div>
+  `, async () => {
+    const name = document.getElementById('mClientName').value.trim(), type = document.getElementById('mClientType').value, phone = document.getElementById('mClientPhone').value.trim();
+    if (!name) return toast('Name required', 'error');
+    await sb.from('khuram_clients').insert({ name, type, phone: phone || null });
+    closeModal(); await loadAllClients(); loadAdminClients(); toast('Client Added!', 'success');
+  });
+}
+
+async function openEditClientModal(clientId) {
+  const { data } = await sb.from('khuram_clients').select('*').eq('id', clientId).single();
+  if (!data) return;
+  document.getElementById('modalFooter').classList.remove('hidden');
+  showModal('Edit Client', `
+    <div class="space-y-4">
+      <div><label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Client Name</label><input type="text" id="mClientName" value="${escHtml(data.name)}" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800" /></div>
+      <div><label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Type</label><select id="mClientType" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800"><option value="receivable" ${data.type=='receivable'?'selected':''}>Receivable</option><option value="payable" ${data.type=='payable'?'selected':''}>Payable</option></select></div>
+      <div><label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Phone</label><input type="tel" id="mClientPhone" value="${escHtml(data.phone || '')}" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800" /></div>
+    </div>
+  `, async () => {
+    const name = document.getElementById('mClientName').value.trim(), type = document.getElementById('mClientType').value, phone = document.getElementById('mClientPhone').value.trim();
+    if (!name) return toast('Name required', 'error');
+    await sb.from('khuram_clients').update({ name, type, phone: phone || null }).eq('id', clientId);
+    closeModal(); await loadAllClients(); loadAdminClients(); toast('Client Updated!', 'success');
+  });
+}
+
+async function deleteClient(clientId) {
+  showConfirm(async () => {
+    await sb.from('khuram_clients').delete().eq('id', clientId);
+    await loadAllClients(); loadAdminClients(); toast('Client Deleted!', 'success');
+  });
+}
+
+// ── ADMIN RATES ───────────────────────────────────────────────
+async function loadAdminRates() {
+  await fetchRates();
+  const container = document.getElementById('adminRateList');
+  if (!allRates.length) { container.innerHTML = `<div class="empty-state"><p class="text-gray-400 text-sm font-bold">No rates yet</p></div>`; return; }
+  container.innerHTML = allRates.map(r => `
+    <div class="bg-white rounded-2xl p-4 flex items-center gap-4 shadow-sm border border-gray-200 mb-3">
+      <div class="w-12 h-12 rounded-full bg-orange-50 text-orange-500 flex items-center justify-center flex-shrink-0 text-xl"><i class="fa fa-box-open"></i></div>
+      <div class="flex-1 min-w-0">
+        <p class="font-bold text-gray-800 text-base truncate">${r.product_name}</p>
+        <p class="text-sm text-gray-500 font-bold mt-0.5">${fmtPKR(r.rate_per_bundle)} <span class="font-medium text-gray-400">/ bundle</span></p>
+      </div>
+      <div class="flex gap-2">
+        <button onclick="openEditRateModal(${r.id}, '${escHtml(r.product_name)}', ${r.rate_per_bundle})" class="w-10 h-10 rounded-full bg-blue-50 text-blue-500 active:bg-blue-100 flex items-center justify-center transition-colors"><i class="fa fa-pen"></i></button>
+        <button onclick="deleteRate(${r.id})" class="w-10 h-10 rounded-full bg-rose-50 text-rose-500 active:bg-rose-100 flex items-center justify-center transition-colors"><i class="fa fa-trash"></i></button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openAddRateModal() {
+  document.getElementById('modalFooter').classList.remove('hidden');
+  showModal('Add New Rate', `
+    <div class="space-y-4">
+      <div><label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Product / Bora Name</label><input type="text" id="mProductName" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800" /></div>
+      <div><label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Rate per Bundle (Rs)</label><input type="number" id="mRate" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-lg bg-gray-50 font-black text-rose-500" /></div>
+    </div>
+  `, async () => {
+    const pn = document.getElementById('mProductName').value.trim(), rt = parseFloat(document.getElementById('mRate').value);
+    if (!pn || isNaN(rt)) return toast('Fill all fields', 'error');
+    await sb.from('khuram_rates').insert({ product_name: pn, rate_per_bundle: rt });
+    closeModal(); loadAdminRates(); toast('Rate Added!', 'success');
+  });
+}
+
+async function openEditRateModal(id, name, rate) {
+  document.getElementById('modalFooter').classList.remove('hidden');
+  showModal('Edit Rate', `
+    <div class="space-y-4">
+      <div><label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Product Name</label><input type="text" id="mProductName" value="${name}" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800" /></div>
+      <div><label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Rate</label><input type="number" id="mRate" value="${rate}" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-lg bg-gray-50 font-black text-rose-500" /></div>
+    </div>
+  `, async () => {
+    const pn = document.getElementById('mProductName').value.trim(), rt = parseFloat(document.getElementById('mRate').value);
+    if (!pn || isNaN(rt)) return toast('Fill all fields', 'error');
+    await sb.from('khuram_rates').update({ product_name: pn, rate_per_bundle: rt }).eq('id', id);
+    closeModal(); loadAdminRates(); toast('Rate Updated!', 'success');
+  });
+}
+
+async function deleteRate(rateId) {
+  showConfirm(async () => {
+    await sb.from('khuram_rates').delete().eq('id', rateId);
+    toast('Rate Deleted!', 'success'); loadAdminRates();
+  });
+}
+
+// ── MODALS / UTILS ────────────────────────────────────────────
+function showModal(title, body, onConfirm) {
+  document.getElementById('modalTitle').textContent = title; document.getElementById('modalBody').innerHTML = body; document.getElementById('modalConfirmBtn').onclick = onConfirm;
+  document.getElementById('modalBackdrop').classList.remove('hidden'); document.getElementById('modalBackdrop').classList.add('flex');
+}
+function closeModal() { document.getElementById('modalBackdrop').classList.add('hidden'); document.getElementById('modalBackdrop').classList.remove('flex'); }
+document.getElementById('modalBackdrop').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+
+function showConfirm(cb) { confirmCallback = cb; document.getElementById('confirmBackdrop').classList.remove('hidden'); document.getElementById('confirmBackdrop').classList.add('flex'); document.getElementById('confirmYesBtn').onclick = async () => { closeConfirm(); if (confirmCallback) await confirmCallback(); confirmCallback = null; }; }
+function closeConfirm() { document.getElementById('confirmBackdrop').classList.add('hidden'); document.getElementById('confirmBackdrop').classList.remove('flex'); }
+document.getElementById('confirmBackdrop').addEventListener('click', function(e) { if (e.target === this) closeConfirm(); });
+
+let toastTimer;
+function toast(msg, type = 'success') {
+  const el = document.getElementById('toast');
+  el.className = `fixed bottom-28 left-1/2 -translate-x-1/2 z-50 px-6 py-3.5 rounded-full text-white text-sm font-bold shadow-2xl flex items-center gap-2.5 whitespace-nowrap border border-white/20 ${type === 'success' ? 'bg-gray-800' : 'bg-rose-600'}`;
+  el.innerHTML = `<i class="fa ${type === 'success' ? 'fa-check-circle text-green-400' : 'fa-exclamation-circle text-white'} text-lg"></i> ${msg}`;
+  el.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('show'), 2500);
+}
+</script>
 </body>
 </html>
