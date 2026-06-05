@@ -103,9 +103,12 @@
 </head>
 <body class="min-h-screen">
 
+<!-- ───────────── APP ───────────── -->
 <div class="app-container relative min-h-screen flex flex-col" id="app" style="display:none!important">
 
+  <!-- TOP HEADER -->
   <header class="header-bg text-white px-4 py-3 flex items-center justify-between z-30 sticky top-0" style="min-height:56px">
+    <!-- Back button (shown in sub-views) -->
     <button id="backBtn" class="hidden mr-2 w-8 h-8 flex items-center justify-center rounded-full bg-white/20 active:bg-white/30" onclick="goBack()">
       <i class="fa fa-arrow-left text-sm"></i>
     </button>
@@ -118,8 +121,10 @@
     </button>
   </header>
 
+  <!-- MAIN CONTENT AREA -->
   <main class="flex-1 overflow-y-auto pb-24" id="mainContent">
 
+    <!-- ── DASHBOARD VIEW ── -->
     <div class="view active" id="view-dashboard">
       <div class="px-4 pt-4 pb-2">
         <p class="text-xs text-gray-500 font-medium uppercase tracking-wider mb-1">Daily Summary</p>
@@ -143,6 +148,7 @@
           </div>
         </div>
 
+        <!-- Recent transactions today -->
         <p class="text-xs text-gray-500 font-medium uppercase tracking-wider mb-2">Today's Transactions</p>
         <div id="dashTxList" class="space-y-2">
           <div class="empty-state"><i class="fa fa-circle-notch spinner text-gray-300 text-2xl"></i></div>
@@ -150,6 +156,7 @@
       </div>
     </div>
 
+    <!-- ── PAYABLES VIEW ── -->
     <div class="view" id="view-payables">
       <div class="px-4 pt-4">
         <div class="search-wrap mb-4">
@@ -164,6 +171,7 @@
       </div>
     </div>
 
+    <!-- ── RECEIVABLES VIEW ── -->
     <div class="view" id="view-receivables">
       <div class="px-4 pt-4">
         <div class="search-wrap mb-4">
@@ -178,8 +186,10 @@
       </div>
     </div>
 
+    <!-- ── LEDGER VIEW ── -->
     <div class="view" id="view-ledger">
       <div class="px-4 pt-4">
+        <!-- Client Summary Card -->
         <div id="ledgerClientCard" class="bg-white rounded-2xl p-4 mb-4 shadow-sm border border-gray-100">
           <div class="flex items-center gap-3">
             <div class="w-11 h-11 rounded-xl bg-rose-50 flex items-center justify-center">
@@ -196,19 +206,23 @@
           </div>
         </div>
 
+        <!-- Transactions list -->
         <p class="text-xs text-gray-500 font-medium uppercase tracking-wider mb-2">Transactions</p>
         <div id="ledgerTxList" class="space-y-2 pb-4">
           <div class="empty-state"><i class="fa fa-circle-notch spinner text-gray-300 text-2xl"></i></div>
         </div>
       </div>
 
+      <!-- FAB: Add Transaction -->
       <button onclick="openAddTxModal()" class="fab fixed bottom-24 right-4 w-14 h-14 bg-rose-500 text-white rounded-2xl flex items-center justify-center z-40">
         <i class="fa fa-plus text-xl"></i>
       </button>
     </div>
 
+    <!-- ── ADMIN VIEW ── -->
     <div class="view" id="view-admin">
       <div class="px-4 pt-4">
+        <!-- Tabs -->
         <div class="flex gap-2 mb-4 bg-gray-100 p-1 rounded-xl">
           <button class="tab-btn flex-1 text-sm py-2 rounded-lg font-medium transition-all active" data-tab="clients" onclick="switchAdminTab('clients')">
             <i class="fa fa-users mr-1"></i> Clients
@@ -218,6 +232,7 @@
           </button>
         </div>
 
+        <!-- Clients Tab -->
         <div id="admin-clients" class="admin-tab">
           <button onclick="openAddClientModal()" class="w-full mb-3 py-2.5 bg-rose-500 text-white rounded-xl font-semibold text-sm flex items-center justify-center gap-2 active:bg-rose-600">
             <i class="fa fa-plus"></i> Add New Client
@@ -227,6 +242,7 @@
           </div>
         </div>
 
+        <!-- Rates Tab -->
         <div id="admin-rates" class="admin-tab hidden">
           <button onclick="openAddRateModal()" class="w-full mb-3 py-2.5 bg-rose-500 text-white rounded-xl font-semibold text-sm flex items-center justify-center gap-2 active:bg-rose-600">
             <i class="fa fa-plus"></i> Add New Rate
@@ -240,6 +256,7 @@
 
   </main>
 
+  <!-- BOTTOM NAV -->
   <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 z-30 shadow-[0_-4px_24px_rgba(0,0,0,0.06)]">
     <div class="app-container flex">
       <button class="nav-btn active flex-1 flex flex-col items-center py-3 gap-0.5" data-view="dashboard" onclick="switchView('dashboard')">
@@ -262,8 +279,10 @@
   </nav>
 </div>
 
+<!-- ───────────── LOGIN SCREEN ───────────── -->
 <div id="loginScreen" class="min-h-screen flex flex-col items-center justify-center px-6 bg-gradient-to-br from-rose-600 via-rose-500 to-pink-500">
   <div class="w-full max-w-sm">
+    <!-- Logo -->
     <div class="text-center mb-8">
       <div class="w-20 h-20 bg-white/20 rounded-3xl flex items-center justify-center mx-auto mb-4 text-4xl shadow-lg">
         🌶
@@ -272,6 +291,7 @@
       <p class="text-rose-200 text-sm mt-1 font-medium">Business Management Portal</p>
     </div>
 
+    <!-- Login Card -->
     <div class="bg-white rounded-3xl p-6 shadow-2xl">
       <h2 class="font-heading font-bold text-gray-800 text-lg mb-5 text-center">Sign In</h2>
 
@@ -304,8 +324,10 @@
   </div>
 </div>
 
+<!-- ───────────── TOAST ───────────── -->
 <div id="toast" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-full text-white text-sm font-medium shadow-lg flex items-center gap-2 whitespace-nowrap"></div>
 
+<!-- ───────────── MODAL ───────────── -->
 <div id="modalBackdrop" class="modal-backdrop fixed inset-0 bg-black/40 z-50 hidden flex items-end justify-center">
   <div id="modalBox" class="bg-white w-full max-w-sm rounded-t-3xl p-6 pb-8 shadow-2xl">
     <div class="w-10 h-1 bg-gray-200 rounded-full mx-auto mb-5"></div>
@@ -318,6 +340,7 @@
   </div>
 </div>
 
+<!-- ───────────── CONFIRM DIALOG ───────────── -->
 <div id="confirmBackdrop" class="modal-backdrop fixed inset-0 bg-black/40 z-50 hidden flex items-center justify-center px-6">
   <div class="bg-white w-full max-w-xs rounded-2xl p-5 shadow-2xl">
     <div class="w-12 h-12 bg-rose-50 rounded-xl flex items-center justify-center mx-auto mb-3">
@@ -332,10 +355,11 @@
   </div>
 </div>
 
+<!-- ───────────── SCRIPT ───────────── -->
 <script>
 // ── CONFIG ──────────────────────────────────────────────────
 const SUPABASE_URL = 'https://ptwgiadzpzawjftfxwwf.supabase.co';
-const SUPABASE_ANON_KEY = 'https://ptwgiadzpzawjftfxwwf.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_Qoy-USZ2VP94_n5x1BcjWQ_HV5deVBB';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // ── STATE ────────────────────────────────────────────────────
