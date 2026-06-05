@@ -19,8 +19,8 @@
 
     /* Bottom nav active */
     .nav-btn { transition: all 0.2s ease; }
-    .nav-btn.active .nav-icon { color: #c0392b; transform: translateY(-2px); }
-    .nav-btn.active .nav-label { color: #c0392b; font-weight: 600; }
+    .nav-btn.active .nav-icon { color: #f43f5e; transform: translateY(-2px); }
+    .nav-btn.active .nav-label { color: #f43f5e; font-weight: 600; }
 
     /* Card shimmer on tap */
     .tap-card { transition: transform 0.15s ease, box-shadow 0.15s ease; }
@@ -41,18 +41,18 @@
     .ledger-row:nth-child(odd) { background: #fafaf8; }
 
     /* Fab pulse */
-    .fab { box-shadow: 0 4px 24px rgba(192,57,43,0.4); transition: all 0.2s ease; }
+    .fab { box-shadow: 0 4px 24px rgba(244,63,94,0.4); transition: all 0.2s ease; }
     .fab:active { transform: scale(0.93); }
 
     /* Tab active */
-    .tab-btn.active { background: #c0392b; color: white; }
+    .tab-btn.active { background: #f43f5e; color: white; }
 
     /* Input focus ring */
-    input:focus, select:focus { outline: none; box-shadow: 0 0 0 2px rgba(192,57,43,0.25); border-color: #c0392b; }
+    input:focus, select:focus { outline: none; box-shadow: 0 0 0 2px rgba(244,63,94,0.25); border-color: #f43f5e; }
 
     /* Header pattern */
     .header-bg {
-      background: #c0392b;
+      background: #f43f5e;
       position: relative;
       overflow: hidden;
     }
@@ -74,7 +74,7 @@
     }
 
     /* Stat card gradient */
-    .stat-debit { background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%); }
+    .stat-debit { background: linear-gradient(135deg, #f43f5e 0%, #fb7185 100%); }
     .stat-credit { background: linear-gradient(135deg, #1a6b4a 0%, #27ae60 100%); }
 
     /* Loading spinner */
@@ -83,7 +83,7 @@
 
     /* Back header */
     .back-header {
-      background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
+      background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
     }
 
     /* Balance chip */
@@ -103,12 +103,9 @@
 </head>
 <body class="min-h-screen">
 
-<!-- ───────────── APP ───────────── -->
 <div class="app-container relative min-h-screen flex flex-col" id="app" style="display:none!important">
 
-  <!-- TOP HEADER -->
   <header class="header-bg text-white px-4 py-3 flex items-center justify-between z-30 sticky top-0" style="min-height:56px">
-    <!-- Back button (shown in sub-views) -->
     <button id="backBtn" class="hidden mr-2 w-8 h-8 flex items-center justify-center rounded-full bg-white/20 active:bg-white/30" onclick="goBack()">
       <i class="fa fa-arrow-left text-sm"></i>
     </button>
@@ -121,10 +118,8 @@
     </button>
   </header>
 
-  <!-- MAIN CONTENT AREA -->
   <main class="flex-1 overflow-y-auto pb-24" id="mainContent">
 
-    <!-- ── DASHBOARD VIEW ── -->
     <div class="view active" id="view-dashboard">
       <div class="px-4 pt-4 pb-2">
         <p class="text-xs text-gray-500 font-medium uppercase tracking-wider mb-1">Daily Summary</p>
@@ -148,7 +143,6 @@
           </div>
         </div>
 
-        <!-- Recent transactions today -->
         <p class="text-xs text-gray-500 font-medium uppercase tracking-wider mb-2">Today's Transactions</p>
         <div id="dashTxList" class="space-y-2">
           <div class="empty-state"><i class="fa fa-circle-notch spinner text-gray-300 text-2xl"></i></div>
@@ -156,7 +150,6 @@
       </div>
     </div>
 
-    <!-- ── PAYABLES VIEW ── -->
     <div class="view" id="view-payables">
       <div class="px-4 pt-4">
         <div class="search-wrap mb-4">
@@ -171,7 +164,6 @@
       </div>
     </div>
 
-    <!-- ── RECEIVABLES VIEW ── -->
     <div class="view" id="view-receivables">
       <div class="px-4 pt-4">
         <div class="search-wrap mb-4">
@@ -186,14 +178,12 @@
       </div>
     </div>
 
-    <!-- ── LEDGER VIEW ── -->
     <div class="view" id="view-ledger">
       <div class="px-4 pt-4">
-        <!-- Client Summary Card -->
         <div id="ledgerClientCard" class="bg-white rounded-2xl p-4 mb-4 shadow-sm border border-gray-100">
           <div class="flex items-center gap-3">
-            <div class="w-11 h-11 rounded-xl bg-red-50 flex items-center justify-center">
-              <i class="fa fa-user text-red-500"></i>
+            <div class="w-11 h-11 rounded-xl bg-rose-50 flex items-center justify-center">
+              <i class="fa fa-user text-rose-500"></i>
             </div>
             <div class="flex-1 min-w-0">
               <p class="font-heading font-bold text-gray-800 truncate" id="ledgerClientName">-</p>
@@ -206,23 +196,19 @@
           </div>
         </div>
 
-        <!-- Transactions list -->
         <p class="text-xs text-gray-500 font-medium uppercase tracking-wider mb-2">Transactions</p>
         <div id="ledgerTxList" class="space-y-2 pb-4">
           <div class="empty-state"><i class="fa fa-circle-notch spinner text-gray-300 text-2xl"></i></div>
         </div>
       </div>
 
-      <!-- FAB: Add Transaction -->
-      <button onclick="openAddTxModal()" class="fab fixed bottom-24 right-4 w-14 h-14 bg-red-600 text-white rounded-2xl flex items-center justify-center z-40">
+      <button onclick="openAddTxModal()" class="fab fixed bottom-24 right-4 w-14 h-14 bg-rose-500 text-white rounded-2xl flex items-center justify-center z-40">
         <i class="fa fa-plus text-xl"></i>
       </button>
     </div>
 
-    <!-- ── ADMIN VIEW ── -->
     <div class="view" id="view-admin">
       <div class="px-4 pt-4">
-        <!-- Tabs -->
         <div class="flex gap-2 mb-4 bg-gray-100 p-1 rounded-xl">
           <button class="tab-btn flex-1 text-sm py-2 rounded-lg font-medium transition-all active" data-tab="clients" onclick="switchAdminTab('clients')">
             <i class="fa fa-users mr-1"></i> Clients
@@ -232,9 +218,8 @@
           </button>
         </div>
 
-        <!-- Clients Tab -->
         <div id="admin-clients" class="admin-tab">
-          <button onclick="openAddClientModal()" class="w-full mb-3 py-2.5 bg-red-600 text-white rounded-xl font-semibold text-sm flex items-center justify-center gap-2 active:bg-red-700">
+          <button onclick="openAddClientModal()" class="w-full mb-3 py-2.5 bg-rose-500 text-white rounded-xl font-semibold text-sm flex items-center justify-center gap-2 active:bg-rose-600">
             <i class="fa fa-plus"></i> Add New Client
           </button>
           <div id="adminClientList" class="space-y-2">
@@ -242,9 +227,8 @@
           </div>
         </div>
 
-        <!-- Rates Tab -->
         <div id="admin-rates" class="admin-tab hidden">
-          <button onclick="openAddRateModal()" class="w-full mb-3 py-2.5 bg-red-600 text-white rounded-xl font-semibold text-sm flex items-center justify-center gap-2 active:bg-red-700">
+          <button onclick="openAddRateModal()" class="w-full mb-3 py-2.5 bg-rose-500 text-white rounded-xl font-semibold text-sm flex items-center justify-center gap-2 active:bg-rose-600">
             <i class="fa fa-plus"></i> Add New Rate
           </button>
           <div id="adminRateList" class="space-y-2">
@@ -256,7 +240,6 @@
 
   </main>
 
-  <!-- BOTTOM NAV -->
   <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 z-30 shadow-[0_-4px_24px_rgba(0,0,0,0.06)]">
     <div class="app-container flex">
       <button class="nav-btn active flex-1 flex flex-col items-center py-3 gap-0.5" data-view="dashboard" onclick="switchView('dashboard')">
@@ -279,19 +262,16 @@
   </nav>
 </div>
 
-<!-- ───────────── LOGIN SCREEN ───────────── -->
-<div id="loginScreen" class="min-h-screen flex flex-col items-center justify-center px-6 bg-gradient-to-br from-red-700 via-red-600 to-rose-500">
+<div id="loginScreen" class="min-h-screen flex flex-col items-center justify-center px-6 bg-gradient-to-br from-rose-600 via-rose-500 to-pink-500">
   <div class="w-full max-w-sm">
-    <!-- Logo -->
     <div class="text-center mb-8">
       <div class="w-20 h-20 bg-white/20 rounded-3xl flex items-center justify-center mx-auto mb-4 text-4xl shadow-lg">
         🌶
       </div>
       <h1 class="text-3xl font-heading font-bold text-white">Khuram Foods</h1>
-      <p class="text-red-200 text-sm mt-1 font-medium">Business Management Portal</p>
+      <p class="text-rose-200 text-sm mt-1 font-medium">Business Management Portal</p>
     </div>
 
-    <!-- Login Card -->
     <div class="bg-white rounded-3xl p-6 shadow-2xl">
       <h2 class="font-heading font-bold text-gray-800 text-lg mb-5 text-center">Sign In</h2>
 
@@ -314,9 +294,9 @@
               onkeydown="if(event.key==='Enter')doLogin()" />
           </div>
         </div>
-        <div id="loginError" class="hidden text-red-500 text-xs text-center font-medium bg-red-50 rounded-lg py-2"></div>
+        <div id="loginError" class="hidden text-rose-500 text-xs text-center font-medium bg-rose-50 rounded-lg py-2"></div>
         <button onclick="doLogin()" id="loginBtn"
-          class="w-full bg-red-600 text-white py-3.5 rounded-xl font-heading font-semibold text-sm mt-1 active:bg-red-700 flex items-center justify-center gap-2">
+          class="w-full bg-rose-500 text-white py-3.5 rounded-xl font-heading font-semibold text-sm mt-1 active:bg-rose-600 flex items-center justify-center gap-2">
           <i class="fa fa-sign-in-alt"></i> Sign In
         </button>
       </div>
@@ -324,10 +304,8 @@
   </div>
 </div>
 
-<!-- ───────────── TOAST ───────────── -->
 <div id="toast" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-full text-white text-sm font-medium shadow-lg flex items-center gap-2 whitespace-nowrap"></div>
 
-<!-- ───────────── MODAL ───────────── -->
 <div id="modalBackdrop" class="modal-backdrop fixed inset-0 bg-black/40 z-50 hidden flex items-end justify-center">
   <div id="modalBox" class="bg-white w-full max-w-sm rounded-t-3xl p-6 pb-8 shadow-2xl">
     <div class="w-10 h-1 bg-gray-200 rounded-full mx-auto mb-5"></div>
@@ -335,31 +313,29 @@
     <div id="modalBody"></div>
     <div class="flex gap-3 mt-5">
       <button onclick="closeModal()" class="flex-1 py-3 border border-gray-200 rounded-xl text-sm font-semibold text-gray-600 active:bg-gray-50">Cancel</button>
-      <button id="modalConfirmBtn" class="flex-1 py-3 bg-red-600 text-white rounded-xl text-sm font-semibold active:bg-red-700">Save</button>
+      <button id="modalConfirmBtn" class="flex-1 py-3 bg-rose-500 text-white rounded-xl text-sm font-semibold active:bg-rose-600">Save</button>
     </div>
   </div>
 </div>
 
-<!-- ───────────── CONFIRM DIALOG ───────────── -->
 <div id="confirmBackdrop" class="modal-backdrop fixed inset-0 bg-black/40 z-50 hidden flex items-center justify-center px-6">
   <div class="bg-white w-full max-w-xs rounded-2xl p-5 shadow-2xl">
-    <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mx-auto mb-3">
-      <i class="fa fa-trash-alt text-red-500"></i>
+    <div class="w-12 h-12 bg-rose-50 rounded-xl flex items-center justify-center mx-auto mb-3">
+      <i class="fa fa-trash-alt text-rose-500"></i>
     </div>
     <h3 class="font-heading font-bold text-center text-gray-800 mb-1">Delete Entry</h3>
     <p class="text-gray-500 text-sm text-center mb-4">This action cannot be undone.</p>
     <div class="flex gap-3">
       <button onclick="closeConfirm()" class="flex-1 py-2.5 border border-gray-200 rounded-xl text-sm font-semibold text-gray-600">Cancel</button>
-      <button id="confirmYesBtn" class="flex-1 py-2.5 bg-red-600 text-white rounded-xl text-sm font-semibold">Delete</button>
+      <button id="confirmYesBtn" class="flex-1 py-2.5 bg-rose-500 text-white rounded-xl text-sm font-semibold">Delete</button>
     </div>
   </div>
 </div>
 
-<!-- ───────────── SCRIPT ───────────── -->
 <script>
 // ── CONFIG ──────────────────────────────────────────────────
-const SUPABASE_URL = 'YOUR_SUPABASE_URL';
-const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_KEY';
+const SUPABASE_URL = 'https://nddzwzfiklulmyzteeoh.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_UNo59RPkC8sL9fbArltEug_STep04lA';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // ── STATE ────────────────────────────────────────────────────
@@ -514,15 +490,15 @@ async function loadDashboard() {
 
   container.innerHTML = data.map(r => `
     <div class="bg-white rounded-xl p-3 flex items-center gap-3 shadow-sm border border-gray-100 tap-card">
-      <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${r.debit ? 'bg-red-50' : 'bg-green-50'}">
-        <i class="fa ${r.debit ? 'fa-arrow-up text-red-500' : 'fa-arrow-down text-green-500'} text-sm"></i>
+      <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${r.debit ? 'bg-rose-50' : 'bg-green-50'}">
+        <i class="fa ${r.debit ? 'fa-arrow-up text-rose-500' : 'fa-arrow-down text-green-500'} text-sm"></i>
       </div>
       <div class="flex-1 min-w-0">
         <p class="font-semibold text-gray-800 text-sm truncate">${r.khuram_clients?.name || 'Unknown'}</p>
         <p class="text-xs text-gray-400 truncate">${r.particulars || r.type || '-'}</p>
       </div>
       <div class="text-right">
-        <p class="font-heading font-bold text-sm ${r.debit ? 'text-red-600' : 'text-green-600'}">${fmtPKR(r.debit || r.credit)}</p>
+        <p class="font-heading font-bold text-sm ${r.debit ? 'text-rose-500' : 'text-green-600'}">${fmtPKR(r.debit || r.credit)}</p>
         <p class="text-xs text-gray-400">${r.v_no ? 'V#'+r.v_no : ''}</p>
       </div>
     </div>
@@ -553,8 +529,8 @@ function renderClientList(type) {
   container.innerHTML = filtered.map(c => `
     <div class="bg-white rounded-2xl p-4 flex items-center gap-3 shadow-sm border border-gray-100 tap-card cursor-pointer"
       onclick="openLedger(${c.id}, '${escHtml(c.name)}', '${escHtml(c.phone || '')}', '${type}')">
-      <div class="w-11 h-11 rounded-xl ${type === 'payable' ? 'bg-red-50' : 'bg-blue-50'} flex items-center justify-center flex-shrink-0">
-        <i class="fa fa-user ${type === 'payable' ? 'text-red-400' : 'text-blue-400'}"></i>
+      <div class="w-11 h-11 rounded-xl ${type === 'payable' ? 'bg-rose-50' : 'bg-blue-50'} flex items-center justify-center flex-shrink-0">
+        <i class="fa fa-user ${type === 'payable' ? 'text-rose-400' : 'text-blue-400'}"></i>
       </div>
       <div class="flex-1 min-w-0">
         <p class="font-semibold text-gray-800 truncate">${c.name}</p>
@@ -598,7 +574,7 @@ async function loadLedger() {
   const lastBalance = rows.length ? rows[rows.length - 1].running : 0;
   const balEl = document.getElementById('ledgerBalance');
   balEl.textContent = fmtPKR(Math.abs(lastBalance));
-  balEl.className = `font-heading font-bold text-lg balance-chip ${lastBalance > 0 ? 'text-red-600' : lastBalance < 0 ? 'text-green-600' : 'text-gray-600'}`;
+  balEl.className = `font-heading font-bold text-lg balance-chip ${lastBalance > 0 ? 'text-rose-500' : lastBalance < 0 ? 'text-green-600' : 'text-gray-600'}`;
 
   const container = document.getElementById('ledgerTxList');
   if (!rows.length) {
@@ -612,8 +588,8 @@ async function loadLedger() {
   container.innerHTML = rows.reverse().map(r => `
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
       <div class="flex items-center gap-3 p-3">
-        <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${r.debit ? 'bg-red-50' : 'bg-green-50'}">
-          <i class="fa ${r.debit ? 'fa-arrow-up text-red-500' : 'fa-arrow-down text-green-500'} text-xs"></i>
+        <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${r.debit ? 'bg-rose-50' : 'bg-green-50'}">
+          <i class="fa ${r.debit ? 'fa-arrow-up text-rose-500' : 'fa-arrow-down text-green-500'} text-xs"></i>
         </div>
         <div class="flex-1 min-w-0">
           <div class="flex items-center gap-2">
@@ -623,7 +599,7 @@ async function loadLedger() {
           <p class="text-sm font-medium text-gray-800 truncate">${r.particulars || r.type || '-'}</p>
         </div>
         <div class="text-right flex-shrink-0">
-          ${r.debit ? `<p class="text-sm font-bold text-red-600">${fmtPKR(r.debit)}</p>` : ''}
+          ${r.debit ? `<p class="text-sm font-bold text-rose-500">${fmtPKR(r.debit)}</p>` : ''}
           ${r.credit ? `<p class="text-sm font-bold text-green-600">${fmtPKR(r.credit)}</p>` : ''}
           <p class="text-xs text-gray-400">${fmtPKR(Math.abs(r.running))}</p>
         </div>
@@ -633,7 +609,7 @@ async function loadLedger() {
           <i class="fa fa-pen"></i> Edit
         </button>
         <div class="w-px bg-gray-50"></div>
-        <button onclick="deleteTx(${r.id})" class="flex-1 py-2 text-xs text-red-500 font-semibold flex items-center justify-center gap-1 active:bg-red-50">
+        <button onclick="deleteTx(${r.id})" class="flex-1 py-2 text-xs text-rose-500 font-semibold flex items-center justify-center gap-1 active:bg-rose-50">
           <i class="fa fa-trash"></i> Delete
         </button>
       </div>
@@ -790,13 +766,13 @@ function renderAdminClients(data) {
   }
   container.innerHTML = data.map(c => `
     <div class="bg-white rounded-xl p-3 flex items-center gap-3 shadow-sm border border-gray-100">
-      <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 ${c.type === 'payable' ? 'bg-red-50' : 'bg-blue-50'}">
-        <i class="fa fa-user ${c.type === 'payable' ? 'text-red-400' : 'text-blue-400'} text-sm"></i>
+      <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 ${c.type === 'payable' ? 'bg-rose-50' : 'bg-blue-50'}">
+        <i class="fa fa-user ${c.type === 'payable' ? 'text-rose-400' : 'text-blue-400'} text-sm"></i>
       </div>
       <div class="flex-1 min-w-0">
         <p class="font-semibold text-gray-800 text-sm truncate">${c.name}</p>
         <div class="flex items-center gap-2 mt-0.5">
-          <span class="text-xs px-2 py-0.5 rounded-full font-medium ${c.type === 'payable' ? 'bg-red-50 text-red-600' : 'bg-blue-50 text-blue-600'}">${c.type}</span>
+          <span class="text-xs px-2 py-0.5 rounded-full font-medium ${c.type === 'payable' ? 'bg-rose-50 text-rose-500' : 'bg-blue-50 text-blue-600'}">${c.type}</span>
           <span class="text-xs text-gray-400">${c.phone || ''}</span>
         </div>
       </div>
@@ -804,8 +780,8 @@ function renderAdminClients(data) {
         <button onclick="openEditClientModal(${c.id})" class="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center active:bg-blue-100">
           <i class="fa fa-pen text-blue-500 text-xs"></i>
         </button>
-        <button onclick="deleteClient(${c.id})" class="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center active:bg-red-100">
-          <i class="fa fa-trash text-red-500 text-xs"></i>
+        <button onclick="deleteClient(${c.id})" class="w-8 h-8 rounded-lg bg-rose-50 flex items-center justify-center active:bg-rose-100">
+          <i class="fa fa-trash text-rose-500 text-xs"></i>
         </button>
       </div>
     </div>
@@ -899,8 +875,8 @@ function renderAdminRates(data) {
         <button onclick="openEditRateModal(${r.id})" class="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center active:bg-blue-100">
           <i class="fa fa-pen text-blue-500 text-xs"></i>
         </button>
-        <button onclick="deleteRate(${r.id})" class="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center active:bg-red-100">
-          <i class="fa fa-trash text-red-500 text-xs"></i>
+        <button onclick="deleteRate(${r.id})" class="w-8 h-8 rounded-lg bg-rose-50 flex items-center justify-center active:bg-rose-100">
+          <i class="fa fa-trash text-rose-500 text-xs"></i>
         </button>
       </div>
     </div>
@@ -1008,7 +984,7 @@ document.getElementById('confirmBackdrop').addEventListener('click', function(e)
 let toastTimer;
 function toast(msg, type = 'success') {
   const el = document.getElementById('toast');
-  el.className = `fixed bottom-24 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-full text-white text-sm font-medium shadow-lg flex items-center gap-2 whitespace-nowrap ${type === 'success' ? 'bg-gray-800' : 'bg-red-600'}`;
+  el.className = `fixed bottom-24 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-full text-white text-sm font-medium shadow-lg flex items-center gap-2 whitespace-nowrap ${type === 'success' ? 'bg-gray-800' : 'bg-rose-500'}`;
   el.innerHTML = `<i class="fa ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i> ${msg}`;
   el.classList.add('show');
   clearTimeout(toastTimer);
