@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Khuram Foods</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    * { -webkit-tap-highlight-color: transparent; }
+    body { font-family: 'DM Sans', sans-serif; background: #f5f5f0; overscroll-behavior: none; }
+    h1,h2,h3,.font-heading { font-family: 'Sora', sans-serif; }
+
+    /* Smooth transitions */
+    .view { display: none; }
+    .view.active { display: block; }
+
+    /* Bottom nav active */
+    .nav-btn { transition: all 0.2s ease; }
+    .nav-btn.active .nav-icon { color: #c0392b; transform: translateY(-2px); }
+    .nav-btn.active .nav-label { color: #c0392b; font-weight: 600; }
+
+    /* Card shimmer on tap */
+    .tap-card { transition: transform 0.15s ease, box-shadow 0.15s ease; }
+    .tap-card:active { transform: scale(0.98); box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+
+    /* Toast */
+    #toast { transition: all 0.3s ease; transform: translateY(100px); opacity: 0; }
+    #toast.show { transform: translateY(0); opacity: 1; }
+
+    /* Modal backdrop */
+    .modal-backdrop { backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-thumb { background: #e0d9d0; border-radius: 10px; }
+
+    /* Ledger table */
+    .ledger-row:nth-child(odd) { background: #fafaf8; }
+
+    /* Fab pulse */
+    .fab { box-shadow: 0 4px 24px rgba(192,57,43,0.4); transition: all 0.2s ease; }
+    .fab:active { transform: scale(0.93); }
+
+    /* Tab active */
+    .tab-btn.active { background: #c0392b; color: white; }
+
+    /* Input focus ring */
+    input:focus, select:focus { outline: none; box-shadow: 0 0 0 2px rgba(192,57,43,0.25); border-color: #c0392b; }
+
+    /* Header pattern */
+    .header-bg {
+      background: #c0392b;
+      position: relative;
+      overflow: hidden;
+    }
+    .header-bg::after {
+      content: '';
+      position: absolute;
+      right: -20px; top: -20px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+    }
+    .header-bg::before {
+      content: '';
+      position: absolute;
+      right: 30px; top: 10px;
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* Stat card gradient */
+    .stat-debit { background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%); }
+    .stat-credit { background: linear-gradient(135deg, #1a6b4a 0%, #27ae60 100%); }
+
+    /* Loading spinner */
+    .spinner { animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Back header */
+    .back-header {
+      background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
+    }
+
+    /* Balance chip */
+    .balance-chip { font-family: 'Sora', sans-serif; letter-spacing: -0.5px; }
+
+    /* Search input */
+    .search-wrap { position: relative; }
+    .search-wrap i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #9ca3af; pointer-events: none; }
+    .search-wrap input { padding-left: 40px; }
+
+    .empty-state { text-align: center; padding: 48px 24px; color: #9ca3af; }
+
+    @media (min-width: 480px) {
+      .app-container { max-width: 420px; margin: 0 auto; }
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+
+<!-- ───────────── APP ───────────── -->
+<div class="app-container relative min-h-screen flex flex-col" id="app" style="display:none!important">
+
+  <!-- TOP HEADER -->
+  <header class="header-bg text-white px-4 py-3 flex items-center justify-between z-30 sticky top-0" style="min-height:56px">
+    <!-- Back button (shown in sub-views) -->
+    <button id="backBtn" class="hidden mr-2 w-8 h-8 flex items-center justify-center rounded-full bg-white/20 active:bg-white/30" onclick="goBack()">
+      <i class="fa fa-arrow-left text-sm"></i>
+    </button>
+    <div class="flex items-center gap-2 flex-1 min-w-0">
+      <span id="headerLogo" class="text-xl font-heading font-bold tracking-tight">🌶 Khuram Foods</span>
+      <span id="headerTitle" class="text-base font-semibold truncate hidden"></span>
+    </div>
+    <button id="logoutBtn" onclick="logout()" class="flex items-center gap-1.5 text-sm bg-white/20 px-3 py-1.5 rounded-full font-medium active:bg-white/30">
+      <i class="fa fa-sign-out-alt text-xs"></i> Logout
+    </button>
+  </header>
+
+  <!-- MAIN CONTENT AREA -->
+  <main class="flex-1 overflow-y-auto pb-24" id="mainContent">
+
+    <!-- ── DASHBOARD VIEW ── -->
+    <div class="view active" id="view-dashboard">
+      <div class="px-4 pt-4 pb-2">
+        <p class="text-xs text-gray-500 font-medium uppercase tracking-wider mb-1">Daily Summary</p>
+        <div class="flex items-center gap-2 mb-4">
+          <div class="search-wrap flex-1">
+            <i class="fa fa-calendar text-xs"></i>
+            <input type="date" id="dashDate" class="w-full border border-gray-200 rounded-xl bg-white text-sm py-2.5 px-4 pl-9 font-medium text-gray-700"
+              onchange="loadDashboard()" />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3 mb-5">
+          <div class="stat-debit text-white rounded-2xl p-4 tap-card">
+            <p class="text-xs font-medium opacity-80 mb-1 uppercase tracking-wide">Sent / Sold</p>
+            <p class="text-2xl font-heading font-bold" id="dashDebit">...</p>
+            <p class="text-xs opacity-70 mt-1">Total Debit</p>
+          </div>
+          <div class="stat-credit text-white rounded-2xl p-4 tap-card">
+            <p class="text-xs font-medium opacity-80 mb-1 uppercase tracking-wide">Received</p>
+            <p class="text-2xl font-heading font-bold" id="dashCredit">...</p>
+            <p class="text-xs opacity-70 mt-1">Total Credit</p>
+          </div>
+        </div>
+
+        <!-- Recent transactions today -->
+        <p class="text-xs text-gray-500 font-medium uppercase tracking-wider mb-2">Today's Transactions</p>
+        <div id="dashTxList" class="space-y-2">
+          <div class="empty-state"><i class="fa fa-circle-notch spinner text-gray-300 text-2xl"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PAYABLES VIEW ── -->
+    <div class="view" id="view-payables">
+      <div class="px-4 pt-4">
+        <div class="search-wrap mb-4">
+          <i class="fa fa-search text-xs"></i>
+          <input type="text" placeholder="Search clients..." id="searchPayable"
+            class="w-full border border-gray-200 rounded-xl bg-white text-sm py-2.5 px-4 pl-9"
+            oninput="filterClients('payable')" />
+        </div>
+        <div id="listPayable" class="space-y-2">
+          <div class="empty-state"><i class="fa fa-circle-notch spinner text-gray-300 text-2xl"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── RECEIVABLES VIEW ── -->
+    <div class="view" id="view-receivables">
+      <div class="px-4 pt-4">
+        <div class="search-wrap mb-4">
+          <i class="fa fa-search text-xs"></i>
+          <input type="text" placeholder="Search clients..." id="searchReceivable"
+            class="w-full border border-gray-200 rounded-xl bg-white text-sm py-2.5 px-4 pl-9"
+            oninput="filterClients('receivable')" />
+        </div>
+        <div id="listReceivable" class="space-y-2">
+          <div class="empty-state"><i class="fa fa-circle-notch spinner text-gray-300 text-2xl"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── LEDGER VIEW ── -->
+    <div class="view" id="view-ledger">
+      <div class="px-4 pt-4">
+        <!-- Client Summary Card -->
+        <div id="ledgerClientCard" class="bg-white rounded-2xl p-4 mb-4 shadow-sm border border-gray-100">
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-xl bg-red-50 flex items-center justify-center">
+              <i class="fa fa-user text-red-500"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-heading font-bold text-gray-800 truncate" id="ledgerClientName">-</p>
+              <p class="text-xs text-gray-500" id="ledgerClientPhone">-</p>
+            </div>
+            <div class="text-right">
+              <p class="text-xs text-gray-400 mb-0.5">Balance</p>
+              <p class="font-heading font-bold text-lg balance-chip" id="ledgerBalance">-</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Transactions list -->
+        <p class="text-xs text-gray-500 font-medium uppercase tracking-wider mb-2">Transactions</p>
+        <div id="ledgerTxList" class="space-y-2 pb-4">
+          <div class="empty-state"><i class="fa fa-circle-notch spinner text-gray-300 text-2xl"></i></div>
+        </div>
+      </div>
+
+      <!-- FAB: Add Transaction -->
+      <button onclick="openAddTxModal()" class="fab fixed bottom-24 right-4 w-14 h-14 bg-red-600 text-white rounded-2xl flex items-center justify-center z-40">
+        <i class="fa fa-plus text-xl"></i>
+      </button>
+    </div>
+
+    <!-- ── ADMIN VIEW ── -->
+    <div class="view" id="view-admin">
+      <div class="px-4 pt-4">
+        <!-- Tabs -->
+        <div class="flex gap-2 mb-4 bg-gray-100 p-1 rounded-xl">
+          <button class="tab-btn flex-1 text-sm py-2 rounded-lg font-medium transition-all active" data-tab="clients" onclick="switchAdminTab('clients')">
+            <i class="fa fa-users mr-1"></i> Clients
+          </button>
+          <button class="tab-btn flex-1 text-sm py-2 rounded-lg font-medium transition-all" data-tab="rates" onclick="switchAdminTab('rates')">
+            <i class="fa fa-tags mr-1"></i> Rates
+          </button>
+        </div>
+
+        <!-- Clients Tab -->
+        <div id="admin-clients" class="admin-tab">
+          <button onclick="openAddClientModal()" class="w-full mb-3 py-2.5 bg-red-600 text-white rounded-xl font-semibold text-sm flex items-center justify-center gap-2 active:bg-red-700">
+            <i class="fa fa-plus"></i> Add New Client
+          </button>
+          <div id="adminClientList" class="space-y-2">
+            <div class="empty-state"><i class="fa fa-circle-notch spinner text-gray-300 text-2xl"></i></div>
+          </div>
+        </div>
+
+        <!-- Rates Tab -->
+        <div id="admin-rates" class="admin-tab hidden">
+          <button onclick="openAddRateModal()" class="w-full mb-3 py-2.5 bg-red-600 text-white rounded-xl font-semibold text-sm flex items-center justify-center gap-2 active:bg-red-700">
+            <i class="fa fa-plus"></i> Add New Rate
+          </button>
+          <div id="adminRateList" class="space-y-2">
+            <div class="empty-state"><i class="fa fa-circle-notch spinner text-gray-300 text-2xl"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- BOTTOM NAV -->
+  <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 z-30 shadow-[0_-4px_24px_rgba(0,0,0,0.06)]">
+    <div class="app-container flex">
+      <button class="nav-btn active flex-1 flex flex-col items-center py-3 gap-0.5" data-view="dashboard" onclick="switchView('dashboard')">
+        <i class="nav-icon fa fa-chart-bar text-gray-400 text-lg transition-all"></i>
+        <span class="nav-label text-xs text-gray-400">Dashboard</span>
+      </button>
+      <button class="nav-btn flex-1 flex flex-col items-center py-3 gap-0.5" data-view="payables" onclick="switchView('payables')">
+        <i class="nav-icon fa fa-money-bill-wave text-gray-400 text-lg transition-all"></i>
+        <span class="nav-label text-xs text-gray-400">Payables</span>
+      </button>
+      <button class="nav-btn flex-1 flex flex-col items-center py-3 gap-0.5" data-view="receivables" onclick="switchView('receivables')">
+        <i class="nav-icon fa fa-receipt text-gray-400 text-lg transition-all"></i>
+        <span class="nav-label text-xs text-gray-400">Receivables</span>
+      </button>
+      <button class="nav-btn flex-1 flex flex-col items-center py-3 gap-0.5" data-view="admin" onclick="switchView('admin')">
+        <i class="nav-icon fa fa-cog text-gray-400 text-lg transition-all"></i>
+        <span class="nav-label text-xs text-gray-400">Admin</span>
+      </button>
+    </div>
+  </nav>
+</div>
+
+<!-- ───────────── LOGIN SCREEN ───────────── -->
+<div id="loginScreen" class="min-h-screen flex flex-col items-center justify-center px-6 bg-gradient-to-br from-red-700 via-red-600 to-rose-500">
+  <div class="w-full max-w-sm">
+    <!-- Logo -->
+    <div class="text-center mb-8">
+      <div class="w-20 h-20 bg-white/20 rounded-3xl flex items-center justify-center mx-auto mb-4 text-4xl shadow-lg">
+        🌶
+      </div>
+      <h1 class="text-3xl font-heading font-bold text-white">Khuram Foods</h1>
+      <p class="text-red-200 text-sm mt-1 font-medium">Business Management Portal</p>
+    </div>
+
+    <!-- Login Card -->
+    <div class="bg-white rounded-3xl p-6 shadow-2xl">
+      <h2 class="font-heading font-bold text-gray-800 text-lg mb-5 text-center">Sign In</h2>
+
+      <div class="space-y-3">
+        <div>
+          <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1.5">Username</label>
+          <div class="relative">
+            <i class="fa fa-user absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+            <input type="text" id="loginUser" placeholder="Enter username"
+              class="w-full border border-gray-200 rounded-xl py-3 pl-10 pr-4 text-sm bg-gray-50 text-gray-800"
+              onkeydown="if(event.key==='Enter')doLogin()" />
+          </div>
+        </div>
+        <div>
+          <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1.5">Password</label>
+          <div class="relative">
+            <i class="fa fa-lock absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+            <input type="password" id="loginPass" placeholder="Enter password"
+              class="w-full border border-gray-200 rounded-xl py-3 pl-10 pr-4 text-sm bg-gray-50 text-gray-800"
+              onkeydown="if(event.key==='Enter')doLogin()" />
+          </div>
+        </div>
+        <div id="loginError" class="hidden text-red-500 text-xs text-center font-medium bg-red-50 rounded-lg py-2"></div>
+        <button onclick="doLogin()" id="loginBtn"
+          class="w-full bg-red-600 text-white py-3.5 rounded-xl font-heading font-semibold text-sm mt-1 active:bg-red-700 flex items-center justify-center gap-2">
+          <i class="fa fa-sign-in-alt"></i> Sign In
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ───────────── TOAST ───────────── -->
+<div id="toast" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-full text-white text-sm font-medium shadow-lg flex items-center gap-2 whitespace-nowrap"></div>
+
+<!-- ───────────── MODAL ───────────── -->
+<div id="modalBackdrop" class="modal-backdrop fixed inset-0 bg-black/40 z-50 hidden flex items-end justify-center">
+  <div id="modalBox" class="bg-white w-full max-w-sm rounded-t-3xl p-6 pb-8 shadow-2xl">
+    <div class="w-10 h-1 bg-gray-200 rounded-full mx-auto mb-5"></div>
+    <h3 class="font-heading font-bold text-lg text-gray-800 mb-4" id="modalTitle">Modal</h3>
+    <div id="modalBody"></div>
+    <div class="flex gap-3 mt-5">
+      <button onclick="closeModal()" class="flex-1 py-3 border border-gray-200 rounded-xl text-sm font-semibold text-gray-600 active:bg-gray-50">Cancel</button>
+      <button id="modalConfirmBtn" class="flex-1 py-3 bg-red-600 text-white rounded-xl text-sm font-semibold active:bg-red-700">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ───────────── CONFIRM DIALOG ───────────── -->
+<div id="confirmBackdrop" class="modal-backdrop fixed inset-0 bg-black/40 z-50 hidden flex items-center justify-center px-6">
+  <div class="bg-white w-full max-w-xs rounded-2xl p-5 shadow-2xl">
+    <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mx-auto mb-3">
+      <i class="fa fa-trash-alt text-red-500"></i>
+    </div>
+    <h3 class="font-heading font-bold text-center text-gray-800 mb-1">Delete Entry</h3>
+    <p class="text-gray-500 text-sm text-center mb-4">This action cannot be undone.</p>
+    <div class="flex gap-3">
+      <button onclick="closeConfirm()" class="flex-1 py-2.5 border border-gray-200 rounded-xl text-sm font-semibold text-gray-600">Cancel</button>
+      <button id="confirmYesBtn" class="flex-1 py-2.5 bg-red-600 text-white rounded-xl text-sm font-semibold">Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- ───────────── SCRIPT ───────────── -->
+<script>
+// ── CONFIG ──────────────────────────────────────────────────
+const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_KEY';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// ── STATE ────────────────────────────────────────────────────
+let currentView = 'dashboard';
+let currentClientId = null;
+let currentClientType = null;
+let allClients = { payable: [], receivable: [] };
+let prevView = null;
+let confirmCallback = null;
+
+// ── INIT ─────────────────────────────────────────────────────
+window.onload = () => {
+  const user = sessionStorage.getItem('kf_user');
+  if (user) showApp();
+  else showLogin();
+};
+
+// ── AUTH ─────────────────────────────────────────────────────
+async function doLogin() {
+  const u = document.getElementById('loginUser').value.trim();
+  const p = document.getElementById('loginPass').value.trim();
+  const btn = document.getElementById('loginBtn');
+  const err = document.getElementById('loginError');
+
+  if (!u || !p) { showLoginErr('Please enter username and password.'); return; }
+
+  btn.innerHTML = '<i class="fa fa-circle-notch spinner"></i> Signing in...';
+  btn.disabled = true;
+
+  const { data, error } = await sb.from('khuram_users').select('*').eq('username', u).eq('password', p).single();
+
+  btn.innerHTML = '<i class="fa fa-sign-in-alt"></i> Sign In';
+  btn.disabled = false;
+
+  if (error || !data) { showLoginErr('Invalid username or password.'); return; }
+
+  sessionStorage.setItem('kf_user', JSON.stringify(data));
+  showApp();
+}
+
+function showLoginErr(msg) {
+  const err = document.getElementById('loginError');
+  err.textContent = msg;
+  err.classList.remove('hidden');
+}
+
+function logout() {
+  sessionStorage.removeItem('kf_user');
+  showLogin();
+}
+
+function showLogin() {
+  document.getElementById('loginScreen').style.display = 'flex';
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('loginError').classList.add('hidden');
+  document.getElementById('loginUser').value = '';
+  document.getElementById('loginPass').value = '';
+}
+
+function showApp() {
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('app').style.removeProperty('display');
+  initApp();
+}
+
+async function initApp() {
+  // Set default date
+  document.getElementById('dashDate').value = today();
+  await loadAllClients();
+  loadDashboard();
+}
+
+// ── NAVIGATION ───────────────────────────────────────────────
+function switchView(view, skipHistory = false) {
+  if (view !== 'ledger') prevView = currentView !== 'ledger' ? currentView : prevView;
+
+  // Deactivate all views & nav buttons
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+
+  // Activate target view
+  document.getElementById(`view-${view}`).classList.add('active');
+  currentView = view;
+
+  // Nav button highlight (not for ledger)
+  if (view !== 'ledger') {
+    const btn = document.querySelector(`.nav-btn[data-view="${view}"]`);
+    if (btn) btn.classList.add('active');
+  }
+
+  // Header adjustments
+  const isLedger = view === 'ledger';
+  document.getElementById('backBtn').classList.toggle('hidden', !isLedger);
+  document.getElementById('headerLogo').classList.toggle('hidden', isLedger);
+  document.getElementById('headerTitle').classList.toggle('hidden', !isLedger);
+
+  // Scroll to top
+  document.getElementById('mainContent').scrollTop = 0;
+
+  // Load data per view
+  if (view === 'dashboard') loadDashboard();
+  if (view === 'payables') renderClientList('payable');
+  if (view === 'receivables') renderClientList('receivable');
+  if (view === 'admin') { loadAdminClients(); loadAdminRates(); }
+}
+
+function goBack() {
+  switchView(prevView || 'dashboard');
+}
+
+// ── DATE HELPER ──────────────────────────────────────────────
+function today() {
+  return new Date().toISOString().split('T')[0];
+}
+
+function fmtDate(d) {
+  if (!d) return '-';
+  const dt = new Date(d);
+  return dt.toLocaleDateString('en-PK', { day: '2-digit', month: 'short', year: '2-digit' });
+}
+
+function fmtPKR(n) {
+  if (n === null || n === undefined) return '–';
+  return 'Rs ' + Number(n).toLocaleString('en-PK', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+}
+
+// ── DASHBOARD ────────────────────────────────────────────────
+async function loadDashboard() {
+  const d = document.getElementById('dashDate').value || today();
+  document.getElementById('dashDebit').innerHTML = '<i class="fa fa-circle-notch spinner text-white/70 text-base"></i>';
+  document.getElementById('dashCredit').innerHTML = '<i class="fa fa-circle-notch spinner text-white/70 text-base"></i>';
+  document.getElementById('dashTxList').innerHTML = '<div class="empty-state"><i class="fa fa-circle-notch spinner text-gray-300 text-2xl"></i></div>';
+
+  const { data, error } = await sb.from('khuram_ledgers').select('*, khuram_clients(name)').eq('date', d).order('id', { ascending: false });
+
+  if (error) { toast('Error loading dashboard', 'error'); return; }
+
+  const totalDebit = data.reduce((s, r) => s + (r.debit || 0), 0);
+  const totalCredit = data.reduce((s, r) => s + (r.credit || 0), 0);
+
+  document.getElementById('dashDebit').textContent = fmtPKR(totalDebit);
+  document.getElementById('dashCredit').textContent = fmtPKR(totalCredit);
+
+  const container = document.getElementById('dashTxList');
+  if (!data.length) {
+    container.innerHTML = `<div class="empty-state">
+      <i class="fa fa-inbox text-gray-200 text-4xl mb-2 block"></i>
+      <p class="text-gray-400 text-sm">No transactions on this date</p>
+    </div>`;
+    return;
+  }
+
+  container.innerHTML = data.map(r => `
+    <div class="bg-white rounded-xl p-3 flex items-center gap-3 shadow-sm border border-gray-100 tap-card">
+      <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${r.debit ? 'bg-red-50' : 'bg-green-50'}">
+        <i class="fa ${r.debit ? 'fa-arrow-up text-red-500' : 'fa-arrow-down text-green-500'} text-sm"></i>
+      </div>
+      <div class="flex-1 min-w-0">
+        <p class="font-semibold text-gray-800 text-sm truncate">${r.khuram_clients?.name || 'Unknown'}</p>
+        <p class="text-xs text-gray-400 truncate">${r.particulars || r.type || '-'}</p>
+      </div>
+      <div class="text-right">
+        <p class="font-heading font-bold text-sm ${r.debit ? 'text-red-600' : 'text-green-600'}">${fmtPKR(r.debit || r.credit)}</p>
+        <p class="text-xs text-gray-400">${r.v_no ? 'V#'+r.v_no : ''}</p>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ── CLIENTS ──────────────────────────────────────────────────
+async function loadAllClients() {
+  const { data } = await sb.from('khuram_clients').select('*').order('name');
+  if (!data) return;
+  allClients.payable = data.filter(c => c.type === 'payable');
+  allClients.receivable = data.filter(c => c.type === 'receivable');
+}
+
+function renderClientList(type) {
+  const query = document.getElementById(type === 'payable' ? 'searchPayable' : 'searchReceivable').value.toLowerCase();
+  const filtered = allClients[type].filter(c => c.name.toLowerCase().includes(query));
+  const container = document.getElementById(type === 'payable' ? 'listPayable' : 'listReceivable');
+
+  if (!filtered.length) {
+    container.innerHTML = `<div class="empty-state">
+      <i class="fa fa-user-slash text-gray-200 text-4xl mb-2 block"></i>
+      <p class="text-gray-400 text-sm">No clients found</p>
+    </div>`;
+    return;
+  }
+
+  container.innerHTML = filtered.map(c => `
+    <div class="bg-white rounded-2xl p-4 flex items-center gap-3 shadow-sm border border-gray-100 tap-card cursor-pointer"
+      onclick="openLedger(${c.id}, '${escHtml(c.name)}', '${escHtml(c.phone || '')}', '${type}')">
+      <div class="w-11 h-11 rounded-xl ${type === 'payable' ? 'bg-red-50' : 'bg-blue-50'} flex items-center justify-center flex-shrink-0">
+        <i class="fa fa-user ${type === 'payable' ? 'text-red-400' : 'text-blue-400'}"></i>
+      </div>
+      <div class="flex-1 min-w-0">
+        <p class="font-semibold text-gray-800 truncate">${c.name}</p>
+        <p class="text-xs text-gray-400">${c.phone || 'No phone'}</p>
+      </div>
+      <i class="fa fa-chevron-right text-gray-300 text-sm"></i>
+    </div>
+  `).join('');
+}
+
+function filterClients(type) {
+  renderClientList(type);
+}
+
+// ── LEDGER ───────────────────────────────────────────────────
+async function openLedger(clientId, clientName, clientPhone, type) {
+  currentClientId = clientId;
+  currentClientType = type;
+  document.getElementById('ledgerClientName').textContent = clientName;
+  document.getElementById('ledgerClientPhone').textContent = clientPhone || 'No phone';
+  document.getElementById('headerTitle').textContent = clientName;
+  document.getElementById('ledgerBalance').textContent = '...';
+  document.getElementById('ledgerTxList').innerHTML = '<div class="empty-state"><i class="fa fa-circle-notch spinner text-gray-300 text-2xl"></i></div>';
+  switchView('ledger');
+  await loadLedger();
+}
+
+async function loadLedger() {
+  const { data, error } = await sb.from('khuram_ledgers').select('*').eq('client_id', currentClientId).order('date').order('id');
+
+  if (error) { toast('Error loading ledger', 'error'); return; }
+
+  // Recalculate running balance
+  let running = 0;
+  const rows = data.map(r => {
+    running += (r.debit || 0) - (r.credit || 0);
+    return { ...r, running };
+  });
+
+  // Show latest balance
+  const lastBalance = rows.length ? rows[rows.length - 1].running : 0;
+  const balEl = document.getElementById('ledgerBalance');
+  balEl.textContent = fmtPKR(Math.abs(lastBalance));
+  balEl.className = `font-heading font-bold text-lg balance-chip ${lastBalance > 0 ? 'text-red-600' : lastBalance < 0 ? 'text-green-600' : 'text-gray-600'}`;
+
+  const container = document.getElementById('ledgerTxList');
+  if (!rows.length) {
+    container.innerHTML = `<div class="empty-state">
+      <i class="fa fa-file-invoice text-gray-200 text-4xl mb-2 block"></i>
+      <p class="text-gray-400 text-sm">No transactions yet</p>
+    </div>`;
+    return;
+  }
+
+  container.innerHTML = rows.reverse().map(r => `
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+      <div class="flex items-center gap-3 p-3">
+        <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${r.debit ? 'bg-red-50' : 'bg-green-50'}">
+          <i class="fa ${r.debit ? 'fa-arrow-up text-red-500' : 'fa-arrow-down text-green-500'} text-xs"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2">
+            <p class="text-xs font-semibold text-gray-500">${fmtDate(r.date)}</p>
+            ${r.v_no ? `<span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded-md">V#${r.v_no}</span>` : ''}
+          </div>
+          <p class="text-sm font-medium text-gray-800 truncate">${r.particulars || r.type || '-'}</p>
+        </div>
+        <div class="text-right flex-shrink-0">
+          ${r.debit ? `<p class="text-sm font-bold text-red-600">${fmtPKR(r.debit)}</p>` : ''}
+          ${r.credit ? `<p class="text-sm font-bold text-green-600">${fmtPKR(r.credit)}</p>` : ''}
+          <p class="text-xs text-gray-400">${fmtPKR(Math.abs(r.running))}</p>
+        </div>
+      </div>
+      <div class="flex border-t border-gray-50">
+        <button onclick="openEditTxModal(${r.id})" class="flex-1 py-2 text-xs text-blue-500 font-semibold flex items-center justify-center gap-1 active:bg-blue-50">
+          <i class="fa fa-pen"></i> Edit
+        </button>
+        <div class="w-px bg-gray-50"></div>
+        <button onclick="deleteTx(${r.id})" class="flex-1 py-2 text-xs text-red-500 font-semibold flex items-center justify-center gap-1 active:bg-red-50">
+          <i class="fa fa-trash"></i> Delete
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ── ADD TX MODAL ──────────────────────────────────────────────
+function openAddTxModal() {
+  showModal('Add Transaction', `
+    <div class="space-y-3">
+      <div>
+        <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Date</label>
+        <input type="date" id="mDate" value="${today()}" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" />
+      </div>
+      <div>
+        <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Type</label>
+        <select id="mType" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50">
+          <option value="debit">Debit (Sent/Sold)</option>
+          <option value="credit">Credit (Received)</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Particulars</label>
+        <input type="text" id="mParticulars" placeholder="e.g. Chips supply" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" />
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Amount (Rs)</label>
+          <input type="number" id="mAmount" placeholder="0" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" />
+        </div>
+        <div>
+          <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">V. No.</label>
+          <input type="text" id="mVno" placeholder="Optional" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" />
+        </div>
+      </div>
+    </div>
+  `, async () => {
+    const date = document.getElementById('mDate').value;
+    const type = document.getElementById('mType').value;
+    const particulars = document.getElementById('mParticulars').value.trim();
+    const amount = parseFloat(document.getElementById('mAmount').value);
+    const v_no = document.getElementById('mVno').value.trim();
+
+    if (!date || isNaN(amount) || amount <= 0) { toast('Please fill required fields', 'error'); return; }
+
+    const entry = {
+      client_id: currentClientId,
+      date,
+      type,
+      particulars,
+      v_no: v_no || null,
+      debit: type === 'debit' ? amount : 0,
+      credit: type === 'credit' ? amount : 0,
+      balance: 0
+    };
+
+    const { error } = await sb.from('khuram_ledgers').insert(entry);
+    if (error) { toast('Failed to add transaction', 'error'); return; }
+
+    closeModal();
+    toast('Transaction added!', 'success');
+    loadLedger();
+  });
+}
+
+// ── EDIT TX MODAL ─────────────────────────────────────────────
+async function openEditTxModal(txId) {
+  const { data, error } = await sb.from('khuram_ledgers').select('*').eq('id', txId).single();
+  if (error || !data) { toast('Could not load transaction', 'error'); return; }
+
+  showModal('Edit Transaction', `
+    <div class="space-y-3">
+      <div>
+        <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Date</label>
+        <input type="date" id="mDate" value="${data.date || today()}" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" />
+      </div>
+      <div>
+        <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Type</label>
+        <select id="mType" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50">
+          <option value="debit" ${(data.debit > 0) ? 'selected' : ''}>Debit (Sent/Sold)</option>
+          <option value="credit" ${(data.credit > 0) ? 'selected' : ''}>Credit (Received)</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Particulars</label>
+        <input type="text" id="mParticulars" value="${escHtml(data.particulars || '')}" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" />
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Amount (Rs)</label>
+          <input type="number" id="mAmount" value="${data.debit || data.credit || 0}" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" />
+        </div>
+        <div>
+          <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">V. No.</label>
+          <input type="text" id="mVno" value="${escHtml(data.v_no || '')}" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" />
+        </div>
+      </div>
+    </div>
+  `, async () => {
+    const date = document.getElementById('mDate').value;
+    const type = document.getElementById('mType').value;
+    const particulars = document.getElementById('mParticulars').value.trim();
+    const amount = parseFloat(document.getElementById('mAmount').value);
+    const v_no = document.getElementById('mVno').value.trim();
+
+    if (!date || isNaN(amount) || amount <= 0) { toast('Please fill required fields', 'error'); return; }
+
+    const { error } = await sb.from('khuram_ledgers').update({
+      date, type, particulars,
+      v_no: v_no || null,
+      debit: type === 'debit' ? amount : 0,
+      credit: type === 'credit' ? amount : 0,
+    }).eq('id', txId);
+
+    if (error) { toast('Failed to update', 'error'); return; }
+    closeModal();
+    toast('Transaction updated!', 'success');
+    loadLedger();
+  });
+}
+
+async function deleteTx(txId) {
+  showConfirm(async () => {
+    const { error } = await sb.from('khuram_ledgers').delete().eq('id', txId);
+    if (error) { toast('Delete failed', 'error'); return; }
+    toast('Deleted!', 'success');
+    loadLedger();
+  });
+}
+
+// ── ADMIN ─────────────────────────────────────────────────────
+function switchAdminTab(tab) {
+  document.querySelectorAll('.admin-tab').forEach(t => t.classList.add('hidden'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(`admin-${tab}`).classList.remove('hidden');
+  document.querySelector(`.tab-btn[data-tab="${tab}"]`).classList.add('active');
+}
+
+// ── ADMIN CLIENTS ────────────────────────────────────────────
+async function loadAdminClients() {
+  const { data, error } = await sb.from('khuram_clients').select('*').order('name');
+  if (error) return;
+  allClients.payable = data.filter(c => c.type === 'payable');
+  allClients.receivable = data.filter(c => c.type === 'receivable');
+  renderAdminClients(data);
+}
+
+function renderAdminClients(data) {
+  const container = document.getElementById('adminClientList');
+  if (!data.length) {
+    container.innerHTML = `<div class="empty-state"><p class="text-gray-400 text-sm">No clients yet</p></div>`;
+    return;
+  }
+  container.innerHTML = data.map(c => `
+    <div class="bg-white rounded-xl p-3 flex items-center gap-3 shadow-sm border border-gray-100">
+      <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 ${c.type === 'payable' ? 'bg-red-50' : 'bg-blue-50'}">
+        <i class="fa fa-user ${c.type === 'payable' ? 'text-red-400' : 'text-blue-400'} text-sm"></i>
+      </div>
+      <div class="flex-1 min-w-0">
+        <p class="font-semibold text-gray-800 text-sm truncate">${c.name}</p>
+        <div class="flex items-center gap-2 mt-0.5">
+          <span class="text-xs px-2 py-0.5 rounded-full font-medium ${c.type === 'payable' ? 'bg-red-50 text-red-600' : 'bg-blue-50 text-blue-600'}">${c.type}</span>
+          <span class="text-xs text-gray-400">${c.phone || ''}</span>
+        </div>
+      </div>
+      <div class="flex gap-1.5">
+        <button onclick="openEditClientModal(${c.id})" class="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center active:bg-blue-100">
+          <i class="fa fa-pen text-blue-500 text-xs"></i>
+        </button>
+        <button onclick="deleteClient(${c.id})" class="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center active:bg-red-100">
+          <i class="fa fa-trash text-red-500 text-xs"></i>
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function clientModalBody(c = {}) {
+  return `
+    <div class="space-y-3">
+      <div>
+        <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Client Name</label>
+        <input type="text" id="mClientName" value="${escHtml(c.name || '')}" placeholder="e.g. Ali Traders" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" />
+      </div>
+      <div>
+        <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Type</label>
+        <select id="mClientType" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50">
+          <option value="payable" ${c.type === 'payable' ? 'selected' : ''}>Payable</option>
+          <option value="receivable" ${c.type === 'receivable' ? 'selected' : ''}>Receivable</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Phone (Optional)</label>
+        <input type="tel" id="mClientPhone" value="${escHtml(c.phone || '')}" placeholder="03XX XXXXXXX" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" />
+      </div>
+    </div>
+  `;
+}
+
+function openAddClientModal() {
+  showModal('Add Client', clientModalBody(), async () => {
+    const name = document.getElementById('mClientName').value.trim();
+    const type = document.getElementById('mClientType').value;
+    const phone = document.getElementById('mClientPhone').value.trim();
+    if (!name) { toast('Name is required', 'error'); return; }
+    const { error } = await sb.from('khuram_clients').insert({ name, type, phone: phone || null });
+    if (error) { toast('Failed to add client', 'error'); return; }
+    closeModal();
+    toast('Client added!', 'success');
+    loadAdminClients();
+  });
+}
+
+async function openEditClientModal(clientId) {
+  const { data } = await sb.from('khuram_clients').select('*').eq('id', clientId).single();
+  if (!data) return;
+  showModal('Edit Client', clientModalBody(data), async () => {
+    const name = document.getElementById('mClientName').value.trim();
+    const type = document.getElementById('mClientType').value;
+    const phone = document.getElementById('mClientPhone').value.trim();
+    if (!name) { toast('Name is required', 'error'); return; }
+    const { error } = await sb.from('khuram_clients').update({ name, type, phone: phone || null }).eq('id', clientId);
+    if (error) { toast('Failed to update', 'error'); return; }
+    closeModal();
+    toast('Client updated!', 'success');
+    loadAdminClients();
+  });
+}
+
+async function deleteClient(clientId) {
+  showConfirm(async () => {
+    const { error } = await sb.from('khuram_clients').delete().eq('id', clientId);
+    if (error) { toast('Delete failed', 'error'); return; }
+    toast('Client deleted!', 'success');
+    loadAdminClients();
+  });
+}
+
+// ── ADMIN RATES ───────────────────────────────────────────────
+async function loadAdminRates() {
+  const { data } = await sb.from('khuram_rates').select('*').order('product_name');
+  if (!data) return;
+  renderAdminRates(data);
+}
+
+function renderAdminRates(data) {
+  const container = document.getElementById('adminRateList');
+  if (!data.length) {
+    container.innerHTML = `<div class="empty-state"><p class="text-gray-400 text-sm">No rates yet</p></div>`;
+    return;
+  }
+  container.innerHTML = data.map(r => `
+    <div class="bg-white rounded-xl p-3 flex items-center gap-3 shadow-sm border border-gray-100">
+      <div class="w-9 h-9 rounded-lg bg-orange-50 flex items-center justify-center flex-shrink-0">
+        <i class="fa fa-box text-orange-400 text-sm"></i>
+      </div>
+      <div class="flex-1 min-w-0">
+        <p class="font-semibold text-gray-800 text-sm truncate">${r.product_name}</p>
+        <p class="text-xs text-gray-500 font-medium">${fmtPKR(r.rate_per_bundle)} / bundle</p>
+      </div>
+      <div class="flex gap-1.5">
+        <button onclick="openEditRateModal(${r.id})" class="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center active:bg-blue-100">
+          <i class="fa fa-pen text-blue-500 text-xs"></i>
+        </button>
+        <button onclick="deleteRate(${r.id})" class="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center active:bg-red-100">
+          <i class="fa fa-trash text-red-500 text-xs"></i>
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function rateModalBody(r = {}) {
+  return `
+    <div class="space-y-3">
+      <div>
+        <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Product Name</label>
+        <input type="text" id="mProductName" value="${escHtml(r.product_name || '')}" placeholder="e.g. Nimko Bundle" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" />
+      </div>
+      <div>
+        <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Rate per Bundle (Rs)</label>
+        <input type="number" id="mRate" value="${r.rate_per_bundle || ''}" placeholder="0" class="w-full border border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50" />
+      </div>
+    </div>
+  `;
+}
+
+function openAddRateModal() {
+  showModal('Add Rate', rateModalBody(), async () => {
+    const product_name = document.getElementById('mProductName').value.trim();
+    const rate_per_bundle = parseFloat(document.getElementById('mRate').value);
+    if (!product_name || isNaN(rate_per_bundle)) { toast('Fill all fields', 'error'); return; }
+    const { error } = await sb.from('khuram_rates').insert({ product_name, rate_per_bundle });
+    if (error) { toast('Failed to add rate', 'error'); return; }
+    closeModal();
+    toast('Rate added!', 'success');
+    loadAdminRates();
+  });
+}
+
+async function openEditRateModal(rateId) {
+  const { data } = await sb.from('khuram_rates').select('*').eq('id', rateId).single();
+  if (!data) return;
+  showModal('Edit Rate', rateModalBody(data), async () => {
+    const product_name = document.getElementById('mProductName').value.trim();
+    const rate_per_bundle = parseFloat(document.getElementById('mRate').value);
+    if (!product_name || isNaN(rate_per_bundle)) { toast('Fill all fields', 'error'); return; }
+    const { error } = await sb.from('khuram_rates').update({ product_name, rate_per_bundle }).eq('id', rateId);
+    if (error) { toast('Failed to update', 'error'); return; }
+    closeModal();
+    toast('Rate updated!', 'success');
+    loadAdminRates();
+  });
+}
+
+async function deleteRate(rateId) {
+  showConfirm(async () => {
+    const { error } = await sb.from('khuram_rates').delete().eq('id', rateId);
+    if (error) { toast('Delete failed', 'error'); return; }
+    toast('Rate deleted!', 'success');
+    loadAdminRates();
+  });
+}
+
+// ── MODAL HELPERS ────────────────────────────────────────────
+function showModal(title, body, onConfirm) {
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalBody').innerHTML = body;
+  document.getElementById('modalConfirmBtn').onclick = onConfirm;
+  document.getElementById('modalBackdrop').classList.remove('hidden');
+  document.getElementById('modalBackdrop').classList.add('flex');
+  // Focus first input
+  setTimeout(() => {
+    const inp = document.querySelector('#modalBody input, #modalBody select');
+    if (inp) inp.focus();
+  }, 100);
+}
+
+function closeModal() {
+  document.getElementById('modalBackdrop').classList.add('hidden');
+  document.getElementById('modalBackdrop').classList.remove('flex');
+}
+
+// Click outside to close
+document.getElementById('modalBackdrop').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+// ── CONFIRM HELPERS ──────────────────────────────────────────
+function showConfirm(cb) {
+  confirmCallback = cb;
+  document.getElementById('confirmBackdrop').classList.remove('hidden');
+  document.getElementById('confirmBackdrop').classList.add('flex');
+  document.getElementById('confirmYesBtn').onclick = async () => {
+    closeConfirm();
+    if (confirmCallback) await confirmCallback();
+    confirmCallback = null;
+  };
+}
+
+function closeConfirm() {
+  document.getElementById('confirmBackdrop').classList.add('hidden');
+  document.getElementById('confirmBackdrop').classList.remove('flex');
+}
+
+document.getElementById('confirmBackdrop').addEventListener('click', function(e) {
+  if (e.target === this) closeConfirm();
+});
+
+// ── TOAST ────────────────────────────────────────────────────
+let toastTimer;
+function toast(msg, type = 'success') {
+  const el = document.getElementById('toast');
+  el.className = `fixed bottom-24 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-full text-white text-sm font-medium shadow-lg flex items-center gap-2 whitespace-nowrap ${type === 'success' ? 'bg-gray-800' : 'bg-red-600'}`;
+  el.innerHTML = `<i class="fa ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i> ${msg}`;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 2500);
+}
+
+// ── UTILS ────────────────────────────────────────────────────
+function escHtml(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+}
+</script>
+</body>
+</html>
