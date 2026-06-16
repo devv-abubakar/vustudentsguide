@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Khuram Foods - Cash Flow</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
@@ -13,101 +13,78 @@
     body { font-family: 'DM Sans', sans-serif; background: #f3f4f6; overscroll-behavior: none; }
     h1,h2,h3,.font-heading { font-family: 'Sora', sans-serif; }
 
-    /* Toast */
+    /* Toast & Modals */
     #toast { transition: all 0.3s ease; transform: translateY(100px); opacity: 0; }
     #toast.show { transform: translateY(0); opacity: 1; }
-
-    /* Modal */
     .modal-backdrop { backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); }
     
-    /* Scrollbar */
+    /* Custom Scrollbar */
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
 
-    /* Floating Action Button */
-    .fab { box-shadow: 0 8px 30px rgba(0,0,0,0.2); transition: transform 0.2s ease; }
+    /* Floating Button */
+    .fab { box-shadow: 0 8px 30px rgba(0,0,0,0.25); transition: transform 0.2s ease; }
     .fab:active { transform: scale(0.92); }
 
-    /* Focus */
-    input:focus, textarea:focus { outline: none; box-shadow: 0 0 0 3px rgba(0,0,0,0.05); border-color: #94a3b8; }
+    /* Form Focus */
+    input:focus, textarea:focus { outline: none; box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15); border-color: #10b981; }
 
-    /* Header Background */
-    .header-bg {
-      background: linear-gradient(135deg, #1f2937 0%, #0f172a 100%);
-      position: relative;
-      overflow: hidden;
-    }
+    /* Dynamic Card Backgrounds */
+    .stat-card-receive { background: linear-gradient(135deg, #10b981 0%, #059669 100%); position: relative; overflow: hidden; }
+    .stat-card-receive::after { content: '\f0d6'; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; right: -15px; bottom: -20px; font-size: 100px; color: rgba(255,255,255,0.1); transform: rotate(-15deg); }
     
-    /* Card Layouts */
-    .stat-card-receive {
-      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-      position: relative; overflow: hidden;
-    }
-    .stat-card-receive::after {
-      content: '\f0d6'; font-family: "Font Awesome 6 Free"; font-weight: 900;
-      position: absolute; right: -15px; bottom: -20px; font-size: 100px;
-      color: rgba(255,255,255,0.1); transform: rotate(-15deg);
-    }
-
-    .stat-card-sent {
-      background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
-      position: relative; overflow: hidden;
-    }
-    .stat-card-sent::after {
-      content: '\f53a'; font-family: "Font Awesome 6 Free"; font-weight: 900;
-      position: absolute; right: -15px; bottom: -20px; font-size: 100px;
-      color: rgba(255,255,255,0.1); transform: rotate(-15deg);
-    }
+    .stat-card-sent { background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%); position: relative; overflow: hidden; }
+    .stat-card-sent::after { content: '\f53a'; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; right: -15px; bottom: -20px; font-size: 100px; color: rgba(255,255,255,0.1); transform: rotate(-15deg); }
 
     /* Spinner */
     .spinner { animation: spin 0.8s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* Mobile wrapper constraints */
+    /* Mobile Container Wrapper */
     @media (min-width: 480px) {
       .app-container { max-width: 420px; margin: 0 auto; background: #fff; box-shadow: 0 0 30px rgba(0,0,0,0.08); min-height: 100vh; }
       body { background: #e2e8f0; }
     }
-    
-    /* Nav active states */
-    .nav-btn.active-receive .nav-icon { color: #10b981; transform: translateY(-2px); }
-    .nav-btn.active-receive .nav-label { color: #10b981; font-weight: 800; }
-    
-    .nav-btn.active-sent .nav-icon { color: #f43f5e; transform: translateY(-2px); }
-    .nav-btn.active-sent .nav-label { color: #f43f5e; font-weight: 800; }
   </style>
 </head>
 <body>
 
-<div class="app-container relative flex flex-col" id="app" style="display:none!important">
+<div class="app-container relative flex flex-col min-h-screen" id="app" style="display:none!important">
 
-  <header class="header-bg text-white px-5 py-4 flex items-center justify-between z-30 sticky top-0 shadow-md">
+  <header class="bg-gray-900 text-white px-5 py-4 flex items-center justify-between z-30 sticky top-0 shadow-md">
     <div class="flex items-center gap-3 flex-1 min-w-0">
-      <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center backdrop-blur-sm shadow-inner">
+      <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center backdrop-blur-sm">
         <span class="text-xl">🌶</span>
       </div>
-      <span class="text-xl font-heading font-extrabold tracking-tight" id="mainHeaderTitle">Khuram Foods</span>
+      <span class="text-xl font-heading font-extrabold tracking-tight">Khuram Foods</span>
     </div>
     <button onclick="logout()" class="flex items-center gap-1.5 text-sm bg-white/10 hover:bg-white/20 px-3 py-2 rounded-lg font-bold transition-colors">
       <i class="fa fa-sign-out-alt text-sm"></i>
     </button>
   </header>
 
-  <main class="flex-1 overflow-y-auto px-4 pt-5 pb-28">
+  <div class="px-4 pt-4 pb-2 bg-white">
+    <div class="flex p-1.5 bg-gray-100 rounded-[1rem] shadow-inner border border-gray-200/60">
+      <button id="tab-receive" onclick="switchTab('receive')" class="flex-1 py-3 text-[13px] font-extrabold rounded-xl transition-all shadow-sm bg-white text-green-600 border border-gray-200">
+        💰 Receive
+      </button>
+      <button id="tab-sent" onclick="switchTab('sent')" class="flex-1 py-3 text-[13px] font-bold rounded-xl transition-all text-gray-500 hover:text-gray-700">
+        📤 Sent
+      </button>
+    </div>
+  </div>
+
+  <main class="flex-1 overflow-y-auto px-4 pb-28 bg-gray-50/50">
 
     <div class="bg-white rounded-[1.25rem] p-4 shadow-sm border border-gray-100 mb-5">
       <div class="flex gap-4">
         <div class="flex-1">
           <label class="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-1.5 block ml-1">Start Date</label>
-          <div class="relative">
-            <input type="date" id="dashStartDate" class="w-full border-2 border-gray-100 rounded-xl bg-gray-50 text-xs py-2.5 px-3 font-bold text-gray-800 shadow-inner" onchange="loadDashboard()" />
-          </div>
+          <input type="date" id="dashStartDate" class="w-full border-2 border-gray-100 rounded-xl bg-gray-50 text-xs py-2.5 px-2 font-bold text-gray-800 shadow-inner" onchange="loadData()" />
         </div>
         <div class="flex-1">
           <label class="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-1.5 block ml-1">End Date</label>
-          <div class="relative">
-            <input type="date" id="dashEndDate" class="w-full border-2 border-gray-100 rounded-xl bg-gray-50 text-xs py-2.5 px-3 font-bold text-gray-800 shadow-inner" onchange="loadDashboard()" />
-          </div>
+          <input type="date" id="dashEndDate" class="w-full border-2 border-gray-100 rounded-xl bg-gray-50 text-xs py-2.5 px-2 font-bold text-gray-800 shadow-inner" onchange="loadData()" />
         </div>
       </div>
     </div>
@@ -131,23 +108,9 @@
 
   </main>
 
-  <button id="addBtn" onclick="openAddModal()" class="fab fixed bottom-24 right-6 lg:right-[calc(50%-180px)] w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center z-40 border-4 border-white shadow-2xl">
+  <button id="addBtn" onclick="openAddModal()" class="fab fixed bottom-8 right-6 lg:right-[calc(50%-180px)] w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center z-40 border-4 border-white shadow-2xl">
     <i class="fa fa-plus text-2xl"></i>
   </button>
-
-  <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-30 shadow-[0_-4px_24px_rgba(0,0,0,0.08)] app-container pb-safe">
-    <div class="flex">
-      <button id="nav-receive" class="nav-btn active-receive flex-1 flex flex-col items-center py-4 gap-1 transition-all" onclick="switchTab('receive')">
-        <i class="nav-icon fa fa-arrow-down text-gray-400 text-2xl transition-all"></i>
-        <span class="nav-label text-[11px] text-gray-400 uppercase tracking-widest font-bold mt-1">Receive</span>
-      </button>
-      <button id="nav-sent" class="nav-btn flex-1 flex flex-col items-center py-4 gap-1 transition-all" onclick="switchTab('sent')">
-        <i class="nav-icon fa fa-arrow-up text-gray-400 text-2xl transition-all"></i>
-        <span class="nav-label text-[11px] text-gray-400 uppercase tracking-widest font-bold mt-1">Sent</span>
-      </button>
-    </div>
-  </nav>
-
 </div>
 
 <div id="loginScreen" class="min-h-screen flex flex-col items-center justify-center px-6 bg-gray-900 app-container">
@@ -158,7 +121,6 @@
       <p class="text-gray-400 text-sm mt-2 font-bold tracking-widest uppercase">Cash Flow System</p>
     </div>
     <div class="bg-white rounded-[2rem] p-7 shadow-2xl">
-      <h2 class="font-heading font-bold text-gray-800 text-xl mb-6 text-center">Secure Sign In</h2>
       <div class="space-y-4">
         <div>
           <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-2 ml-1">Username</label>
@@ -183,7 +145,7 @@
   </div>
 </div>
 
-<div id="toast" class="fixed bottom-28 left-1/2 -translate-x-1/2 z-50 px-6 py-3.5 rounded-full text-white text-sm font-bold shadow-2xl flex items-center gap-2.5 whitespace-nowrap border border-white/20"></div>
+<div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 px-6 py-3.5 rounded-full text-white text-sm font-bold shadow-2xl flex items-center gap-2.5 whitespace-nowrap border border-white/20"></div>
 
 <div id="securityBackdrop" class="modal-backdrop fixed inset-0 bg-black/70 z-[60] hidden flex items-center justify-center px-6 transition-all">
   <div class="bg-white w-full max-w-xs rounded-[2rem] p-6 shadow-2xl">
@@ -191,9 +153,9 @@
       <i class="fa fa-lock text-gray-600 text-2xl"></i>
     </div>
     <h3 class="font-heading font-bold text-xl text-center text-gray-800 mb-2">Security Check</h3>
-    <p class="text-gray-500 text-xs text-center mb-5 font-bold uppercase tracking-wide">Enter PIN to proceed</p>
+    <p class="text-gray-500 text-[11px] text-center mb-5 font-bold uppercase tracking-wide">Enter PIN to proceed</p>
     
-    <input type="password" id="authPin" placeholder="***" class="w-full text-center border-2 border-gray-200 rounded-xl py-3.5 text-2xl bg-gray-50 font-black tracking-widest text-gray-800 mb-5" onkeydown="if(event.key==='Enter')verifyPassword()" />
+    <input type="password" id="authPin" inputmode="numeric" pattern="[0-9]*" placeholder="***" class="w-full text-center border-2 border-gray-200 rounded-xl py-3 text-2xl bg-gray-50 font-black tracking-widest text-gray-800 mb-5 focus:border-gray-800" onkeydown="if(event.key==='Enter')verifyPassword()" />
     
     <div class="flex gap-3">
       <button onclick="closeSecurityModal()" class="flex-1 py-3 border-2 border-gray-200 rounded-xl text-sm font-bold text-gray-600 active:bg-gray-50">Cancel</button>
@@ -237,9 +199,9 @@ const SUPABASE_URL = 'https://ptwgiadzpzawjftfxwwf.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_Qoy-USZ2VP94_n5x1BcjWQ_HV5deVBB';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-let confirmCallback = null;
 let currentTab = 'receive'; // 'receive' or 'sent'
-let authPendingAction = null; // Stores action after password success
+let authPendingAction = null; // Stores action after PIN success
+let confirmCallback = null;
 
 // ── INIT ─────────────────────────────────────────────────────
 window.onload = () => {
@@ -289,44 +251,55 @@ function showApp() {
   document.getElementById('loginScreen').style.display = 'none';
   document.getElementById('app').style.removeProperty('display');
   
-  // Set default dates
+  // Set default dates to TODAY
   const todayDate = new Date().toISOString().split('T')[0];
   document.getElementById('dashStartDate').value = todayDate;
   document.getElementById('dashEndDate').value = todayDate;
   
-  switchTab('receive'); // Default Tab
+  switchTab('receive'); // Start with Receive tab
 }
 
 // ── TAB SWITCH LOGIC ─────────────────────────────────────────
 function switchTab(tabName) {
   currentTab = tabName;
   
-  // Update Nav Buttons
-  document.getElementById('nav-receive').classList.toggle('active-receive', tabName === 'receive');
-  document.getElementById('nav-sent').classList.toggle('active-sent', tabName === 'sent');
+  const btnRec = document.getElementById('tab-receive');
+  const btnSent = document.getElementById('tab-sent');
+  const dashCard = document.getElementById('dashCard');
+  const addBtn = document.getElementById('addBtn');
 
-  // Update UI Elements
   if (tabName === 'receive') {
-      document.getElementById('dashCard').className = 'stat-card-receive text-white rounded-[1.5rem] p-6 shadow-lg mb-6';
+      // Buttons Update
+      btnRec.className = 'flex-1 py-3 text-[13px] font-extrabold rounded-xl transition-all shadow-sm bg-white text-green-600 border border-gray-200';
+      btnSent.className = 'flex-1 py-3 text-[13px] font-bold rounded-xl transition-all text-gray-500 hover:text-gray-700 border border-transparent';
+      
+      // UI Update
+      dashCard.className = 'stat-card-receive text-white rounded-[1.5rem] p-6 shadow-lg mb-6';
       document.getElementById('dashTitle').innerHTML = '<i class="fa fa-arrow-down"></i> Total Received Amount';
       document.getElementById('listTitle').textContent = 'Receivings Log';
-      document.getElementById('addBtn').className = 'fab fixed bottom-24 right-6 lg:right-[calc(50%-180px)] w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center z-40 border-4 border-white shadow-2xl';
+      addBtn.className = 'fab fixed bottom-8 right-6 lg:right-[calc(50%-180px)] w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center z-40 border-4 border-white shadow-2xl';
   } else {
-      document.getElementById('dashCard').className = 'stat-card-sent text-white rounded-[1.5rem] p-6 shadow-lg mb-6';
+      // Buttons Update
+      btnSent.className = 'flex-1 py-3 text-[13px] font-extrabold rounded-xl transition-all shadow-sm bg-white text-rose-600 border border-gray-200';
+      btnRec.className = 'flex-1 py-3 text-[13px] font-bold rounded-xl transition-all text-gray-500 hover:text-gray-700 border border-transparent';
+      
+      // UI Update
+      dashCard.className = 'stat-card-sent text-white rounded-[1.5rem] p-6 shadow-lg mb-6';
       document.getElementById('dashTitle').innerHTML = '<i class="fa fa-arrow-up"></i> Total Sent Amount';
       document.getElementById('listTitle').textContent = 'Sent Payments Log';
-      document.getElementById('addBtn').className = 'fab fixed bottom-24 right-6 lg:right-[calc(50%-180px)] w-16 h-16 bg-rose-500 text-white rounded-full flex items-center justify-center z-40 border-4 border-white shadow-2xl';
+      addBtn.className = 'fab fixed bottom-8 right-6 lg:right-[calc(50%-180px)] w-16 h-16 bg-rose-500 text-white rounded-full flex items-center justify-center z-40 border-4 border-white shadow-2xl';
   }
 
-  loadDashboard();
+  // Load Data for selected tab
+  loadData();
 }
 
 function fmtDate(d) { return d ? new Date(d).toLocaleDateString('en-PK', { day: '2-digit', month: 'short', year: 'numeric' }) : '-'; }
 function fmtPKR(n) { return n != null ? 'Rs ' + Number(n).toLocaleString('en-PK') : '–'; }
-function escHtml(str) { return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;'); }
+function escHtml(str) { return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
 // ── FETCH DATA ───────────────────────────────────────────────
-async function loadDashboard() {
+async function loadData() {
   const start = document.getElementById('dashStartDate').value;
   const end = document.getElementById('dashEndDate').value;
 
@@ -367,7 +340,7 @@ async function loadDashboard() {
   const amtColor = currentTab === 'receive' ? 'text-green-600 bg-green-50 border-green-100' : 'text-rose-600 bg-rose-50 border-rose-100';
 
   container.innerHTML = data.map(r => `
-    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden relative">
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden relative group">
       <div class="p-4 sm:p-5">
         <div class="flex justify-between items-start mb-3">
           <div class="flex-1 min-w-0 pr-4">
@@ -383,14 +356,14 @@ async function loadDashboard() {
         </div>
       </div>
       <div class="flex bg-gray-50 border-t border-gray-100 divide-x divide-gray-200">
-        <button onclick="requestPassword(() => openEditModal(${r.id}))" class="flex-1 py-3 text-[11px] sm:text-xs text-blue-600 font-bold flex items-center justify-center gap-2 hover:bg-blue-50 transition-colors"><i class="fa fa-pen"></i> EDIT</button>
-        <button onclick="requestPassword(() => deleteRecord(${r.id}))" class="flex-1 py-3 text-[11px] sm:text-xs text-rose-500 font-bold flex items-center justify-center gap-2 hover:bg-rose-50 transition-colors"><i class="fa fa-trash"></i> DELETE</button>
+        <button onclick="requestPassword(() => openEditModal(${r.id}))" class="flex-1 py-3.5 text-[11px] sm:text-xs text-blue-600 font-bold flex items-center justify-center gap-2 hover:bg-blue-50 transition-colors"><i class="fa fa-pen"></i> EDIT</button>
+        <button onclick="requestPassword(() => deleteRecord(${r.id}))" class="flex-1 py-3.5 text-[11px] sm:text-xs text-rose-500 font-bold flex items-center justify-center gap-2 hover:bg-rose-50 transition-colors"><i class="fa fa-trash"></i> DELETE</button>
       </div>
     </div>
   `).join('');
 }
 
-// ── SECURITY PIN MODAL ───────────────────────────────────────
+// ── SECURITY PIN MODAL (114) ─────────────────────────────────
 function requestPassword(actionCallback) {
   authPendingAction = actionCallback;
   document.getElementById('authPin').value = '';
@@ -409,7 +382,7 @@ function verifyPassword() {
   const pin = document.getElementById('authPin').value;
   if(pin === '114') {
       closeSecurityModal();
-      if(authPendingAction) authPendingAction(); // Run the allowed action
+      if(authPendingAction) authPendingAction(); // Execute allowed action (Edit/Delete)
   } else {
       toast('Incorrect Security PIN!', 'error');
   }
@@ -419,7 +392,7 @@ function verifyPassword() {
 function openAddModal() {
   const todayStr = new Date().toISOString().split('T')[0];
   const btnColor = currentTab === 'receive' ? 'bg-green-600 active:bg-green-700' : 'bg-rose-500 active:bg-rose-600';
-  const inputTheme = currentTab === 'receive' ? 'border-green-200 bg-green-50 text-green-700' : 'border-rose-200 bg-rose-50 text-rose-700';
+  const inputColor = currentTab === 'receive' ? 'border-green-200 bg-green-50 text-green-700 focus:border-green-500' : 'border-rose-200 bg-rose-50 text-rose-700 focus:border-rose-500';
 
   document.getElementById('modalConfirmBtn').className = `flex-1 py-3.5 text-white rounded-xl text-sm font-bold shadow-md transition-colors ${btnColor}`;
   
@@ -435,7 +408,7 @@ function openAddModal() {
       </div>
       <div>
         <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Amount (Rs)</label>
-        <input type="number" id="mAmount" placeholder="0" class="w-full border-2 ${inputTheme} rounded-xl py-3.5 px-4 text-xl font-black shadow-inner" />
+        <input type="number" id="mAmount" placeholder="0" class="w-full border-2 ${inputColor} rounded-xl py-3.5 px-4 text-xl font-black shadow-inner" />
       </div>
       <div>
         <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Particulars / Remarks</label>
@@ -461,18 +434,18 @@ function openAddModal() {
 
     closeModal();
     toast('Record Added Successfully!', 'success');
-    loadDashboard();
+    loadData();
   });
 }
 
-// ── EDIT MODAL (Password Protected via requestPassword) ──────
+// ── EDIT MODAL (Password Protected) ──────────────────────────
 async function openEditModal(id) {
   const targetTable = currentTab === 'receive' ? 'khuram_receivings' : 'khuram_sent';
   const { data, error } = await sb.from(targetTable).select('*').eq('id', id).single();
   if (error || !data) { toast('Error fetching record', 'error'); return; }
 
   const btnColor = currentTab === 'receive' ? 'bg-green-600 active:bg-green-700' : 'bg-rose-500 active:bg-rose-600';
-  const inputTheme = currentTab === 'receive' ? 'border-green-200 bg-green-50 text-green-700' : 'border-rose-200 bg-rose-50 text-rose-700';
+  const inputColor = currentTab === 'receive' ? 'border-green-200 bg-green-50 text-green-700' : 'border-rose-200 bg-rose-50 text-rose-700';
 
   document.getElementById('modalConfirmBtn').className = `flex-1 py-3.5 text-white rounded-xl text-sm font-bold shadow-md transition-colors ${btnColor}`;
 
@@ -488,7 +461,7 @@ async function openEditModal(id) {
       </div>
       <div>
         <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Amount (Rs)</label>
-        <input type="number" id="mAmount" value="${data.amount}" class="w-full border-2 ${inputTheme} rounded-xl py-3.5 px-4 text-xl font-black shadow-inner" />
+        <input type="number" id="mAmount" value="${data.amount}" class="w-full border-2 ${inputColor} rounded-xl py-3.5 px-4 text-xl font-black shadow-inner" />
       </div>
       <div>
         <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Particulars / Remarks</label>
@@ -511,18 +484,18 @@ async function openEditModal(id) {
 
     closeModal();
     toast('Record Updated!', 'success');
-    loadDashboard();
+    loadData();
   });
 }
 
-// ── DELETE (Password Protected via requestPassword) ──────────
+// ── DELETE (Password Protected) ──────────────────────────────
 function deleteRecord(id) {
   showConfirm(async () => {
     const targetTable = currentTab === 'receive' ? 'khuram_receivings' : 'khuram_sent';
     const { error } = await sb.from(targetTable).delete().eq('id', id);
     if (error) { toast('Error deleting record', 'error'); return; }
     toast('Record Deleted!', 'success');
-    loadDashboard();
+    loadData();
   });
 }
 
