@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>Khuram Foods - Daily Receivings</title>
+  <title>Khuram Foods - Cash Flow</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -25,34 +25,36 @@
     ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
 
     /* Floating Action Button */
-    .fab { box-shadow: 0 8px 30px rgba(244,63,94,0.4); transition: transform 0.2s ease; }
+    .fab { box-shadow: 0 8px 30px rgba(0,0,0,0.2); transition: transform 0.2s ease; }
     .fab:active { transform: scale(0.92); }
 
     /* Focus */
-    input:focus, textarea:focus { outline: none; box-shadow: 0 0 0 3px rgba(244,63,94,0.15); border-color: #f43f5e; }
+    input:focus, textarea:focus { outline: none; box-shadow: 0 0 0 3px rgba(0,0,0,0.05); border-color: #94a3b8; }
 
     /* Header Background */
     .header-bg {
-      background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+      background: linear-gradient(135deg, #1f2937 0%, #0f172a 100%);
       position: relative;
       overflow: hidden;
     }
-    .header-bg::after {
-      content: ''; position: absolute; right: -20px; top: -20px; width: 150px; height: 150px;
-      border-radius: 50%; background: rgba(255,255,255,0.06);
-    }
-    .header-bg::before {
-      content: ''; position: absolute; right: 40px; top: 10px; width: 80px; height: 80px;
-      border-radius: 50%; background: rgba(255,255,255,0.08);
-    }
-
+    
     /* Card Layouts */
-    .stat-card {
+    .stat-card-receive {
       background: linear-gradient(135deg, #10b981 0%, #059669 100%);
       position: relative; overflow: hidden;
     }
-    .stat-card::after {
+    .stat-card-receive::after {
       content: '\f0d6'; font-family: "Font Awesome 6 Free"; font-weight: 900;
+      position: absolute; right: -15px; bottom: -20px; font-size: 100px;
+      color: rgba(255,255,255,0.1); transform: rotate(-15deg);
+    }
+
+    .stat-card-sent {
+      background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+      position: relative; overflow: hidden;
+    }
+    .stat-card-sent::after {
+      content: '\f53a'; font-family: "Font Awesome 6 Free"; font-weight: 900;
       position: absolute; right: -15px; bottom: -20px; font-size: 100px;
       color: rgba(255,255,255,0.1); transform: rotate(-15deg);
     }
@@ -66,6 +68,13 @@
       .app-container { max-width: 420px; margin: 0 auto; background: #fff; box-shadow: 0 0 30px rgba(0,0,0,0.08); min-height: 100vh; }
       body { background: #e2e8f0; }
     }
+    
+    /* Nav active states */
+    .nav-btn.active-receive .nav-icon { color: #10b981; transform: translateY(-2px); }
+    .nav-btn.active-receive .nav-label { color: #10b981; font-weight: 800; }
+    
+    .nav-btn.active-sent .nav-icon { color: #f43f5e; transform: translateY(-2px); }
+    .nav-btn.active-sent .nav-label { color: #f43f5e; font-weight: 800; }
   </style>
 </head>
 <body>
@@ -74,10 +83,10 @@
 
   <header class="header-bg text-white px-5 py-4 flex items-center justify-between z-30 sticky top-0 shadow-md">
     <div class="flex items-center gap-3 flex-1 min-w-0">
-      <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm shadow-inner">
+      <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center backdrop-blur-sm shadow-inner">
         <span class="text-xl">🌶</span>
       </div>
-      <span class="text-xl font-heading font-extrabold tracking-tight">Khuram Foods</span>
+      <span class="text-xl font-heading font-extrabold tracking-tight" id="mainHeaderTitle">Khuram Foods</span>
     </div>
     <button onclick="logout()" class="flex items-center gap-1.5 text-sm bg-white/10 hover:bg-white/20 px-3 py-2 rounded-lg font-bold transition-colors">
       <i class="fa fa-sign-out-alt text-sm"></i>
@@ -103,36 +112,50 @@
       </div>
     </div>
 
-    <div class="stat-card text-white rounded-[1.5rem] p-6 shadow-lg mb-6">
-      <p class="text-[12px] font-bold opacity-90 mb-1 uppercase tracking-widest flex items-center gap-2">
-        <i class="fa fa-chart-pie"></i> Total Received Amount
+    <div id="dashCard" class="stat-card-receive text-white rounded-[1.5rem] p-6 shadow-lg mb-6">
+      <p class="text-[12px] font-bold opacity-90 mb-1 uppercase tracking-widest flex items-center gap-2" id="dashTitle">
+        <i class="fa fa-arrow-down"></i> Total Received Amount
       </p>
       <p class="text-4xl font-heading font-black tracking-tight" id="dashTotal">...</p>
       <p class="text-[11px] opacity-75 mt-2 font-medium" id="dashDateRangeText">Loading dates...</p>
     </div>
 
     <div class="flex justify-between items-center mb-4 px-1">
-      <h3 class="text-sm text-gray-800 font-heading font-extrabold uppercase tracking-wider">Receivings Log</h3>
+      <h3 class="text-sm text-gray-800 font-heading font-extrabold uppercase tracking-wider" id="listTitle">Receivings Log</h3>
       <span id="recordCount" class="text-xs font-bold bg-gray-200 text-gray-600 px-2.5 py-1 rounded-full">0</span>
     </div>
 
-    <div id="receivingsList" class="space-y-4">
+    <div id="dataList" class="space-y-4">
       <div class="text-center py-10"><i class="fa fa-circle-notch spinner text-gray-300 text-3xl"></i></div>
     </div>
 
   </main>
 
-  <button onclick="openAddModal()" class="fab fixed bottom-8 right-6 lg:right-[calc(50%-180px)] w-16 h-16 bg-rose-500 text-white rounded-full flex items-center justify-center z-40 border-4 border-white shadow-2xl">
+  <button id="addBtn" onclick="openAddModal()" class="fab fixed bottom-24 right-6 lg:right-[calc(50%-180px)] w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center z-40 border-4 border-white shadow-2xl">
     <i class="fa fa-plus text-2xl"></i>
   </button>
+
+  <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-30 shadow-[0_-4px_24px_rgba(0,0,0,0.08)] app-container pb-safe">
+    <div class="flex">
+      <button id="nav-receive" class="nav-btn active-receive flex-1 flex flex-col items-center py-4 gap-1 transition-all" onclick="switchTab('receive')">
+        <i class="nav-icon fa fa-arrow-down text-gray-400 text-2xl transition-all"></i>
+        <span class="nav-label text-[11px] text-gray-400 uppercase tracking-widest font-bold mt-1">Receive</span>
+      </button>
+      <button id="nav-sent" class="nav-btn flex-1 flex flex-col items-center py-4 gap-1 transition-all" onclick="switchTab('sent')">
+        <i class="nav-icon fa fa-arrow-up text-gray-400 text-2xl transition-all"></i>
+        <span class="nav-label text-[11px] text-gray-400 uppercase tracking-widest font-bold mt-1">Sent</span>
+      </button>
+    </div>
+  </nav>
+
 </div>
 
-<div id="loginScreen" class="min-h-screen flex flex-col items-center justify-center px-6 bg-gradient-to-br from-rose-600 via-rose-500 to-pink-500 app-container">
+<div id="loginScreen" class="min-h-screen flex flex-col items-center justify-center px-6 bg-gray-900 app-container">
   <div class="w-full max-w-sm">
     <div class="text-center mb-8">
-      <div class="w-24 h-24 bg-white/20 rounded-[2rem] flex items-center justify-center mx-auto mb-5 text-5xl shadow-lg border border-white/30">🌶</div>
+      <div class="w-24 h-24 bg-white/10 rounded-[2rem] flex items-center justify-center mx-auto mb-5 text-5xl shadow-lg border border-white/10">🌶</div>
       <h1 class="text-4xl font-heading font-extrabold text-white tracking-tight">Khuram Foods</h1>
-      <p class="text-rose-100 text-sm mt-2 font-bold tracking-widest uppercase">Daily Receivings</p>
+      <p class="text-gray-400 text-sm mt-2 font-bold tracking-widest uppercase">Cash Flow System</p>
     </div>
     <div class="bg-white rounded-[2rem] p-7 shadow-2xl">
       <h2 class="font-heading font-bold text-gray-800 text-xl mb-6 text-center">Secure Sign In</h2>
@@ -152,7 +175,7 @@
           </div>
         </div>
         <div id="loginError" class="hidden text-rose-500 text-xs text-center font-bold bg-rose-50 rounded-lg py-2.5 border border-rose-100"></div>
-        <button onclick="doLogin()" id="loginBtn" class="w-full bg-rose-500 text-white py-4 rounded-xl font-heading font-bold text-sm mt-2 shadow-md active:bg-rose-600 transition-all flex justify-center items-center gap-2">
+        <button onclick="doLogin()" id="loginBtn" class="w-full bg-gray-800 hover:bg-gray-900 text-white py-4 rounded-xl font-heading font-bold text-sm mt-2 shadow-md transition-all flex justify-center items-center gap-2">
           <i class="fa fa-sign-in-alt"></i> Access Portal
         </button>
       </div>
@@ -160,7 +183,24 @@
   </div>
 </div>
 
-<div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 px-6 py-3.5 rounded-full text-white text-sm font-bold shadow-2xl flex items-center gap-2.5 whitespace-nowrap border border-white/20"></div>
+<div id="toast" class="fixed bottom-28 left-1/2 -translate-x-1/2 z-50 px-6 py-3.5 rounded-full text-white text-sm font-bold shadow-2xl flex items-center gap-2.5 whitespace-nowrap border border-white/20"></div>
+
+<div id="securityBackdrop" class="modal-backdrop fixed inset-0 bg-black/70 z-[60] hidden flex items-center justify-center px-6 transition-all">
+  <div class="bg-white w-full max-w-xs rounded-[2rem] p-6 shadow-2xl">
+    <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-white shadow-sm">
+      <i class="fa fa-lock text-gray-600 text-2xl"></i>
+    </div>
+    <h3 class="font-heading font-bold text-xl text-center text-gray-800 mb-2">Security Check</h3>
+    <p class="text-gray-500 text-xs text-center mb-5 font-bold uppercase tracking-wide">Enter PIN to proceed</p>
+    
+    <input type="password" id="authPin" placeholder="***" class="w-full text-center border-2 border-gray-200 rounded-xl py-3.5 text-2xl bg-gray-50 font-black tracking-widest text-gray-800 mb-5" onkeydown="if(event.key==='Enter')verifyPassword()" />
+    
+    <div class="flex gap-3">
+      <button onclick="closeSecurityModal()" class="flex-1 py-3 border-2 border-gray-200 rounded-xl text-sm font-bold text-gray-600 active:bg-gray-50">Cancel</button>
+      <button onclick="verifyPassword()" class="flex-1 py-3 bg-gray-800 text-white rounded-xl text-sm font-bold shadow-md active:bg-gray-900">Verify</button>
+    </div>
+  </div>
+</div>
 
 <div id="modalBackdrop" class="modal-backdrop fixed inset-0 bg-black/60 z-50 hidden flex items-end justify-center sm:items-center transition-all">
   <div class="bg-white w-full max-w-md rounded-t-[2rem] sm:rounded-3xl p-6 pb-8 shadow-2xl max-h-[90vh] overflow-y-auto">
@@ -172,12 +212,12 @@
     <div id="modalBody"></div>
     <div class="flex gap-3 mt-6 pt-3 border-t border-gray-100">
       <button onclick="closeModal()" class="flex-1 py-3.5 border-2 border-gray-200 rounded-xl text-sm font-bold text-gray-600 active:bg-gray-50 transition-colors">Cancel</button>
-      <button id="modalConfirmBtn" class="flex-1 py-3.5 bg-green-600 text-white rounded-xl text-sm font-bold active:bg-green-700 shadow-md transition-colors">Save Details</button>
+      <button id="modalConfirmBtn" class="flex-1 py-3.5 text-white rounded-xl text-sm font-bold shadow-md transition-colors">Save Details</button>
     </div>
   </div>
 </div>
 
-<div id="confirmBackdrop" class="modal-backdrop fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center px-6 transition-all">
+<div id="confirmBackdrop" class="modal-backdrop fixed inset-0 bg-black/60 z-[60] hidden flex items-center justify-center px-6 transition-all">
   <div class="bg-white w-full max-w-xs rounded-[2rem] p-6 shadow-2xl">
     <div class="w-16 h-16 bg-rose-50 rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-rose-100">
       <i class="fa fa-trash-alt text-rose-500 text-2xl"></i>
@@ -198,6 +238,8 @@ const SUPABASE_ANON_KEY = 'sb_publishable_Qoy-USZ2VP94_n5x1BcjWQ_HV5deVBB';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 let confirmCallback = null;
+let currentTab = 'receive'; // 'receive' or 'sent'
+let authPendingAction = null; // Stores action after password success
 
 // ── INIT ─────────────────────────────────────────────────────
 window.onload = () => {
@@ -213,7 +255,7 @@ async function doLogin() {
   
   if (!u || !p) { showLoginErr('Please enter username and password.'); return; }
 
-  btn.innerHTML = '<i class="fa fa-circle-notch spinner"></i> Signing in...';
+  btn.innerHTML = '<i class="fa fa-circle-notch spinner"></i> Checking...';
   btn.disabled = true;
 
   const { data, error } = await sb.from('khuram_users').select('*').eq('username', u).eq('password', p).single();
@@ -247,11 +289,35 @@ function showApp() {
   document.getElementById('loginScreen').style.display = 'none';
   document.getElementById('app').style.removeProperty('display');
   
-  // Set default dates to TODAY
+  // Set default dates
   const todayDate = new Date().toISOString().split('T')[0];
   document.getElementById('dashStartDate').value = todayDate;
   document.getElementById('dashEndDate').value = todayDate;
   
+  switchTab('receive'); // Default Tab
+}
+
+// ── TAB SWITCH LOGIC ─────────────────────────────────────────
+function switchTab(tabName) {
+  currentTab = tabName;
+  
+  // Update Nav Buttons
+  document.getElementById('nav-receive').classList.toggle('active-receive', tabName === 'receive');
+  document.getElementById('nav-sent').classList.toggle('active-sent', tabName === 'sent');
+
+  // Update UI Elements
+  if (tabName === 'receive') {
+      document.getElementById('dashCard').className = 'stat-card-receive text-white rounded-[1.5rem] p-6 shadow-lg mb-6';
+      document.getElementById('dashTitle').innerHTML = '<i class="fa fa-arrow-down"></i> Total Received Amount';
+      document.getElementById('listTitle').textContent = 'Receivings Log';
+      document.getElementById('addBtn').className = 'fab fixed bottom-24 right-6 lg:right-[calc(50%-180px)] w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center z-40 border-4 border-white shadow-2xl';
+  } else {
+      document.getElementById('dashCard').className = 'stat-card-sent text-white rounded-[1.5rem] p-6 shadow-lg mb-6';
+      document.getElementById('dashTitle').innerHTML = '<i class="fa fa-arrow-up"></i> Total Sent Amount';
+      document.getElementById('listTitle').textContent = 'Sent Payments Log';
+      document.getElementById('addBtn').className = 'fab fixed bottom-24 right-6 lg:right-[calc(50%-180px)] w-16 h-16 bg-rose-500 text-white rounded-full flex items-center justify-center z-40 border-4 border-white shadow-2xl';
+  }
+
   loadDashboard();
 }
 
@@ -259,23 +325,21 @@ function fmtDate(d) { return d ? new Date(d).toLocaleDateString('en-PK', { day: 
 function fmtPKR(n) { return n != null ? 'Rs ' + Number(n).toLocaleString('en-PK') : '–'; }
 function escHtml(str) { return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;'); }
 
-// ── DASHBOARD (FETCH DATA) ───────────────────────────────────
+// ── FETCH DATA ───────────────────────────────────────────────
 async function loadDashboard() {
   const start = document.getElementById('dashStartDate').value;
   const end = document.getElementById('dashEndDate').value;
 
-  // Update date text on card
-  if(start === end) {
-      document.getElementById('dashDateRangeText').textContent = fmtDate(start);
-  } else {
-      document.getElementById('dashDateRangeText').textContent = `${fmtDate(start)} to ${fmtDate(end)}`;
-  }
+  if(start === end) { document.getElementById('dashDateRangeText').textContent = fmtDate(start); } 
+  else { document.getElementById('dashDateRangeText').textContent = `${fmtDate(start)} to ${fmtDate(end)}`; }
 
   document.getElementById('dashTotal').innerHTML = '<i class="fa fa-circle-notch spinner text-3xl opacity-80"></i>';
-  const container = document.getElementById('receivingsList');
+  const container = document.getElementById('dataList');
   container.innerHTML = '<div class="text-center py-10"><i class="fa fa-circle-notch spinner text-gray-300 text-3xl"></i></div>';
 
-  const { data, error } = await sb.from('khuram_receivings')
+  const targetTable = currentTab === 'receive' ? 'khuram_receivings' : 'khuram_sent';
+
+  const { data, error } = await sb.from(targetTable)
     .select('*')
     .gte('date', start)
     .lte('date', end)
@@ -284,10 +348,9 @@ async function loadDashboard() {
     
   if (error) { toast('Error loading data', 'error'); return; }
 
-  // Calculate Total
   const total = data.reduce((sum, row) => sum + Number(row.amount), 0);
   document.getElementById('dashTotal').textContent = fmtPKR(total);
-  document.getElementById('recordCount').textContent = `${data.length} Records`;
+  document.getElementById('recordCount').textContent = `${data.length} Entries`;
 
   if (!data.length) {
     container.innerHTML = `
@@ -295,15 +358,16 @@ async function loadDashboard() {
         <div class="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4">
             <i class="fa fa-inbox text-gray-300 text-4xl"></i>
         </div>
-        <p class="text-gray-500 font-bold">No receivings found</p>
-        <p class="text-xs text-gray-400 mt-1 font-medium">Try changing the date range</p>
+        <p class="text-gray-500 font-bold">No records found</p>
       </div>`;
     return;
   }
 
-  // Render List
+  // Theme colors
+  const amtColor = currentTab === 'receive' ? 'text-green-600 bg-green-50 border-green-100' : 'text-rose-600 bg-rose-50 border-rose-100';
+
   container.innerHTML = data.map(r => `
-    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden relative group">
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden relative">
       <div class="p-4 sm:p-5">
         <div class="flex justify-between items-start mb-3">
           <div class="flex-1 min-w-0 pr-4">
@@ -311,7 +375,7 @@ async function loadDashboard() {
             <p class="text-[10px] sm:text-xs font-bold text-gray-400 mt-1 uppercase"><i class="fa fa-calendar-day mr-1"></i>${fmtDate(r.date)}</p>
           </div>
           <div class="text-right flex-shrink-0">
-            <p class="text-lg sm:text-xl font-black text-green-600 bg-green-50 px-3 py-1 rounded-xl border border-green-100">${fmtPKR(r.amount)}</p>
+            <p class="text-lg sm:text-xl font-black px-3 py-1 rounded-xl border ${amtColor}">${fmtPKR(r.amount)}</p>
           </div>
         </div>
         <div class="bg-gray-50 rounded-xl p-3 sm:p-4 border border-gray-200/60 mt-2">
@@ -319,34 +383,63 @@ async function loadDashboard() {
         </div>
       </div>
       <div class="flex bg-gray-50 border-t border-gray-100 divide-x divide-gray-200">
-        <button onclick="openEditModal(${r.id})" class="flex-1 py-3 text-[11px] sm:text-xs text-blue-600 font-bold flex items-center justify-center gap-2 hover:bg-blue-50 transition-colors"><i class="fa fa-pen"></i> EDIT</button>
-        <button onclick="deleteReceiving(${r.id})" class="flex-1 py-3 text-[11px] sm:text-xs text-rose-500 font-bold flex items-center justify-center gap-2 hover:bg-rose-50 transition-colors"><i class="fa fa-trash"></i> DELETE</button>
+        <button onclick="requestPassword(() => openEditModal(${r.id}))" class="flex-1 py-3 text-[11px] sm:text-xs text-blue-600 font-bold flex items-center justify-center gap-2 hover:bg-blue-50 transition-colors"><i class="fa fa-pen"></i> EDIT</button>
+        <button onclick="requestPassword(() => deleteRecord(${r.id}))" class="flex-1 py-3 text-[11px] sm:text-xs text-rose-500 font-bold flex items-center justify-center gap-2 hover:bg-rose-50 transition-colors"><i class="fa fa-trash"></i> DELETE</button>
       </div>
     </div>
   `).join('');
 }
 
+// ── SECURITY PIN MODAL ───────────────────────────────────────
+function requestPassword(actionCallback) {
+  authPendingAction = actionCallback;
+  document.getElementById('authPin').value = '';
+  document.getElementById('securityBackdrop').classList.remove('hidden');
+  document.getElementById('securityBackdrop').classList.add('flex');
+  setTimeout(() => document.getElementById('authPin').focus(), 100);
+}
+
+function closeSecurityModal() {
+  document.getElementById('securityBackdrop').classList.add('hidden');
+  document.getElementById('securityBackdrop').classList.remove('flex');
+  authPendingAction = null;
+}
+
+function verifyPassword() {
+  const pin = document.getElementById('authPin').value;
+  if(pin === '114') {
+      closeSecurityModal();
+      if(authPendingAction) authPendingAction(); // Run the allowed action
+  } else {
+      toast('Incorrect Security PIN!', 'error');
+  }
+}
+
 // ── ADD MODAL ────────────────────────────────────────────────
 function openAddModal() {
   const todayStr = new Date().toISOString().split('T')[0];
+  const btnColor = currentTab === 'receive' ? 'bg-green-600 active:bg-green-700' : 'bg-rose-500 active:bg-rose-600';
+  const inputTheme = currentTab === 'receive' ? 'border-green-200 bg-green-50 text-green-700' : 'border-rose-200 bg-rose-50 text-rose-700';
+
+  document.getElementById('modalConfirmBtn').className = `flex-1 py-3.5 text-white rounded-xl text-sm font-bold shadow-md transition-colors ${btnColor}`;
   
-  showModal('Add New Receiving', `
+  showModal(`Add New ${currentTab === 'receive' ? 'Receiving' : 'Sent Payment'}`, `
     <div class="space-y-4">
       <div>
-        <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Receiving Date</label>
+        <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Date</label>
         <input type="date" id="mDate" value="${todayStr}" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800" />
       </div>
       <div>
         <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Account Name</label>
-        <input type="text" id="mAccount" placeholder="e.g. SOHAIL AHMAD KANA" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800 uppercase" />
+        <input type="text" id="mAccount" placeholder="e.g. SOHAIL AHMAD" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800 uppercase" />
       </div>
       <div>
-        <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Amount Received (Rs)</label>
-        <input type="number" id="mAmount" placeholder="0" class="w-full border-2 border-green-200 rounded-xl py-3.5 px-4 text-xl bg-green-50 font-black text-green-700 shadow-inner" />
+        <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Amount (Rs)</label>
+        <input type="number" id="mAmount" placeholder="0" class="w-full border-2 ${inputTheme} rounded-xl py-3.5 px-4 text-xl font-black shadow-inner" />
       </div>
       <div>
         <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Particulars / Remarks</label>
-        <textarea id="mParticulars" rows="3" placeholder="e.g. SOHAIL TRADERS SENT ONLINE TO AZAM RICE TRADERS" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold leading-relaxed text-gray-700 uppercase"></textarea>
+        <textarea id="mParticulars" rows="3" placeholder="Enter details..." class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold leading-relaxed text-gray-700 uppercase"></textarea>
       </div>
     </div>
   `, async () => {
@@ -360,26 +453,33 @@ function openAddModal() {
         return; 
     }
 
+    const targetTable = currentTab === 'receive' ? 'khuram_receivings' : 'khuram_sent';
     const entry = { date, account_name, particulars, amount };
-    const { error } = await sb.from('khuram_receivings').insert(entry);
     
+    const { error } = await sb.from(targetTable).insert(entry);
     if (error) { toast('Error saving data', 'error'); return; }
 
     closeModal();
-    toast('Receiving Added!', 'success');
+    toast('Record Added Successfully!', 'success');
     loadDashboard();
   });
 }
 
-// ── EDIT MODAL ───────────────────────────────────────────────
+// ── EDIT MODAL (Password Protected via requestPassword) ──────
 async function openEditModal(id) {
-  const { data, error } = await sb.from('khuram_receivings').select('*').eq('id', id).single();
+  const targetTable = currentTab === 'receive' ? 'khuram_receivings' : 'khuram_sent';
+  const { data, error } = await sb.from(targetTable).select('*').eq('id', id).single();
   if (error || !data) { toast('Error fetching record', 'error'); return; }
 
-  showModal('Edit Receiving', `
+  const btnColor = currentTab === 'receive' ? 'bg-green-600 active:bg-green-700' : 'bg-rose-500 active:bg-rose-600';
+  const inputTheme = currentTab === 'receive' ? 'border-green-200 bg-green-50 text-green-700' : 'border-rose-200 bg-rose-50 text-rose-700';
+
+  document.getElementById('modalConfirmBtn').className = `flex-1 py-3.5 text-white rounded-xl text-sm font-bold shadow-md transition-colors ${btnColor}`;
+
+  showModal('Edit Record', `
     <div class="space-y-4">
       <div>
-        <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Receiving Date</label>
+        <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Date</label>
         <input type="date" id="mDate" value="${data.date}" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800" />
       </div>
       <div>
@@ -387,8 +487,8 @@ async function openEditModal(id) {
         <input type="text" id="mAccount" value="${escHtml(data.account_name)}" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800 uppercase" />
       </div>
       <div>
-        <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Amount Received (Rs)</label>
-        <input type="number" id="mAmount" value="${data.amount}" class="w-full border-2 border-green-200 rounded-xl py-3.5 px-4 text-xl bg-green-50 font-black text-green-700 shadow-inner" />
+        <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Amount (Rs)</label>
+        <input type="number" id="mAmount" value="${data.amount}" class="w-full border-2 ${inputTheme} rounded-xl py-3.5 px-4 text-xl font-black shadow-inner" />
       </div>
       <div>
         <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Particulars / Remarks</label>
@@ -406,20 +506,20 @@ async function openEditModal(id) {
         return; 
     }
 
-    const { error } = await sb.from('khuram_receivings').update({ date, account_name, particulars, amount }).eq('id', id);
-    
+    const { error } = await sb.from(targetTable).update({ date, account_name, particulars, amount }).eq('id', id);
     if (error) { toast('Error updating data', 'error'); return; }
 
     closeModal();
-    toast('Receiving Updated!', 'success');
+    toast('Record Updated!', 'success');
     loadDashboard();
   });
 }
 
-// ── DELETE ───────────────────────────────────────────────────
-function deleteReceiving(id) {
+// ── DELETE (Password Protected via requestPassword) ──────────
+function deleteRecord(id) {
   showConfirm(async () => {
-    const { error } = await sb.from('khuram_receivings').delete().eq('id', id);
+    const targetTable = currentTab === 'receive' ? 'khuram_receivings' : 'khuram_sent';
+    const { error } = await sb.from(targetTable).delete().eq('id', id);
     if (error) { toast('Error deleting record', 'error'); return; }
     toast('Record Deleted!', 'success');
     loadDashboard();
@@ -440,8 +540,6 @@ function closeModal() {
   document.getElementById('modalBackdrop').classList.remove('flex'); 
 }
 
-document.getElementById('modalBackdrop').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
-
 function showConfirm(cb) { 
   confirmCallback = cb; 
   document.getElementById('confirmBackdrop').classList.remove('hidden'); 
@@ -458,12 +556,10 @@ function closeConfirm() {
   document.getElementById('confirmBackdrop').classList.remove('flex'); 
 }
 
-document.getElementById('confirmBackdrop').addEventListener('click', function(e) { if (e.target === this) closeConfirm(); });
-
 let toastTimer;
 function toast(msg, type = 'success') {
   const el = document.getElementById('toast');
-  el.className = `fixed bottom-10 left-1/2 -translate-x-1/2 z-50 px-6 py-3.5 rounded-full text-white text-sm font-bold shadow-2xl flex items-center gap-2.5 whitespace-nowrap border border-white/20 ${type === 'success' ? 'bg-gray-800' : 'bg-rose-600'}`;
+  el.className = `fixed bottom-[110px] left-1/2 -translate-x-1/2 z-50 px-6 py-3.5 rounded-full text-white text-sm font-bold shadow-2xl flex items-center gap-2.5 whitespace-nowrap border border-white/20 ${type === 'success' ? 'bg-gray-800' : 'bg-rose-600'}`;
   el.innerHTML = `<i class="fa ${type === 'success' ? 'fa-check-circle text-green-400' : 'fa-exclamation-circle text-white'} text-lg"></i> ${msg}`;
   el.classList.add('show'); 
   clearTimeout(toastTimer); 
