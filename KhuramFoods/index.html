@@ -98,6 +98,13 @@
       </div>
     </div>
 
+    <div id="receivableSearchContainer" class="hidden bg-white rounded-[1.25rem] p-4 shadow-sm border border-gray-100 mb-5">
+      <div class="relative">
+        <i class="fa fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+        <input type="text" id="receivableSearchInput" placeholder="Search account name..." class="w-full border-2 border-gray-100 rounded-xl py-2.5 pl-11 pr-4 text-sm font-bold text-gray-800 shadow-inner" oninput="renderReceivableList()" />
+      </div>
+    </div>
+
     <div id="dashCard" class="stat-card-receive text-white rounded-[1.5rem] p-6 shadow-lg mb-6">
       <p class="text-[12px] font-bold opacity-90 mb-1 uppercase tracking-widest flex items-center gap-2" id="dashTitle">
         <i class="fa fa-arrow-down"></i> Total Received Amount
@@ -233,10 +240,11 @@ const SUPABASE_URL = 'https://ptwgiadzpzawjftfxwwf.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_Qoy-USZ2VP94_n5x1BcjWQ_HV5deVBB';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-let currentTab = 'receive'; // 'receive', 'sent', or 'receivable'
+let currentTab = 'receive'; 
 let authPendingAction = null; 
 let confirmCallback = null;
 let loggedInUser = null;
+let receivableData = []; // Store fetched receivable data globally for searching
 
 // ── INIT & OFFLINE SYNC ──────────────────────────────────────
 window.onload = () => {
@@ -248,7 +256,7 @@ window.onload = () => {
   if (userStr) {
       loggedInUser = JSON.parse(userStr);
       showApp();
-      syncOfflineRecords(); // Attempt sync on load if online
+      syncOfflineRecords(); 
   }
   else { showLogin(); }
 };
@@ -309,7 +317,6 @@ function showApp() {
   document.getElementById('loginScreen').style.display = 'none';
   document.getElementById('app').style.removeProperty('display');
   
-  // Role Based Access: Show/Hide Receivable Tab
   if (loggedInUser && loggedInUser.username === 'admin') {
       document.getElementById('nav-receivable').classList.remove('hidden');
       document.getElementById('divider-receivable').classList.remove('hidden');
@@ -318,12 +325,11 @@ function showApp() {
       document.getElementById('divider-receivable').classList.add('hidden');
   }
 
-  // Dates set to TODAY
   const todayDate = new Date().toISOString().split('T')[0];
   document.getElementById('dashStartDate').value = todayDate;
   document.getElementById('dashEndDate').value = todayDate;
   
-  switchTab('receive'); // Default Tab
+  switchTab('receive'); 
 }
 
 // ── TAB LOGIC ────────────────────────────────────────────────
@@ -336,8 +342,8 @@ function switchTab(tabName) {
   const dashCard = document.getElementById('dashCard');
   const addBtn = document.getElementById('addBtn');
   const dashFilters = document.getElementById('dashFilters');
+  const recSearch = document.getElementById('receivableSearchContainer');
 
-  // Reset Nav Active Classes
   btnRec.classList.remove('active-receive');
   btnSent.classList.remove('active-sent');
   if(btnReceivable) btnReceivable.classList.remove('active-receivable');
@@ -345,6 +351,7 @@ function switchTab(tabName) {
   if (tabName === 'receive') {
       btnRec.classList.add('active-receive');
       dashFilters.classList.remove('hidden');
+      recSearch.classList.add('hidden');
       
       dashCard.className = 'stat-card-receive text-white rounded-[1.5rem] p-6 shadow-lg mb-6';
       document.getElementById('dashTitle').innerHTML = '<i class="fa fa-arrow-down"></i> Total Received Amount';
@@ -353,6 +360,7 @@ function switchTab(tabName) {
   } else if (tabName === 'sent') {
       btnSent.classList.add('active-sent');
       dashFilters.classList.remove('hidden');
+      recSearch.classList.add('hidden');
       
       dashCard.className = 'stat-card-sent text-white rounded-[1.5rem] p-6 shadow-lg mb-6';
       document.getElementById('dashTitle').innerHTML = '<i class="fa fa-arrow-up"></i> Total Sent Amount';
@@ -360,7 +368,9 @@ function switchTab(tabName) {
       addBtn.className = 'fab fixed bottom-24 right-6 lg:right-[calc(50%-180px)] w-16 h-16 bg-rose-500 text-white rounded-full flex items-center justify-center z-40 border-4 border-white shadow-2xl';
   } else if (tabName === 'receivable') {
       btnReceivable.classList.add('active-receivable');
-      dashFilters.classList.add('hidden'); // Hide date filter
+      dashFilters.classList.add('hidden'); 
+      recSearch.classList.remove('hidden'); 
+      document.getElementById('receivableSearchInput').value = '';
       
       dashCard.className = 'stat-card-receivable text-white rounded-[1.5rem] p-6 shadow-lg mb-6';
       document.getElementById('dashTitle').innerHTML = '<i class="fa fa-users"></i> Total Receivable Balance';
@@ -382,54 +392,15 @@ async function loadData() {
   container.innerHTML = '<div class="text-center py-10"><i class="fa fa-circle-notch spinner text-gray-300 text-3xl"></i></div>';
 
   if (currentTab === 'receivable') {
-      let dbData = [];
+      receivableData = []; // Clear array
       if (navigator.onLine) {
           const { data, error } = await sb.from('khuram_receivable').select('*').order('account_name', { ascending: true });
-          if (!error && data) dbData = data;
+          if (!error && data) receivableData = data;
       } else {
           toast('Offline: Showing cached/empty list', 'error');
       }
-
-      const total = dbData.reduce((sum, row) => sum + Number(row.balance), 0);
-      document.getElementById('dashTotal').textContent = fmtPKR(total);
-      document.getElementById('dashDateRangeText').textContent = 'Overall Market Balances';
-      document.getElementById('recordCount').textContent = `${dbData.length} Accounts`;
-
-      if (!dbData.length) {
-        container.innerHTML = `
-          <div class="bg-white rounded-3xl p-10 text-center border-2 border-dashed border-gray-200 mt-4">
-            <div class="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i class="fa fa-users text-gray-300 text-4xl"></i>
-            </div>
-            <p class="text-gray-500 font-bold">No receivable accounts found</p>
-          </div>`;
-        return;
-      }
-
-      container.innerHTML = dbData.map(r => `
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden relative group">
-          <div class="p-4 sm:p-5">
-            <div class="flex justify-between items-start mb-3">
-              <div class="flex-1 min-w-0 pr-4">
-                <p class="text-sm sm:text-base font-heading font-extrabold text-gray-800 uppercase tracking-wide truncate">${escHtml(r.account_name)}</p>
-                <p class="text-[10px] sm:text-xs font-bold text-gray-400 mt-1 uppercase"><i class="fa fa-calendar-check mr-1"></i>Last Receiving: ${fmtDate(r.last_date)}</p>
-              </div>
-              <div class="text-right flex-shrink-0">
-                <p class="text-[10px] font-bold text-gray-400 mb-0.5 uppercase tracking-wider">Balance</p>
-                <p class="text-lg sm:text-xl font-black px-3 py-1 rounded-xl border text-blue-600 bg-blue-50 border-blue-100">${fmtPKR(r.balance)}</p>
-              </div>
-            </div>
-            <div class="bg-gray-50 rounded-xl p-3 border border-gray-200/60 mt-2 flex justify-between items-center">
-              <span class="text-[11px] text-gray-500 font-bold uppercase tracking-wider">Last Amount Rcv</span>
-              <span class="text-[13px] text-gray-800 font-black">${fmtPKR(r.last_amount)}</span>
-            </div>
-          </div>
-          <div class="flex bg-gray-50 border-t border-gray-100 divide-x divide-gray-200">
-            <button onclick="requestPassword(() => openEditModal(${r.id}))" class="flex-1 py-3 text-[11px] sm:text-xs text-blue-600 font-bold flex items-center justify-center gap-2 hover:bg-blue-50 transition-colors"><i class="fa fa-pen"></i> EDIT</button>
-            <button onclick="requestPassword(() => deleteRecord(${r.id}))" class="flex-1 py-3 text-[11px] sm:text-xs text-rose-500 font-bold flex items-center justify-center gap-2 hover:bg-rose-50 transition-colors"><i class="fa fa-trash"></i> DELETE</button>
-          </div>
-        </div>
-      `).join('');
+      
+      renderReceivableList(); // Call the render function to display data
 
   } else {
       // ── LOGIC FOR RECEIVE & SENT TABS (With Offline Merge) ──
@@ -450,16 +421,13 @@ async function loadData() {
           if (!error && data) dbData = data;
       }
 
-      // Merge Offline Queue
       const queueKey = currentTab === 'receive' ? 'offline_receivings' : 'offline_sent';
       let localQueue = JSON.parse(localStorage.getItem(queueKey) || '[]');
       
-      // Filter local queue by date selection
       localQueue = localQueue.filter(r => r.date >= start && r.date <= end);
       
       let combinedData = [...localQueue.map(item => ({...item, isOffline: true})), ...dbData];
       
-      // Sort by Date Descending
       combinedData.sort((a, b) => new Date(b.date) - new Date(a.date));
 
       const total = combinedData.reduce((sum, row) => sum + Number(row.amount), 0);
@@ -512,6 +480,56 @@ async function loadData() {
         </div>
       `).join('');
   }
+}
+
+// ── RENDER RECEIVABLE LIST WITH SEARCH FILTER ──────────────────
+function renderReceivableList() {
+  const container = document.getElementById('dataList');
+  const searchQuery = document.getElementById('receivableSearchInput').value.toLowerCase();
+  
+  // Filter the data locally
+  const filteredData = receivableData.filter(r => r.account_name.toLowerCase().includes(searchQuery));
+
+  const total = filteredData.reduce((sum, row) => sum + Number(row.balance), 0);
+  document.getElementById('dashTotal').textContent = fmtPKR(total);
+  document.getElementById('dashDateRangeText').textContent = 'Overall Market Balances';
+  document.getElementById('recordCount').textContent = `${filteredData.length} Accounts`;
+
+  if (!filteredData.length) {
+    container.innerHTML = `
+      <div class="bg-white rounded-3xl p-10 text-center border-2 border-dashed border-gray-200 mt-4">
+        <div class="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fa fa-users text-gray-300 text-4xl"></i>
+        </div>
+        <p class="text-gray-500 font-bold">No accounts found</p>
+      </div>`;
+    return;
+  }
+
+  container.innerHTML = filteredData.map(r => `
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden relative group">
+      <div class="p-4 sm:p-5">
+        <div class="flex justify-between items-start mb-3">
+          <div class="flex-1 min-w-0 pr-4">
+            <p class="text-sm sm:text-base font-heading font-extrabold text-gray-800 uppercase tracking-wide truncate">${escHtml(r.account_name)}</p>
+            <p class="text-[10px] sm:text-xs font-bold text-gray-400 mt-1 uppercase"><i class="fa fa-calendar-check mr-1"></i>Last Receiving: ${fmtDate(r.last_date)}</p>
+          </div>
+          <div class="text-right flex-shrink-0">
+            <p class="text-[10px] font-bold text-gray-400 mb-0.5 uppercase tracking-wider">Balance</p>
+            <p class="text-lg sm:text-xl font-black px-3 py-1 rounded-xl border text-blue-600 bg-blue-50 border-blue-100">${fmtPKR(r.balance)}</p>
+          </div>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-3 border border-gray-200/60 mt-2 flex justify-between items-center">
+          <span class="text-[11px] text-gray-500 font-bold uppercase tracking-wider">Last Amount Rcv</span>
+          <span class="text-[13px] text-gray-800 font-black">${fmtPKR(r.last_amount)}</span>
+        </div>
+      </div>
+      <div class="flex bg-gray-50 border-t border-gray-100 divide-x divide-gray-200">
+        <button onclick="requestPassword(() => openEditModal(${r.id}))" class="flex-1 py-3 text-[11px] sm:text-xs text-blue-600 font-bold flex items-center justify-center gap-2 hover:bg-blue-50 transition-colors"><i class="fa fa-pen"></i> EDIT</button>
+        <button onclick="requestPassword(() => deleteRecord(${r.id}))" class="flex-1 py-3 text-[11px] sm:text-xs text-rose-500 font-bold flex items-center justify-center gap-2 hover:bg-rose-50 transition-colors"><i class="fa fa-trash"></i> DELETE</button>
+      </div>
+    </div>
+  `).join('');
 }
 
 // ── OFFLINE SYNC LOGIC ───────────────────────────────────────
@@ -583,7 +601,6 @@ function openAddModal() {
   const todayStr = new Date().toISOString().split('T')[0];
   
   if (currentTab === 'receivable') {
-    // ── ADD RECEIVABLE ACCOUNT ──
     document.getElementById('modalConfirmBtn').className = `flex-1 py-3.5 text-white rounded-xl text-sm font-bold shadow-md transition-colors bg-blue-600 active:bg-blue-700`;
     showModal(`Add Receivable Account`, `
       <div class="space-y-4">
@@ -623,7 +640,6 @@ function openAddModal() {
     });
 
   } else {
-    // ── ADD RECEIVE / SENT ──
     const btnColor = currentTab === 'receive' ? 'bg-green-600 active:bg-green-700' : 'bg-rose-500 active:bg-rose-600';
     const inputTheme = currentTab === 'receive' ? 'border-green-200 bg-green-50 text-green-700' : 'border-rose-200 bg-rose-50 text-rose-700';
 
@@ -660,17 +676,15 @@ function openAddModal() {
       const targetTable = currentTab === 'receive' ? 'khuram_receivings' : 'khuram_sent';
       const entry = { date, account_name, particulars, amount };
 
-      // Handle Offline Check
       if (!navigator.onLine) {
           saveOfflineRecord(targetTable, entry);
           closeModal();
           return;
       }
 
-      // Handle Online Save
       const { error } = await sb.from(targetTable).insert(entry);
       if (error) { 
-          saveOfflineRecord(targetTable, entry); // Fallback to offline if network issue
+          saveOfflineRecord(targetTable, entry); 
       } else {
           toast('Record Added Successfully!', 'success');
           loadData();
