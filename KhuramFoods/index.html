@@ -241,7 +241,8 @@ const SUPABASE_ANON_KEY = 'sb_publishable_Qoy-USZ2VP94_n5x1BcjWQ_HV5deVBB';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 let currentTab = 'receive'; 
-let authPendingAction = null; 
+let authPendingActionType = null; // 'edit' or 'delete'
+let authPendingId = null; 
 let confirmCallback = null;
 let loggedInUser = null;
 let receivableData = []; // Store fetched receivable data globally for searching
@@ -317,7 +318,8 @@ function showApp() {
   document.getElementById('loginScreen').style.display = 'none';
   document.getElementById('app').style.removeProperty('display');
   
-  if (loggedInUser && loggedInUser.username === 'admin') {
+  // ROLE BASED TABS: Only 'ahmad' sees Receivable tab
+  if (loggedInUser && loggedInUser.username.toLowerCase() === 'ahmad') {
       document.getElementById('nav-receivable').classList.remove('hidden');
       document.getElementById('divider-receivable').classList.remove('hidden');
   } else {
@@ -400,7 +402,7 @@ async function loadData() {
           toast('Offline: Showing cached/empty list', 'error');
       }
       
-      renderReceivableList(); // Call the render function to display data
+      renderReceivableList(); // Load search logic
 
   } else {
       // ── LOGIC FOR RECEIVE & SENT TABS (With Offline Merge) ──
@@ -473,8 +475,8 @@ async function loadData() {
              </div>` 
           : 
             `<div class="flex bg-gray-50 border-t border-gray-100 divide-x divide-gray-200">
-              <button onclick="requestPassword(() => openEditModal(${r.id}))" class="flex-1 py-3 text-[11px] sm:text-xs text-blue-600 font-bold flex items-center justify-center gap-2 hover:bg-blue-50 transition-colors"><i class="fa fa-pen"></i> EDIT</button>
-              <button onclick="requestPassword(() => deleteRecord(${r.id}))" class="flex-1 py-3 text-[11px] sm:text-xs text-rose-500 font-bold flex items-center justify-center gap-2 hover:bg-rose-50 transition-colors"><i class="fa fa-trash"></i> DELETE</button>
+              <button onclick="requestPassword('edit', ${r.id})" class="flex-1 py-3 text-[11px] sm:text-xs text-blue-600 font-bold flex items-center justify-center gap-2 hover:bg-blue-50 transition-colors"><i class="fa fa-pen"></i> EDIT</button>
+              <button onclick="requestPassword('delete', ${r.id})" class="flex-1 py-3 text-[11px] sm:text-xs text-rose-500 font-bold flex items-center justify-center gap-2 hover:bg-rose-50 transition-colors"><i class="fa fa-trash"></i> DELETE</button>
             </div>`
           }
         </div>
@@ -487,7 +489,6 @@ function renderReceivableList() {
   const container = document.getElementById('dataList');
   const searchQuery = document.getElementById('receivableSearchInput').value.toLowerCase();
   
-  // Filter the data locally
   const filteredData = receivableData.filter(r => r.account_name.toLowerCase().includes(searchQuery));
 
   const total = filteredData.reduce((sum, row) => sum + Number(row.balance), 0);
@@ -525,8 +526,8 @@ function renderReceivableList() {
         </div>
       </div>
       <div class="flex bg-gray-50 border-t border-gray-100 divide-x divide-gray-200">
-        <button onclick="requestPassword(() => openEditModal(${r.id}))" class="flex-1 py-3 text-[11px] sm:text-xs text-blue-600 font-bold flex items-center justify-center gap-2 hover:bg-blue-50 transition-colors"><i class="fa fa-pen"></i> EDIT</button>
-        <button onclick="requestPassword(() => deleteRecord(${r.id}))" class="flex-1 py-3 text-[11px] sm:text-xs text-rose-500 font-bold flex items-center justify-center gap-2 hover:bg-rose-50 transition-colors"><i class="fa fa-trash"></i> DELETE</button>
+        <button onclick="requestPassword('edit', ${r.id})" class="flex-1 py-3 text-[11px] sm:text-xs text-blue-600 font-bold flex items-center justify-center gap-2 hover:bg-blue-50 transition-colors"><i class="fa fa-pen"></i> EDIT</button>
+        <button onclick="requestPassword('delete', ${r.id})" class="flex-1 py-3 text-[11px] sm:text-xs text-rose-500 font-bold flex items-center justify-center gap-2 hover:bg-rose-50 transition-colors"><i class="fa fa-trash"></i> DELETE</button>
       </div>
     </div>
   `).join('');
@@ -572,8 +573,10 @@ async function syncOfflineRecords() {
 }
 
 // ── SECURITY PIN MODAL (114) ─────────────────────────────────
-function requestPassword(actionCallback) {
-  authPendingAction = actionCallback;
+function requestPassword(actionType, id) {
+  authPendingActionType = actionType;
+  authPendingId = id;
+  
   document.getElementById('authPin').value = '';
   document.getElementById('securityBackdrop').classList.remove('hidden');
   document.getElementById('securityBackdrop').classList.add('flex');
@@ -583,14 +586,21 @@ function requestPassword(actionCallback) {
 function closeSecurityModal() {
   document.getElementById('securityBackdrop').classList.add('hidden');
   document.getElementById('securityBackdrop').classList.remove('flex');
-  authPendingAction = null;
+  authPendingActionType = null;
+  authPendingId = null;
 }
 
 function verifyPassword() {
   const pin = document.getElementById('authPin').value;
   if(pin === '114') {
       closeSecurityModal();
-      if(authPendingAction) authPendingAction(); 
+      
+      // Execute the requested action
+      if (authPendingActionType === 'edit') {
+          openEditModal(authPendingId);
+      } else if (authPendingActionType === 'delete') {
+          deleteRecord(authPendingId);
+      }
   } else {
       toast('Incorrect Security PIN!', 'error');
   }
@@ -694,7 +704,7 @@ function openAddModal() {
   }
 }
 
-// ── EDIT MODAL (Password Protected) ──────────────────────────
+// ── EDIT MODAL ───────────────────────────────────────────────
 async function openEditModal(id) {
   if (!navigator.onLine) { toast('Editing requires internet connection', 'error'); return; }
 
@@ -784,7 +794,7 @@ async function openEditModal(id) {
   }
 }
 
-// ── DELETE (Password Protected) ──────────────────────────────
+// ── DELETE ───────────────────────────────────────────────────
 function deleteRecord(id) {
   if (!navigator.onLine) { toast('Deletion requires internet connection', 'error'); return; }
 
