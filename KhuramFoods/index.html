@@ -36,6 +36,9 @@
     .stat-card-sent { background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%); position: relative; overflow: hidden; }
     .stat-card-sent::after { content: '\f53a'; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; right: -15px; bottom: -20px; font-size: 100px; color: rgba(255,255,255,0.1); transform: rotate(-15deg); }
 
+    .stat-card-receivable { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); position: relative; overflow: hidden; }
+    .stat-card-receivable::after { content: '\f0c0'; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; right: -15px; bottom: -20px; font-size: 100px; color: rgba(255,255,255,0.1); transform: rotate(-15deg); }
+
     /* Bottom Navigation Active States */
     .nav-btn .nav-icon { color: #9ca3af; transition: all 0.2s ease; }
     .nav-btn .nav-label { color: #9ca3af; transition: all 0.2s ease; }
@@ -45,6 +48,9 @@
     
     .nav-btn.active-sent .nav-icon { color: #f43f5e; transform: translateY(-3px); }
     .nav-btn.active-sent .nav-label { color: #f43f5e; font-weight: 800; }
+
+    .nav-btn.active-receivable .nav-icon { color: #3b82f6; transform: translateY(-3px); }
+    .nav-btn.active-receivable .nav-label { color: #3b82f6; font-weight: 800; }
 
     /* Spinner */
     .spinner { animation: spin 0.8s linear infinite; }
@@ -67,7 +73,10 @@
       <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center backdrop-blur-sm">
         <span class="text-xl">🌶</span>
       </div>
-      <span class="text-xl font-heading font-extrabold tracking-tight">Khuram Foods</span>
+      <div class="flex flex-col">
+        <span class="text-xl font-heading font-extrabold tracking-tight leading-none">Khuram Foods</span>
+        <span id="networkStatus" class="text-[10px] font-bold text-green-400 mt-1 uppercase tracking-widest"><i class="fa fa-wifi mr-1"></i> Online</span>
+      </div>
     </div>
     <button onclick="logout()" class="flex items-center gap-1.5 text-sm bg-white/10 hover:bg-white/20 px-3 py-2 rounded-lg font-bold transition-colors">
       <i class="fa fa-sign-out-alt text-sm"></i>
@@ -76,7 +85,7 @@
 
   <main class="flex-1 overflow-y-auto px-4 pt-5 pb-32 bg-gray-50/50">
 
-    <div class="bg-white rounded-[1.25rem] p-4 shadow-sm border border-gray-100 mb-5">
+    <div id="dashFilters" class="bg-white rounded-[1.25rem] p-4 shadow-sm border border-gray-100 mb-5">
       <div class="flex gap-4">
         <div class="flex-1">
           <label class="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-1.5 block ml-1">Start Date</label>
@@ -125,6 +134,14 @@
         <i class="nav-icon fa fa-paper-plane text-[22px] transition-all"></i>
         <span class="nav-label text-[10px] uppercase tracking-widest font-semibold">Sent</span>
       </button>
+
+      <div id="divider-receivable" class="w-px bg-gray-100 my-2 hidden"></div>
+
+      <button id="nav-receivable" class="nav-btn hidden flex-1 flex flex-col items-center py-3.5 gap-1.5 transition-all" onclick="switchTab('receivable')">
+        <i class="nav-icon fa fa-users text-[22px] transition-all"></i>
+        <span class="nav-label text-[10px] uppercase tracking-widest font-semibold">Receivable</span>
+      </button>
+
     </div>
   </nav>
 </div>
@@ -216,18 +233,41 @@ const SUPABASE_URL = 'https://ptwgiadzpzawjftfxwwf.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_Qoy-USZ2VP94_n5x1BcjWQ_HV5deVBB';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-let currentTab = 'receive'; // 'receive' or 'sent'
-let authPendingAction = null; // Store function after PIN
+let currentTab = 'receive'; // 'receive', 'sent', or 'receivable'
+let authPendingAction = null; 
 let confirmCallback = null;
+let loggedInUser = null;
 
-// ── INIT ─────────────────────────────────────────────────────
+// ── INIT & OFFLINE SYNC ──────────────────────────────────────
 window.onload = () => {
-  if (sessionStorage.getItem('kf_user')) showApp();
-  else showLogin();
+  updateNetworkStatus();
+  window.addEventListener('online', () => { updateNetworkStatus(); syncOfflineRecords(); });
+  window.addEventListener('offline', updateNetworkStatus);
+
+  const userStr = sessionStorage.getItem('kf_user');
+  if (userStr) {
+      loggedInUser = JSON.parse(userStr);
+      showApp();
+      syncOfflineRecords(); // Attempt sync on load if online
+  }
+  else { showLogin(); }
 };
+
+function updateNetworkStatus() {
+  const statusEl = document.getElementById('networkStatus');
+  if (navigator.onLine) {
+      statusEl.innerHTML = '<i class="fa fa-wifi mr-1"></i> Online';
+      statusEl.className = 'text-[10px] font-bold text-green-400 mt-1 uppercase tracking-widest';
+  } else {
+      statusEl.innerHTML = '<i class="fa fa-wifi-slash mr-1"></i> Offline';
+      statusEl.className = 'text-[10px] font-bold text-orange-400 mt-1 uppercase tracking-widest';
+  }
+}
 
 // ── AUTH ─────────────────────────────────────────────────────
 async function doLogin() {
+  if (!navigator.onLine) { showLoginErr('Internet required to login.'); return; }
+
   const u = document.getElementById('loginUser').value.trim();
   const p = document.getElementById('loginPass').value.trim();
   const btn = document.getElementById('loginBtn');
@@ -244,6 +284,7 @@ async function doLogin() {
 
   if (error || !data) { showLoginErr('Invalid username or password.'); return; }
 
+  loggedInUser = data;
   sessionStorage.setItem('kf_user', JSON.stringify(data));
   showApp();
 }
@@ -268,12 +309,21 @@ function showApp() {
   document.getElementById('loginScreen').style.display = 'none';
   document.getElementById('app').style.removeProperty('display');
   
+  // Role Based Access: Show/Hide Receivable Tab
+  if (loggedInUser && loggedInUser.username === 'admin') {
+      document.getElementById('nav-receivable').classList.remove('hidden');
+      document.getElementById('divider-receivable').classList.remove('hidden');
+  } else {
+      document.getElementById('nav-receivable').classList.add('hidden');
+      document.getElementById('divider-receivable').classList.add('hidden');
+  }
+
   // Dates set to TODAY
   const todayDate = new Date().toISOString().split('T')[0];
   document.getElementById('dashStartDate').value = todayDate;
   document.getElementById('dashEndDate').value = todayDate;
   
-  switchTab('receive'); // Ensure correct tab loads
+  switchTab('receive'); // Default Tab
 }
 
 // ── TAB LOGIC ────────────────────────────────────────────────
@@ -282,25 +332,40 @@ function switchTab(tabName) {
   
   const btnRec = document.getElementById('nav-receive');
   const btnSent = document.getElementById('nav-sent');
+  const btnReceivable = document.getElementById('nav-receivable');
   const dashCard = document.getElementById('dashCard');
   const addBtn = document.getElementById('addBtn');
+  const dashFilters = document.getElementById('dashFilters');
+
+  // Reset Nav Active Classes
+  btnRec.classList.remove('active-receive');
+  btnSent.classList.remove('active-sent');
+  if(btnReceivable) btnReceivable.classList.remove('active-receivable');
 
   if (tabName === 'receive') {
       btnRec.classList.add('active-receive');
-      btnSent.classList.remove('active-sent');
+      dashFilters.classList.remove('hidden');
       
       dashCard.className = 'stat-card-receive text-white rounded-[1.5rem] p-6 shadow-lg mb-6';
       document.getElementById('dashTitle').innerHTML = '<i class="fa fa-arrow-down"></i> Total Received Amount';
       document.getElementById('listTitle').textContent = 'Receivings Log';
       addBtn.className = 'fab fixed bottom-24 right-6 lg:right-[calc(50%-180px)] w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center z-40 border-4 border-white shadow-2xl';
-  } else {
+  } else if (tabName === 'sent') {
       btnSent.classList.add('active-sent');
-      btnRec.classList.remove('active-receive');
+      dashFilters.classList.remove('hidden');
       
       dashCard.className = 'stat-card-sent text-white rounded-[1.5rem] p-6 shadow-lg mb-6';
       document.getElementById('dashTitle').innerHTML = '<i class="fa fa-arrow-up"></i> Total Sent Amount';
       document.getElementById('listTitle').textContent = 'Sent Payments Log';
       addBtn.className = 'fab fixed bottom-24 right-6 lg:right-[calc(50%-180px)] w-16 h-16 bg-rose-500 text-white rounded-full flex items-center justify-center z-40 border-4 border-white shadow-2xl';
+  } else if (tabName === 'receivable') {
+      btnReceivable.classList.add('active-receivable');
+      dashFilters.classList.add('hidden'); // Hide date filter
+      
+      dashCard.className = 'stat-card-receivable text-white rounded-[1.5rem] p-6 shadow-lg mb-6';
+      document.getElementById('dashTitle').innerHTML = '<i class="fa fa-users"></i> Total Receivable Balance';
+      document.getElementById('listTitle').textContent = 'Accounts Summary';
+      addBtn.className = 'fab fixed bottom-24 right-6 lg:right-[calc(50%-180px)] w-16 h-16 bg-blue-500 text-white rounded-full flex items-center justify-center z-40 border-4 border-white shadow-2xl';
   }
 
   loadData();
@@ -310,68 +375,182 @@ function fmtDate(d) { return d ? new Date(d).toLocaleDateString('en-PK', { day: 
 function fmtPKR(n) { return n != null ? 'Rs ' + Number(n).toLocaleString('en-PK') : '–'; }
 function escHtml(str) { return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
-// ── FETCH DATA ───────────────────────────────────────────────
+// ── FETCH & RENDER DATA ──────────────────────────────────────
 async function loadData() {
-  const start = document.getElementById('dashStartDate').value;
-  const end = document.getElementById('dashEndDate').value;
-
-  if(start === end) { document.getElementById('dashDateRangeText').textContent = fmtDate(start); } 
-  else { document.getElementById('dashDateRangeText').textContent = `${fmtDate(start)} to ${fmtDate(end)}`; }
-
   document.getElementById('dashTotal').innerHTML = '<i class="fa fa-circle-notch spinner text-3xl opacity-80"></i>';
   const container = document.getElementById('dataList');
   container.innerHTML = '<div class="text-center py-10"><i class="fa fa-circle-notch spinner text-gray-300 text-3xl"></i></div>';
 
-  const targetTable = currentTab === 'receive' ? 'khuram_receivings' : 'khuram_sent';
+  if (currentTab === 'receivable') {
+      let dbData = [];
+      if (navigator.onLine) {
+          const { data, error } = await sb.from('khuram_receivable').select('*').order('account_name', { ascending: true });
+          if (!error && data) dbData = data;
+      } else {
+          toast('Offline: Showing cached/empty list', 'error');
+      }
 
-  const { data, error } = await sb.from(targetTable)
-    .select('*')
-    .gte('date', start)
-    .lte('date', end)
-    .order('date', { ascending: false })
-    .order('id', { ascending: false });
-    
-  if (error) { toast('Error loading data', 'error'); return; }
+      const total = dbData.reduce((sum, row) => sum + Number(row.balance), 0);
+      document.getElementById('dashTotal').textContent = fmtPKR(total);
+      document.getElementById('dashDateRangeText').textContent = 'Overall Market Balances';
+      document.getElementById('recordCount').textContent = `${dbData.length} Accounts`;
 
-  const total = data.reduce((sum, row) => sum + Number(row.amount), 0);
-  document.getElementById('dashTotal').textContent = fmtPKR(total);
-  document.getElementById('recordCount').textContent = `${data.length} Entries`;
+      if (!dbData.length) {
+        container.innerHTML = `
+          <div class="bg-white rounded-3xl p-10 text-center border-2 border-dashed border-gray-200 mt-4">
+            <div class="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fa fa-users text-gray-300 text-4xl"></i>
+            </div>
+            <p class="text-gray-500 font-bold">No receivable accounts found</p>
+          </div>`;
+        return;
+      }
 
-  if (!data.length) {
-    container.innerHTML = `
-      <div class="bg-white rounded-3xl p-10 text-center border-2 border-dashed border-gray-200 mt-4">
-        <div class="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4">
-            <i class="fa fa-inbox text-gray-300 text-4xl"></i>
+      container.innerHTML = dbData.map(r => `
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden relative group">
+          <div class="p-4 sm:p-5">
+            <div class="flex justify-between items-start mb-3">
+              <div class="flex-1 min-w-0 pr-4">
+                <p class="text-sm sm:text-base font-heading font-extrabold text-gray-800 uppercase tracking-wide truncate">${escHtml(r.account_name)}</p>
+                <p class="text-[10px] sm:text-xs font-bold text-gray-400 mt-1 uppercase"><i class="fa fa-calendar-check mr-1"></i>Last Receiving: ${fmtDate(r.last_date)}</p>
+              </div>
+              <div class="text-right flex-shrink-0">
+                <p class="text-[10px] font-bold text-gray-400 mb-0.5 uppercase tracking-wider">Balance</p>
+                <p class="text-lg sm:text-xl font-black px-3 py-1 rounded-xl border text-blue-600 bg-blue-50 border-blue-100">${fmtPKR(r.balance)}</p>
+              </div>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-3 border border-gray-200/60 mt-2 flex justify-between items-center">
+              <span class="text-[11px] text-gray-500 font-bold uppercase tracking-wider">Last Amount Rcv</span>
+              <span class="text-[13px] text-gray-800 font-black">${fmtPKR(r.last_amount)}</span>
+            </div>
+          </div>
+          <div class="flex bg-gray-50 border-t border-gray-100 divide-x divide-gray-200">
+            <button onclick="requestPassword(() => openEditModal(${r.id}))" class="flex-1 py-3 text-[11px] sm:text-xs text-blue-600 font-bold flex items-center justify-center gap-2 hover:bg-blue-50 transition-colors"><i class="fa fa-pen"></i> EDIT</button>
+            <button onclick="requestPassword(() => deleteRecord(${r.id}))" class="flex-1 py-3 text-[11px] sm:text-xs text-rose-500 font-bold flex items-center justify-center gap-2 hover:bg-rose-50 transition-colors"><i class="fa fa-trash"></i> DELETE</button>
+          </div>
         </div>
-        <p class="text-gray-500 font-bold">No records found</p>
-      </div>`;
-    return;
+      `).join('');
+
+  } else {
+      // ── LOGIC FOR RECEIVE & SENT TABS (With Offline Merge) ──
+      const start = document.getElementById('dashStartDate').value;
+      const end = document.getElementById('dashEndDate').value;
+
+      if(start === end) { document.getElementById('dashDateRangeText').textContent = fmtDate(start); } 
+      else { document.getElementById('dashDateRangeText').textContent = `${fmtDate(start)} to ${fmtDate(end)}`; }
+
+      const targetTable = currentTab === 'receive' ? 'khuram_receivings' : 'khuram_sent';
+      
+      let dbData = [];
+      if (navigator.onLine) {
+          const { data, error } = await sb.from(targetTable)
+            .select('*')
+            .gte('date', start)
+            .lte('date', end);
+          if (!error && data) dbData = data;
+      }
+
+      // Merge Offline Queue
+      const queueKey = currentTab === 'receive' ? 'offline_receivings' : 'offline_sent';
+      let localQueue = JSON.parse(localStorage.getItem(queueKey) || '[]');
+      
+      // Filter local queue by date selection
+      localQueue = localQueue.filter(r => r.date >= start && r.date <= end);
+      
+      let combinedData = [...localQueue.map(item => ({...item, isOffline: true})), ...dbData];
+      
+      // Sort by Date Descending
+      combinedData.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      const total = combinedData.reduce((sum, row) => sum + Number(row.amount), 0);
+      document.getElementById('dashTotal').textContent = fmtPKR(total);
+      document.getElementById('recordCount').textContent = `${combinedData.length} Entries`;
+
+      if (!combinedData.length) {
+        container.innerHTML = `
+          <div class="bg-white rounded-3xl p-10 text-center border-2 border-dashed border-gray-200 mt-4">
+            <div class="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fa fa-inbox text-gray-300 text-4xl"></i>
+            </div>
+            <p class="text-gray-500 font-bold">No records found</p>
+          </div>`;
+        return;
+      }
+
+      const amtColor = currentTab === 'receive' ? 'text-green-600 bg-green-50 border-green-100' : 'text-rose-600 bg-rose-50 border-rose-100';
+
+      container.innerHTML = combinedData.map(r => `
+        <div class="bg-white rounded-2xl shadow-sm border ${r.isOffline ? 'border-orange-300' : 'border-gray-100'} overflow-hidden relative">
+          <div class="p-4 sm:p-5">
+            <div class="flex justify-between items-start mb-3">
+              <div class="flex-1 min-w-0 pr-4">
+                <p class="text-sm sm:text-base font-heading font-extrabold text-gray-800 uppercase tracking-wide truncate">
+                  ${escHtml(r.account_name)} 
+                  ${r.isOffline ? '<span class="inline-block align-middle ml-2 text-[9px] bg-orange-100 text-orange-600 px-1.5 py-0.5 rounded font-bold uppercase"><i class="fa fa-clock mr-1"></i>Offline</span>' : ''}
+                </p>
+                <p class="text-[10px] sm:text-xs font-bold text-gray-400 mt-1 uppercase"><i class="fa fa-calendar-day mr-1"></i>${fmtDate(r.date)}</p>
+              </div>
+              <div class="text-right flex-shrink-0">
+                <p class="text-lg sm:text-xl font-black px-3 py-1 rounded-xl border ${r.isOffline ? 'text-orange-600 bg-orange-50 border-orange-100' : amtColor}">${fmtPKR(r.amount)}</p>
+              </div>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-3 sm:p-4 border border-gray-200/60 mt-2">
+              <p class="text-[12px] sm:text-sm text-gray-700 font-bold leading-relaxed whitespace-pre-line break-words">${escHtml(r.particulars)}</p>
+            </div>
+          </div>
+          
+          ${r.isOffline ? 
+            `<div class="p-3 text-center text-xs font-bold text-orange-500 bg-orange-50 border-t border-orange-100">
+               <i class="fa fa-sync fa-spin mr-1"></i> Pending Sync (Edit disabled)
+             </div>` 
+          : 
+            `<div class="flex bg-gray-50 border-t border-gray-100 divide-x divide-gray-200">
+              <button onclick="requestPassword(() => openEditModal(${r.id}))" class="flex-1 py-3 text-[11px] sm:text-xs text-blue-600 font-bold flex items-center justify-center gap-2 hover:bg-blue-50 transition-colors"><i class="fa fa-pen"></i> EDIT</button>
+              <button onclick="requestPassword(() => deleteRecord(${r.id}))" class="flex-1 py-3 text-[11px] sm:text-xs text-rose-500 font-bold flex items-center justify-center gap-2 hover:bg-rose-50 transition-colors"><i class="fa fa-trash"></i> DELETE</button>
+            </div>`
+          }
+        </div>
+      `).join('');
+  }
+}
+
+// ── OFFLINE SYNC LOGIC ───────────────────────────────────────
+function saveOfflineRecord(table, record) {
+  const queueKey = table === 'khuram_receivings' ? 'offline_receivings' : 'offline_sent';
+  let queue = JSON.parse(localStorage.getItem(queueKey) || '[]');
+  queue.push(record);
+  localStorage.setItem(queueKey, JSON.stringify(queue));
+  toast('Saved Offline! Will sync automatically.', 'success');
+  loadData();
+}
+
+async function syncOfflineRecords() {
+  if (!navigator.onLine) return;
+  
+  let recQueue = JSON.parse(localStorage.getItem('offline_receivings') || '[]');
+  let sentQueue = JSON.parse(localStorage.getItem('offline_sent') || '[]');
+  let hasSynced = false;
+
+  if (recQueue.length > 0) {
+      const { error } = await sb.from('khuram_receivings').insert(recQueue);
+      if (!error) {
+          localStorage.removeItem('offline_receivings');
+          hasSynced = true;
+      }
   }
 
-  const amtColor = currentTab === 'receive' ? 'text-green-600 bg-green-50 border-green-100' : 'text-rose-600 bg-rose-50 border-rose-100';
+  if (sentQueue.length > 0) {
+      const { error } = await sb.from('khuram_sent').insert(sentQueue);
+      if (!error) {
+          localStorage.removeItem('offline_sent');
+          hasSynced = true;
+      }
+  }
 
-  container.innerHTML = data.map(r => `
-    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden relative">
-      <div class="p-4 sm:p-5">
-        <div class="flex justify-between items-start mb-3">
-          <div class="flex-1 min-w-0 pr-4">
-            <p class="text-sm sm:text-base font-heading font-extrabold text-gray-800 uppercase tracking-wide truncate">${escHtml(r.account_name)}</p>
-            <p class="text-[10px] sm:text-xs font-bold text-gray-400 mt-1 uppercase"><i class="fa fa-calendar-day mr-1"></i>${fmtDate(r.date)}</p>
-          </div>
-          <div class="text-right flex-shrink-0">
-            <p class="text-lg sm:text-xl font-black px-3 py-1 rounded-xl border ${amtColor}">${fmtPKR(r.amount)}</p>
-          </div>
-        </div>
-        <div class="bg-gray-50 rounded-xl p-3 sm:p-4 border border-gray-200/60 mt-2">
-          <p class="text-[12px] sm:text-sm text-gray-700 font-bold leading-relaxed whitespace-pre-line break-words">${escHtml(r.particulars)}</p>
-        </div>
-      </div>
-      <div class="flex bg-gray-50 border-t border-gray-100 divide-x divide-gray-200">
-        <button onclick="requestPassword(() => openEditModal(${r.id}))" class="flex-1 py-3 text-[11px] sm:text-xs text-blue-600 font-bold flex items-center justify-center gap-2 hover:bg-blue-50 transition-colors"><i class="fa fa-pen"></i> EDIT</button>
-        <button onclick="requestPassword(() => deleteRecord(${r.id}))" class="flex-1 py-3 text-[11px] sm:text-xs text-rose-500 font-bold flex items-center justify-center gap-2 hover:bg-rose-50 transition-colors"><i class="fa fa-trash"></i> DELETE</button>
-      </div>
-    </div>
-  `).join('');
+  if (hasSynced) {
+      toast('Offline records Synced to Database!', 'success');
+      loadData();
+  }
 }
 
 // ── SECURITY PIN MODAL (114) ─────────────────────────────────
@@ -402,110 +581,207 @@ function verifyPassword() {
 // ── ADD MODAL ────────────────────────────────────────────────
 function openAddModal() {
   const todayStr = new Date().toISOString().split('T')[0];
-  const btnColor = currentTab === 'receive' ? 'bg-green-600 active:bg-green-700' : 'bg-rose-500 active:bg-rose-600';
-  const inputTheme = currentTab === 'receive' ? 'border-green-200 bg-green-50 text-green-700' : 'border-rose-200 bg-rose-50 text-rose-700';
-
-  document.getElementById('modalConfirmBtn').className = `flex-1 py-3.5 text-white rounded-xl text-sm font-bold shadow-md transition-colors ${btnColor}`;
   
-  showModal(`Add New ${currentTab === 'receive' ? 'Receiving' : 'Sent Payment'}`, `
-    <div class="space-y-4">
-      <div>
-        <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Date</label>
-        <input type="date" id="mDate" value="${todayStr}" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800" />
+  if (currentTab === 'receivable') {
+    // ── ADD RECEIVABLE ACCOUNT ──
+    document.getElementById('modalConfirmBtn').className = `flex-1 py-3.5 text-white rounded-xl text-sm font-bold shadow-md transition-colors bg-blue-600 active:bg-blue-700`;
+    showModal(`Add Receivable Account`, `
+      <div class="space-y-4">
+        <div>
+          <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Account Name</label>
+          <input type="text" id="mAccount" placeholder="e.g. SOHAIL AHMAD" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800 uppercase" />
+        </div>
+        <div>
+          <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Total Balance (Rs)</label>
+          <input type="number" id="mBalance" placeholder="0" class="w-full border-2 border-blue-200 bg-blue-50 text-blue-700 rounded-xl py-3.5 px-4 text-xl font-black shadow-inner" />
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Last Rcv Date</label>
+            <input type="date" id="mDate" value="${todayStr}" class="w-full border-2 border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50 font-bold text-gray-800" />
+          </div>
+          <div>
+            <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Last Amount</label>
+            <input type="number" id="mAmount" placeholder="0" class="w-full border-2 border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50 font-bold text-gray-800" />
+          </div>
+        </div>
       </div>
-      <div>
-        <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Account Name</label>
-        <input type="text" id="mAccount" placeholder="e.g. SOHAIL AHMAD" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800 uppercase" />
-      </div>
-      <div>
-        <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Amount (Rs)</label>
-        <input type="number" id="mAmount" placeholder="0" class="w-full border-2 ${inputTheme} rounded-xl py-3.5 px-4 text-xl font-black shadow-inner" />
-      </div>
-      <div>
-        <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Particulars / Remarks</label>
-        <textarea id="mParticulars" rows="3" placeholder="Enter details..." class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold leading-relaxed text-gray-700 uppercase"></textarea>
-      </div>
-    </div>
-  `, async () => {
-    const date = document.getElementById('mDate').value;
-    const account_name = document.getElementById('mAccount').value.trim().toUpperCase();
-    const amount = parseFloat(document.getElementById('mAmount').value);
-    const particulars = document.getElementById('mParticulars').value.trim().toUpperCase();
+    `, async () => {
+      if (!navigator.onLine) { toast('Accounts can only be added when online', 'error'); return; }
 
-    if (!date || !account_name || !particulars || isNaN(amount) || amount <= 0) { 
-        toast('Please fill all fields correctly.', 'error'); 
-        return; 
-    }
+      const account_name = document.getElementById('mAccount').value.trim().toUpperCase();
+      const balance = parseFloat(document.getElementById('mBalance').value) || 0;
+      const last_date = document.getElementById('mDate').value || null;
+      const last_amount = parseFloat(document.getElementById('mAmount').value) || 0;
 
-    const targetTable = currentTab === 'receive' ? 'khuram_receivings' : 'khuram_sent';
-    const entry = { date, account_name, particulars, amount };
-    
-    const { error } = await sb.from(targetTable).insert(entry);
-    if (error) { toast('Error saving data', 'error'); return; }
+      if (!account_name) { toast('Please fill Account Name', 'error'); return; }
 
-    closeModal();
-    toast('Record Added Successfully!', 'success');
-    loadData();
-  });
+      const { error } = await sb.from('khuram_receivable').insert({ account_name, balance, last_date, last_amount });
+      if (error) { toast('Error saving account', 'error'); return; }
+
+      closeModal(); toast('Account Added!', 'success'); loadData();
+    });
+
+  } else {
+    // ── ADD RECEIVE / SENT ──
+    const btnColor = currentTab === 'receive' ? 'bg-green-600 active:bg-green-700' : 'bg-rose-500 active:bg-rose-600';
+    const inputTheme = currentTab === 'receive' ? 'border-green-200 bg-green-50 text-green-700' : 'border-rose-200 bg-rose-50 text-rose-700';
+
+    document.getElementById('modalConfirmBtn').className = `flex-1 py-3.5 text-white rounded-xl text-sm font-bold shadow-md transition-colors ${btnColor}`;
+    showModal(`Add New ${currentTab === 'receive' ? 'Receiving' : 'Sent Payment'}`, `
+      <div class="space-y-4">
+        <div>
+          <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Date</label>
+          <input type="date" id="mDate" value="${todayStr}" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800" />
+        </div>
+        <div>
+          <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Account Name</label>
+          <input type="text" id="mAccount" placeholder="e.g. SOHAIL AHMAD" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800 uppercase" />
+        </div>
+        <div>
+          <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Amount (Rs)</label>
+          <input type="number" id="mAmount" placeholder="0" class="w-full border-2 ${inputTheme} rounded-xl py-3.5 px-4 text-xl font-black shadow-inner" />
+        </div>
+        <div>
+          <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Particulars / Remarks</label>
+          <textarea id="mParticulars" rows="3" placeholder="Enter details..." class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold leading-relaxed text-gray-700 uppercase"></textarea>
+        </div>
+      </div>
+    `, async () => {
+      const date = document.getElementById('mDate').value;
+      const account_name = document.getElementById('mAccount').value.trim().toUpperCase();
+      const amount = parseFloat(document.getElementById('mAmount').value);
+      const particulars = document.getElementById('mParticulars').value.trim().toUpperCase();
+
+      if (!date || !account_name || !particulars || isNaN(amount) || amount <= 0) { 
+          toast('Please fill all fields correctly.', 'error'); return; 
+      }
+
+      const targetTable = currentTab === 'receive' ? 'khuram_receivings' : 'khuram_sent';
+      const entry = { date, account_name, particulars, amount };
+
+      // Handle Offline Check
+      if (!navigator.onLine) {
+          saveOfflineRecord(targetTable, entry);
+          closeModal();
+          return;
+      }
+
+      // Handle Online Save
+      const { error } = await sb.from(targetTable).insert(entry);
+      if (error) { 
+          saveOfflineRecord(targetTable, entry); // Fallback to offline if network issue
+      } else {
+          toast('Record Added Successfully!', 'success');
+          loadData();
+      }
+      closeModal();
+    });
+  }
 }
 
 // ── EDIT MODAL (Password Protected) ──────────────────────────
 async function openEditModal(id) {
-  const targetTable = currentTab === 'receive' ? 'khuram_receivings' : 'khuram_sent';
-  const { data, error } = await sb.from(targetTable).select('*').eq('id', id).single();
-  if (error || !data) { toast('Error fetching record', 'error'); return; }
+  if (!navigator.onLine) { toast('Editing requires internet connection', 'error'); return; }
 
-  const btnColor = currentTab === 'receive' ? 'bg-green-600 active:bg-green-700' : 'bg-rose-500 active:bg-rose-600';
-  const inputTheme = currentTab === 'receive' ? 'border-green-200 bg-green-50 text-green-700' : 'border-rose-200 bg-rose-50 text-rose-700';
+  if (currentTab === 'receivable') {
+      const { data, error } = await sb.from('khuram_receivable').select('*').eq('id', id).single();
+      if (error || !data) { toast('Error fetching account', 'error'); return; }
 
-  document.getElementById('modalConfirmBtn').className = `flex-1 py-3.5 text-white rounded-xl text-sm font-bold shadow-md transition-colors ${btnColor}`;
+      document.getElementById('modalConfirmBtn').className = `flex-1 py-3.5 text-white rounded-xl text-sm font-bold shadow-md transition-colors bg-blue-600 active:bg-blue-700`;
+      showModal('Edit Account', `
+        <div class="space-y-4">
+          <div>
+            <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Account Name</label>
+            <input type="text" id="mAccount" value="${escHtml(data.account_name)}" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800 uppercase" />
+          </div>
+          <div>
+            <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Total Balance (Rs)</label>
+            <input type="number" id="mBalance" value="${data.balance}" class="w-full border-2 border-blue-200 bg-blue-50 text-blue-700 rounded-xl py-3.5 px-4 text-xl font-black shadow-inner" />
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Last Rcv Date</label>
+              <input type="date" id="mDate" value="${data.last_date || ''}" class="w-full border-2 border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50 font-bold text-gray-800" />
+            </div>
+            <div>
+              <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Last Amount</label>
+              <input type="number" id="mAmount" value="${data.last_amount || 0}" class="w-full border-2 border-gray-200 rounded-xl py-2.5 px-3 text-sm bg-gray-50 font-bold text-gray-800" />
+            </div>
+          </div>
+        </div>
+      `, async () => {
+        const account_name = document.getElementById('mAccount').value.trim().toUpperCase();
+        const balance = parseFloat(document.getElementById('mBalance').value) || 0;
+        const last_date = document.getElementById('mDate').value || null;
+        const last_amount = parseFloat(document.getElementById('mAmount').value) || 0;
 
-  showModal('Edit Record', `
-    <div class="space-y-4">
-      <div>
-        <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Date</label>
-        <input type="date" id="mDate" value="${data.date}" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800" />
-      </div>
-      <div>
-        <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Account Name</label>
-        <input type="text" id="mAccount" value="${escHtml(data.account_name)}" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800 uppercase" />
-      </div>
-      <div>
-        <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Amount (Rs)</label>
-        <input type="number" id="mAmount" value="${data.amount}" class="w-full border-2 ${inputTheme} rounded-xl py-3.5 px-4 text-xl font-black shadow-inner" />
-      </div>
-      <div>
-        <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Particulars / Remarks</label>
-        <textarea id="mParticulars" rows="3" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold leading-relaxed text-gray-700 uppercase">${escHtml(data.particulars)}</textarea>
-      </div>
-    </div>
-  `, async () => {
-    const date = document.getElementById('mDate').value;
-    const account_name = document.getElementById('mAccount').value.trim().toUpperCase();
-    const amount = parseFloat(document.getElementById('mAmount').value);
-    const particulars = document.getElementById('mParticulars').value.trim().toUpperCase();
+        if (!account_name) { toast('Please fill Account Name', 'error'); return; }
 
-    if (!date || !account_name || !particulars || isNaN(amount) || amount <= 0) { 
-        toast('Please fill all fields correctly.', 'error'); 
-        return; 
-    }
+        const { error } = await sb.from('khuram_receivable').update({ account_name, balance, last_date, last_amount }).eq('id', id);
+        if (error) { toast('Error updating account', 'error'); return; }
 
-    const { error } = await sb.from(targetTable).update({ date, account_name, particulars, amount }).eq('id', id);
-    if (error) { toast('Error updating data', 'error'); return; }
+        closeModal(); toast('Account Updated!', 'success'); loadData();
+      });
 
-    closeModal();
-    toast('Record Updated!', 'success');
-    loadData();
-  });
+  } else {
+      const targetTable = currentTab === 'receive' ? 'khuram_receivings' : 'khuram_sent';
+      const { data, error } = await sb.from(targetTable).select('*').eq('id', id).single();
+      if (error || !data) { toast('Error fetching record', 'error'); return; }
+
+      const btnColor = currentTab === 'receive' ? 'bg-green-600 active:bg-green-700' : 'bg-rose-500 active:bg-rose-600';
+      const inputTheme = currentTab === 'receive' ? 'border-green-200 bg-green-50 text-green-700' : 'border-rose-200 bg-rose-50 text-rose-700';
+
+      document.getElementById('modalConfirmBtn').className = `flex-1 py-3.5 text-white rounded-xl text-sm font-bold shadow-md transition-colors ${btnColor}`;
+      showModal('Edit Record', `
+        <div class="space-y-4">
+          <div>
+            <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Date</label>
+            <input type="date" id="mDate" value="${data.date}" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800" />
+          </div>
+          <div>
+            <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Account Name</label>
+            <input type="text" id="mAccount" value="${escHtml(data.account_name)}" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold text-gray-800 uppercase" />
+          </div>
+          <div>
+            <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Amount (Rs)</label>
+            <input type="number" id="mAmount" value="${data.amount}" class="w-full border-2 ${inputTheme} rounded-xl py-3.5 px-4 text-xl font-black shadow-inner" />
+          </div>
+          <div>
+            <label class="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">Particulars / Remarks</label>
+            <textarea id="mParticulars" rows="3" class="w-full border-2 border-gray-200 rounded-xl py-3 px-3 text-sm bg-gray-50 font-bold leading-relaxed text-gray-700 uppercase">${escHtml(data.particulars)}</textarea>
+          </div>
+        </div>
+      `, async () => {
+        const date = document.getElementById('mDate').value;
+        const account_name = document.getElementById('mAccount').value.trim().toUpperCase();
+        const amount = parseFloat(document.getElementById('mAmount').value);
+        const particulars = document.getElementById('mParticulars').value.trim().toUpperCase();
+
+        if (!date || !account_name || !particulars || isNaN(amount) || amount <= 0) { 
+            toast('Please fill all fields correctly.', 'error'); return; 
+        }
+
+        const { error } = await sb.from(targetTable).update({ date, account_name, particulars, amount }).eq('id', id);
+        if (error) { toast('Error updating data', 'error'); return; }
+
+        closeModal(); toast('Record Updated!', 'success'); loadData();
+      });
+  }
 }
 
 // ── DELETE (Password Protected) ──────────────────────────────
 function deleteRecord(id) {
+  if (!navigator.onLine) { toast('Deletion requires internet connection', 'error'); return; }
+
   showConfirm(async () => {
-    const targetTable = currentTab === 'receive' ? 'khuram_receivings' : 'khuram_sent';
+    let targetTable = '';
+    if(currentTab === 'receivable') targetTable = 'khuram_receivable';
+    else targetTable = currentTab === 'receive' ? 'khuram_receivings' : 'khuram_sent';
+
     const { error } = await sb.from(targetTable).delete().eq('id', id);
     if (error) { toast('Error deleting record', 'error'); return; }
-    toast('Record Deleted!', 'success');
+    toast('Deleted Successfully!', 'success');
     loadData();
   });
 }
