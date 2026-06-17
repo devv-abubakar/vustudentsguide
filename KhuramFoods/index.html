@@ -98,7 +98,6 @@
       </div>
     </div>
 
-    <!-- Search Bar for Receivable -->
     <div id="receivableSearchContainer" class="hidden bg-white rounded-[1.25rem] p-4 shadow-sm border border-gray-100 mb-5">
       <div class="relative">
         <i class="fa fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
@@ -145,7 +144,6 @@
 
       <div id="divider-receivable" class="w-px bg-gray-100 my-2 hidden"></div>
 
-      <!-- This tab will only show if user is 'ahmad' -->
       <button id="nav-receivable" class="nav-btn hidden flex-1 flex flex-col items-center py-3.5 gap-1.5 transition-all" onclick="switchTab('receivable')">
         <i class="nav-icon fa fa-users text-[22px] transition-all"></i>
         <span class="nav-label text-[10px] uppercase tracking-widest font-semibold">Receivable</span>
@@ -155,7 +153,6 @@
   </nav>
 </div>
 
-<!-- ───────────── LOGIN SCREEN ───────────── -->
 <div id="loginScreen" class="min-h-screen flex flex-col items-center justify-center px-6 bg-gray-900 app-container">
   <div class="w-full max-w-sm">
     <div class="text-center mb-8">
@@ -191,7 +188,6 @@
 
 <div id="toast" class="fixed bottom-[110px] left-1/2 -translate-x-1/2 z-50 px-6 py-3.5 rounded-full text-white text-sm font-bold shadow-2xl flex items-center gap-2.5 whitespace-nowrap border border-white/20"></div>
 
-<!-- SECURITY PIN MODAL (114) -->
 <div id="securityBackdrop" class="modal-backdrop fixed inset-0 bg-black/70 z-[60] hidden flex items-center justify-center px-6 transition-all">
   <div class="bg-white w-full max-w-xs rounded-[2rem] p-6 shadow-2xl">
     <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-white shadow-sm">
@@ -209,7 +205,6 @@
   </div>
 </div>
 
-<!-- Add/Edit Form Modal -->
 <div id="modalBackdrop" class="modal-backdrop fixed inset-0 bg-black/60 z-50 hidden flex items-end justify-center sm:items-center transition-all">
   <div class="bg-white w-full max-w-md rounded-t-[2rem] sm:rounded-3xl p-6 pb-8 shadow-2xl max-h-[90vh] overflow-y-auto">
     <div class="w-12 h-1.5 bg-gray-200 rounded-full mx-auto mb-6 sm:hidden"></div>
@@ -225,7 +220,6 @@
   </div>
 </div>
 
-<!-- Confirm Delete Modal -->
 <div id="confirmBackdrop" class="modal-backdrop fixed inset-0 bg-black/60 z-[60] hidden flex items-center justify-center px-6 transition-all">
   <div class="bg-white w-full max-w-xs rounded-[2rem] p-6 shadow-2xl">
     <div class="w-16 h-16 bg-rose-50 rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-rose-100">
@@ -247,11 +241,11 @@ const SUPABASE_ANON_KEY = 'sb_publishable_Qoy-USZ2VP94_n5x1BcjWQ_HV5deVBB';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 let currentTab = 'receive'; 
-let authPendingAction = null; // ACTION TYPE (e.g. 'edit' or 'delete')
-let authPendingId = null;     // ID of the record
+let authPendingAction = null; // Store function reference for edit/delete
+let authPendingId = null;     // Store the ID of the record being acted upon
 let confirmCallback = null;
 let loggedInUser = null;
-let receivableData = []; // Store fetched receivable data globally for searching
+let receivableData = []; 
 
 // ── INIT & OFFLINE SYNC ──────────────────────────────────────
 window.onload = () => {
@@ -601,6 +595,7 @@ function verifyPassword() {
   if(pin === '114') {
       closeSecurityModal();
       
+      // EXECUTING THE CORRECT FUNCTION
       if (authPendingAction === 'edit') {
           openEditModal(authPendingId);
       } else if (authPendingAction === 'delete') {
@@ -709,7 +704,7 @@ function openAddModal() {
   }
 }
 
-// ── EDIT MODAL (Password Protected) ──────────────────────────
+// ── EDIT MODAL ───────────────────────────────────────────────
 async function openEditModal(id) {
   if (!navigator.onLine) { toast('Editing requires internet connection', 'error'); return; }
 
@@ -799,7 +794,7 @@ async function openEditModal(id) {
   }
 }
 
-// ── DELETE (Password Protected) ──────────────────────────────
+// ── DELETE ───────────────────────────────────────────────────
 function deleteRecord(id) {
   if (!navigator.onLine) { toast('Deletion requires internet connection', 'error'); return; }
 
