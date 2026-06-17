@@ -241,11 +241,11 @@ const SUPABASE_ANON_KEY = 'sb_publishable_Qoy-USZ2VP94_n5x1BcjWQ_HV5deVBB';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 let currentTab = 'receive'; 
-let authPendingAction = null; // Store function reference for edit/delete
-let authPendingId = null;     // Store the ID of the record being acted upon
+let authPendingAction = null; // ACTION TYPE ('edit' or 'delete')
+let authPendingId = null;     // ID of the record
 let confirmCallback = null;
 let loggedInUser = null;
-let receivableData = []; 
+let receivableData = []; // Store fetched receivable data globally for searching
 
 // ── INIT & OFFLINE SYNC ──────────────────────────────────────
 window.onload = () => {
@@ -574,6 +574,7 @@ async function syncOfflineRecords() {
 
 // ── SECURITY PIN MODAL (114) ─────────────────────────────────
 function requestPassword(actionType, id) {
+  // Yahan variable ko save karna zaroori hai taakay baad mein yaad rahay
   authPendingAction = actionType;
   authPendingId = id;
   
@@ -586,6 +587,7 @@ function requestPassword(actionType, id) {
 function closeSecurityModal() {
   document.getElementById('securityBackdrop').classList.add('hidden');
   document.getElementById('securityBackdrop').classList.remove('flex');
+  // Modal band kartay waqt in variables ko NULL karna zaroori hai
   authPendingAction = null;
   authPendingId = null;
 }
@@ -593,14 +595,21 @@ function closeSecurityModal() {
 function verifyPassword() {
   const pin = document.getElementById('authPin').value;
   if(pin === '114') {
+      
+      // Variables ko pehlay local variables mein save kar lein
+      const actionToPerform = authPendingAction;
+      const recordId = authPendingId;
+      
+      // Phir modal band karein (kyun k close modal function in globals ko null kar deta hai)
       closeSecurityModal();
       
-      // EXECUTING THE CORRECT FUNCTION
-      if (authPendingAction === 'edit') {
-          openEditModal(authPendingId);
-      } else if (authPendingAction === 'delete') {
-          deleteRecord(authPendingId);
+      // Ab theek se function chalayen
+      if (actionToPerform === 'edit') {
+          openEditModal(recordId);
+      } else if (actionToPerform === 'delete') {
+          deleteRecord(recordId);
       }
+
   } else {
       toast('Incorrect Security PIN!', 'error');
   }
